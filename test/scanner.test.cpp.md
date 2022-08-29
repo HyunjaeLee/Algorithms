@@ -15,7 +15,7 @@ data:
     links:
     - https://judge.yosupo.jp/problem/many_aplusb
   bundledCode: "#line 1 \"test/scanner.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/many_aplusb\"\
-    \n\n#line 2 \"io/scanner.hpp\"\n\n#include <charconv>\n#include <sys/mman.h>\n\
+    \n\n#line 1 \"io/scanner.hpp\"\n\n\n\n#include <charconv>\n#include <sys/mman.h>\n\
     #include <sys/stat.h>\n#include <type_traits>\n\nstruct scanner {\npublic:\n \
     \   scanner() {\n        struct stat st;\n        fstat(0, &st);\n        data_\
     \ = p_ = static_cast<char *>(\n            mmap(nullptr, st.st_size, PROT_READ,\
@@ -29,11 +29,11 @@ data:
     \ (*p_ > ' ') {\n            ++p_;\n        }\n        std::from_chars(first,\
     \ p_, x);\n    }\n    void read(char &x) {\n        skip();\n        x = *p_++;\n\
     \    }\n    void skip() {\n        while (*p_ <= ' ') {\n            ++p_;\n \
-    \       }\n    }\n    char *data_;\n    char *p_;\n    size_t size_;\n};\n#line\
-    \ 4 \"test/scanner.test.cpp\"\n#include <iostream>\n\nscanner scan;\n\nint main()\
-    \ {\n    std::cin.tie(0)->sync_with_stdio(0);\n    int T;\n    scan(T);\n    while\
-    \ (T--) {\n        long long A, B;\n        scan(A, B);\n        std::cout <<\
-    \ A + B << '\\n';\n    }\n}\n"
+    \       }\n    }\n    char *data_;\n    char *p_;\n    size_t size_;\n};\n\n\n\
+    #line 4 \"test/scanner.test.cpp\"\n#include <iostream>\n\nscanner scan;\n\nint\
+    \ main() {\n    std::cin.tie(0)->sync_with_stdio(0);\n    int T;\n    scan(T);\n\
+    \    while (T--) {\n        long long A, B;\n        scan(A, B);\n        std::cout\
+    \ << A + B << '\\n';\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/many_aplusb\"\n\n#include\
     \ \"../io/scanner.hpp\"\n#include <iostream>\n\nscanner scan;\n\nint main() {\n\
     \    std::cin.tie(0)->sync_with_stdio(0);\n    int T;\n    scan(T);\n    while\
@@ -44,7 +44,7 @@ data:
   isVerificationFile: true
   path: test/scanner.test.cpp
   requiredBy: []
-  timestamp: '2022-08-29 12:37:26+00:00'
+  timestamp: '2022-08-29 15:08:35+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/scanner.test.cpp
