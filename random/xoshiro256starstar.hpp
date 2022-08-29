@@ -4,6 +4,7 @@
 #include "splitmix64.hpp"
 #include <array>
 #include <cstdint>
+#include <limits>
 
 struct xoshiro256starstar {
 public:
@@ -14,13 +15,7 @@ public:
             x = g();
         }
     }
-    std::uint64_t operator()() { return next(); }
-
-private:
-    static std::uint64_t rotl(const std::uint64_t x, int k) {
-        return (x << k) | (x >> (64 - k));
-    }
-    std::uint64_t next() {
+    std::uint64_t operator()() {
         const std::uint64_t result = rotl(s[1] * 5, 7) * 9;
         const std::uint64_t t = s[1] << 17;
         s[2] ^= s[0];
@@ -30,6 +25,17 @@ private:
         s[2] ^= t;
         s[3] = rotl(s[3], 45);
         return result;
+    }
+    static constexpr std::uint64_t min() {
+        return std::numeric_limits<std::uint64_t>::min();
+    }
+    static constexpr std::uint64_t max() {
+        return std::numeric_limits<std::uint64_t>::max();
+    }
+
+private:
+    static std::uint64_t rotl(const std::uint64_t x, int k) {
+        return (x << k) | (x >> (64 - k));
     }
     std::array<std::uint64_t, 4> s;
 };
