@@ -1,4 +1,5 @@
-#pragma once
+#ifndef SCANNER_HPP
+#define SCANNER_HPP
 
 #include <charconv>
 #include <sys/mman.h>
@@ -49,3 +50,5 @@ private:
     char *p_;
     size_t size_;
 };
+
+#endif // SCANNER_HPP
