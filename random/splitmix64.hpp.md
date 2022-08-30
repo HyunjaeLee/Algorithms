@@ -2,13 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: random/xoshiro256starstar.hpp
     title: xoshiro256**
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/treap_set.test.cpp
+    title: test/treap_set.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"random/splitmix64.hpp\"\n\n\n\n#include <cstdint>\n#include\
@@ -37,8 +40,9 @@ data:
   requiredBy:
   - random/xoshiro256starstar.hpp
   timestamp: '2022-08-29 16:56:11+00:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/treap_set.test.cpp
 documentation_of: random/splitmix64.hpp
 layout: document
 title: splitmix64

@@ -8,17 +8,25 @@ data:
       title: io/scanner.hpp
   - name: random
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: random/splitmix64.hpp
       title: splitmix64
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: random/xoshiro256starstar.hpp
       title: xoshiro256**
+  - name: treap
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: treap/treap_set.hpp
+      title: treap/treap_set.hpp
   verificationCategories:
   - name: test
     pages:
     - icon: ':heavy_check_mark:'
       path: test/scanner.test.cpp
       title: test/scanner.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/treap_set.test.cpp
+      title: test/treap_set.test.cpp
 layout: toppage
 ---
