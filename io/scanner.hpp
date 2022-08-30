@@ -24,8 +24,16 @@ private:
     std::enable_if_t<std::is_integral_v<T>, void> read(T &x) {
         skip();
         x = 0;
+        auto is_negative = false;
+        if (*p_ == '-') {
+            ++p_;
+            is_negative = true;
+        }
         for (; *p_ > ' '; ++p_) {
             x = (x << 1) + (x << 3) + (*p_ & 15);
+        }
+        if (is_negative) {
+            x = -x;
         }
     }
     template <typename T>
