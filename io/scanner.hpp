@@ -2,6 +2,7 @@
 #define SCANNER_HPP
 
 #include <charconv>
+#include <string_view>
 #include <sys/mman.h>
 #include <sys/stat.h>
 #include <type_traits>
@@ -17,6 +18,14 @@ public:
     }
     template <typename... Args> void operator()(Args &...args) {
         (read(args), ...);
+    }
+    std::string_view getline() {
+        skip();
+        auto first = p_;
+        while (*p_ > ' ') {
+            ++p_;
+        }
+        return std::string_view(first, p_ - first);
     }
 
 private:

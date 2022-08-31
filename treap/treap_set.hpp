@@ -2,10 +2,13 @@
 #define TREAP_SET_HPP
 
 #include <array>
+#include <cassert>
 #include <vector>
 
-template <typename T, typename Generator> struct treap_set {
-    bool insert(T key) {
+template <typename Key, typename Generator> struct treap_set {
+    treap_set() = default;
+    explicit treap_set(typename Generator::result_type seed) : gen_(seed) {}
+    bool insert(const Key &key) {
         if (contains(key)) {
             return false;
         }
@@ -15,7 +18,7 @@ template <typename T, typename Generator> struct treap_set {
         root_ = merge(merge(left, u), right);
         return true;
     }
-    bool erase(T key) {
+    bool erase(const Key &key) {
         if (!contains(key)) {
             return false;
         }
@@ -25,14 +28,14 @@ template <typename T, typename Generator> struct treap_set {
     void reserve(int n) {
         nodes_.reserve(static_cast<std::vector<int>::size_type>(n));
     }
-    // T find_by_order(int order) const {
-    //     assert(0 <= order && order < size());
-
-    // }
-    int order_of_key(T key) const {
-        return order_of_key(root_, key);
+    const Key &find_by_order(int order) const {
+        assert(0 <= order && order < size());
+        auto u = find_by_order(root_, order);
+        assert(~u);
+        return nodes_[u].key;
     }
-    bool contains(T key) const { return ~find(root_, key); }
+    int order_of_key(const Key &key) const { return order_of_key(root_, key); }
+    bool contains(const Key &key) const { return ~find(root_, key); }
     int size() const { return size(root_); }
     template <typename Function> void for_each(Function f) const {
         for_each(root_, f);
@@ -41,7 +44,7 @@ template <typename T, typename Generator> struct treap_set {
 private:
     // for all x in left tree: x < key
     // for all x in right tree: x >= key
-    std::array<int, 2> split(int u, T key) {
+    std::array<int, 2> split(int u, const Key &key) {
         if (!~u) {
             return {-1, -1};
         }
@@ -79,19 +82,19 @@ private:
         }
         return u;
     }
-    int find(int u, T key) const {
-        if (!~u) {
-            return -1;
+    int find(int u, const Key &key) const {
+        while (~u) {
+            if (nodes_[u].key < key) {
+                u = nodes_[u].children[1];
+            } else if (key < nodes_[u].key) {
+                u = nodes_[u].children[0];
+            } else {
+                break;
+            }
         }
-        if (nodes_[u].key < key) {
-            return find(nodes_[u].children[1], key);
-        } else if (key < nodes_[u].key) {
-            return find(nodes_[u].children[0], key);
-        } else {
-            return u;
-        }
+        return u;
     }
-    int erase(int u, T key) {
+    int erase(int u, const Key &key) {
         if (!~u) {
             return -1;
         }
@@ -105,15 +108,30 @@ private:
             return merge(nodes_[u].children[0], nodes_[u].children[1]);
         }
     }
-    int order_of_key(int u, T key) const {
-        if (!~u) {
-            return 0;
+    int find_by_order(int u, int order) const {
+        while (~u) {
+            if (size(nodes_[u].children[0]) < order) {
+                order -= size(nodes_[u].children[0]) + 1;
+                u = nodes_[u].children[1];
+            } else if (order < size(nodes_[u].children[0])) {
+                u = nodes_[u].children[0];
+            } else {
+                break;
+            }
         }
-        if (nodes_[u].key < key) {
-            return size(nodes_[u].children[0]) + 1 + order_of_key(nodes_[u].children[1], key);
-        } else {
-            return order_of_key(nodes_[u].children[0], key);
+        return u;
+    }
+    int order_of_key(int u, const Key &key) const {
+        auto order = 0;
+        while (~u) {
+            if (nodes_[u].key < key) {
+                order += size(nodes_[u].children[0]) + 1;
+                u = nodes_[u].children[1];
+            } else {
+                u = nodes_[u].children[0];
+            }
         }
+        return order;
     }
     int size(int u) const { return ~u ? nodes_[u].subtree_size : 0; }
     template <typename Function> void for_each(int u, Function f) const {
@@ -124,9 +142,9 @@ private:
         }
     }
     struct node {
-        node(T key, typename Generator::result_type priority)
+        node(const Key &key, typename Generator::result_type priority)
             : key(key), priority(priority) {}
-        T key;
+        Key key;
         typename Generator::result_type priority;
         std::array<int, 2> children{-1, -1};
         int subtree_size = 1;
