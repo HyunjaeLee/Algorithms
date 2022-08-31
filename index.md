@@ -16,6 +16,12 @@ data:
       title: xoshiro256**
   - name: treap
     pages:
+    - icon: ':warning:'
+      path: treap/implicit_treap.hpp
+      title: treap/implicit_treap.hpp
+    - icon: ':warning:'
+      path: treap/lazy_implicit_treap.hpp
+      title: treap/lazy_implicit_treap.hpp
     - icon: ':heavy_check_mark:'
       path: treap/treap_set.hpp
       title: treap/treap_set.hpp
