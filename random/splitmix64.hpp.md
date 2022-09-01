@@ -5,6 +5,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: random/xoshiro256starstar.hpp
     title: xoshiro256**
+  - icon: ':warning:'
+    path: treap/lazy_implicit_treap.hpp
+    title: treap/lazy_implicit_treap.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/treap_set.test.cpp
@@ -39,6 +42,7 @@ data:
   path: random/splitmix64.hpp
   requiredBy:
   - random/xoshiro256starstar.hpp
+  - treap/lazy_implicit_treap.hpp
   timestamp: '2022-08-29 16:56:11+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
