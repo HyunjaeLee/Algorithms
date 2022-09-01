@@ -8,7 +8,6 @@
 #include <type_traits>
 
 struct scanner {
-public:
     scanner() {
         struct stat st;
         fstat(0, &st);
@@ -22,7 +21,7 @@ public:
     std::string_view getline() {
         skip();
         auto first = p_;
-        while (*p_ > ' ') {
+        while (*p_ >= ' ') {
             ++p_;
         }
         return std::string_view(first, p_ - first);
