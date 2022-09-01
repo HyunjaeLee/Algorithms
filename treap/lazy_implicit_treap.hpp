@@ -108,6 +108,7 @@ struct lazy_implicit_treap {
         assert(0 <= pos && pos < size(u));
         auto v = split(u, {pos, pos + 1});
         nodes_[v[1]].value = value;
+        nodes_[v[1]].subtree_sum = value;
         return merge({v[0], v[1], v[2]});
     }
     int apply(int u, int pos, F f) { return apply(u, pos, pos + 1, f); }
