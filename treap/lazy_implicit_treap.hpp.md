@@ -54,29 +54,30 @@ data:
     \           }\n        }\n        assert(~u);\n        return nodes_[u].value;\n\
     \    }\n    int set(int u, int pos, S value) {\n        assert(0 <= pos && pos\
     \ < size(u));\n        auto v = split(u, {pos, pos + 1});\n        nodes_[v[1]].value\
-    \ = value;\n        return merge({v[0], v[1], v[2]});\n    }\n    int apply(int\
-    \ u, int pos, F f) { return apply(u, pos, pos + 1, f); }\n    int apply(int u,\
-    \ int l, int r, F f) {\n        assert(0 <= l && l <= r && r <= size(u));\n  \
-    \      auto v = split(u, {l, r});\n        all_apply(v[1], f);\n        return\
-    \ merge({v[0], v[1], v[2]});\n    }\n    S all_prod(int u) const { return ~u ?\
-    \ nodes_[u].subtree_sum : e(); }\n    std::pair<int, S> prod(int u, int l, int\
-    \ r) {\n        auto v = split(u, {l, r});\n        auto result = all_prod(v[1]);\n\
-    \        return {merge({v[0], v[1], v[2]}), result};\n    }\n    int reverse(int\
-    \ u) {\n        if (~u) {\n            nodes_[u].reversed ^= true;\n        }\n\
-    \        return u;\n    }\n    int reverse(int u, int l, int r) {\n        assert(0\
+    \ = value;\n        nodes_[v[1]].subtree_sum = value;\n        return merge({v[0],\
+    \ v[1], v[2]});\n    }\n    int apply(int u, int pos, F f) { return apply(u, pos,\
+    \ pos + 1, f); }\n    int apply(int u, int l, int r, F f) {\n        assert(0\
     \ <= l && l <= r && r <= size(u));\n        auto v = split(u, {l, r});\n     \
-    \   reverse(v[1]);\n        return merge({v[0], v[1], v[2]});\n    }\n    void\
-    \ reserve(std::vector<int>::size_type n) { nodes_.reserve(n); }\n    int size(int\
-    \ u) const { return ~u ? nodes_[u].subtree_size : 0; }\n    template <typename\
-    \ Function> void for_each(int u, Function f) {\n        if (~u) {\n          \
-    \  push(u);\n            for_each(nodes_[u].children[0], f);\n            f(nodes_[u].value);\n\
-    \            for_each(nodes_[u].children[1], f);\n        }\n    }\n\nprivate:\n\
-    \    int update(int u) {\n        if (!~u) {\n            return u;\n        }\n\
-    \        nodes_[u].parent = -1;\n        nodes_[u].subtree_size = 1;\n       \
-    \ for (auto v : nodes_[u].children) {\n            if (~v) {\n               \
-    \ nodes_[v].parent = u;\n                nodes_[u].subtree_size += nodes_[v].subtree_size;\n\
-    \            }\n        }\n        nodes_[u].subtree_sum =\n                ~nodes_[u].children[0]\n\
-    \                ? op(nodes_[nodes_[u].children[0]].subtree_sum, nodes_[u].value)\n\
+    \   all_apply(v[1], f);\n        return merge({v[0], v[1], v[2]});\n    }\n  \
+    \  S all_prod(int u) const { return ~u ? nodes_[u].subtree_sum : e(); }\n    std::pair<int,\
+    \ S> prod(int u, int l, int r) {\n        auto v = split(u, {l, r});\n       \
+    \ auto result = all_prod(v[1]);\n        return {merge({v[0], v[1], v[2]}), result};\n\
+    \    }\n    int reverse(int u) {\n        if (~u) {\n            nodes_[u].reversed\
+    \ ^= true;\n        }\n        return u;\n    }\n    int reverse(int u, int l,\
+    \ int r) {\n        assert(0 <= l && l <= r && r <= size(u));\n        auto v\
+    \ = split(u, {l, r});\n        reverse(v[1]);\n        return merge({v[0], v[1],\
+    \ v[2]});\n    }\n    void reserve(std::vector<int>::size_type n) { nodes_.reserve(n);\
+    \ }\n    int size(int u) const { return ~u ? nodes_[u].subtree_size : 0; }\n \
+    \   template <typename Function> void for_each(int u, Function f) {\n        if\
+    \ (~u) {\n            push(u);\n            for_each(nodes_[u].children[0], f);\n\
+    \            f(nodes_[u].value);\n            for_each(nodes_[u].children[1],\
+    \ f);\n        }\n    }\n\nprivate:\n    int update(int u) {\n        if (!~u)\
+    \ {\n            return u;\n        }\n        nodes_[u].parent = -1;\n      \
+    \  nodes_[u].subtree_size = 1;\n        for (auto v : nodes_[u].children) {\n\
+    \            if (~v) {\n                nodes_[v].parent = u;\n              \
+    \  nodes_[u].subtree_size += nodes_[v].subtree_size;\n            }\n        }\n\
+    \        nodes_[u].subtree_sum =\n                ~nodes_[u].children[0]\n   \
+    \             ? op(nodes_[nodes_[u].children[0]].subtree_sum, nodes_[u].value)\n\
     \                : nodes_[u].value;\n        nodes_[u].subtree_sum =\n       \
     \         ~nodes_[u].children[1]\n                ? op(nodes_[u].subtree_sum,\
     \ nodes_[nodes_[u].children[1]].subtree_sum)\n                : nodes_[u].subtree_sum;\n\
@@ -143,29 +144,30 @@ data:
     \           }\n        }\n        assert(~u);\n        return nodes_[u].value;\n\
     \    }\n    int set(int u, int pos, S value) {\n        assert(0 <= pos && pos\
     \ < size(u));\n        auto v = split(u, {pos, pos + 1});\n        nodes_[v[1]].value\
-    \ = value;\n        return merge({v[0], v[1], v[2]});\n    }\n    int apply(int\
-    \ u, int pos, F f) { return apply(u, pos, pos + 1, f); }\n    int apply(int u,\
-    \ int l, int r, F f) {\n        assert(0 <= l && l <= r && r <= size(u));\n  \
-    \      auto v = split(u, {l, r});\n        all_apply(v[1], f);\n        return\
-    \ merge({v[0], v[1], v[2]});\n    }\n    S all_prod(int u) const { return ~u ?\
-    \ nodes_[u].subtree_sum : e(); }\n    std::pair<int, S> prod(int u, int l, int\
-    \ r) {\n        auto v = split(u, {l, r});\n        auto result = all_prod(v[1]);\n\
-    \        return {merge({v[0], v[1], v[2]}), result};\n    }\n    int reverse(int\
-    \ u) {\n        if (~u) {\n            nodes_[u].reversed ^= true;\n        }\n\
-    \        return u;\n    }\n    int reverse(int u, int l, int r) {\n        assert(0\
+    \ = value;\n        nodes_[v[1]].subtree_sum = value;\n        return merge({v[0],\
+    \ v[1], v[2]});\n    }\n    int apply(int u, int pos, F f) { return apply(u, pos,\
+    \ pos + 1, f); }\n    int apply(int u, int l, int r, F f) {\n        assert(0\
     \ <= l && l <= r && r <= size(u));\n        auto v = split(u, {l, r});\n     \
-    \   reverse(v[1]);\n        return merge({v[0], v[1], v[2]});\n    }\n    void\
-    \ reserve(std::vector<int>::size_type n) { nodes_.reserve(n); }\n    int size(int\
-    \ u) const { return ~u ? nodes_[u].subtree_size : 0; }\n    template <typename\
-    \ Function> void for_each(int u, Function f) {\n        if (~u) {\n          \
-    \  push(u);\n            for_each(nodes_[u].children[0], f);\n            f(nodes_[u].value);\n\
-    \            for_each(nodes_[u].children[1], f);\n        }\n    }\n\nprivate:\n\
-    \    int update(int u) {\n        if (!~u) {\n            return u;\n        }\n\
-    \        nodes_[u].parent = -1;\n        nodes_[u].subtree_size = 1;\n       \
-    \ for (auto v : nodes_[u].children) {\n            if (~v) {\n               \
-    \ nodes_[v].parent = u;\n                nodes_[u].subtree_size += nodes_[v].subtree_size;\n\
-    \            }\n        }\n        nodes_[u].subtree_sum =\n                ~nodes_[u].children[0]\n\
-    \                ? op(nodes_[nodes_[u].children[0]].subtree_sum, nodes_[u].value)\n\
+    \   all_apply(v[1], f);\n        return merge({v[0], v[1], v[2]});\n    }\n  \
+    \  S all_prod(int u) const { return ~u ? nodes_[u].subtree_sum : e(); }\n    std::pair<int,\
+    \ S> prod(int u, int l, int r) {\n        auto v = split(u, {l, r});\n       \
+    \ auto result = all_prod(v[1]);\n        return {merge({v[0], v[1], v[2]}), result};\n\
+    \    }\n    int reverse(int u) {\n        if (~u) {\n            nodes_[u].reversed\
+    \ ^= true;\n        }\n        return u;\n    }\n    int reverse(int u, int l,\
+    \ int r) {\n        assert(0 <= l && l <= r && r <= size(u));\n        auto v\
+    \ = split(u, {l, r});\n        reverse(v[1]);\n        return merge({v[0], v[1],\
+    \ v[2]});\n    }\n    void reserve(std::vector<int>::size_type n) { nodes_.reserve(n);\
+    \ }\n    int size(int u) const { return ~u ? nodes_[u].subtree_size : 0; }\n \
+    \   template <typename Function> void for_each(int u, Function f) {\n        if\
+    \ (~u) {\n            push(u);\n            for_each(nodes_[u].children[0], f);\n\
+    \            f(nodes_[u].value);\n            for_each(nodes_[u].children[1],\
+    \ f);\n        }\n    }\n\nprivate:\n    int update(int u) {\n        if (!~u)\
+    \ {\n            return u;\n        }\n        nodes_[u].parent = -1;\n      \
+    \  nodes_[u].subtree_size = 1;\n        for (auto v : nodes_[u].children) {\n\
+    \            if (~v) {\n                nodes_[v].parent = u;\n              \
+    \  nodes_[u].subtree_size += nodes_[v].subtree_size;\n            }\n        }\n\
+    \        nodes_[u].subtree_sum =\n                ~nodes_[u].children[0]\n   \
+    \             ? op(nodes_[nodes_[u].children[0]].subtree_sum, nodes_[u].value)\n\
     \                : nodes_[u].value;\n        nodes_[u].subtree_sum =\n       \
     \         ~nodes_[u].children[1]\n                ? op(nodes_[u].subtree_sum,\
     \ nodes_[nodes_[u].children[1]].subtree_sum)\n                : nodes_[u].subtree_sum;\n\
@@ -190,7 +192,7 @@ data:
   isVerificationFile: false
   path: treap/lazy_implicit_treap.hpp
   requiredBy: []
-  timestamp: '2022-08-31 18:46:27+00:00'
+  timestamp: '2022-09-01 06:21:06+00:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: treap/lazy_implicit_treap.hpp
