@@ -14,6 +14,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: random/xoshiro256starstar.hpp
       title: xoshiro256**
+  - name: segment_tree
+    pages:
+    - icon: ':warning:'
+      path: segment_tree/segtree_beats.hpp
+      title: segment_tree/segtree_beats.hpp
   - name: treap
     pages:
     - icon: ':warning:'
