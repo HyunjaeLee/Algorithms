@@ -133,8 +133,7 @@ data:
   verifiedWith: []
 documentation_of: segment_tree/segtree_beats.hpp
 layout: document
-redirect_from:
-- /library/segment_tree/segtree_beats.hpp
-- /library/segment_tree/segtree_beats.hpp.html
-title: segment_tree/segtree_beats.hpp
+title: Segtree Beats
 ---
+
+Source: [AC Library](https://github.com/atcoder/ac-library/blob/master/atcoder/lazysegtree.hpp)

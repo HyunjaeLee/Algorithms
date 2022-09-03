@@ -18,7 +18,7 @@ data:
     pages:
     - icon: ':warning:'
       path: segment_tree/segtree_beats.hpp
-      title: segment_tree/segtree_beats.hpp
+      title: Segtree Beats
   - name: treap
     pages:
     - icon: ':warning:'
