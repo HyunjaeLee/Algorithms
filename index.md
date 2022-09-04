@@ -16,7 +16,7 @@ data:
       title: xoshiro256**
   - name: segment_tree
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: segment_tree/segtree_beats.hpp
       title: Segtree Beats
   - name: treap
@@ -36,6 +36,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/scanner.test.cpp
       title: test/scanner.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/segtree_beats.test.cpp
+      title: test/segtree_beats.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/treap_set.test.cpp
       title: test/treap_set.test.cpp
