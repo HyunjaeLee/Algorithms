@@ -6,6 +6,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: io/scanner.hpp
       title: io/scanner.hpp
+  - name: lca
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: lca/tarjan_offline_lca.hpp
+      title: lca/tarjan_offline_lca.hpp
   - name: random
     pages:
     - icon: ':heavy_check_mark:'
@@ -39,6 +44,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/segtree_beats.test.cpp
       title: test/segtree_beats.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/tarjan_offline_lca.test.cpp
+      title: test/tarjan_offline_lca.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/treap_set.test.cpp
       title: test/treap_set.test.cpp
