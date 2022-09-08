@@ -5,7 +5,7 @@ data:
     pages:
     - icon: ':warning:'
       path: heavy_light_decomposition/heavy_light_decomposition.hpp
-      title: heavy_light_decomposition/heavy_light_decomposition.hpp
+      title: Heavy-light Decomposition
   - name: io
     pages:
     - icon: ':heavy_check_mark:'
