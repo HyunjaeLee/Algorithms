@@ -1,6 +1,11 @@
 ---
 data:
   libraryCategories:
+  - name: heavy_light_decomposition
+    pages:
+    - icon: ':warning:'
+      path: heavy_light_decomposition/heavy_light_decomposition.hpp
+      title: heavy_light_decomposition/heavy_light_decomposition.hpp
   - name: io
     pages:
     - icon: ':heavy_check_mark:'
