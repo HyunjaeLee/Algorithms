@@ -95,7 +95,10 @@ struct heavy_light_decomposition {
             }
             u = parent_[top_[u]];
         }
-        return top_[u];
+        if (depth_[u] > depth_[v]) {
+            std::swap(u, v);
+        }
+        return u;
     }
 
 private:
