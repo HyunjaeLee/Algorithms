@@ -3,6 +3,8 @@
 
 #include <algorithm>
 #include <cassert>
+#include <limits>
+#include <type_traits>
 #include <vector>
 
 struct bit_vector {
@@ -36,10 +38,8 @@ template <typename T> struct wavelet_matrix {
     // data must not be empty
     wavelet_matrix(std::vector<T> data)
         : n_(static_cast<int>(data.size())),
-          log_(std::max(
-              1, 64 - __builtin_clzll(static_cast<unsigned long long>(
-                          *std::max_element(data.begin(), data.end()))))),
-          data_(log_, bit_vector(n_)), mid_(log_) {
+          log_(std::numeric_limits<T>::digits), data_(log_, bit_vector(n_)),
+          mid_(log_) {
         assert(std::all_of(data.begin(), data.end(),
                            [](auto x) { return x >= 0; }));
         for (auto i = log_ - 1; i >= 0; --i) {
@@ -97,8 +97,25 @@ template <typename T> struct wavelet_matrix {
         }
         return result;
     }
+    int range(int l, int r, T x, T y) const {
+        return range(l, r, y) - range(l, r, x);
+    }
 
 private:
+    int range(int l, int r, T x) const {
+        auto count = 0;
+        for (auto i = log_ - 1; i >= 0; --i) {
+            if (x >> i & 1) {
+                count += data_[i].rank(l, r, false);
+                l = mid_[i] + data_[i].rank(0, l, true);
+                r = mid_[i] + data_[i].rank(0, r, true);
+            } else {
+                l = data_[i].rank(0, l, false);
+                r = data_[i].rank(0, r, false);
+            }
+        }
+        return count;
+    }
     const int n_, log_;
     std::vector<bit_vector> data_;
     std::vector<int> mid_;
