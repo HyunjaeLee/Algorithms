@@ -35,6 +35,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: treap/treap_set.hpp
       title: treap/treap_set.hpp
+  - name: wavelet
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: wavelet/wavelet_matrix.hpp
+      title: wavelet/wavelet_matrix.hpp
   verificationCategories:
   - name: test
     pages:
@@ -50,5 +55,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/treap_set.test.cpp
       title: test/treap_set.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/wavelet_matrix_range_kth_smallest.test.cpp
+      title: test/wavelet_matrix_range_kth_smallest.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/wavelet_matrix_static_range_frequency.test.cpp
+      title: test/wavelet_matrix_static_range_frequency.test.cpp
 layout: toppage
 ---
