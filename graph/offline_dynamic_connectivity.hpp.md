@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/offline_dynamic_connectivity.test.cpp
+    title: test/offline_dynamic_connectivity.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"graph/offline_dynamic_connectivity.hpp\"\n\n\n\n#include\
@@ -73,8 +76,9 @@ data:
   path: graph/offline_dynamic_connectivity.hpp
   requiredBy: []
   timestamp: '2022-09-09 09:09:24+00:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/offline_dynamic_connectivity.test.cpp
 documentation_of: graph/offline_dynamic_connectivity.hpp
 layout: document
 redirect_from:

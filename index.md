@@ -3,12 +3,12 @@ data:
   libraryCategories:
   - name: disjoint_set
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: disjoint_set/rollback_disjoint_set.hpp
       title: disjoint_set/rollback_disjoint_set.hpp
   - name: graph
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: graph/offline_dynamic_connectivity.hpp
       title: graph/offline_dynamic_connectivity.hpp
   - name: heavy_light_decomposition
@@ -58,6 +58,9 @@ data:
   verificationCategories:
   - name: test
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/offline_dynamic_connectivity.test.cpp
+      title: test/offline_dynamic_connectivity.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/scanner.test.cpp
       title: test/scanner.test.cpp
