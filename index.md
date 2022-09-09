@@ -13,7 +13,7 @@ data:
       title: graph/offline_dynamic_connectivity.hpp
   - name: heavy_light_decomposition
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: heavy_light_decomposition/heavy_light_decomposition.hpp
       title: Heavy-Light Decomposition
   - name: io
@@ -58,6 +58,9 @@ data:
   verificationCategories:
   - name: test
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/heavy_light_decomposition_lca.test.cpp
+      title: test/heavy_light_decomposition_lca.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/offline_dynamic_connectivity.test.cpp
       title: test/offline_dynamic_connectivity.test.cpp
