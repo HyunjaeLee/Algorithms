@@ -10,7 +10,8 @@ struct heavy_light_decomposition {
     heavy_light_decomposition(const std::vector<std::vector<int>> &graph,
                               int root)
         : n_(static_cast<int>(graph.size())), timer_(0), graph_(graph),
-          size_(n_, 1), depth_(n_), parent_(n_, -1), top_(n_), in_(n_), out_(n_) {
+          size_(n_, 1), depth_(n_), parent_(n_, -1), top_(n_), in_(n_),
+          out_(n_) {
         assert(0 <= root && root < n_);
         top_[root] = root;
         dfs_size(root);
@@ -19,7 +20,8 @@ struct heavy_light_decomposition {
     explicit heavy_light_decomposition(
         const std::vector<std::vector<int>> &graph)
         : n_(static_cast<int>(graph.size())), timer_(0), graph_(graph),
-          size_(n_, 1), depth_(n_), parent_(n_, -1), top_(n_), in_(n_), out_(n_) {
+          size_(n_, 1), depth_(n_), parent_(n_, -1), top_(n_), in_(n_),
+          out_(n_) {
         for (auto i = 0; i < n_; ++i) {
             if (!~parent_[i]) {
                 top_[i] = i;
@@ -59,23 +61,24 @@ struct heavy_light_decomposition {
         void>
     access_path(int u, int v, bool include_lca, Function f) const {
         assert(0 <= u && u < n_ && 0 <= v && v < n_);
-        bool forward = true;
+        bool u_to_lca = true;
         while (top_[u] != top_[v]) {
             if (depth_[top_[u]] < depth_[top_[v]]) {
                 std::swap(u, v);
-                forward = !forward;
+                u_to_lca = !u_to_lca;
             }
-            f(in_[top_[u]], in_[u] + 1, forward);
+            f(in_[top_[u]], in_[u] + 1, u_to_lca);
             u = parent_[top_[u]];
         }
         if (depth_[u] > depth_[v]) {
             std::swap(u, v);
-            forward = !forward;
+        } else {
+            u_to_lca = !u_to_lca;
         }
         if (include_lca) {
-            f(in_[u], in_[v] + 1, forward);
+            f(in_[u], in_[v] + 1, u_to_lca);
         } else {
-            f(in_[u] + 1, in_[v] + 1, forward);
+            f(in_[u] + 1, in_[v] + 1, u_to_lca);
         }
     }
     template <typename Function>
