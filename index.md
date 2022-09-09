@@ -1,11 +1,21 @@
 ---
 data:
   libraryCategories:
+  - name: disjoint_set
+    pages:
+    - icon: ':warning:'
+      path: disjoint_set/rollback_disjoint_set.hpp
+      title: disjoint_set/rollback_disjoint_set.hpp
+  - name: graph
+    pages:
+    - icon: ':warning:'
+      path: graph/offline_dynamic_connectivity.hpp
+      title: graph/offline_dynamic_connectivity.hpp
   - name: heavy_light_decomposition
     pages:
     - icon: ':warning:'
       path: heavy_light_decomposition/heavy_light_decomposition.hpp
-      title: Heavy-light Decomposition
+      title: Heavy-Light Decomposition
   - name: io
     pages:
     - icon: ':heavy_check_mark:'

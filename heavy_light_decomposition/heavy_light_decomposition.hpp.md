@@ -62,8 +62,8 @@ data:
     \       out_[u] = timer_;\n    }\n    int n_, timer_;\n    std::vector<std::vector<int>>\
     \ graph_;\n    std::vector<int> size_, depth_, parent_, top_, in_, out_;\n};\n\
     \n\n"
-  code: "#ifndef HEAVY_LIGHT_DECOMPOSITION\n#define HEAVY_LIGHT_DECOMPOSITION\n\n\
-    #include <algorithm>\n#include <cassert>\n#include <type_traits>\n#include <vector>\n\
+  code: "#ifndef HEAVY_LIGHT_DECOMPOSITION_HPP\n#define HEAVY_LIGHT_DECOMPOSITION_HPP\n\
+    \n#include <algorithm>\n#include <cassert>\n#include <type_traits>\n#include <vector>\n\
     \nstruct heavy_light_decomposition {\n    heavy_light_decomposition(const std::vector<std::vector<int>>\
     \ &graph,\n                              int root)\n        : n_(static_cast<int>(graph.size())),\
     \ timer_(0), graph_(graph),\n          size_(n_, 1), depth_(n_), parent_(n_, -1),\
@@ -114,15 +114,15 @@ data:
     \ = (v == graph_[u][0] ? top_[u] : v);\n            dfs_hld(v);\n        }\n \
     \       out_[u] = timer_;\n    }\n    int n_, timer_;\n    std::vector<std::vector<int>>\
     \ graph_;\n    std::vector<int> size_, depth_, parent_, top_, in_, out_;\n};\n\
-    \n#endif // HEAVY_LIGHT_DECOMPOSITION"
+    \n#endif // HEAVY_LIGHT_DECOMPOSITION_HPP"
   dependsOn: []
   isVerificationFile: false
   path: heavy_light_decomposition/heavy_light_decomposition.hpp
   requiredBy: []
-  timestamp: '2022-09-08 16:54:03+00:00'
+  timestamp: '2022-09-09 09:09:24+00:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: heavy_light_decomposition/heavy_light_decomposition.hpp
 layout: document
-title: Heavy-light Decomposition
+title: Heavy-Light Decomposition
 ---

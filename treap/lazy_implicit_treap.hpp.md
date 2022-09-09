@@ -166,14 +166,15 @@ data:
     \ = false;\n        int parent = -1;\n        int subtree_size = 1;\n        std::array<int,\
     \ 2> children{-1, -1};\n    };\n    Generator gen_;\n    std::vector<node> nodes_;\n\
     };\n\n\n"
-  code: "#ifndef LAZY_IMPLICIT_TREAP\n#define LAZY_IMPLICIT_TREAP\n\n#include \"../random/xoshiro256starstar.hpp\"\
-    \n#include <array>\n#include <cassert>\n#include <chrono>\n#include <initializer_list>\n\
-    #include <type_traits>\n#include <utility>\n#include <vector>\n\nusing null_type\
-    \ = struct {};\n\ntemplate <typename S = null_type, S (*op)(S, S) = nullptr, S\
-    \ (*e)() = nullptr,\n          typename F = null_type, S (*mapping)(F, S) = nullptr,\n\
-    \          F (*composition)(F, F) = nullptr, F (*id)() = nullptr,\n          typename\
-    \ Generator = xoshiro256starstar>\nstruct lazy_implicit_treap {\n    lazy_implicit_treap()\n\
-    \        : gen_(static_cast<typename Generator::result_type>(\n              std::chrono::steady_clock::now().time_since_epoch().count()))\
+  code: "#ifndef LAZY_IMPLICIT_TREAP_HPP\n#define LAZY_IMPLICIT_TREAP_HPP\n\n#include\
+    \ \"../random/xoshiro256starstar.hpp\"\n#include <array>\n#include <cassert>\n\
+    #include <chrono>\n#include <initializer_list>\n#include <type_traits>\n#include\
+    \ <utility>\n#include <vector>\n\nusing null_type = struct {};\n\ntemplate <typename\
+    \ S = null_type, S (*op)(S, S) = nullptr, S (*e)() = nullptr,\n          typename\
+    \ F = null_type, S (*mapping)(F, S) = nullptr,\n          F (*composition)(F,\
+    \ F) = nullptr, F (*id)() = nullptr,\n          typename Generator = xoshiro256starstar>\n\
+    struct lazy_implicit_treap {\n    lazy_implicit_treap()\n        : gen_(static_cast<typename\
+    \ Generator::result_type>(\n              std::chrono::steady_clock::now().time_since_epoch().count()))\
     \ {}\n    explicit lazy_implicit_treap(typename Generator::result_type seed)\n\
     \        : gen_(seed) {}\n    // Construct a trep on values {data[0], data[1],\
     \ ..., data[n - 1]}\n    template <typename Data> int build(const Data &data)\
@@ -295,14 +296,14 @@ data:
     \  F lazy;\n        typename Generator::result_type priority;\n        bool reversed\
     \ = false;\n        int parent = -1;\n        int subtree_size = 1;\n        std::array<int,\
     \ 2> children{-1, -1};\n    };\n    Generator gen_;\n    std::vector<node> nodes_;\n\
-    };\n\n#endif // LAZY_IMPLICIT_TREAP"
+    };\n\n#endif // LAZY_IMPLICIT_TREAP_HPP"
   dependsOn:
   - random/xoshiro256starstar.hpp
   - random/splitmix64.hpp
   isVerificationFile: false
   path: treap/lazy_implicit_treap.hpp
   requiredBy: []
-  timestamp: '2022-09-01 14:58:55+00:00'
+  timestamp: '2022-09-09 09:09:24+00:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: treap/lazy_implicit_treap.hpp
