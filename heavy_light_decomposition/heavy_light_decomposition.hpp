@@ -1,5 +1,5 @@
-#ifndef HEAVY_LIGHT_DECOMPOSITION
-#define HEAVY_LIGHT_DECOMPOSITION
+#ifndef HEAVY_LIGHT_DECOMPOSITION_HPP
+#define HEAVY_LIGHT_DECOMPOSITION_HPP
 
 #include <algorithm>
 #include <cassert>
@@ -130,4 +130,4 @@ private:
     std::vector<int> size_, depth_, parent_, top_, in_, out_;
 };
 
-#endif // HEAVY_LIGHT_DECOMPOSITION
+#endif // HEAVY_LIGHT_DECOMPOSITION_HPP

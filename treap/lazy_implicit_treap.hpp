@@ -1,5 +1,5 @@
-#ifndef LAZY_IMPLICIT_TREAP
-#define LAZY_IMPLICIT_TREAP
+#ifndef LAZY_IMPLICIT_TREAP_HPP
+#define LAZY_IMPLICIT_TREAP_HPP
 
 #include "../random/xoshiro256starstar.hpp"
 #include <array>
@@ -299,4 +299,4 @@ private:
     std::vector<node> nodes_;
 };
 
-#endif // LAZY_IMPLICIT_TREAP
+#endif // LAZY_IMPLICIT_TREAP_HPP
