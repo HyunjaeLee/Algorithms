@@ -39,6 +39,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: segment_tree/segtree_beats.hpp
       title: Segtree Beats
+  - name: splay
+    pages:
+    - icon: ':warning:'
+      path: splay/splay_set.hpp
+      title: splay/splay_set.hpp
   - name: treap
     pages:
     - icon: ':warning:'
