@@ -26,6 +26,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: lca/tarjan_offline_lca.hpp
       title: lca/tarjan_offline_lca.hpp
+  - name: link_cut_tree
+    pages:
+    - icon: ':warning:'
+      path: link_cut_tree/link_cut_tree.hpp
+      title: link_cut_tree/link_cut_tree.hpp
   - name: random
     pages:
     - icon: ':heavy_check_mark:'
