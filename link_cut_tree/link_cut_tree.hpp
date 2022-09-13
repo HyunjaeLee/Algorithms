@@ -6,15 +6,14 @@
 #include <utility>
 #include <vector>
 
-template <typename S, typename Op, typename E, typename Reversal, typename F,
-          typename Mapping, typename Composition, typename Id>
+template <typename S, typename Op, typename E, typename F, typename Mapping,
+          typename Composition, typename Id>
 struct link_cut_tree {
-    link_cut_tree(int n, Op op, E e, Reversal reversal, Mapping mapping,
-                  Composition composition, Id id)
-        : op_(op), e_(e), reversal_(reversal), mapping_(mapping),
-          composition_(composition), id_(id), n_(n), left_(n, -1),
-          right_(n, -1), parent_(n, -1), data_(n, e_()), sum_(n, e_()),
-          lazy_(n, id_()), reversed_(n, false) {}
+    link_cut_tree(int n, Op op, E e, Mapping mapping, Composition composition,
+                  Id id)
+        : op_(op), e_(e), mapping_(mapping), composition_(composition), id_(id),
+          n_(n), left_(n, -1), right_(n, -1), parent_(n, -1), data_(n, e_()),
+          sum_(n, e_()), lazy_(n, id_()), reversed_(n, false) {}
     int access(int u) {
         assert(0 <= u && u < n_);
         auto result = -1;
@@ -116,7 +115,6 @@ private:
     void reverse(int u) {
         if (~u) {
             std::swap(left_[u], right_[u]);
-            sum_[u] = reversal_(sum_[u]);
             reversed_[u] = !reversed_[u];
         }
     }
@@ -211,7 +209,6 @@ private:
     }
     Op op_;
     E e_;
-    Reversal reversal_;
     Mapping mapping_;
     Composition composition_;
     Id id_;
@@ -222,11 +219,11 @@ private:
     std::vector<char> reversed_;
 };
 
-template <typename Op, typename E, typename Reversal, typename Mapping,
-          typename Composition, typename Id>
-link_cut_tree(int n, Op op, E e, Reversal reversal, Mapping mapping,
-              Composition composition, Id id)
-    -> link_cut_tree<std::invoke_result_t<E>, Op, E, Reversal,
-                     std::invoke_result_t<Id>, Mapping, Composition, Id>;
+template <typename Op, typename E, typename Mapping, typename Composition,
+          typename Id>
+link_cut_tree(int n, Op op, E e, Mapping mapping, Composition composition,
+              Id id)
+    -> link_cut_tree<std::invoke_result_t<E>, Op, E, std::invoke_result_t<Id>,
+                     Mapping, Composition, Id>;
 
 #endif // LINK_CUT_TREE_HPP
