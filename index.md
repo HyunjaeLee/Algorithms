@@ -9,6 +9,9 @@ data:
   - name: graph
     pages:
     - icon: ':heavy_check_mark:'
+      path: graph/dynamic_connectivity.hpp
+      title: graph/dynamic_connectivity.hpp
+    - icon: ':heavy_check_mark:'
       path: graph/offline_dynamic_connectivity.hpp
       title: graph/offline_dynamic_connectivity.hpp
   - name: heavy_light_decomposition
@@ -68,6 +71,9 @@ data:
   verificationCategories:
   - name: test
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/dynamic_connectivity.test.cpp
+      title: test/dynamic_connectivity.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/heavy_light_decomposition_lca.test.cpp
       title: test/heavy_light_decomposition_lca.test.cpp

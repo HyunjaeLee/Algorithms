@@ -5,10 +5,16 @@ data:
     path: random/splitmix64.hpp
     title: splitmix64
   _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: graph/dynamic_connectivity.hpp
+    title: graph/dynamic_connectivity.hpp
   - icon: ':warning:'
     path: treap/lazy_implicit_treap.hpp
     title: treap/lazy_implicit_treap.hpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/dynamic_connectivity.test.cpp
+    title: test/dynamic_connectivity.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/treap_set.test.cpp
     title: test/treap_set.test.cpp
@@ -58,11 +64,13 @@ data:
   isVerificationFile: false
   path: random/xoshiro256starstar.hpp
   requiredBy:
+  - graph/dynamic_connectivity.hpp
   - treap/lazy_implicit_treap.hpp
   timestamp: '2022-08-29 16:56:11+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/treap_set.test.cpp
+  - test/dynamic_connectivity.test.cpp
 documentation_of: random/xoshiro256starstar.hpp
 layout: document
 title: xoshiro256**
