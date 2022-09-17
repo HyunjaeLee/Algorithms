@@ -1,4 +1,5 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/range_chmin_chmax_add_range_sum"
+#define PROBLEM                                                                \
+    "https://judge.yosupo.jp/problem/range_chmin_chmax_add_range_sum"
 
 #include "../segment_tree/segtree_beats.hpp"
 #include <bits/stdc++.h>
@@ -6,7 +7,6 @@
 struct S {
     long long max, max2, min, min2, sum;
     int max_count, min_count, size;
-    bool fail;
 };
 
 struct F {
@@ -26,7 +26,6 @@ int main() {
         s.max_count = s.min_count = s.size = 1;
         s.max2 = -inf;
         s.min2 = inf;
-        s.fail = false;
     }
     auto op = [](S a, S b) -> S {
         S ret{};
@@ -60,27 +59,28 @@ int main() {
         ret.size = a.size + b.size;
         return ret;
     };
-    auto e = []() -> S { return {-inf, -inf, inf, inf, 0, 0, 0, 0, false}; };
-    auto mapping = [](F f, S x) -> S {
+    auto e = []() -> S { return {-inf, -inf, inf, inf, 0, 0, 0, 0}; };
+    auto mapping = [](F f, S x) -> std::pair<S, bool> {
         x.max += f.sum;
         x.max2 += f.sum;
         x.min += f.sum;
         x.min2 += f.sum;
         x.sum += f.sum * x.size;
         if (x.max <= f.lower) {
-            return {f.lower, -1,     f.lower, -1,   f.lower * x.size,
-                    x.size,  x.size, x.size,  false};
+            return {{f.lower, -1, f.lower, -1, f.lower * x.size, x.size, x.size,
+                     x.size},
+                    true};
         }
         if (f.upper <= x.min) {
-            return {f.upper, -1,     f.upper, -1,   f.upper * x.size,
-                    x.size,  x.size, x.size,  false};
+            return {{f.upper, -1, f.upper, -1, f.upper * x.size, x.size, x.size,
+                     x.size},
+                    true};
         }
         if (x.max2 < f.upper && f.upper < x.max) {
             x.sum -= (x.max - f.upper) * x.max_count;
             x.max = f.upper;
         } else if (f.upper <= x.max2) {
-            x.fail = true;
-            return x;
+            return {x, false};
         }
         if (x.max < x.min) {
             x.min = x.max;
@@ -91,15 +91,14 @@ int main() {
             x.sum += (f.lower - x.min) * x.min_count;
             x.min = f.lower;
         } else if (x.min2 <= f.lower) {
-            x.fail = true;
-            return x;
+            return {x, false};
         }
         if (x.max < x.min) {
             x.max = x.min;
         } else if (x.max2 < x.min) {
             x.max2 = x.min;
         }
-        return x;
+        return {x, true};
     };
     auto composition = [](F f, F g) -> F {
         g.upper += f.sum;

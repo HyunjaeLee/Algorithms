@@ -3,13 +3,14 @@
 
 #include <algorithm>
 #include <cassert>
+#include <tuple>
 #include <vector>
 
 template <typename S, typename Op, typename E, typename F, typename Mapping,
           typename Composition, typename Id>
 struct segtree_beats {
     segtree_beats(const std::vector<S> &data, Op op, E e, Mapping mapping,
-                      Composition composition, Id id)
+                  Composition composition, Id id)
         : op_(op), e_(e), mapping_(mapping), composition_(composition), id_(id),
           n_(static_cast<int>(data.size())),
           log_(std::__lg(std::max(n_ - 1, 1)) + 1), size_(1 << log_),
@@ -74,7 +75,9 @@ struct segtree_beats {
         for (auto i = log_; i >= 1; --i) {
             push(pos >> i);
         }
-        data_[pos] = mapping(f, data_[pos]);
+        auto ok = false;
+        std::tie(data_[pos], ok) = mapping(f, data_[pos]);
+        assert(ok);
         for (auto i = 1; i <= log_; ++i) {
             update(pos >> i);
         }
@@ -122,10 +125,11 @@ private:
         data_[node] = op_(data_[2 * node], data_[2 * node + 1]);
     }
     void all_apply(int node, F f) {
-        data_[node] = mapping_(f, data_[node]);
+        auto ok = false;
+        std::tie(data_[node], ok) = mapping_(f, data_[node]);
         if (node < size_) {
             lazy_[node] = composition_(f, lazy_[node]);
-            if (data_[node].fail) {
+            if (!ok) {
                 push(node);
                 update(node);
             }
@@ -149,8 +153,8 @@ private:
 template <typename S, typename Op, typename E, typename Mapping,
           typename Composition, typename Id>
 segtree_beats(const std::vector<S> &data, Op op, E e, Mapping mapping,
-                  Composition composition, Id id)
-    -> segtree_beats<S, Op, E, std::invoke_result_t<Id>, Mapping,
-                         Composition, Id>;
+              Composition composition, Id id)
+    -> segtree_beats<S, Op, E, std::invoke_result_t<Id>, Mapping, Composition,
+                     Id>;
 
 #endif // SEGTREE_BEATS_HPP
