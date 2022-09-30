@@ -36,7 +36,7 @@ data:
       title: link_cut_tree/link_cut_tree.hpp
   - name: mo
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: mo/hilbert_mo.hpp
       title: mo/hilbert_mo.hpp
   - name: random
@@ -82,6 +82,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/heavy_light_decomposition_lca.test.cpp
       title: test/heavy_light_decomposition_lca.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/hilbert_mo_static_range_inversions_query.test.cpp
+      title: test/hilbert_mo_static_range_inversions_query.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/offline_dynamic_connectivity.test.cpp
       title: test/offline_dynamic_connectivity.test.cpp

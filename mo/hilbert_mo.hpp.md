@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/hilbert_mo_static_range_inversions_query.test.cpp
+    title: test/hilbert_mo_static_range_inversions_query.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"mo/hilbert_mo.hpp\"\n\n\n\n#include <algorithm>\n#include\
@@ -75,8 +78,9 @@ data:
   path: mo/hilbert_mo.hpp
   requiredBy: []
   timestamp: '2022-09-30 12:44:03+00:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/hilbert_mo_static_range_inversions_query.test.cpp
 documentation_of: mo/hilbert_mo.hpp
 layout: document
 redirect_from:
