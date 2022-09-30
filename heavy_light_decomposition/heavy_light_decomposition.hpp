@@ -17,19 +17,6 @@ struct heavy_light_decomposition {
         dfs_size(root);
         dfs_hld(root);
     }
-    explicit heavy_light_decomposition(
-        const std::vector<std::vector<int>> &graph)
-        : n_(static_cast<int>(graph.size())), timer_(0), graph_(graph),
-          size_(n_, 1), depth_(n_), parent_(n_, -1), top_(n_), in_(n_),
-          out_(n_) {
-        for (auto i = 0; i < n_; ++i) {
-            if (!~parent_[i]) {
-                top_[i] = i;
-                dfs_size(i);
-                dfs_hld(i);
-            }
-        }
-    }
     template <typename Function> void access_node(int u, Function f) {
         assert(0 <= u && u < n_);
         f(in_[u]);

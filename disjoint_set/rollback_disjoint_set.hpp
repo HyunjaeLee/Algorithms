@@ -1,5 +1,5 @@
-#ifndef ROLLBACK_DISJOINT_SET
-#define ROLLBACK_DISJOINT_SET
+#ifndef ROLLBACK_DISJOINT_SET_HPP
+#define ROLLBACK_DISJOINT_SET_HPP
 
 #include <cassert>
 #include <stack>
@@ -54,4 +54,4 @@ private:
     std::stack<std::pair<int, int>> history_;
 };
 
-#endif // ROLLBACK_DISJOINT_SET
+#endif // ROLLBACK_DISJOINT_SET_HPP
