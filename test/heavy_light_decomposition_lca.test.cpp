@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/lca"
 
-#include "../heavy_light_decomposition/heavy_light_decomposition.hpp"
+#include "heavy_light_decomposition/heavy_light_decomposition.hpp"
 #include <bits/stdc++.h>
 
 int main() {
