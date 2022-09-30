@@ -11,22 +11,22 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/lca
+    PROBLEM: https://judge.yosupo.jp/problem/vertex_add_path_sum
     links:
-    - https://judge.yosupo.jp/problem/lca
-  bundledCode: "#line 1 \"test/heavy_light_decomposition_lca.test.cpp\"\n#define PROBLEM\
-    \ \"https://judge.yosupo.jp/problem/lca\"\n\n#line 1 \"heavy_light_decomposition/heavy_light_decomposition.hpp\"\
-    \n\n\n\n#include <algorithm>\n#include <cassert>\n#include <type_traits>\n#include\
-    \ <vector>\n\nstruct heavy_light_decomposition {\n    heavy_light_decomposition(const\
-    \ std::vector<std::vector<int>> &graph,\n                              int root)\n\
-    \        : n_(static_cast<int>(graph.size())), timer_(0), graph_(graph),\n   \
-    \       size_(n_, 1), depth_(n_), parent_(n_, -1), top_(n_), in_(n_),\n      \
-    \    out_(n_) {\n        assert(0 <= root && root < n_);\n        top_[root] =\
-    \ root;\n        dfs_size(root);\n        dfs_hld(root);\n    }\n    explicit\
-    \ heavy_light_decomposition(\n        const std::vector<std::vector<int>> &graph)\n\
-    \        : n_(static_cast<int>(graph.size())), timer_(0), graph_(graph),\n   \
-    \       size_(n_, 1), depth_(n_), parent_(n_, -1), top_(n_), in_(n_),\n      \
-    \    out_(n_) {\n        for (auto i = 0; i < n_; ++i) {\n            if (!~parent_[i])\
+    - https://judge.yosupo.jp/problem/vertex_add_path_sum
+  bundledCode: "#line 1 \"test/heavy_light_decomposition_vertex_add_path_sum.test.cpp\"\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_add_path_sum\"\n\n\
+    #line 1 \"heavy_light_decomposition/heavy_light_decomposition.hpp\"\n\n\n\n#include\
+    \ <algorithm>\n#include <cassert>\n#include <type_traits>\n#include <vector>\n\
+    \nstruct heavy_light_decomposition {\n    heavy_light_decomposition(const std::vector<std::vector<int>>\
+    \ &graph,\n                              int root)\n        : n_(static_cast<int>(graph.size())),\
+    \ timer_(0), graph_(graph),\n          size_(n_, 1), depth_(n_), parent_(n_, -1),\
+    \ top_(n_), in_(n_),\n          out_(n_) {\n        assert(0 <= root && root <\
+    \ n_);\n        top_[root] = root;\n        dfs_size(root);\n        dfs_hld(root);\n\
+    \    }\n    explicit heavy_light_decomposition(\n        const std::vector<std::vector<int>>\
+    \ &graph)\n        : n_(static_cast<int>(graph.size())), timer_(0), graph_(graph),\n\
+    \          size_(n_, 1), depth_(n_), parent_(n_, -1), top_(n_), in_(n_),\n   \
+    \       out_(n_) {\n        for (auto i = 0; i < n_; ++i) {\n            if (!~parent_[i])\
     \ {\n                top_[i] = i;\n                dfs_size(i);\n            \
     \    dfs_hld(i);\n            }\n        }\n    }\n    template <typename Function>\
     \ void access_node(int u, Function f) {\n        assert(0 <= u && u < n_);\n \
@@ -69,32 +69,48 @@ data:
     \ {\n            top_[v] = (v == graph_[u][0] ? top_[u] : v);\n            dfs_hld(v);\n\
     \        }\n        out_[u] = timer_;\n    }\n    int n_, timer_;\n    std::vector<std::vector<int>>\
     \ graph_;\n    std::vector<int> size_, depth_, parent_, top_, in_, out_;\n};\n\
-    \n\n#line 4 \"test/heavy_light_decomposition_lca.test.cpp\"\n#include <bits/stdc++.h>\n\
-    \nint main() {\n    std::cin.tie(0)->sync_with_stdio(0);\n    int N, Q;\n    std::cin\
-    \ >> N >> Q;\n    std::vector<std::vector<int>> adj(N);\n    for (auto i = 1;\
-    \ i < N; ++i) {\n        int p;\n        std::cin >> p;\n        adj[p].push_back(i);\n\
-    \    }\n    heavy_light_decomposition hld(adj, 0);\n    while (Q--) {\n      \
-    \  int u, v;\n        std::cin >> u >> v;\n        std::cout << hld.lca(u, v)\
-    \ << '\\n';\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n\n#include \"heavy_light_decomposition/heavy_light_decomposition.hpp\"\
-    \n#include <bits/stdc++.h>\n\nint main() {\n    std::cin.tie(0)->sync_with_stdio(0);\n\
-    \    int N, Q;\n    std::cin >> N >> Q;\n    std::vector<std::vector<int>> adj(N);\n\
-    \    for (auto i = 1; i < N; ++i) {\n        int p;\n        std::cin >> p;\n\
-    \        adj[p].push_back(i);\n    }\n    heavy_light_decomposition hld(adj, 0);\n\
-    \    while (Q--) {\n        int u, v;\n        std::cin >> u >> v;\n        std::cout\
-    \ << hld.lca(u, v) << '\\n';\n    }\n}\n"
+    \n\n#line 4 \"test/heavy_light_decomposition_vertex_add_path_sum.test.cpp\"\n\
+    #include <atcoder/fenwicktree>\n#include <bits/stdc++.h>\n\nint main() {\n   \
+    \ std::cin.tie(0)->sync_with_stdio(0);\n    int N, Q;\n    std::cin >> N >> Q;\n\
+    \    std::vector<int> a(N);\n    for (auto &x : a) {\n        std::cin >> x;\n\
+    \    }\n    std::vector<std::vector<int>> adj(N);\n    for (auto i = 0; i < N\
+    \ - 1; ++i) {\n        int u, v;\n        std::cin >> u >> v;\n        adj[u].push_back(v);\n\
+    \        adj[v].push_back(u);\n    }\n    heavy_light_decomposition hld(adj, 0);\n\
+    \    atcoder::fenwick_tree<long long> ft(N);\n    for (auto i = 0; i < N; ++i)\
+    \ {\n        hld.access_node(i, [&](auto x) { ft.add(x, a[i]); });\n    }\n  \
+    \  for (auto i = 0; i < Q; ++i) {\n        int t, a, b;\n        std::cin >> t\
+    \ >> a >> b;\n        if (t == 0) {\n            hld.access_node(a, [&](auto x)\
+    \ { ft.add(x, b); });\n        } else {\n            auto sum = 0LL;\n       \
+    \     hld.access_path(a, b, true,\n                            [&](auto l, auto\
+    \ r) { sum += ft.sum(l, r); });\n            std::cout << sum << '\\n';\n    \
+    \    }\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_add_path_sum\"\n\
+    \n#include \"heavy_light_decomposition/heavy_light_decomposition.hpp\"\n#include\
+    \ <atcoder/fenwicktree>\n#include <bits/stdc++.h>\n\nint main() {\n    std::cin.tie(0)->sync_with_stdio(0);\n\
+    \    int N, Q;\n    std::cin >> N >> Q;\n    std::vector<int> a(N);\n    for (auto\
+    \ &x : a) {\n        std::cin >> x;\n    }\n    std::vector<std::vector<int>>\
+    \ adj(N);\n    for (auto i = 0; i < N - 1; ++i) {\n        int u, v;\n       \
+    \ std::cin >> u >> v;\n        adj[u].push_back(v);\n        adj[v].push_back(u);\n\
+    \    }\n    heavy_light_decomposition hld(adj, 0);\n    atcoder::fenwick_tree<long\
+    \ long> ft(N);\n    for (auto i = 0; i < N; ++i) {\n        hld.access_node(i,\
+    \ [&](auto x) { ft.add(x, a[i]); });\n    }\n    for (auto i = 0; i < Q; ++i)\
+    \ {\n        int t, a, b;\n        std::cin >> t >> a >> b;\n        if (t ==\
+    \ 0) {\n            hld.access_node(a, [&](auto x) { ft.add(x, b); });\n     \
+    \   } else {\n            auto sum = 0LL;\n            hld.access_path(a, b, true,\n\
+    \                            [&](auto l, auto r) { sum += ft.sum(l, r); });\n\
+    \            std::cout << sum << '\\n';\n        }\n    }\n}\n"
   dependsOn:
   - heavy_light_decomposition/heavy_light_decomposition.hpp
   isVerificationFile: true
-  path: test/heavy_light_decomposition_lca.test.cpp
+  path: test/heavy_light_decomposition_vertex_add_path_sum.test.cpp
   requiredBy: []
   timestamp: '2022-09-30 16:56:16+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/heavy_light_decomposition_lca.test.cpp
+documentation_of: test/heavy_light_decomposition_vertex_add_path_sum.test.cpp
 layout: document
 redirect_from:
-- /verify/test/heavy_light_decomposition_lca.test.cpp
-- /verify/test/heavy_light_decomposition_lca.test.cpp.html
-title: test/heavy_light_decomposition_lca.test.cpp
+- /verify/test/heavy_light_decomposition_vertex_add_path_sum.test.cpp
+- /verify/test/heavy_light_decomposition_vertex_add_path_sum.test.cpp.html
+title: test/heavy_light_decomposition_vertex_add_path_sum.test.cpp
 ---

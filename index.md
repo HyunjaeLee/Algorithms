@@ -83,6 +83,9 @@ data:
       path: test/heavy_light_decomposition_lca.test.cpp
       title: test/heavy_light_decomposition_lca.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/heavy_light_decomposition_vertex_add_path_sum.test.cpp
+      title: test/heavy_light_decomposition_vertex_add_path_sum.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/hilbert_mo_static_range_inversions_query.test.cpp
       title: test/hilbert_mo_static_range_inversions_query.test.cpp
     - icon: ':heavy_check_mark:'
