@@ -1,4 +1,4 @@
 CompileFlags:
-    Add: [-std=c++17, -Wall]
+    Add: [-std=c++17, -Wall, -I, /workspaces/Algorithms, -I, /workspaces/Algorithms/ac-library]
 InlayHints:
     Enabled: No
