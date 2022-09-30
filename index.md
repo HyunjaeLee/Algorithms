@@ -34,6 +34,11 @@ data:
     - icon: ':warning:'
       path: link_cut_tree/link_cut_tree.hpp
       title: link_cut_tree/link_cut_tree.hpp
+  - name: mo
+    pages:
+    - icon: ':warning:'
+      path: mo/hilbert_mo.hpp
+      title: mo/hilbert_mo.hpp
   - name: random
     pages:
     - icon: ':heavy_check_mark:'
