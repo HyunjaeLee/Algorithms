@@ -9,6 +9,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/heavy_light_decomposition_vertex_add_path_sum.test.cpp
     title: test/heavy_light_decomposition_vertex_add_path_sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/heavy_light_decomposition_vertex_add_subtree_sum.test.cpp
+    title: test/heavy_light_decomposition_vertex_add_subtree_sum.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -21,26 +24,20 @@ data:
     \        : n_(static_cast<int>(graph.size())), timer_(0), graph_(graph),\n   \
     \       size_(n_, 1), depth_(n_), parent_(n_, -1), top_(n_), in_(n_),\n      \
     \    out_(n_) {\n        assert(0 <= root && root < n_);\n        top_[root] =\
-    \ root;\n        dfs_size(root);\n        dfs_hld(root);\n    }\n    explicit\
-    \ heavy_light_decomposition(\n        const std::vector<std::vector<int>> &graph)\n\
-    \        : n_(static_cast<int>(graph.size())), timer_(0), graph_(graph),\n   \
-    \       size_(n_, 1), depth_(n_), parent_(n_, -1), top_(n_), in_(n_),\n      \
-    \    out_(n_) {\n        for (auto i = 0; i < n_; ++i) {\n            if (!~parent_[i])\
-    \ {\n                top_[i] = i;\n                dfs_size(i);\n            \
-    \    dfs_hld(i);\n            }\n        }\n    }\n    template <typename Function>\
-    \ void access_node(int u, Function f) {\n        assert(0 <= u && u < n_);\n \
-    \       f(in_[u]);\n    }\n    template <typename Function>\n    std::enable_if_t<\n\
-    \        std::is_same_v<std::invoke_result_t<Function, int, int>, void>, void>\n\
-    \    access_path(int u, int v, bool include_lca, Function f) const {\n       \
-    \ assert(0 <= u && u < n_ && 0 <= v && v < n_);\n        while (top_[u] != top_[v])\
-    \ {\n            if (depth_[top_[u]] < depth_[top_[v]]) {\n                std::swap(u,\
-    \ v);\n            }\n            f(in_[top_[u]], in_[u] + 1);\n            u\
-    \ = parent_[top_[u]];\n        }\n        if (depth_[u] > depth_[v]) {\n     \
-    \       std::swap(u, v);\n        }\n        if (include_lca) {\n            f(in_[u],\
-    \ in_[v] + 1);\n        } else {\n            f(in_[u] + 1, in_[v] + 1);\n   \
-    \     }\n    }\n    template <typename Function>\n    std::enable_if_t<\n    \
-    \    std::is_same_v<std::invoke_result_t<Function, int, int, bool>, void>,\n \
-    \       void>\n    access_path(int u, int v, bool include_lca, Function f) const\
+    \ root;\n        dfs_size(root);\n        dfs_hld(root);\n    }\n    template\
+    \ <typename Function> void access_node(int u, Function f) {\n        assert(0\
+    \ <= u && u < n_);\n        f(in_[u]);\n    }\n    template <typename Function>\n\
+    \    std::enable_if_t<\n        std::is_same_v<std::invoke_result_t<Function,\
+    \ int, int>, void>, void>\n    access_path(int u, int v, bool include_lca, Function\
+    \ f) const {\n        assert(0 <= u && u < n_ && 0 <= v && v < n_);\n        while\
+    \ (top_[u] != top_[v]) {\n            if (depth_[top_[u]] < depth_[top_[v]]) {\n\
+    \                std::swap(u, v);\n            }\n            f(in_[top_[u]],\
+    \ in_[u] + 1);\n            u = parent_[top_[u]];\n        }\n        if (depth_[u]\
+    \ > depth_[v]) {\n            std::swap(u, v);\n        }\n        if (include_lca)\
+    \ {\n            f(in_[u], in_[v] + 1);\n        } else {\n            f(in_[u]\
+    \ + 1, in_[v] + 1);\n        }\n    }\n    template <typename Function>\n    std::enable_if_t<\n\
+    \        std::is_same_v<std::invoke_result_t<Function, int, int, bool>, void>,\n\
+    \        void>\n    access_path(int u, int v, bool include_lca, Function f) const\
     \ {\n        assert(0 <= u && u < n_ && 0 <= v && v < n_);\n        bool u_to_lca\
     \ = true;\n        while (top_[u] != top_[v]) {\n            if (depth_[top_[u]]\
     \ < depth_[top_[v]]) {\n                std::swap(u, v);\n                u_to_lca\
@@ -76,25 +73,19 @@ data:
     \ timer_(0), graph_(graph),\n          size_(n_, 1), depth_(n_), parent_(n_, -1),\
     \ top_(n_), in_(n_),\n          out_(n_) {\n        assert(0 <= root && root <\
     \ n_);\n        top_[root] = root;\n        dfs_size(root);\n        dfs_hld(root);\n\
-    \    }\n    explicit heavy_light_decomposition(\n        const std::vector<std::vector<int>>\
-    \ &graph)\n        : n_(static_cast<int>(graph.size())), timer_(0), graph_(graph),\n\
-    \          size_(n_, 1), depth_(n_), parent_(n_, -1), top_(n_), in_(n_),\n   \
-    \       out_(n_) {\n        for (auto i = 0; i < n_; ++i) {\n            if (!~parent_[i])\
-    \ {\n                top_[i] = i;\n                dfs_size(i);\n            \
-    \    dfs_hld(i);\n            }\n        }\n    }\n    template <typename Function>\
-    \ void access_node(int u, Function f) {\n        assert(0 <= u && u < n_);\n \
-    \       f(in_[u]);\n    }\n    template <typename Function>\n    std::enable_if_t<\n\
-    \        std::is_same_v<std::invoke_result_t<Function, int, int>, void>, void>\n\
-    \    access_path(int u, int v, bool include_lca, Function f) const {\n       \
-    \ assert(0 <= u && u < n_ && 0 <= v && v < n_);\n        while (top_[u] != top_[v])\
-    \ {\n            if (depth_[top_[u]] < depth_[top_[v]]) {\n                std::swap(u,\
-    \ v);\n            }\n            f(in_[top_[u]], in_[u] + 1);\n            u\
-    \ = parent_[top_[u]];\n        }\n        if (depth_[u] > depth_[v]) {\n     \
-    \       std::swap(u, v);\n        }\n        if (include_lca) {\n            f(in_[u],\
-    \ in_[v] + 1);\n        } else {\n            f(in_[u] + 1, in_[v] + 1);\n   \
-    \     }\n    }\n    template <typename Function>\n    std::enable_if_t<\n    \
-    \    std::is_same_v<std::invoke_result_t<Function, int, int, bool>, void>,\n \
-    \       void>\n    access_path(int u, int v, bool include_lca, Function f) const\
+    \    }\n    template <typename Function> void access_node(int u, Function f) {\n\
+    \        assert(0 <= u && u < n_);\n        f(in_[u]);\n    }\n    template <typename\
+    \ Function>\n    std::enable_if_t<\n        std::is_same_v<std::invoke_result_t<Function,\
+    \ int, int>, void>, void>\n    access_path(int u, int v, bool include_lca, Function\
+    \ f) const {\n        assert(0 <= u && u < n_ && 0 <= v && v < n_);\n        while\
+    \ (top_[u] != top_[v]) {\n            if (depth_[top_[u]] < depth_[top_[v]]) {\n\
+    \                std::swap(u, v);\n            }\n            f(in_[top_[u]],\
+    \ in_[u] + 1);\n            u = parent_[top_[u]];\n        }\n        if (depth_[u]\
+    \ > depth_[v]) {\n            std::swap(u, v);\n        }\n        if (include_lca)\
+    \ {\n            f(in_[u], in_[v] + 1);\n        } else {\n            f(in_[u]\
+    \ + 1, in_[v] + 1);\n        }\n    }\n    template <typename Function>\n    std::enable_if_t<\n\
+    \        std::is_same_v<std::invoke_result_t<Function, int, int, bool>, void>,\n\
+    \        void>\n    access_path(int u, int v, bool include_lca, Function f) const\
     \ {\n        assert(0 <= u && u < n_ && 0 <= v && v < n_);\n        bool u_to_lca\
     \ = true;\n        while (top_[u] != top_[v]) {\n            if (depth_[top_[u]]\
     \ < depth_[top_[v]]) {\n                std::swap(u, v);\n                u_to_lca\
@@ -127,11 +118,12 @@ data:
   isVerificationFile: false
   path: heavy_light_decomposition/heavy_light_decomposition.hpp
   requiredBy: []
-  timestamp: '2022-09-09 15:08:02+00:00'
+  timestamp: '2022-09-30 17:14:09+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/heavy_light_decomposition_vertex_add_path_sum.test.cpp
   - test/heavy_light_decomposition_lca.test.cpp
+  - test/heavy_light_decomposition_vertex_add_subtree_sum.test.cpp
 documentation_of: heavy_light_decomposition/heavy_light_decomposition.hpp
 layout: document
 title: Heavy-Light Decomposition

@@ -31,9 +31,9 @@ data:
     \ count) {\n        for (auto i = 0; i < count; ++i) {\n            rollback();\n\
     \        }\n    }\n\nprivate:\n    int n_;\n    std::vector<int> parent_or_size_;\n\
     \    std::stack<std::pair<int, int>> history_;\n};\n\n\n"
-  code: "#ifndef ROLLBACK_DISJOINT_SET\n#define ROLLBACK_DISJOINT_SET\n\n#include\
-    \ <cassert>\n#include <stack>\n#include <utility>\n#include <vector>\n\nstruct\
-    \ rollback_disjoint_set {\n    explicit rollback_disjoint_set(int n) : n_(n),\
+  code: "#ifndef ROLLBACK_DISJOINT_SET_HPP\n#define ROLLBACK_DISJOINT_SET_HPP\n\n\
+    #include <cassert>\n#include <stack>\n#include <utility>\n#include <vector>\n\n\
+    struct rollback_disjoint_set {\n    explicit rollback_disjoint_set(int n) : n_(n),\
     \ parent_or_size_(n, -1) {}\n    int find(int u) const {\n        return parent_or_size_[u]\
     \ < 0 ? u : find(parent_or_size_[u]);\n    }\n    bool merge(int u, int v) {\n\
     \        assert(0 <= u && u < n_ && 0 <= v && v < n_);\n        u = find(u);\n\
@@ -50,12 +50,12 @@ data:
     \   parent_or_size_[u] -= val;\n        history_.pop();\n    }\n    void rollback(int\
     \ count) {\n        for (auto i = 0; i < count; ++i) {\n            rollback();\n\
     \        }\n    }\n\nprivate:\n    int n_;\n    std::vector<int> parent_or_size_;\n\
-    \    std::stack<std::pair<int, int>> history_;\n};\n\n#endif // ROLLBACK_DISJOINT_SET"
+    \    std::stack<std::pair<int, int>> history_;\n};\n\n#endif // ROLLBACK_DISJOINT_SET_HPP"
   dependsOn: []
   isVerificationFile: false
   path: disjoint_set/rollback_disjoint_set.hpp
   requiredBy: []
-  timestamp: '2022-09-09 09:09:24+00:00'
+  timestamp: '2022-09-30 17:14:09+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/offline_dynamic_connectivity.test.cpp
