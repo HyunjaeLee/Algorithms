@@ -7,7 +7,7 @@
 #include <vector>
 
 struct hilbert_mo {
-    hilbert_mo(int n) : n_(n), log_(std::__lg(std::max(1, n_ - 1)) + 1) {}
+    hilbert_mo(int n) : n_(n), log_(std::__lg(std::max(1, n_)) + 1) {}
     void add(int l, int r) {
         assert(0 <= l && l <= r && r <= n_);
         auto index = static_cast<int>(queries_.size());
