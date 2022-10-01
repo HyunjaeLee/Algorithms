@@ -9,6 +9,9 @@ data:
   - name: graph
     pages:
     - icon: ':heavy_check_mark:'
+      path: graph/directed_mst.hpp
+      title: graph/directed_mst.hpp
+    - icon: ':heavy_check_mark:'
       path: graph/dynamic_connectivity.hpp
       title: graph/dynamic_connectivity.hpp
     - icon: ':heavy_check_mark:'
@@ -84,6 +87,9 @@ data:
   verificationCategories:
   - name: test
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/directed_mst.test.cpp
+      title: test/directed_mst.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/dynamic_connectivity.test.cpp
       title: test/dynamic_connectivity.test.cpp

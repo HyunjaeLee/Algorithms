@@ -1,8 +1,14 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: graph/directed_mst.hpp
+    title: graph/directed_mst.hpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/directed_mst.test.cpp
+    title: test/directed_mst.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/offline_dynamic_connectivity.test.cpp
     title: test/offline_dynamic_connectivity.test.cpp
@@ -54,11 +60,13 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: disjoint_set/rollback_disjoint_set.hpp
-  requiredBy: []
+  requiredBy:
+  - graph/directed_mst.hpp
   timestamp: '2022-09-30 17:14:09+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/offline_dynamic_connectivity.test.cpp
+  - test/directed_mst.test.cpp
 documentation_of: disjoint_set/rollback_disjoint_set.hpp
 layout: document
 redirect_from:
