@@ -34,6 +34,14 @@ data:
     - icon: ':warning:'
       path: link_cut_tree/link_cut_tree.hpp
       title: link_cut_tree/link_cut_tree.hpp
+  - name: math
+    pages:
+    - icon: ':warning:'
+      path: math/ceil_div.hpp
+      title: math/ceil_div.hpp
+    - icon: ':warning:'
+      path: math/floor_div.hpp
+      title: math/floor_div.hpp
   - name: mo
     pages:
     - icon: ':heavy_check_mark:'
