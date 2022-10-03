@@ -11,16 +11,14 @@ template <typename Cost> struct directed_mst {
 
     void add_edge(int from, int to, Cost cost) {
         assert(0 <= from && from < n_ && 0 <= to && to < n_);
-        auto edge_id = static_cast<int>(from_.size());
+        auto id = static_cast<int>(from_.size());
         from_.push_back(from);
         to_.push_back(to);
         cost_.push_back(cost);
-        auto node_id = static_cast<int>(key_.size());
-        key_.push_back(edge_id);
         left_.push_back(-1);
         right_.push_back(-1);
         lazy_.push_back(Cost{});
-        heap_[to] = merge(heap_[to], node_id);
+        heap_[to] = merge(heap_[to], id);
     }
 
     std::pair<Cost, std::vector<int>> run(int root) {
@@ -35,7 +33,8 @@ template <typename Cost> struct directed_mst {
                 if (!~heap_[u]) {
                     return {-1, {}};
                 }
-                auto e = top(heap_[u]);
+                push(heap_[u]);
+                auto e = heap_[u];
                 result += cost_[e];
                 lazy_[heap_[u]] -= cost_[e];
                 heap_[u] = pop(heap_[u]);
@@ -82,7 +81,7 @@ template <typename Cost> struct directed_mst {
 
 private:
     void push(int u) {
-        cost_[key_[u]] += lazy_[u];
+        cost_[u] += lazy_[u];
         if (auto l = left_[u]; ~l) {
             lazy_[l] += lazy_[u];
         }
@@ -91,17 +90,13 @@ private:
         }
         lazy_[u] = 0;
     }
-    int top(int u) {
-        push(u);
-        return key_[u];
-    }
     int merge(int u, int v) {
         if (!~u || !~v) {
             return ~u ? u : v;
         }
         push(u);
         push(v);
-        if (cost_[key_[u]] > cost_[key_[v]]) {
+        if (cost_[u] > cost_[v]) {
             std::swap(u, v);
         }
         right_[u] = merge(v, right_[u]);
@@ -113,10 +108,8 @@ private:
         return merge(left_[u], right_[u]);
     }
     const int n_;
-    std::vector<int> from_, to_;
-    std::vector<Cost> cost_;
-    std::vector<int> key_, left_, right_, heap_;
-    std::vector<Cost> lazy_;
+    std::vector<int> from_, to_, left_, right_, heap_;
+    std::vector<Cost> cost_, lazy_;
 };
 
 #endif // DIRECTED_MST_HPP
