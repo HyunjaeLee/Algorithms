@@ -91,6 +91,9 @@ data:
       path: test/directed_mst.test.cpp
       title: test/directed_mst.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/directed_mst_minimum_cost_arborescence.test.cpp
+      title: test/directed_mst_minimum_cost_arborescence.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/dynamic_connectivity.test.cpp
       title: test/dynamic_connectivity.test.cpp
     - icon: ':heavy_check_mark:'

@@ -41,51 +41,48 @@ data:
     \n\ntemplate <typename Cost> struct directed_mst {\n    explicit directed_mst(int\
     \ n) : n_(n), heap_(n_, -1) {}\n\n    void add_edge(int from, int to, Cost cost)\
     \ {\n        assert(0 <= from && from < n_ && 0 <= to && to < n_);\n        auto\
-    \ edge_id = static_cast<int>(from_.size());\n        from_.push_back(from);\n\
-    \        to_.push_back(to);\n        cost_.push_back(cost);\n        auto node_id\
-    \ = static_cast<int>(key_.size());\n        key_.push_back(edge_id);\n       \
-    \ left_.push_back(-1);\n        right_.push_back(-1);\n        lazy_.push_back(Cost{});\n\
-    \        heap_[to] = merge(heap_[to], node_id);\n    }\n\n    std::pair<Cost,\
-    \ std::vector<int>> run(int root) {\n        rollback_disjoint_set dsu(n_);\n\
-    \        Cost result{};\n        std::vector<int> seen(n_, -1), path(n_), queue(n_),\
-    \ in(n_, -1);\n        seen[root] = root;\n        std::vector<std::pair<int,\
-    \ std::vector<int>>> cycles;\n        for (auto s = 0; s < n_; ++s) {\n      \
-    \      auto u = s, pos = 0, w = -1;\n            while (!~seen[u]) {\n       \
-    \         if (!~heap_[u]) {\n                    return {-1, {}};\n          \
-    \      }\n                auto e = top(heap_[u]);\n                result += cost_[e];\n\
-    \                lazy_[heap_[u]] -= cost_[e];\n                heap_[u] = pop(heap_[u]);\n\
-    \                queue[pos] = e;\n                path[pos++] = u;\n         \
-    \       seen[u] = s;\n                u = dsu.find(from_[e]);\n              \
-    \  if (seen[u] == s) {\n                    auto cycle = -1;\n               \
-    \     auto end = pos;\n                    do {\n                        w = path[--pos];\n\
-    \                        cycle = merge(cycle, heap_[w]);\n                   \
-    \ } while (dsu.merge(u, w));\n                    u = dsu.find(u);\n         \
-    \           heap_[u] = cycle;\n                    seen[u] = -1;\n           \
-    \         cycles.emplace_back(u,\n                                        std::vector<int>(queue.begin()\
-    \ + pos,\n                                                         queue.begin()\
-    \ + end));\n                }\n            }\n            for (auto i = 0; i <\
-    \ pos; ++i) {\n                in[dsu.find(to_[queue[i]])] = queue[i];\n     \
-    \       }\n        }\n        for (auto it = cycles.rbegin(); it != cycles.rend();\
-    \ ++it) {\n            auto &[u, comp] = *it;\n            auto count = static_cast<int>(comp.size())\
-    \ - 1;\n            dsu.rollback(count);\n            auto in_edge = in[u];\n\
-    \            for (auto e : comp) {\n                in[dsu.find(to_[e])] = e;\n\
-    \            }\n            in[dsu.find(to_[in_edge])] = in_edge;\n        }\n\
-    \        std::vector<int> parent;\n        parent.reserve(n_);\n        for (auto\
-    \ i : in) {\n            parent.push_back(~i ? from_[i] : -1);\n        }\n  \
-    \      return {result, parent};\n    }\n\nprivate:\n    void push(int u) {\n \
-    \       cost_[key_[u]] += lazy_[u];\n        if (auto l = left_[u]; ~l) {\n  \
-    \          lazy_[l] += lazy_[u];\n        }\n        if (auto r = right_[u]; ~r)\
-    \ {\n            lazy_[r] += lazy_[u];\n        }\n        lazy_[u] = 0;\n   \
-    \ }\n    int top(int u) {\n        push(u);\n        return key_[u];\n    }\n\
-    \    int merge(int u, int v) {\n        if (!~u || !~v) {\n            return\
-    \ ~u ? u : v;\n        }\n        push(u);\n        push(v);\n        if (cost_[key_[u]]\
-    \ > cost_[key_[v]]) {\n            std::swap(u, v);\n        }\n        right_[u]\
+    \ id = static_cast<int>(from_.size());\n        from_.push_back(from);\n     \
+    \   to_.push_back(to);\n        cost_.push_back(cost);\n        left_.push_back(-1);\n\
+    \        right_.push_back(-1);\n        lazy_.push_back(Cost{});\n        heap_[to]\
+    \ = merge(heap_[to], id);\n    }\n\n    std::pair<Cost, std::vector<int>> run(int\
+    \ root) {\n        rollback_disjoint_set dsu(n_);\n        Cost result{};\n  \
+    \      std::vector<int> seen(n_, -1), path(n_), queue(n_), in(n_, -1);\n     \
+    \   seen[root] = root;\n        std::vector<std::pair<int, std::vector<int>>>\
+    \ cycles;\n        for (auto s = 0; s < n_; ++s) {\n            auto u = s, pos\
+    \ = 0, w = -1;\n            while (!~seen[u]) {\n                if (!~heap_[u])\
+    \ {\n                    return {-1, {}};\n                }\n               \
+    \ push(heap_[u]);\n                auto e = heap_[u];\n                result\
+    \ += cost_[e];\n                lazy_[heap_[u]] -= cost_[e];\n               \
+    \ heap_[u] = pop(heap_[u]);\n                queue[pos] = e;\n               \
+    \ path[pos++] = u;\n                seen[u] = s;\n                u = dsu.find(from_[e]);\n\
+    \                if (seen[u] == s) {\n                    auto cycle = -1;\n \
+    \                   auto end = pos;\n                    do {\n              \
+    \          w = path[--pos];\n                        cycle = merge(cycle, heap_[w]);\n\
+    \                    } while (dsu.merge(u, w));\n                    u = dsu.find(u);\n\
+    \                    heap_[u] = cycle;\n                    seen[u] = -1;\n  \
+    \                  cycles.emplace_back(u,\n                                  \
+    \      std::vector<int>(queue.begin() + pos,\n                               \
+    \                          queue.begin() + end));\n                }\n       \
+    \     }\n            for (auto i = 0; i < pos; ++i) {\n                in[dsu.find(to_[queue[i]])]\
+    \ = queue[i];\n            }\n        }\n        for (auto it = cycles.rbegin();\
+    \ it != cycles.rend(); ++it) {\n            auto &[u, comp] = *it;\n         \
+    \   auto count = static_cast<int>(comp.size()) - 1;\n            dsu.rollback(count);\n\
+    \            auto in_edge = in[u];\n            for (auto e : comp) {\n      \
+    \          in[dsu.find(to_[e])] = e;\n            }\n            in[dsu.find(to_[in_edge])]\
+    \ = in_edge;\n        }\n        std::vector<int> parent;\n        parent.reserve(n_);\n\
+    \        for (auto i : in) {\n            parent.push_back(~i ? from_[i] : -1);\n\
+    \        }\n        return {result, parent};\n    }\n\nprivate:\n    void push(int\
+    \ u) {\n        cost_[u] += lazy_[u];\n        if (auto l = left_[u]; ~l) {\n\
+    \            lazy_[l] += lazy_[u];\n        }\n        if (auto r = right_[u];\
+    \ ~r) {\n            lazy_[r] += lazy_[u];\n        }\n        lazy_[u] = 0;\n\
+    \    }\n    int merge(int u, int v) {\n        if (!~u || !~v) {\n           \
+    \ return ~u ? u : v;\n        }\n        push(u);\n        push(v);\n        if\
+    \ (cost_[u] > cost_[v]) {\n            std::swap(u, v);\n        }\n        right_[u]\
     \ = merge(v, right_[u]);\n        std::swap(left_[u], right_[u]);\n        return\
     \ u;\n    }\n    int pop(int u) {\n        push(u);\n        return merge(left_[u],\
-    \ right_[u]);\n    }\n    const int n_;\n    std::vector<int> from_, to_;\n  \
-    \  std::vector<Cost> cost_;\n    std::vector<int> key_, left_, right_, heap_;\n\
-    \    std::vector<Cost> lazy_;\n};\n\n\n#line 4 \"test/directed_mst.test.cpp\"\n\
-    #include <bits/stdc++.h>\n\nint main() {\n    std::cin.tie(0)->sync_with_stdio(0);\n\
+    \ right_[u]);\n    }\n    const int n_;\n    std::vector<int> from_, to_, left_,\
+    \ right_, heap_;\n    std::vector<Cost> cost_, lazy_;\n};\n\n\n#line 4 \"test/directed_mst.test.cpp\"\
+    \n#include <bits/stdc++.h>\n\nint main() {\n    std::cin.tie(0)->sync_with_stdio(0);\n\
     \    int N, M, S;\n    std::cin >> N >> M >> S;\n    directed_mst<long long> dmst(N);\n\
     \    for (auto i = 0; i < M; ++i) {\n        int a, b, c;\n        std::cin >>\
     \ a >> b >> c;\n        dmst.add_edge(a, b, c);\n    }\n    auto [X, parent] =\
@@ -104,7 +101,7 @@ data:
   isVerificationFile: true
   path: test/directed_mst.test.cpp
   requiredBy: []
-  timestamp: '2022-10-01 18:56:53+00:00'
+  timestamp: '2022-10-03 12:17:00+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/directed_mst.test.cpp
