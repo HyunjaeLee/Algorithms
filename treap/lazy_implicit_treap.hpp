@@ -10,24 +10,14 @@
 #include <utility>
 #include <vector>
 
-using null_type = struct {};
-
-template <typename S = null_type, S (*op)(S, S) = nullptr, S (*e)() = nullptr,
-          typename F = null_type, S (*mapping)(F, S) = nullptr,
-          F (*composition)(F, F) = nullptr, F (*id)() = nullptr,
-          typename Generator = xoshiro256starstar>
+template <typename S, typename Op, typename E, typename F, typename Mapping,
+          typename Composition, typename Id, typename Generator>
 struct lazy_implicit_treap {
-    lazy_implicit_treap()
-        : gen_(static_cast<typename Generator::result_type>(
+    lazy_implicit_treap(Op op, E e, Mapping mapping, Composition composition,
+                        Id id)
+        : op_(op), e_(e), mapping_(mapping), composition_(composition), id_(id),
+          gen_(static_cast<typename Generator::result_type>(
               std::chrono::steady_clock::now().time_since_epoch().count())) {}
-    explicit lazy_implicit_treap(typename Generator::result_type seed)
-        : gen_(seed) {}
-    // Construct a trep on values {data[0], data[1], ..., data[n - 1]}
-    template <typename Data> int build(const Data &data) {
-        auto n = static_cast<int>(std::size(data));
-        reserve(n);
-        return build(data, 0, n);
-    }
     // Split into [0, pos), [pos, inf)
     std::array<int, 2> split(int u, int pos) {
         if (!~u) {
@@ -97,7 +87,7 @@ struct lazy_implicit_treap {
     }
     int new_node(const S &value) {
         auto u = static_cast<int>(nodes_.size());
-        nodes_.emplace_back(value, gen_());
+        nodes_.emplace_back(value, id_(), gen_());
         return u;
     }
     int erase(int u, int pos) {
@@ -126,30 +116,18 @@ struct lazy_implicit_treap {
         assert(0 <= pos && pos < size(u));
         auto v = split(u, {pos, pos + 1});
         nodes_[v[1]].value = value;
-        if constexpr (op != nullptr && e != nullptr) {
-            nodes_[v[1]].subtree_sum = value;
-        }
+        nodes_[v[1]].subtree_sum = value;
         return merge({v[0], v[1], v[2]});
     }
-    int apply(int u, int pos, F f) {
-        static_assert(!std::is_empty_v<F> && mapping != nullptr &&
-                      composition != nullptr && id != nullptr);
-        return apply(u, pos, pos + 1, f);
-    }
+    int apply(int u, int pos, F f) { return apply(u, pos, pos + 1, f); }
     int apply(int u, int l, int r, F f) {
-        static_assert(!std::is_empty_v<F> && mapping != nullptr &&
-                      composition != nullptr && id != nullptr);
         assert(0 <= l && l <= r && r <= size(u));
         auto v = split(u, {l, r});
         all_apply(v[1], f);
         return merge({v[0], v[1], v[2]});
     }
-    S all_prod(int u) const {
-        static_assert(!std::is_empty_v<S> && op != nullptr && e != nullptr);
-        return ~u ? nodes_[u].subtree_sum : e();
-    }
+    S all_prod(int u) const { return ~u ? nodes_[u].subtree_sum : e_(); }
     std::pair<int, S> prod(int u, int l, int r) {
-        static_assert(!std::is_empty_v<S> && op != nullptr && e != nullptr);
         auto v = split(u, {l, r});
         auto result = all_prod(v[1]);
         return {merge({v[0], v[1], v[2]}), result};
@@ -183,6 +161,13 @@ struct lazy_implicit_treap {
         }
         return order;
     }
+    int get_root(int u) const {
+        assert(0 <= u && u < static_cast<int>(nodes_.size()));
+        while (~nodes_[u].parent) {
+            u = nodes_[u].parent;
+        }
+        return u;
+    }
     void reserve(std::vector<int>::size_type n) { nodes_.reserve(n); }
     int size(int u) const { return ~u ? nodes_[u].subtree_size : 0; }
     template <typename Function> void for_each(int u, Function f) {
@@ -207,30 +192,24 @@ private:
                 nodes_[u].subtree_size += nodes_[v].subtree_size;
             }
         }
-        if constexpr (!std::is_empty_v<S> && op != nullptr && e != nullptr) {
-            nodes_[u].subtree_sum =
-                ~nodes_[u].children[0]
-                    ? op(nodes_[nodes_[u].children[0]].subtree_sum,
-                         nodes_[u].value)
-                    : nodes_[u].value;
-            nodes_[u].subtree_sum =
-                ~nodes_[u].children[1]
-                    ? op(nodes_[u].subtree_sum,
-                         nodes_[nodes_[u].children[1]].subtree_sum)
-                    : nodes_[u].subtree_sum;
-        }
+        nodes_[u].subtree_sum =
+            ~nodes_[u].children[0]
+                ? op_(nodes_[nodes_[u].children[0]].subtree_sum, nodes_[u].value)
+                : nodes_[u].value;
+        nodes_[u].subtree_sum =
+            ~nodes_[u].children[1]
+                ? op_(nodes_[u].subtree_sum,
+                     nodes_[nodes_[u].children[1]].subtree_sum)
+                : nodes_[u].subtree_sum;
         return u;
     }
     void push(int u) {
         if (!~u) {
             return;
         }
-        if constexpr (!std::is_empty_v<F> && mapping != nullptr &&
-                      composition != nullptr && id != nullptr) {
-            all_apply(nodes_[u].children[0], nodes_[u].lazy);
-            all_apply(nodes_[u].children[1], nodes_[u].lazy);
-            nodes_[u].lazy = id();
-        }
+        all_apply(nodes_[u].children[0], nodes_[u].lazy);
+        all_apply(nodes_[u].children[1], nodes_[u].lazy);
+        nodes_[u].lazy = id_();
         if (nodes_[u].reversed) {
             for (auto v : nodes_[u].children) {
                 if (~v) {
@@ -242,52 +221,19 @@ private:
         }
     }
     void all_apply(int u, F f) {
-        static_assert(!std::is_empty_v<F> && mapping != nullptr &&
-                      composition != nullptr && id != nullptr);
         if (~u) {
-            nodes_[u].value = mapping(f, nodes_[u].value);
-            nodes_[u].subtree_sum = mapping(f, nodes_[u].subtree_sum);
-            nodes_[u].lazy = composition(f, nodes_[u].lazy);
+            nodes_[u].value = mapping_(f, nodes_[u].value);
+            nodes_[u].subtree_sum = mapping_(f, nodes_[u].subtree_sum);
+            nodes_[u].lazy = composition_(f, nodes_[u].lazy);
         }
-    }
-    void heapify(int u) {
-        if (!~u) {
-            return;
-        }
-        auto max = u;
-        for (auto v : nodes_[u].children) {
-            if (~v && nodes_[v].priority > nodes_[max].priority) {
-                max = v;
-            }
-        }
-        if (max != u) {
-            std::swap(nodes_[u].priority, nodes_[max].priority);
-            heapify(max);
-        }
-    }
-    template <typename Data> int build(const Data &data, int left, int right) {
-        if (left >= right)
-            return -1;
-        auto mid = (left + right) / 2;
-        auto u = new_node(data[mid]);
-        nodes_[u].children[0] = build(data, left, mid);
-        nodes_[u].children[1] = build(data, mid + 1, right);
-        heapify(u);
-        return update(u);
     }
     struct node {
-        node(const S &value_, typename Generator::result_type priority_)
-            : value(value_), priority(priority_) {
-            if constexpr (op != nullptr && e != nullptr) {
-                subtree_sum = value;
-            }
-            if constexpr (id != nullptr) {
-                lazy = id();
-            }
-        }
+        node(const S &value_, const F &lazy_,
+             typename Generator::result_type priority_)
+            : value(value_), subtree_sum(value_), lazy(lazy_),
+              priority(priority_) {}
         S value;
-        std::conditional_t<op != nullptr && e != nullptr, S, null_type>
-            subtree_sum;
+        S subtree_sum;
         F lazy;
         typename Generator::result_type priority;
         bool reversed = false;
@@ -295,8 +241,20 @@ private:
         int subtree_size = 1;
         std::array<int, 2> children{-1, -1};
     };
+    Op op_;
+    E e_;
+    Mapping mapping_;
+    Composition composition_;
+    Id id_;
     Generator gen_;
     std::vector<node> nodes_;
 };
+
+template <typename Op, typename E, typename Mapping, typename Composition,
+          typename Id>
+lazy_implicit_treap(Op op, E e, Mapping mapping, Composition composition, Id id)
+    -> lazy_implicit_treap<std::invoke_result_t<E>, Op, E,
+                           std::invoke_result_t<Id>, Mapping, Composition, Id,
+                           xoshiro256starstar>;
 
 #endif // LAZY_IMPLICIT_TREAP_HPP
