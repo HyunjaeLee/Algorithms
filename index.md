@@ -12,6 +12,9 @@ data:
       path: graph/directed_mst.hpp
       title: graph/directed_mst.hpp
     - icon: ':heavy_check_mark:'
+      path: graph/dominator_tree.hpp
+      title: graph/dominator_tree.hpp
+    - icon: ':heavy_check_mark:'
       path: graph/dynamic_connectivity.hpp
       title: graph/dynamic_connectivity.hpp
     - icon: ':heavy_check_mark:'
@@ -93,6 +96,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/directed_mst_minimum_cost_arborescence.test.cpp
       title: test/directed_mst_minimum_cost_arborescence.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/dominator_tree.test.cpp
+      title: test/dominator_tree.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/dynamic_connectivity.test.cpp
       title: test/dynamic_connectivity.test.cpp
