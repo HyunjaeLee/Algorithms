@@ -1,22 +1,12 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/tetration_mod"
+#define PROBLEM "https://yukicoder.me/problems/no/181"
 
 #include "math/power_tower.hpp"
 #include <bits/stdc++.h>
 
 int main() {
     std::cin.tie(0)->sync_with_stdio(0);
-    int T;
-    std::cin >> T;
-    for (auto i = 0; i < T; ++i) {
-        int A, B, M;
-        std::cin >> A >> B >> M;
-        if (A == 0) {
-            std::cout << ((B & 1) ^ 1) % M;
-        } else {
-            const auto n = std::min(B, 64);
-            std::vector<int> a(n, A);
-            std::cout << power_tower(a, M);
-        }
-        std::cout << '\n';
-    }
+    int A, N, M;
+    std::cin >> A >> N >> M;
+    std::vector<int> a(std::min(N, 24), A);
+    std::cout << power_tower(a, M) << '\n';
 }
