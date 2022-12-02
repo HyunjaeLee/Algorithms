@@ -45,9 +45,15 @@ data:
     - icon: ':warning:'
       path: math/ceil_div.hpp
       title: math/ceil_div.hpp
+    - icon: ':heavy_check_mark:'
+      path: math/factor.hpp
+      title: Factor
     - icon: ':warning:'
       path: math/floor_div.hpp
       title: math/floor_div.hpp
+    - icon: ':heavy_check_mark:'
+      path: math/power_tower.hpp
+      title: math/power_tower.hpp
   - name: mo
     pages:
     - icon: ':heavy_check_mark:'
@@ -103,6 +109,9 @@ data:
       path: test/dynamic_connectivity.test.cpp
       title: test/dynamic_connectivity.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/factor.test.cpp
+      title: test/factor.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/heavy_light_decomposition_lca.test.cpp
       title: test/heavy_light_decomposition_lca.test.cpp
     - icon: ':heavy_check_mark:'
@@ -117,6 +126,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/offline_dynamic_connectivity.test.cpp
       title: test/offline_dynamic_connectivity.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/power_tower.test.cpp
+      title: test/power_tower.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/scanner.test.cpp
       title: test/scanner.test.cpp
