@@ -1,11 +1,26 @@
 #ifndef POWER_TOWER_HPP
 #define POWER_TOWER_HPP
 
-#include "math/factor.hpp"
 #include <cassert>
 #include <limits>
 #include <type_traits>
 #include <vector>
+
+template <typename T> T euler_phi(T n) {
+    T phi = n;
+    for (T i = 2; i * i <= n; i++) {
+        if (n % i == 0) {
+            phi -= phi / i;
+            while (n % i == 0) {
+                n /= i;
+            }
+        }
+    }
+    if (n != 1) {
+        phi -= phi / n;
+    }
+    return phi;
+}
 
 template <typename T, typename Promote = unsigned long long>
 T power_tower(const std::vector<T> &a, T m) {
