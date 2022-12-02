@@ -11,13 +11,11 @@ data:
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://yukicoder.me/problems/no/181
     links:
-    - https://yukicoder.me/problems/no/181
-  bundledCode: "#line 1 \"test/power_tower.test.cpp\"\n#define PROBLEM \"https://yukicoder.me/problems/no/181\"\
+    - https://judge.yosupo.jp/problem/tetration_mod
+  bundledCode: "#line 1 \"test/tetration_mod.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/tetration_mod\"\
     \n\n#line 1 \"math/power_tower.hpp\"\n\n\n\n#line 1 \"math/factor.hpp\"\n\n\n\n\
     #include <algorithm>\n#include <numeric>\n#include <vector>\n\nunsigned long long\
     \ modmul(unsigned long long a, unsigned long long b,\n                       \
@@ -63,27 +61,33 @@ data:
     \  }\n        return r;\n    };\n    Promote r = 1;\n    const auto k = static_cast<int>(std::min(a.size(),\
     \ mod_chain.size()));\n    for (auto i = k - 1; i >= 0; --i) {\n        assert(a[i]\
     \ > 0);\n        r = f(static_cast<Promote>(a[i]), r, mod_chain[i]);\n    }\n\
-    \    return static_cast<T>(r % static_cast<Promote>(m));\n}\n\n\n#line 4 \"test/power_tower.test.cpp\"\
+    \    return static_cast<T>(r % static_cast<Promote>(m));\n}\n\n\n#line 4 \"test/tetration_mod.cpp\"\
     \n#include <bits/stdc++.h>\n\nint main() {\n    std::cin.tie(0)->sync_with_stdio(0);\n\
-    \    int A, N, M;\n    std::cin >> A >> N >> M;\n    std::vector<int> a(std::min(N,\
-    \ 24), A);\n    std::cout << power_tower(a, M) << '\\n';\n}\n"
-  code: "#define PROBLEM \"https://yukicoder.me/problems/no/181\"\n\n#include \"math/power_tower.hpp\"\
-    \n#include <bits/stdc++.h>\n\nint main() {\n    std::cin.tie(0)->sync_with_stdio(0);\n\
-    \    int A, N, M;\n    std::cin >> A >> N >> M;\n    std::vector<int> a(std::min(N,\
-    \ 24), A);\n    std::cout << power_tower(a, M) << '\\n';\n}\n"
+    \    int T;\n    std::cin >> T;\n    for (auto i = 0; i < T; ++i) {\n        int\
+    \ A, B, M;\n        std::cin >> A >> B >> M;\n        if (A == 0) {\n        \
+    \    std::cout << ((B & 1) ^ 1) % M;\n        } else {\n            const auto\
+    \ n = std::min(B, 64);\n            std::vector<int> a(n, A);\n            std::cout\
+    \ << power_tower(a, M);\n        }\n        std::cout << '\\n';\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/tetration_mod\"\n\n#include\
+    \ \"math/power_tower.hpp\"\n#include <bits/stdc++.h>\n\nint main() {\n    std::cin.tie(0)->sync_with_stdio(0);\n\
+    \    int T;\n    std::cin >> T;\n    for (auto i = 0; i < T; ++i) {\n        int\
+    \ A, B, M;\n        std::cin >> A >> B >> M;\n        if (A == 0) {\n        \
+    \    std::cout << ((B & 1) ^ 1) % M;\n        } else {\n            const auto\
+    \ n = std::min(B, 64);\n            std::vector<int> a(n, A);\n            std::cout\
+    \ << power_tower(a, M);\n        }\n        std::cout << '\\n';\n    }\n}\n"
   dependsOn:
   - math/power_tower.hpp
   - math/factor.hpp
-  isVerificationFile: true
-  path: test/power_tower.test.cpp
+  isVerificationFile: false
+  path: test/tetration_mod.cpp
   requiredBy: []
   timestamp: '2022-12-02 08:14:33+00:00'
-  verificationStatus: TEST_ACCEPTED
+  verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: test/power_tower.test.cpp
+documentation_of: test/tetration_mod.cpp
 layout: document
 redirect_from:
-- /verify/test/power_tower.test.cpp
-- /verify/test/power_tower.test.cpp.html
-title: test/power_tower.test.cpp
+- /library/test/tetration_mod.cpp
+- /library/test/tetration_mod.cpp.html
+title: test/tetration_mod.cpp
 ---

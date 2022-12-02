@@ -4,7 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/factor.hpp
     title: Factor
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: test/tetration_mod.cpp
+    title: test/tetration_mod.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/power_tower.test.cpp
@@ -81,7 +84,8 @@ data:
   - math/factor.hpp
   isVerificationFile: false
   path: math/power_tower.hpp
-  requiredBy: []
+  requiredBy:
+  - test/tetration_mod.cpp
   timestamp: '2022-12-02 07:43:56+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

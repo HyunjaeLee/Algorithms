@@ -77,6 +77,11 @@ data:
     - icon: ':warning:'
       path: splay/splay_set.hpp
       title: splay/splay_set.hpp
+  - name: test
+    pages:
+    - icon: ':warning:'
+      path: test/tetration_mod.cpp
+      title: test/tetration_mod.cpp
   - name: treap
     pages:
     - icon: ':warning:'

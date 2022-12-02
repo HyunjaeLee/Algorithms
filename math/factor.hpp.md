@@ -5,6 +5,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/power_tower.hpp
     title: math/power_tower.hpp
+  - icon: ':warning:'
+    path: test/tetration_mod.cpp
+    title: test/tetration_mod.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/factor.test.cpp
@@ -82,6 +85,7 @@ data:
   path: math/factor.hpp
   requiredBy:
   - math/power_tower.hpp
+  - test/tetration_mod.cpp
   timestamp: '2022-12-02 07:43:56+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
