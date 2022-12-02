@@ -53,7 +53,7 @@ data:
       title: math/floor_div.hpp
     - icon: ':heavy_check_mark:'
       path: math/power_tower.hpp
-      title: math/power_tower.hpp
+      title: Power tower
   - name: mo
     pages:
     - icon: ':heavy_check_mark:'
@@ -77,11 +77,6 @@ data:
     - icon: ':warning:'
       path: splay/splay_set.hpp
       title: splay/splay_set.hpp
-  - name: test
-    pages:
-    - icon: ':warning:'
-      path: test/tetration_mod.cpp
-      title: test/tetration_mod.cpp
   - name: treap
     pages:
     - icon: ':warning:'
@@ -143,6 +138,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/tarjan_offline_lca.test.cpp
       title: test/tarjan_offline_lca.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/tetration_mod.test.cpp
+      title: test/tetration_mod.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/treap_set.test.cpp
       title: test/treap_set.test.cpp

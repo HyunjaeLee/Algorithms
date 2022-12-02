@@ -1,20 +1,11 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: math/power_tower.hpp
-    title: math/power_tower.hpp
-  - icon: ':warning:'
-    path: test/tetration_mod.cpp
-    title: test/tetration_mod.cpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/factor.test.cpp
     title: test/factor.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/power_tower.test.cpp
-    title: test/power_tower.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -83,14 +74,11 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: math/factor.hpp
-  requiredBy:
-  - math/power_tower.hpp
-  - test/tetration_mod.cpp
+  requiredBy: []
   timestamp: '2022-12-02 07:43:56+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/factor.test.cpp
-  - test/power_tower.test.cpp
 documentation_of: math/factor.hpp
 layout: document
 title: Factor
