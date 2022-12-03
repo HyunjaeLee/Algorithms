@@ -86,7 +86,7 @@ Providing first $\min(2\lfloor\lg{m}\rfloor, n)$ elements of $a$ is sufficient t
 
 `T` is an integral type such as `int`, `unsigned int`, `long long`, and `unsigned long long`. `Promote` is an integral type that can express values between $0$ and $(2m-1)^2$, inclusive.
 
-It's possible to use different Euler's phi function. Factorization using Miller-Rabin and Pollard's rho and precalcuated array are alternative implementations. It affects the complexity of `power_tower`.
+There are various methods to calculate Euler's phi function. Miller-Rabin and Pollard's rho and precalculated array are possible alternatives. It affects the complexity of `power_tower`.
 
 ### Constraints
 + $0 < a[i]$
