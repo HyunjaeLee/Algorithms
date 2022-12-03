@@ -75,6 +75,12 @@ It returns a vector $r$ of length $n$, such that $i$ in set $A$ and $r[i]$ in se
 ### Complexity
 $\mathcal{O}\left(n^2\right)$
 
+### Problems
++ [The Stable Marriage Problem](https://www.acmicpc.net/problem/3761)
++ [Match Maker](https://www.acmicpc.net/problem/9002)
++ [짝](https://www.acmicpc.net/problem/12022)
++ [형곤이의 소개팅](https://www.acmicpc.net/problem/20009)
+
 ### References
 + [Stable matching presentation - CMU](https://www.cs.cmu.edu/~arielpro/15896s16/slides/896s16-16.pdf)
 + [Gale-Shapley algorithm - Wikipedia](https://en.wikipedia.org/wiki/Gale%E2%80%93Shapley_algorithm)
