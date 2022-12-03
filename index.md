@@ -40,6 +40,11 @@ data:
     - icon: ':warning:'
       path: link_cut_tree/link_cut_tree.hpp
       title: link_cut_tree/link_cut_tree.hpp
+  - name: matching
+    pages:
+    - icon: ':warning:'
+      path: matching/stable_matching.hpp
+      title: Stable matching
   - name: math
     pages:
     - icon: ':warning:'
