@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/stable_matching.stress.test.cpp
+    title: test/stable_matching.stress.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"matching/stable_matching.hpp\"\n\n\n\n#include <numeric>\n\
@@ -45,14 +48,15 @@ data:
   path: matching/stable_matching.hpp
   requiredBy: []
   timestamp: '2022-12-03 14:13:47+00:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/stable_matching.stress.test.cpp
 documentation_of: matching/stable_matching.hpp
 layout: document
 title: Stable matching
 ---
 
-It solves stable matching problem using the Gale-Shapley algorithm. The algorithm results in a perfect matching and a stable matching. For given groups $A$ and $B$ the result is $A$-optimal and $B$-pessimal.
+It solves stable matching problem using the Gale-Shapley algorithm. The algorithm results in a perfect matching and a stable matching. For given sets $A$ and $B$ the result is $A$-optimal and $B$-pessimal. It assumes that $\lvert A \rvert = \lvert B \rvert = n$.
 
 stable_matching
 ---
@@ -63,15 +67,15 @@ std::vector<int> stable_matching(const std::vector<std::vector<int>> &a,
 
 ### Parameters
 __a, b__  
-$a$ is an $n \times n$ 2D vector. $a[i]$ is a permutation of $0, 1, \cdots, n-1$. For $0 \le j \lt k \lt n$, $i$ prefers $a[i][j]$ over $a[i][k]$, where $i$ is in group $A$ and $a[i][j]$ and $a[i][k]$ are in group $B$. For $b$ it's vice versa.
+$a$ is an $n \times n$ 2D vector. $a[i]$ is a permutation of $0, 1, \cdots, n-1$. For $0 \le j \lt k \lt n$, $i$ prefers $a[i][j]$ over $a[i][k]$, where $i$ is in set $A$ and $a[i][j]$ and $a[i][k]$ are in set $B$. For $b$ it's vice versa.
 
 ### Return value
-It returns a vector $r$ of length $n$, such that $i$ in group $A$ and $r[i]$ in group $B$ are matched.
+It returns a vector $r$ of length $n$, such that $i$ in set $A$ and $r[i]$ in set $B$ are matched.
 
 ### Complexity
 $\mathcal{O}\left(n^2\right)$
 
 ### References
-+ [Stable matching presentation (CMU)](https://www.cs.cmu.edu/~arielpro/15896s16/slides/896s16-16.pdf)
-+ [Gale-Shapley algorithm (Wikipedia)](https://en.wikipedia.org/wiki/Gale%E2%80%93Shapley_algorithm)
-+ [Stable marriage problem (Wikipedia)](https://en.wikipedia.org/wiki/Stable_marriage_problem)
++ [Stable matching presentation - CMU](https://www.cs.cmu.edu/~arielpro/15896s16/slides/896s16-16.pdf)
++ [Gale-Shapley algorithm - Wikipedia](https://en.wikipedia.org/wiki/Gale%E2%80%93Shapley_algorithm)
++ [Stable marriage problem - Wikipedia](https://en.wikipedia.org/wiki/Stable_marriage_problem)

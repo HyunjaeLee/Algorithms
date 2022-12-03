@@ -42,7 +42,7 @@ data:
       title: link_cut_tree/link_cut_tree.hpp
   - name: matching
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: matching/stable_matching.hpp
       title: Stable matching
   - name: math
@@ -140,6 +140,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/segtree_beats.test.cpp
       title: test/segtree_beats.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/stable_matching.stress.test.cpp
+      title: test/stable_matching.stress.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/tarjan_offline_lca.test.cpp
       title: test/tarjan_offline_lca.test.cpp
