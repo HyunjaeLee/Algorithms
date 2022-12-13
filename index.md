@@ -56,6 +56,9 @@ data:
     - icon: ':warning:'
       path: math/floor_div.hpp
       title: math/floor_div.hpp
+    - icon: ':warning:'
+      path: math/mobius.hpp
+      title: "M\xF6bius function"
     - icon: ':heavy_check_mark:'
       path: math/power_tower.hpp
       title: Power tower
