@@ -50,6 +50,9 @@ data:
     - icon: ':warning:'
       path: math/ceil_div.hpp
       title: math/ceil_div.hpp
+    - icon: ':warning:'
+      path: math/dirichlet_series.hpp
+      title: math/dirichlet_series.hpp
     - icon: ':heavy_check_mark:'
       path: math/factor.hpp
       title: Factor
