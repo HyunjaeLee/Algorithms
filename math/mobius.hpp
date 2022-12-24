@@ -8,8 +8,8 @@
 std::vector<int> mobius(int n) {
     assert(n > 0);
     std::vector<int> prime, mu(n + 1);
-    std::vector<char> is_prime(n + 1);
-    std::fill(is_prime.begin() + 2, is_prime.end(), true);
+    std::vector<char> is_prime(n + 1, true);
+    is_prime[0] = is_prime[1] = false;
     mu[1] = 1;
     for (auto i = 2; i <= n; ++i) {
         if (is_prime[i]) {
