@@ -1,4 +1,4 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/lca"
+#define PROBLEM "https://judge.yosupo.jp/problem/jump_on_tree"
 
 #include "../lca/lca_tree.hpp"
 #include <bits/stdc++.h>
