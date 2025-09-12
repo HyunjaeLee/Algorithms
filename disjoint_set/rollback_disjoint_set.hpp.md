@@ -68,9 +68,9 @@ data:
   timestamp: '2022-09-30 17:14:09+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/directed_mst_minimum_cost_arborescence.test.cpp
-  - test/offline_dynamic_connectivity.test.cpp
   - test/directed_mst.test.cpp
+  - test/offline_dynamic_connectivity.test.cpp
+  - test/directed_mst_minimum_cost_arborescence.test.cpp
 documentation_of: disjoint_set/rollback_disjoint_set.hpp
 layout: document
 redirect_from:

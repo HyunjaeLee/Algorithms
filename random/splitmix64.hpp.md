@@ -53,8 +53,8 @@ data:
   timestamp: '2022-08-29 16:56:11+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/treap_set.test.cpp
   - test/dynamic_connectivity.test.cpp
+  - test/treap_set.test.cpp
 documentation_of: random/splitmix64.hpp
 layout: document
 title: splitmix64

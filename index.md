@@ -32,6 +32,9 @@ data:
       title: io/scanner.hpp
   - name: lca
     pages:
+    - icon: ':question:'
+      path: lca/lca_tree.hpp
+      title: LCA Tree
     - icon: ':heavy_check_mark:'
       path: lca/tarjan_offline_lca.hpp
       title: lca/tarjan_offline_lca.hpp
@@ -134,6 +137,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/hilbert_mo_static_range_inversions_query.test.cpp
       title: test/hilbert_mo_static_range_inversions_query.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/lca_tree.test.cpp
+      title: test/lca_tree.test.cpp
+    - icon: ':x:'
+      path: test/lca_tree_jump.test.cpp
+      title: test/lca_tree_jump.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/offline_dynamic_connectivity.test.cpp
       title: test/offline_dynamic_connectivity.test.cpp
