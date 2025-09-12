@@ -8,6 +8,7 @@
 "test/heavy_light_decomposition_vertex_add_path_sum.test.cpp": "2022-09-30 17:14:09 +0000",
 "test/heavy_light_decomposition_vertex_add_subtree_sum.test.cpp": "2022-09-30 17:14:09 +0000",
 "test/hilbert_mo_static_range_inversions_query.test.cpp": "2022-10-01 04:52:28 +0000",
+"test/lca_tree.test.cpp": "2025-09-12 21:56:34 +0900",
 "test/offline_dynamic_connectivity.test.cpp": "2022-09-30 17:14:09 +0000",
 "test/power_tower.test.cpp": "2022-12-02 10:32:05 +0000",
 "test/scanner.test.cpp": "2022-09-01 14:58:55 +0000",
