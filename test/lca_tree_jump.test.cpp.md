@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: lca/lca_tree.hpp
     title: LCA Tree
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/lca
+    PROBLEM: https://judge.yosupo.jp/problem/jump_on_tree
     links:
-    - https://judge.yosupo.jp/problem/lca
-  bundledCode: "#line 1 \"test/lca_tree_jump.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\
+    - https://judge.yosupo.jp/problem/jump_on_tree
+  bundledCode: "#line 1 \"test/lca_tree_jump.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/jump_on_tree\"\
     \n\n#line 1 \"lca/lca_tree.hpp\"\n\n\n\n#include <algorithm>\n#include <bit>\n\
     #include <cassert>\n#include <queue>\n#include <vector>\n\nstruct lca_tree {\n\
     \    lca_tree(const std::vector<std::vector<int>> &adj, int root)\n        : n_(static_cast<int>(adj.size())),\
@@ -54,8 +54,8 @@ data:
     \        adj[v].emplace_back(u);\n    }\n    lca_tree tree(adj, 0);\n    for (auto\
     \ i = 0; i < Q; ++i) {\n        int u, v, k;\n        std::cin >> u >> v >> k;\n\
     \        std::cout << tree.jump(u, v, k) << '\\n';\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n\n#include \"../lca/lca_tree.hpp\"\
-    \n#include <bits/stdc++.h>\n\nint main() {\n    std::cin.tie(0)->sync_with_stdio(0);\n\
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/jump_on_tree\"\n\n#include\
+    \ \"../lca/lca_tree.hpp\"\n#include <bits/stdc++.h>\n\nint main() {\n    std::cin.tie(0)->sync_with_stdio(0);\n\
     \    int N, Q;\n    std::cin >> N >> Q;\n    std::vector<std::vector<int>> adj(N);\n\
     \    for (auto i = 0; i < N - 1; ++i) {\n        int u, v;\n        std::cin >>\
     \ u >> v;\n        adj[u].emplace_back(v);\n        adj[v].emplace_back(u);\n\
@@ -67,8 +67,8 @@ data:
   isVerificationFile: true
   path: test/lca_tree_jump.test.cpp
   requiredBy: []
-  timestamp: '2025-09-12 21:56:34+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2025-09-12 23:43:16+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/lca_tree_jump.test.cpp
 layout: document

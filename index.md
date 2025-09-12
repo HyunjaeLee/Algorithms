@@ -32,7 +32,7 @@ data:
       title: io/scanner.hpp
   - name: lca
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: lca/lca_tree.hpp
       title: LCA Tree
     - icon: ':heavy_check_mark:'
@@ -140,7 +140,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/lca_tree.test.cpp
       title: test/lca_tree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/lca_tree_jump.test.cpp
       title: test/lca_tree_jump.test.cpp
     - icon: ':heavy_check_mark:'

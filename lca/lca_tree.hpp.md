@@ -6,12 +6,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/lca_tree.test.cpp
     title: test/lca_tree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/lca_tree_jump.test.cpp
     title: test/lca_tree_jump.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"lca/lca_tree.hpp\"\n\n\n\n#include <algorithm>\n#include\
@@ -85,7 +85,7 @@ data:
   path: lca/lca_tree.hpp
   requiredBy: []
   timestamp: '2025-09-12 21:56:34+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/lca_tree.test.cpp
   - test/lca_tree_jump.test.cpp

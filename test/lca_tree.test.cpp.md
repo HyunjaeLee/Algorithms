@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: lca/lca_tree.hpp
     title: LCA Tree
   _extendedRequiredBy: []
