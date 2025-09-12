@@ -7,4 +7,4 @@
 
 ### C++ Algorithms Library for Competitive Programming
 + [Library document](https://HyunjaeLee.github.io/Algorithms/)
-+ C++17 and gcc-11 (or greater) are required.
++ C++20 and gcc-13 (or greater) are required.
