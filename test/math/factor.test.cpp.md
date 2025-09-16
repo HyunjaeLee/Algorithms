@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/factor.hpp
     title: Factor
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/factorize
     links:
     - https://judge.yosupo.jp/problem/factorize
-  bundledCode: "#line 1 \"test/factor.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/factorize\"\
+  bundledCode: "#line 1 \"test/math/factor.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/factorize\"\
     \n\n#line 1 \"math/factor.hpp\"\n\n\n\n#include <algorithm>\n#include <numeric>\n\
     #include <vector>\n\nunsigned long long modmul(unsigned long long a, unsigned\
     \ long long b,\n                          unsigned long long M) {\n    long long\
@@ -44,13 +44,13 @@ data:
     }\n\nunsigned long long euler_phi(unsigned long long n) {\n    auto f = factor(n);\n\
     \    std::sort(f.begin(), f.end());\n    f.erase(std::unique(f.begin(), f.end()),\
     \ f.end());\n    for (auto p : f) {\n        n -= n / p;\n    }\n    return n;\n\
-    }\n\n\n#line 4 \"test/factor.test.cpp\"\n#include <bits/stdc++.h>\n\nint main()\
-    \ {\n    std::cin.tie(0)->sync_with_stdio(0);\n    int Q;\n    std::cin >> Q;\n\
-    \    for (auto i = 0; i < Q; ++i) {\n        unsigned long long a;\n        std::cin\
-    \ >> a;\n        auto f = factor(a);\n        std::sort(f.begin(), f.end());\n\
-    \        std::cout << f.size() << ' ';\n        std::copy(f.begin(), f.end(),\n\
-    \                  std::ostream_iterator<unsigned long long>(std::cout, \" \"\
-    ));\n        std::cout << '\\n';\n    }\n}\n"
+    }\n\n\n#line 4 \"test/math/factor.test.cpp\"\n#include <bits/stdc++.h>\n\nint\
+    \ main() {\n    std::cin.tie(0)->sync_with_stdio(0);\n    int Q;\n    std::cin\
+    \ >> Q;\n    for (auto i = 0; i < Q; ++i) {\n        unsigned long long a;\n \
+    \       std::cin >> a;\n        auto f = factor(a);\n        std::sort(f.begin(),\
+    \ f.end());\n        std::cout << f.size() << ' ';\n        std::copy(f.begin(),\
+    \ f.end(),\n                  std::ostream_iterator<unsigned long long>(std::cout,\
+    \ \" \"));\n        std::cout << '\\n';\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/factorize\"\n\n#include\
     \ \"math/factor.hpp\"\n#include <bits/stdc++.h>\n\nint main() {\n    std::cin.tie(0)->sync_with_stdio(0);\n\
     \    int Q;\n    std::cin >> Q;\n    for (auto i = 0; i < Q; ++i) {\n        unsigned\
@@ -61,15 +61,15 @@ data:
   dependsOn:
   - math/factor.hpp
   isVerificationFile: true
-  path: test/factor.test.cpp
+  path: test/math/factor.test.cpp
   requiredBy: []
-  timestamp: '2022-12-02 07:43:56+00:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2025-09-16 22:59:29+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: test/factor.test.cpp
+documentation_of: test/math/factor.test.cpp
 layout: document
 redirect_from:
-- /verify/test/factor.test.cpp
-- /verify/test/factor.test.cpp.html
-title: test/factor.test.cpp
+- /verify/test/math/factor.test.cpp
+- /verify/test/math/factor.test.cpp.html
+title: test/math/factor.test.cpp
 ---

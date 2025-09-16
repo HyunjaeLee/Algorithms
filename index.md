@@ -56,7 +56,7 @@ data:
     - icon: ':warning:'
       path: math/dirichlet_series.hpp
       title: math/dirichlet_series.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/factor.hpp
       title: Factor
     - icon: ':warning:'
@@ -86,6 +86,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: segment_tree/segtree_beats.hpp
       title: Segtree Beats
+  - name: sparse_table
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: sparse_table/sparse_table.hpp
+      title: Sparse Table
   - name: splay
     pages:
     - icon: ':warning:'
@@ -108,70 +113,96 @@ data:
       path: wavelet/wavelet_matrix.hpp
       title: wavelet/wavelet_matrix.hpp
   verificationCategories:
-  - name: test
+  - name: test/graph
     pages:
     - icon: ':heavy_check_mark:'
-      path: test/directed_mst.test.cpp
-      title: test/directed_mst.test.cpp
+      path: test/graph/directed_mst.test.cpp
+      title: test/graph/directed_mst.test.cpp
     - icon: ':heavy_check_mark:'
-      path: test/directed_mst_minimum_cost_arborescence.test.cpp
-      title: test/directed_mst_minimum_cost_arborescence.test.cpp
+      path: test/graph/directed_mst_minimum_cost_arborescence.test.cpp
+      title: test/graph/directed_mst_minimum_cost_arborescence.test.cpp
     - icon: ':heavy_check_mark:'
-      path: test/dominator_tree.test.cpp
-      title: test/dominator_tree.test.cpp
+      path: test/graph/dominator_tree.test.cpp
+      title: test/graph/dominator_tree.test.cpp
     - icon: ':heavy_check_mark:'
-      path: test/dynamic_connectivity.test.cpp
-      title: test/dynamic_connectivity.test.cpp
+      path: test/graph/dynamic_connectivity.test.cpp
+      title: test/graph/dynamic_connectivity.test.cpp
     - icon: ':heavy_check_mark:'
-      path: test/factor.test.cpp
-      title: test/factor.test.cpp
+      path: test/graph/offline_dynamic_connectivity.test.cpp
+      title: test/graph/offline_dynamic_connectivity.test.cpp
+  - name: test/heavy_light_decomposition
+    pages:
     - icon: ':heavy_check_mark:'
-      path: test/heavy_light_decomposition_lca.test.cpp
-      title: test/heavy_light_decomposition_lca.test.cpp
+      path: test/heavy_light_decomposition/lca.test.cpp
+      title: test/heavy_light_decomposition/lca.test.cpp
     - icon: ':heavy_check_mark:'
-      path: test/heavy_light_decomposition_vertex_add_path_sum.test.cpp
-      title: test/heavy_light_decomposition_vertex_add_path_sum.test.cpp
+      path: test/heavy_light_decomposition/vertex_add_path_sum.test.cpp
+      title: test/heavy_light_decomposition/vertex_add_path_sum.test.cpp
     - icon: ':heavy_check_mark:'
-      path: test/heavy_light_decomposition_vertex_add_subtree_sum.test.cpp
-      title: test/heavy_light_decomposition_vertex_add_subtree_sum.test.cpp
+      path: test/heavy_light_decomposition/vertex_add_subtree_sum.test.cpp
+      title: test/heavy_light_decomposition/vertex_add_subtree_sum.test.cpp
+  - name: test/io
+    pages:
     - icon: ':heavy_check_mark:'
-      path: test/hilbert_mo_static_range_inversions_query.test.cpp
-      title: test/hilbert_mo_static_range_inversions_query.test.cpp
+      path: test/io/scanner.test.cpp
+      title: test/io/scanner.test.cpp
+  - name: test/lca
+    pages:
     - icon: ':heavy_check_mark:'
-      path: test/lca_tree.test.cpp
-      title: test/lca_tree.test.cpp
+      path: test/lca/lca_tree.test.cpp
+      title: test/lca/lca_tree.test.cpp
     - icon: ':heavy_check_mark:'
-      path: test/lca_tree_jump.test.cpp
-      title: test/lca_tree_jump.test.cpp
+      path: test/lca/lca_tree_jump.test.cpp
+      title: test/lca/lca_tree_jump.test.cpp
     - icon: ':heavy_check_mark:'
-      path: test/offline_dynamic_connectivity.test.cpp
-      title: test/offline_dynamic_connectivity.test.cpp
+      path: test/lca/tarjan_offline_lca.test.cpp
+      title: test/lca/tarjan_offline_lca.test.cpp
+  - name: test/matching
+    pages:
     - icon: ':heavy_check_mark:'
-      path: test/power_tower.test.cpp
-      title: test/power_tower.test.cpp
+      path: test/matching/stable_matching.stress.test.cpp
+      title: test/matching/stable_matching.stress.test.cpp
+  - name: test/math
+    pages:
+    - icon: ':x:'
+      path: test/math/factor.test.cpp
+      title: test/math/factor.test.cpp
     - icon: ':heavy_check_mark:'
-      path: test/scanner.test.cpp
-      title: test/scanner.test.cpp
+      path: test/math/power_tower.test.cpp
+      title: test/math/power_tower.test.cpp
     - icon: ':heavy_check_mark:'
-      path: test/segtree_beats.test.cpp
-      title: test/segtree_beats.test.cpp
+      path: test/math/tetration_mod.test.cpp
+      title: test/math/tetration_mod.test.cpp
+  - name: test/mo
+    pages:
     - icon: ':heavy_check_mark:'
-      path: test/stable_matching.stress.test.cpp
-      title: test/stable_matching.stress.test.cpp
+      path: test/mo/hilbert_mo_static_range_inversions_query.test.cpp
+      title: test/mo/hilbert_mo_static_range_inversions_query.test.cpp
+  - name: test/segment_tree
+    pages:
     - icon: ':heavy_check_mark:'
-      path: test/tarjan_offline_lca.test.cpp
-      title: test/tarjan_offline_lca.test.cpp
+      path: test/segment_tree/segtree_beats.test.cpp
+      title: test/segment_tree/segtree_beats.test.cpp
+  - name: test/sparse_table
+    pages:
     - icon: ':heavy_check_mark:'
-      path: test/tetration_mod.test.cpp
-      title: test/tetration_mod.test.cpp
+      path: test/sparse_table/static_range_sum.test.cpp
+      title: test/sparse_table/static_range_sum.test.cpp
     - icon: ':heavy_check_mark:'
-      path: test/treap_set.test.cpp
-      title: test/treap_set.test.cpp
+      path: test/sparse_table/static_rmq.test.cpp
+      title: test/sparse_table/static_rmq.test.cpp
+  - name: test/treap
+    pages:
     - icon: ':heavy_check_mark:'
-      path: test/wavelet_matrix_range_kth_smallest.test.cpp
-      title: test/wavelet_matrix_range_kth_smallest.test.cpp
+      path: test/treap/treap_set.test.cpp
+      title: test/treap/treap_set.test.cpp
+  - name: test/wavelet
+    pages:
     - icon: ':heavy_check_mark:'
-      path: test/wavelet_matrix_static_range_frequency.test.cpp
-      title: test/wavelet_matrix_static_range_frequency.test.cpp
+      path: test/wavelet/wavelet_matrix_range_kth_smallest.test.cpp
+      title: test/wavelet/wavelet_matrix_range_kth_smallest.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/wavelet/wavelet_matrix_static_range_frequency.test.cpp
+      title: test/wavelet/wavelet_matrix_static_range_frequency.test.cpp
 layout: toppage
 ---

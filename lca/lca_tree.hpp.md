@@ -4,11 +4,11 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/lca_tree.test.cpp
-    title: test/lca_tree.test.cpp
+    path: test/lca/lca_tree.test.cpp
+    title: test/lca/lca_tree.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/lca_tree_jump.test.cpp
-    title: test/lca_tree_jump.test.cpp
+    path: test/lca/lca_tree_jump.test.cpp
+    title: test/lca/lca_tree_jump.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -87,8 +87,8 @@ data:
   timestamp: '2025-09-12 21:56:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/lca_tree.test.cpp
-  - test/lca_tree_jump.test.cpp
+  - test/lca/lca_tree.test.cpp
+  - test/lca/lca_tree_jump.test.cpp
 documentation_of: lca/lca_tree.hpp
 layout: document
 title: LCA Tree

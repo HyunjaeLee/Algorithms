@@ -14,7 +14,7 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/lca
     links:
     - https://judge.yosupo.jp/problem/lca
-  bundledCode: "#line 1 \"test/heavy_light_decomposition_lca.test.cpp\"\n#define PROBLEM\
+  bundledCode: "#line 1 \"test/heavy_light_decomposition/lca.test.cpp\"\n#define PROBLEM\
     \ \"https://judge.yosupo.jp/problem/lca\"\n\n#line 1 \"heavy_light_decomposition/heavy_light_decomposition.hpp\"\
     \n\n\n\n#include <algorithm>\n#include <cassert>\n#include <type_traits>\n#include\
     \ <vector>\n\nstruct heavy_light_decomposition {\n    heavy_light_decomposition(const\
@@ -63,7 +63,7 @@ data:
     \ {\n            top_[v] = (v == graph_[u][0] ? top_[u] : v);\n            dfs_hld(v);\n\
     \        }\n        out_[u] = timer_;\n    }\n    int n_, timer_;\n    std::vector<std::vector<int>>\
     \ graph_;\n    std::vector<int> size_, depth_, parent_, top_, in_, out_;\n};\n\
-    \n\n#line 4 \"test/heavy_light_decomposition_lca.test.cpp\"\n#include <bits/stdc++.h>\n\
+    \n\n#line 4 \"test/heavy_light_decomposition/lca.test.cpp\"\n#include <bits/stdc++.h>\n\
     \nint main() {\n    std::cin.tie(0)->sync_with_stdio(0);\n    int N, Q;\n    std::cin\
     \ >> N >> Q;\n    std::vector<std::vector<int>> adj(N);\n    for (auto i = 1;\
     \ i < N; ++i) {\n        int p;\n        std::cin >> p;\n        adj[p].push_back(i);\n\
@@ -80,15 +80,15 @@ data:
   dependsOn:
   - heavy_light_decomposition/heavy_light_decomposition.hpp
   isVerificationFile: true
-  path: test/heavy_light_decomposition_lca.test.cpp
+  path: test/heavy_light_decomposition/lca.test.cpp
   requiredBy: []
-  timestamp: '2022-09-30 17:14:09+00:00'
+  timestamp: '2025-09-16 22:59:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/heavy_light_decomposition_lca.test.cpp
+documentation_of: test/heavy_light_decomposition/lca.test.cpp
 layout: document
 redirect_from:
-- /verify/test/heavy_light_decomposition_lca.test.cpp
-- /verify/test/heavy_light_decomposition_lca.test.cpp.html
-title: test/heavy_light_decomposition_lca.test.cpp
+- /verify/test/heavy_light_decomposition/lca.test.cpp
+- /verify/test/heavy_light_decomposition/lca.test.cpp.html
+title: test/heavy_light_decomposition/lca.test.cpp
 ---

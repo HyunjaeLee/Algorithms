@@ -4,8 +4,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/segtree_beats.test.cpp
-    title: test/segtree_beats.test.cpp
+    path: test/segment_tree/segtree_beats.test.cpp
+    title: test/segment_tree/segtree_beats.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -136,7 +136,7 @@ data:
   timestamp: '2022-09-17 16:39:21+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/segtree_beats.test.cpp
+  - test/segment_tree/segtree_beats.test.cpp
 documentation_of: segment_tree/segtree_beats.hpp
 layout: document
 title: Segtree Beats

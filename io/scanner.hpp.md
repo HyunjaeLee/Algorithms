@@ -4,8 +4,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/scanner.test.cpp
-    title: test/scanner.test.cpp
+    path: test/io/scanner.test.cpp
+    title: test/io/scanner.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -59,7 +59,7 @@ data:
   timestamp: '2022-09-01 14:58:55+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/scanner.test.cpp
+  - test/io/scanner.test.cpp
 documentation_of: io/scanner.hpp
 layout: document
 redirect_from:

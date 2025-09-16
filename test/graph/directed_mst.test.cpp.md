@@ -14,11 +14,10 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_2_B
+    PROBLEM: https://judge.yosupo.jp/problem/directedmst
     links:
-    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_2_B
-  bundledCode: "#line 1 \"test/directed_mst_minimum_cost_arborescence.test.cpp\"\n\
-    #define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_2_B\"\
+    - https://judge.yosupo.jp/problem/directedmst
+  bundledCode: "#line 1 \"test/graph/directed_mst.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/directedmst\"\
     \n\n#line 1 \"graph/directed_mst.hpp\"\n\n\n\n#line 1 \"disjoint_set/rollback_disjoint_set.hpp\"\
     \n\n\n\n#include <cassert>\n#include <stack>\n#include <utility>\n#include <vector>\n\
     \nstruct rollback_disjoint_set {\n    explicit rollback_disjoint_set(int n) :\
@@ -82,32 +81,33 @@ data:
     \ = merge(v, right_[u]);\n        std::swap(left_[u], right_[u]);\n        return\
     \ u;\n    }\n    int pop(int u) {\n        push(u);\n        return merge(left_[u],\
     \ right_[u]);\n    }\n    const int n_;\n    std::vector<int> from_, to_, left_,\
-    \ right_, heap_;\n    std::vector<Cost> cost_, lazy_;\n};\n\n\n#line 4 \"test/directed_mst_minimum_cost_arborescence.test.cpp\"\
+    \ right_, heap_;\n    std::vector<Cost> cost_, lazy_;\n};\n\n\n#line 4 \"test/graph/directed_mst.test.cpp\"\
     \n#include <bits/stdc++.h>\n\nint main() {\n    std::cin.tie(0)->sync_with_stdio(0);\n\
-    \    int V, E, r;\n    std::cin >> V >> E >> r;\n    directed_mst<int> dmst(V);\n\
-    \    for (auto i = 0; i < E; ++i) {\n        int s, t, w;\n        std::cin >>\
-    \ s >> t >> w;\n        dmst.add_edge(s, t, w);\n    }\n    auto [ans, p] = dmst.run(r);\n\
-    \    std::cout << ans << '\\n';\n}\n"
-  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_2_B\"\
-    \n\n#include \"graph/directed_mst.hpp\"\n#include <bits/stdc++.h>\n\nint main()\
-    \ {\n    std::cin.tie(0)->sync_with_stdio(0);\n    int V, E, r;\n    std::cin\
-    \ >> V >> E >> r;\n    directed_mst<int> dmst(V);\n    for (auto i = 0; i < E;\
-    \ ++i) {\n        int s, t, w;\n        std::cin >> s >> t >> w;\n        dmst.add_edge(s,\
-    \ t, w);\n    }\n    auto [ans, p] = dmst.run(r);\n    std::cout << ans << '\\\
-    n';\n}\n"
+    \    int N, M, S;\n    std::cin >> N >> M >> S;\n    directed_mst<long long> dmst(N);\n\
+    \    for (auto i = 0; i < M; ++i) {\n        int a, b, c;\n        std::cin >>\
+    \ a >> b >> c;\n        dmst.add_edge(a, b, c);\n    }\n    auto [X, parent] =\
+    \ dmst.run(S);\n    parent[S] = S;\n    std::cout << X << '\\n';\n    for (auto\
+    \ p : parent) {\n        std::cout << p << ' ';\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/directedmst\"\n\n#include\
+    \ \"graph/directed_mst.hpp\"\n#include <bits/stdc++.h>\n\nint main() {\n    std::cin.tie(0)->sync_with_stdio(0);\n\
+    \    int N, M, S;\n    std::cin >> N >> M >> S;\n    directed_mst<long long> dmst(N);\n\
+    \    for (auto i = 0; i < M; ++i) {\n        int a, b, c;\n        std::cin >>\
+    \ a >> b >> c;\n        dmst.add_edge(a, b, c);\n    }\n    auto [X, parent] =\
+    \ dmst.run(S);\n    parent[S] = S;\n    std::cout << X << '\\n';\n    for (auto\
+    \ p : parent) {\n        std::cout << p << ' ';\n    }\n}\n"
   dependsOn:
   - graph/directed_mst.hpp
   - disjoint_set/rollback_disjoint_set.hpp
   isVerificationFile: true
-  path: test/directed_mst_minimum_cost_arborescence.test.cpp
+  path: test/graph/directed_mst.test.cpp
   requiredBy: []
-  timestamp: '2022-10-03 12:17:00+00:00'
+  timestamp: '2025-09-16 22:59:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/directed_mst_minimum_cost_arborescence.test.cpp
+documentation_of: test/graph/directed_mst.test.cpp
 layout: document
 redirect_from:
-- /verify/test/directed_mst_minimum_cost_arborescence.test.cpp
-- /verify/test/directed_mst_minimum_cost_arborescence.test.cpp.html
-title: test/directed_mst_minimum_cost_arborescence.test.cpp
+- /verify/test/graph/directed_mst.test.cpp
+- /verify/test/graph/directed_mst.test.cpp.html
+title: test/graph/directed_mst.test.cpp
 ---

@@ -4,8 +4,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/hilbert_mo_static_range_inversions_query.test.cpp
-    title: test/hilbert_mo_static_range_inversions_query.test.cpp
+    path: test/mo/hilbert_mo_static_range_inversions_query.test.cpp
+    title: test/mo/hilbert_mo_static_range_inversions_query.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -79,7 +79,7 @@ data:
   timestamp: '2022-10-01 04:52:28+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/hilbert_mo_static_range_inversions_query.test.cpp
+  - test/mo/hilbert_mo_static_range_inversions_query.test.cpp
 documentation_of: mo/hilbert_mo.hpp
 layout: document
 redirect_from:

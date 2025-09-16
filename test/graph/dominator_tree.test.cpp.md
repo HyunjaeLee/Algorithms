@@ -14,15 +14,15 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/dominatortree
     links:
     - https://judge.yosupo.jp/problem/dominatortree
-  bundledCode: "#line 1 \"test/dominator_tree.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/dominatortree\"\
-    \n\n#line 1 \"graph/dominator_tree.hpp\"\n\n\n\n#include <algorithm>\n#include\
-    \ <cassert>\n#include <numeric>\n#include <vector>\n\nstruct dominator_tree {\n\
-    \    explicit dominator_tree(int n)\n        : n_(n), parent_(n), idom_(n, -1),\
-    \ sdom_(n, -1), dsu_(n), label_(n),\n          graph_(n), rev_graph_(n) {\n  \
-    \      order_.reserve(n);\n        std::iota(dsu_.begin(), dsu_.end(), 0);\n \
-    \       std::iota(label_.begin(), label_.end(), 0);\n    }\n    void add_edge(int\
-    \ from, int to) {\n        assert(0 <= from && from < n_ && 0 <= to && to < n_);\n\
-    \        graph_[from].push_back(to);\n        rev_graph_[to].push_back(from);\n\
+  bundledCode: "#line 1 \"test/graph/dominator_tree.test.cpp\"\n#define PROBLEM \"\
+    https://judge.yosupo.jp/problem/dominatortree\"\n\n#line 1 \"graph/dominator_tree.hpp\"\
+    \n\n\n\n#include <algorithm>\n#include <cassert>\n#include <numeric>\n#include\
+    \ <vector>\n\nstruct dominator_tree {\n    explicit dominator_tree(int n)\n  \
+    \      : n_(n), parent_(n), idom_(n, -1), sdom_(n, -1), dsu_(n), label_(n),\n\
+    \          graph_(n), rev_graph_(n) {\n        order_.reserve(n);\n        std::iota(dsu_.begin(),\
+    \ dsu_.end(), 0);\n        std::iota(label_.begin(), label_.end(), 0);\n    }\n\
+    \    void add_edge(int from, int to) {\n        assert(0 <= from && from < n_\
+    \ && 0 <= to && to < n_);\n        graph_[from].push_back(to);\n        rev_graph_[to].push_back(from);\n\
     \    }\n    void run(int root) {\n        assert(0 <= root && root < n_);\n  \
     \      dfs(root);\n        std::vector<std::vector<int>> bucket(n_);\n       \
     \ std::vector<int> x(n_);\n        for (auto i = static_cast<int>(order_.size())\
@@ -48,8 +48,8 @@ data:
     \ = root;\n    }\n    int eval(int u) {\n        find(u);\n        return label_[u];\n\
     \    }\n    void link(int u, int v) { dsu_[v] = u; }\n    int n_;\n    std::vector<int>\
     \ order_, parent_, idom_, sdom_, dsu_, label_;\n    std::vector<std::vector<int>>\
-    \ graph_, rev_graph_;\n};\n\n\n#line 4 \"test/dominator_tree.test.cpp\"\n#include\
-    \ <bits/stdc++.h>\n\nint main() {\n    std::cin.tie(0)->sync_with_stdio(0);\n\
+    \ graph_, rev_graph_;\n};\n\n\n#line 4 \"test/graph/dominator_tree.test.cpp\"\n\
+    #include <bits/stdc++.h>\n\nint main() {\n    std::cin.tie(0)->sync_with_stdio(0);\n\
     \    int N, M, S;\n    std::cin >> N >> M >> S;\n    dominator_tree dt(N);\n \
     \   for (auto i = 0; i < M; ++i) {\n        int a, b;\n        std::cin >> a >>\
     \ b;\n        dt.add_edge(a, b);\n    }\n    dt.run(S);\n    for (auto i = 0;\
@@ -64,15 +64,15 @@ data:
   dependsOn:
   - graph/dominator_tree.hpp
   isVerificationFile: true
-  path: test/dominator_tree.test.cpp
+  path: test/graph/dominator_tree.test.cpp
   requiredBy: []
-  timestamp: '2022-11-22 05:54:44+00:00'
+  timestamp: '2025-09-16 22:59:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/dominator_tree.test.cpp
+documentation_of: test/graph/dominator_tree.test.cpp
 layout: document
 redirect_from:
-- /verify/test/dominator_tree.test.cpp
-- /verify/test/dominator_tree.test.cpp.html
-title: test/dominator_tree.test.cpp
+- /verify/test/graph/dominator_tree.test.cpp
+- /verify/test/graph/dominator_tree.test.cpp.html
+title: test/graph/dominator_tree.test.cpp
 ---

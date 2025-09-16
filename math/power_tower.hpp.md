@@ -4,11 +4,11 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/power_tower.test.cpp
-    title: test/power_tower.test.cpp
+    path: test/math/power_tower.test.cpp
+    title: test/math/power_tower.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/tetration_mod.test.cpp
-    title: test/tetration_mod.test.cpp
+    path: test/math/tetration_mod.test.cpp
+    title: test/math/tetration_mod.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -63,8 +63,8 @@ data:
   timestamp: '2022-12-02 10:32:05+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/tetration_mod.test.cpp
-  - test/power_tower.test.cpp
+  - test/math/tetration_mod.test.cpp
+  - test/math/power_tower.test.cpp
 documentation_of: math/power_tower.hpp
 layout: document
 title: Power tower

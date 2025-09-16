@@ -14,7 +14,7 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/static_range_inversions_query
     links:
     - https://judge.yosupo.jp/problem/static_range_inversions_query
-  bundledCode: "#line 1 \"test/hilbert_mo_static_range_inversions_query.test.cpp\"\
+  bundledCode: "#line 1 \"test/mo/hilbert_mo_static_range_inversions_query.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_inversions_query\"\
     \n\n#line 1 \"mo/hilbert_mo.hpp\"\n\n\n\n#include <algorithm>\n#include <array>\n\
     #include <cassert>\n#include <vector>\n\nstruct hilbert_mo {\n    hilbert_mo(int\
@@ -45,7 +45,7 @@ data:
     \ 2);\n        auto ans = seg * subsquare_size;\n        auto add = hilbert_order(nx,\
     \ ny, pow - 1, nrot);\n        ans += (seg == 1 || seg == 2) ? add : (subsquare_size\
     \ - add - 1);\n        return ans;\n    }\n    std::vector<query> queries_;\n\
-    \    const int n_, log_;\n};\n\n\n#line 4 \"test/hilbert_mo_static_range_inversions_query.test.cpp\"\
+    \    const int n_, log_;\n};\n\n\n#line 4 \"test/mo/hilbert_mo_static_range_inversions_query.test.cpp\"\
     \n#include <atcoder/fenwicktree>\n#include <bits/stdc++.h>\n\nint main() {\n \
     \   std::cin.tie(0)->sync_with_stdio(0);\n    int N, Q;\n    std::cin >> N >>\
     \ Q;\n    std::vector<int> A(N);\n    for (auto &x : A) {\n        std::cin >>\
@@ -86,15 +86,15 @@ data:
   dependsOn:
   - mo/hilbert_mo.hpp
   isVerificationFile: true
-  path: test/hilbert_mo_static_range_inversions_query.test.cpp
+  path: test/mo/hilbert_mo_static_range_inversions_query.test.cpp
   requiredBy: []
-  timestamp: '2022-10-01 04:52:28+00:00'
+  timestamp: '2025-09-16 22:59:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/hilbert_mo_static_range_inversions_query.test.cpp
+documentation_of: test/mo/hilbert_mo_static_range_inversions_query.test.cpp
 layout: document
 redirect_from:
-- /verify/test/hilbert_mo_static_range_inversions_query.test.cpp
-- /verify/test/hilbert_mo_static_range_inversions_query.test.cpp.html
-title: test/hilbert_mo_static_range_inversions_query.test.cpp
+- /verify/test/mo/hilbert_mo_static_range_inversions_query.test.cpp
+- /verify/test/mo/hilbert_mo_static_range_inversions_query.test.cpp.html
+title: test/mo/hilbert_mo_static_range_inversions_query.test.cpp
 ---

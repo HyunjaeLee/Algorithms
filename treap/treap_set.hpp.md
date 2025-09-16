@@ -4,8 +4,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/treap_set.test.cpp
-    title: test/treap_set.test.cpp
+    path: test/treap/treap_set.test.cpp
+    title: test/treap/treap_set.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -144,7 +144,7 @@ data:
   timestamp: '2022-08-31 18:46:27+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/treap_set.test.cpp
+  - test/treap/treap_set.test.cpp
 documentation_of: treap/treap_set.hpp
 layout: document
 redirect_from:

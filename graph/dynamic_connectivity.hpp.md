@@ -10,8 +10,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/dynamic_connectivity.test.cpp
-    title: test/dynamic_connectivity.test.cpp
+    path: test/graph/dynamic_connectivity.test.cpp
+    title: test/graph/dynamic_connectivity.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -303,7 +303,7 @@ data:
   timestamp: '2022-09-15 06:56:54+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/dynamic_connectivity.test.cpp
+  - test/graph/dynamic_connectivity.test.cpp
 documentation_of: graph/dynamic_connectivity.hpp
 layout: document
 redirect_from:

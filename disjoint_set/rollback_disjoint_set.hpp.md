@@ -7,14 +7,14 @@ data:
     title: graph/directed_mst.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/directed_mst.test.cpp
-    title: test/directed_mst.test.cpp
+    path: test/graph/directed_mst.test.cpp
+    title: test/graph/directed_mst.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/directed_mst_minimum_cost_arborescence.test.cpp
-    title: test/directed_mst_minimum_cost_arborescence.test.cpp
+    path: test/graph/directed_mst_minimum_cost_arborescence.test.cpp
+    title: test/graph/directed_mst_minimum_cost_arborescence.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/offline_dynamic_connectivity.test.cpp
-    title: test/offline_dynamic_connectivity.test.cpp
+    path: test/graph/offline_dynamic_connectivity.test.cpp
+    title: test/graph/offline_dynamic_connectivity.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -68,9 +68,9 @@ data:
   timestamp: '2022-09-30 17:14:09+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/directed_mst.test.cpp
-  - test/offline_dynamic_connectivity.test.cpp
-  - test/directed_mst_minimum_cost_arborescence.test.cpp
+  - test/graph/directed_mst.test.cpp
+  - test/graph/offline_dynamic_connectivity.test.cpp
+  - test/graph/directed_mst_minimum_cost_arborescence.test.cpp
 documentation_of: disjoint_set/rollback_disjoint_set.hpp
 layout: document
 redirect_from:

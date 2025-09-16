@@ -13,11 +13,11 @@ data:
     title: treap/lazy_implicit_treap.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/dynamic_connectivity.test.cpp
-    title: test/dynamic_connectivity.test.cpp
+    path: test/graph/dynamic_connectivity.test.cpp
+    title: test/graph/dynamic_connectivity.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/treap_set.test.cpp
-    title: test/treap_set.test.cpp
+    path: test/treap/treap_set.test.cpp
+    title: test/treap/treap_set.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -53,8 +53,8 @@ data:
   timestamp: '2022-08-29 16:56:11+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/dynamic_connectivity.test.cpp
-  - test/treap_set.test.cpp
+  - test/graph/dynamic_connectivity.test.cpp
+  - test/treap/treap_set.test.cpp
 documentation_of: random/splitmix64.hpp
 layout: document
 title: splitmix64

@@ -4,8 +4,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/stable_matching.stress.test.cpp
-    title: test/stable_matching.stress.test.cpp
+    path: test/matching/stable_matching.stress.test.cpp
+    title: test/matching/stable_matching.stress.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -50,7 +50,7 @@ data:
   timestamp: '2022-12-03 14:13:47+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/stable_matching.stress.test.cpp
+  - test/matching/stable_matching.stress.test.cpp
 documentation_of: matching/stable_matching.hpp
 layout: document
 title: Stable matching

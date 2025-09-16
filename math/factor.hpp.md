@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/factor.test.cpp
-    title: test/factor.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: test/math/factor.test.cpp
+    title: test/math/factor.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 1 \"math/factor.hpp\"\n\n\n\n#include <algorithm>\n#include\
@@ -76,9 +76,9 @@ data:
   path: math/factor.hpp
   requiredBy: []
   timestamp: '2022-12-02 07:43:56+00:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - test/factor.test.cpp
+  - test/math/factor.test.cpp
 documentation_of: math/factor.hpp
 layout: document
 title: Factor

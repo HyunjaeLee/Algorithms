@@ -7,11 +7,11 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/directed_mst.test.cpp
-    title: test/directed_mst.test.cpp
+    path: test/graph/directed_mst.test.cpp
+    title: test/graph/directed_mst.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/directed_mst_minimum_cost_arborescence.test.cpp
-    title: test/directed_mst_minimum_cost_arborescence.test.cpp
+    path: test/graph/directed_mst_minimum_cost_arborescence.test.cpp
+    title: test/graph/directed_mst_minimum_cost_arborescence.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -134,8 +134,8 @@ data:
   timestamp: '2022-10-03 12:17:00+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/directed_mst.test.cpp
-  - test/directed_mst_minimum_cost_arborescence.test.cpp
+  - test/graph/directed_mst.test.cpp
+  - test/graph/directed_mst_minimum_cost_arborescence.test.cpp
 documentation_of: graph/directed_mst.hpp
 layout: document
 redirect_from:

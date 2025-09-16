@@ -4,11 +4,11 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/wavelet_matrix_range_kth_smallest.test.cpp
-    title: test/wavelet_matrix_range_kth_smallest.test.cpp
+    path: test/wavelet/wavelet_matrix_range_kth_smallest.test.cpp
+    title: test/wavelet/wavelet_matrix_range_kth_smallest.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/wavelet_matrix_static_range_frequency.test.cpp
-    title: test/wavelet_matrix_static_range_frequency.test.cpp
+    path: test/wavelet/wavelet_matrix_static_range_frequency.test.cpp
+    title: test/wavelet/wavelet_matrix_static_range_frequency.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -129,8 +129,8 @@ data:
   timestamp: '2022-09-08 12:22:22+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/wavelet_matrix_range_kth_smallest.test.cpp
-  - test/wavelet_matrix_static_range_frequency.test.cpp
+  - test/wavelet/wavelet_matrix_range_kth_smallest.test.cpp
+  - test/wavelet/wavelet_matrix_static_range_frequency.test.cpp
 documentation_of: wavelet/wavelet_matrix.hpp
 layout: document
 redirect_from:

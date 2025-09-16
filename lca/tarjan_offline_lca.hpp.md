@@ -4,8 +4,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/tarjan_offline_lca.test.cpp
-    title: test/tarjan_offline_lca.test.cpp
+    path: test/lca/tarjan_offline_lca.test.cpp
+    title: test/lca/tarjan_offline_lca.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -70,7 +70,7 @@ data:
   timestamp: '2022-09-04 17:18:59+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/tarjan_offline_lca.test.cpp
+  - test/lca/tarjan_offline_lca.test.cpp
 documentation_of: lca/tarjan_offline_lca.hpp
 layout: document
 redirect_from:

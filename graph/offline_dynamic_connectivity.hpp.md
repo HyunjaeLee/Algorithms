@@ -4,8 +4,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/offline_dynamic_connectivity.test.cpp
-    title: test/offline_dynamic_connectivity.test.cpp
+    path: test/graph/offline_dynamic_connectivity.test.cpp
+    title: test/graph/offline_dynamic_connectivity.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -78,7 +78,7 @@ data:
   timestamp: '2022-09-09 09:09:24+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/offline_dynamic_connectivity.test.cpp
+  - test/graph/offline_dynamic_connectivity.test.cpp
 documentation_of: graph/offline_dynamic_connectivity.hpp
 layout: document
 redirect_from:

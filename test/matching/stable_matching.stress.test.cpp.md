@@ -14,12 +14,12 @@ data:
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A
     links:
     - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A
-  bundledCode: "#line 1 \"test/stable_matching.stress.test.cpp\"\n#define PROBLEM\
-    \ \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A\"\n\n#line\
-    \ 1 \"matching/stable_matching.hpp\"\n\n\n\n#include <numeric>\n#include <vector>\n\
-    \nstd::vector<int> stable_matching(const std::vector<std::vector<int>> &a,\n \
-    \                                const std::vector<std::vector<int>> &b) {\n \
-    \   const auto n = static_cast<int>(a.size());\n    std::vector<std::vector<int>>\
+  bundledCode: "#line 1 \"test/matching/stable_matching.stress.test.cpp\"\n#define\
+    \ PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A\"\
+    \n\n#line 1 \"matching/stable_matching.hpp\"\n\n\n\n#include <numeric>\n#include\
+    \ <vector>\n\nstd::vector<int> stable_matching(const std::vector<std::vector<int>>\
+    \ &a,\n                                 const std::vector<std::vector<int>> &b)\
+    \ {\n    const auto n = static_cast<int>(a.size());\n    std::vector<std::vector<int>>\
     \ b_priority(n, std::vector<int>(n));\n    for (auto i = 0; i < n; ++i) {\n  \
     \      for (auto j = 0; j < n; ++j) {\n            b_priority[i][b[i][j]] = j;\n\
     \        }\n    }\n    std::vector<int> a_propose(n), b_match(n, -1), unmatched(n);\n\
@@ -31,8 +31,8 @@ data:
     \            b_match[r] = l;\n        } else {\n            ++a_propose[l];\n\
     \            unmatched.push_back(l);\n        }\n    }\n    std::vector<int> a_match(n);\n\
     \    for (auto i = 0; i < n; ++i) {\n        a_match[b_match[i]] = i;\n    }\n\
-    \    return a_match;\n}\n\n\n#line 4 \"test/stable_matching.stress.test.cpp\"\n\
-    #include <bits/stdc++.h>\n\nvoid assert_unique(std::vector<int> v, int n) {\n\
+    \    return a_match;\n}\n\n\n#line 4 \"test/matching/stable_matching.stress.test.cpp\"\
+    \n#include <bits/stdc++.h>\n\nvoid assert_unique(std::vector<int> v, int n) {\n\
     \    assert(static_cast<int>(v.size()) == n);\n    std::sort(v.begin(), v.end());\n\
     \    for (auto i = 0; i < n; ++i) {\n        assert(v[i] == i);\n    }\n}\n\n\
     void test() {\n    for (auto n = 1; n <= 100; ++n) {\n        std::vector<std::vector<int>>\
@@ -81,15 +81,15 @@ data:
   dependsOn:
   - matching/stable_matching.hpp
   isVerificationFile: true
-  path: test/stable_matching.stress.test.cpp
+  path: test/matching/stable_matching.stress.test.cpp
   requiredBy: []
-  timestamp: '2022-12-03 15:18:26+00:00'
+  timestamp: '2025-09-16 22:59:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/stable_matching.stress.test.cpp
+documentation_of: test/matching/stable_matching.stress.test.cpp
 layout: document
 redirect_from:
-- /verify/test/stable_matching.stress.test.cpp
-- /verify/test/stable_matching.stress.test.cpp.html
-title: test/stable_matching.stress.test.cpp
+- /verify/test/matching/stable_matching.stress.test.cpp
+- /verify/test/matching/stable_matching.stress.test.cpp.html
+title: test/matching/stable_matching.stress.test.cpp
 ---

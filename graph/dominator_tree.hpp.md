@@ -4,8 +4,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/dominator_tree.test.cpp
-    title: test/dominator_tree.test.cpp
+    path: test/graph/dominator_tree.test.cpp
+    title: test/graph/dominator_tree.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -86,7 +86,7 @@ data:
   timestamp: '2022-11-22 05:54:44+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/dominator_tree.test.cpp
+  - test/graph/dominator_tree.test.cpp
 documentation_of: graph/dominator_tree.hpp
 layout: document
 redirect_from:
