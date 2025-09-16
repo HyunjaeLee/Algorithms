@@ -56,7 +56,7 @@ data:
     - icon: ':warning:'
       path: math/dirichlet_series.hpp
       title: math/dirichlet_series.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/factor.hpp
       title: Factor
     - icon: ':warning:'
@@ -164,7 +164,7 @@ data:
       title: test/matching/stable_matching.stress.test.cpp
   - name: test/math
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/math/factor.test.cpp
       title: test/math/factor.test.cpp
     - icon: ':heavy_check_mark:'
