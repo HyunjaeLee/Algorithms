@@ -8,8 +8,8 @@
 unsigned long long modmul(unsigned long long a, unsigned long long b,
                           unsigned long long M) {
     long long ret =
-        a * b - M * static_cast<unsigned long long>(1.L / M * a * b);
-    return ret + M * (ret < 0) - M * (ret >= static_cast<long long>(M));
+        a * b - M * (unsigned long long)(1.L / (long double)M * (long double)a * (long double)b);
+    return ret + M * (ret < 0) - M * (ret >= (long long)(M));
 }
 
 unsigned long long modpow(unsigned long long b, unsigned long long e,
@@ -42,8 +42,8 @@ bool is_prime(unsigned long long n) {
 }
 
 unsigned long long pollard(unsigned long long n) {
-    auto f = [n](unsigned long long x) { return modmul(x, x, n) + 1; };
     unsigned long long x = 0, y = 0, t = 30, prd = 2, i = 1, q;
+    auto f = [&](unsigned long long a) { return modmul(a, a, n) + i; };
     while (t++ % 40 || std::gcd(prd, n) == 1) {
         if (x == y) {
             x = ++i, y = f(x);
@@ -63,7 +63,7 @@ std::vector<unsigned long long> factor(unsigned long long n) {
     if (is_prime(n)) {
         return {n};
     }
-    unsigned long long x = pollard(n);
+    auto x = pollard(n);
     auto l = factor(x), r = factor(n / x);
     l.insert(l.end(), r.begin(), r.end());
     return l;
