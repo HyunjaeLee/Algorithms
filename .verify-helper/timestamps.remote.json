@@ -12,6 +12,7 @@
 "test/lca/lca_tree_jump.test.cpp": "2025-09-16 22:59:29 +0900",
 "test/lca/tarjan_offline_lca.test.cpp": "2025-09-16 22:59:29 +0900",
 "test/matching/stable_matching.stress.test.cpp": "2025-09-16 22:59:29 +0900",
+"test/math/factor.test.cpp": "2025-09-17 00:10:14 +0900",
 "test/math/power_tower.test.cpp": "2025-09-16 22:59:29 +0900",
 "test/math/tetration_mod.test.cpp": "2025-09-16 22:59:29 +0900",
 "test/mo/hilbert_mo_static_range_inversions_query.test.cpp": "2025-09-16 22:59:29 +0900",
