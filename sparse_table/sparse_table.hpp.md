@@ -153,5 +153,5 @@ Common idempotent operations include:
 **Time Complexity**
 - $O(1)$
 
-**References**
+## References
 - [https://cp-algorithms.com/data_structures/sparse-table.html](https://cp-algorithms.com/data_structures/sparse-table.html)
