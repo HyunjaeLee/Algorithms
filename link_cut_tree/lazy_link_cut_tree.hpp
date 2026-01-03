@@ -1,15 +1,16 @@
-#ifndef LINK_CUT_TREE_HPP
-#define LINK_CUT_TREE_HPP
+#ifndef LAZY_LINK_CUT_TREE_HPP
+#define LAZY_LINK_CUT_TREE_HPP
 
 #include <cassert>
 #include <type_traits>
 #include <utility>
 #include <vector>
 
-template <typename S, auto op, auto e, auto toggle> struct link_cut_tree {
+template <typename S, auto op, auto e, typename F, auto mapping, auto composition, auto id>
+struct link_cut_tree {
     link_cut_tree(int n)
         : n_(n), left_(n, -1), right_(n, -1), parent_(n, -1), data_(n, e()), sum_(n, e()),
-          reversed_(n, false) {}
+          lazy_(n, id()), reversed_(n, false) {}
     int access(int u) {
         assert(0 <= u && u < n_);
         auto result = -1;
@@ -65,6 +66,13 @@ template <typename S, auto op, auto e, auto toggle> struct link_cut_tree {
         access(u);
         return data_[u];
     }
+    void apply(int u, int v, F f) {
+        assert(0 <= u && u < n_ && 0 <= v && v < n_);
+        make_root(u);
+        access(v);
+        all_apply(v, f);
+        push(v);
+    }
     S prod(int u, int v) {
         assert(0 <= u && u < n_ && 0 <= v && v < n_);
         make_root(u);
@@ -94,15 +102,24 @@ private:
             }
         }
     }
+    void all_apply(int u, F f) {
+        if (~u) {
+            data_[u] = mapping(f, data_[u]);
+            sum_[u] = mapping(f, sum_[u]);
+            lazy_[u] = composition(f, lazy_[u]);
+        }
+    }
     void reverse(int u) {
         if (~u) {
             std::swap(left_[u], right_[u]);
             reversed_[u] = !reversed_[u];
-            sum_[u] = toggle(sum_[u]);
         }
     }
     void push(int u) {
         if (~u) {
+            all_apply(left_[u], lazy_[u]);
+            all_apply(right_[u], lazy_[u]);
+            lazy_[u] = id();
             if (reversed_[u]) {
                 reverse(left_[u]);
                 reverse(right_[u]);
@@ -190,7 +207,8 @@ private:
     int n_;
     std::vector<int> left_, right_, parent_;
     std::vector<S> data_, sum_;
+    std::vector<F> lazy_;
     std::vector<char> reversed_;
 };
 
-#endif // LINK_CUT_TREE_HPP
+#endif // LAZY_LINK_CUT_TREE_HPP

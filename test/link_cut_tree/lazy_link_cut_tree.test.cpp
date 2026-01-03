@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/dynamic_tree_vertex_add_path_sum"
 
-#include "link_cut_tree/link_cut_tree.hpp"
+#include "link_cut_tree/lazy_link_cut_tree.hpp"
 #include <bits/stdc++.h>
 
 int main() {
@@ -11,8 +11,10 @@ int main() {
     std::copy_n(std::istream_iterator<long long>(std::cin), N, std::begin(A));
     auto op = [](long long a, long long b) -> long long { return a + b; };
     auto e = []() -> long long { return 0LL; };
-    auto toggle = [](auto x){ return x; };
-    link_cut_tree<long long, op, e, toggle> lct(N);
+    auto mapping = [](long long f, long long x) -> long long { return f + x; };
+    auto composition = [](long long f, long long g) -> long long { return f + g; };
+    auto id = []() -> long long { return 0LL; };
+    link_cut_tree<long long, op, e, long long, mapping, composition, id> lct(N);
     for (auto i = 0; i < N; ++i) {
         lct.set(i, A[i]);
     }
