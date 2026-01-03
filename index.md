@@ -6,8 +6,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: disjoint_set/rollback_disjoint_set.hpp
       title: disjoint_set/rollback_disjoint_set.hpp
+  - name: dp
+    pages:
+    - icon: ':warning:'
+      path: dp/rerooting.hpp
+      title: dp/rerooting.hpp
   - name: graph
     pages:
+    - icon: ':warning:'
+      path: graph/csr_graph.hpp
+      title: graph/csr_graph.hpp
     - icon: ':heavy_check_mark:'
       path: graph/directed_mst.hpp
       title: graph/directed_mst.hpp
@@ -40,7 +48,7 @@ data:
       title: lca/tarjan_offline_lca.hpp
   - name: link_cut_tree
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: link_cut_tree/link_cut_tree.hpp
       title: link_cut_tree/link_cut_tree.hpp
   - name: matching
@@ -96,6 +104,11 @@ data:
     - icon: ':warning:'
       path: splay/splay_set.hpp
       title: splay/splay_set.hpp
+  - name: test/dp
+    pages:
+    - icon: ':warning:'
+      path: test/dp/rerooting.cpp
+      title: test/dp/rerooting.cpp
   - name: treap
     pages:
     - icon: ':warning:'
@@ -157,6 +170,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/lca/tarjan_offline_lca.test.cpp
       title: test/lca/tarjan_offline_lca.test.cpp
+  - name: test/link_cut_tree
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/link_cut_tree/link_cut_tree.test.cpp
+      title: test/link_cut_tree/link_cut_tree.test.cpp
   - name: test/matching
     pages:
     - icon: ':heavy_check_mark:'

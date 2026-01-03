@@ -87,8 +87,8 @@ data:
   timestamp: '2025-09-12 21:56:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/lca/lca_tree.test.cpp
   - test/lca/lca_tree_jump.test.cpp
+  - test/lca/lca_tree.test.cpp
 documentation_of: lca/lca_tree.hpp
 layout: document
 title: LCA Tree
