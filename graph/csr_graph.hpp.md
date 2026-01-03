@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: test/dp/rerooting.cpp
-    title: test/dp/rerooting.cpp
-  _extendedVerifiedWith: []
+  _extendedRequiredBy: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/dp/rerooting.test.cpp
+    title: test/dp/rerooting.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"graph/csr_graph.hpp\"\n\n\n\n#include <cassert>\n#include\
@@ -86,11 +86,11 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: graph/csr_graph.hpp
-  requiredBy:
-  - test/dp/rerooting.cpp
+  requiredBy: []
   timestamp: '2026-01-04 01:20:52+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/dp/rerooting.test.cpp
 documentation_of: graph/csr_graph.hpp
 layout: document
 redirect_from:

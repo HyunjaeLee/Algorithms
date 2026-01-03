@@ -8,12 +8,12 @@ data:
       title: disjoint_set/rollback_disjoint_set.hpp
   - name: dp
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: dp/rerooting.hpp
       title: dp/rerooting.hpp
   - name: graph
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: graph/csr_graph.hpp
       title: graph/csr_graph.hpp
     - icon: ':heavy_check_mark:'
@@ -104,11 +104,6 @@ data:
     - icon: ':warning:'
       path: splay/splay_set.hpp
       title: splay/splay_set.hpp
-  - name: test/dp
-    pages:
-    - icon: ':warning:'
-      path: test/dp/rerooting.cpp
-      title: test/dp/rerooting.cpp
   - name: treap
     pages:
     - icon: ':warning:'
@@ -126,6 +121,11 @@ data:
       path: wavelet/wavelet_matrix.hpp
       title: wavelet/wavelet_matrix.hpp
   verificationCategories:
+  - name: test/dp
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/dp/rerooting.test.cpp
+      title: test/dp/rerooting.test.cpp
   - name: test/graph
     pages:
     - icon: ':heavy_check_mark:'
