@@ -1,4 +1,4 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/static_range_inversions_query"
+#define PROBLEM "https://judge.yosupo.jp/problem/tree_path_composite_sum"
 
 #include "dp/rerooting.hpp"
 #include "graph/csr_graph.hpp"

@@ -1,6 +1,7 @@
 #ifndef REROOTING_HPP
 #define REROOTING_HPP
 
+#include <ranges>
 #include <vector>
 
 auto rerooting(const auto &g,   // Graph
