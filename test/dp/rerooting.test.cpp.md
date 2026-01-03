@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: dp/rerooting.hpp
-    title: dp/rerooting.hpp
+    title: Rerooting
   - icon: ':heavy_check_mark:'
     path: graph/csr_graph.hpp
     title: graph/csr_graph.hpp

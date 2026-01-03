@@ -81,8 +81,10 @@ data:
   - test/dp/rerooting.test.cpp
 documentation_of: dp/rerooting.hpp
 layout: document
-redirect_from:
-- /library/dp/rerooting.hpp
-- /library/dp/rerooting.hpp.html
-title: dp/rerooting.hpp
+title: Rerooting
 ---
+### Related Problems
++ [Tree Median](https://www.acmicpc.net/problem/7812)
++ [City Attractions](https://www.acmicpc.net/problem/14875)
++ [Tree Path Composite Sum](https://judge.yosupo.jp/problem/tree_path_composite_sum)
++ [Choosing Capital for Treeland](https://codeforces.com/contest/219/problem/D)

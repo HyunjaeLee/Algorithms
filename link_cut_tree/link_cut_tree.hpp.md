@@ -4,6 +4,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/link_cut_tree/dynamic_tree_vertex_set_path_composite.test.cpp
+    title: test/link_cut_tree/dynamic_tree_vertex_set_path_composite.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/link_cut_tree/link_cut_tree.test.cpp
     title: test/link_cut_tree/link_cut_tree.test.cpp
   _isVerificationFailed: false
@@ -13,49 +16,43 @@ data:
     links: []
   bundledCode: "#line 1 \"link_cut_tree/link_cut_tree.hpp\"\n\n\n\n#include <cassert>\n\
     #include <type_traits>\n#include <utility>\n#include <vector>\n\ntemplate <typename\
-    \ S, auto op, auto e, typename F, auto mapping, auto composition, auto id>\nstruct\
-    \ link_cut_tree {\n    link_cut_tree(int n)\n        : n_(n), left_(n, -1), right_(n,\
-    \ -1), parent_(n, -1), data_(n, e()), sum_(n, e()),\n          lazy_(n, id()),\
-    \ reversed_(n, false) {}\n    int access(int u) {\n        assert(0 <= u && u\
-    \ < n_);\n        auto result = -1;\n        for (auto cur = u; ~cur; cur = parent_[cur])\
-    \ {\n            splay(cur);\n            right_[cur] = result;\n            update(cur);\n\
-    \            result = cur;\n        }\n        splay(u);\n        return result;\n\
-    \    }\n    void make_root(int u) {\n        assert(0 <= u && u < n_);\n     \
-    \   access(u);\n        reverse(u);\n        push(u);\n    }\n    void link(int\
-    \ u, int p) {\n        assert(0 <= u && u < n_ && 0 <= p && p < n_);\n       \
-    \ make_root(u);\n        access(p);\n        parent_[u] = p;\n        right_[p]\
-    \ = u;\n        update(p);\n    }\n    void cut(int u) {\n        assert(0 <=\
-    \ u && u < n_);\n        access(u);\n        auto p = left_[u];\n        left_[u]\
-    \ = -1;\n        update(u);\n        parent_[p] = -1;\n    }\n    void cut(int\
-    \ u, int v) {\n        assert(0 <= u && u < n_ && 0 <= v && v < n_);\n       \
-    \ make_root(u);\n        cut(v);\n    }\n    int lca(int u, int v) {\n       \
-    \ assert(0 <= u && u < n_ && 0 <= v && v < n_);\n        access(u);\n        return\
-    \ access(v);\n    }\n    void set(int u, S x) {\n        assert(0 <= u && u <\
-    \ n_);\n        access(u);\n        data_[u] = x;\n        update(u);\n    }\n\
-    \    S get(int u) {\n        assert(0 <= u && u < n_);\n        access(u);\n \
-    \       return data_[u];\n    }\n    void apply(int u, int v, F f) {\n       \
-    \ assert(0 <= u && u < n_ && 0 <= v && v < n_);\n        make_root(u);\n     \
-    \   access(v);\n        all_apply(v, f);\n        push(v);\n    }\n    S prod(int\
-    \ u, int v) {\n        assert(0 <= u && u < n_ && 0 <= v && v < n_);\n       \
-    \ make_root(u);\n        access(v);\n        return sum_[v];\n    }\n    bool\
-    \ connected(int u, int v) {\n        assert(0 <= u && u < n_ && 0 <= v && v <\
-    \ n_);\n        access(u);\n        access(v);\n        return u == v || ~parent_[u];\n\
-    \    }\n\nprivate:\n    bool is_root(int u) const {\n        auto p = parent_[u];\n\
-    \        return !~p || (left_[p] != u && right_[p] != u);\n    }\n    void update(int\
-    \ u) {\n        if (~u) {\n            sum_[u] = data_[u];\n            if (auto\
-    \ v = left_[u]; ~v) {\n                sum_[u] = op(sum_[v], sum_[u]);\n     \
-    \       }\n            if (auto v = right_[u]; ~v) {\n                sum_[u]\
-    \ = op(sum_[u], sum_[v]);\n            }\n        }\n    }\n    void all_apply(int\
-    \ u, F f) {\n        if (~u) {\n            data_[u] = mapping(f, data_[u]);\n\
-    \            sum_[u] = mapping(f, sum_[u]);\n            lazy_[u] = composition(f,\
-    \ lazy_[u]);\n        }\n    }\n    void reverse(int u) {\n        if (~u) {\n\
-    \            std::swap(left_[u], right_[u]);\n            reversed_[u] = !reversed_[u];\n\
-    \        }\n    }\n    void push(int u) {\n        if (~u) {\n            all_apply(left_[u],\
-    \ lazy_[u]);\n            all_apply(right_[u], lazy_[u]);\n            lazy_[u]\
-    \ = id();\n            if (reversed_[u]) {\n                reverse(left_[u]);\n\
-    \                reverse(right_[u]);\n                reversed_[u] = false;\n\
-    \            }\n        }\n    }\n    void rotate_right(int u) {\n        auto\
-    \ p = parent_[u];\n        auto g = parent_[p];\n        if (left_[p] = right_[u];\
+    \ S, auto op, auto e, auto toggle> struct link_cut_tree {\n    link_cut_tree(int\
+    \ n)\n        : n_(n), left_(n, -1), right_(n, -1), parent_(n, -1), data_(n, e()),\
+    \ sum_(n, e()),\n          reversed_(n, false) {}\n    int access(int u) {\n \
+    \       assert(0 <= u && u < n_);\n        auto result = -1;\n        for (auto\
+    \ cur = u; ~cur; cur = parent_[cur]) {\n            splay(cur);\n            right_[cur]\
+    \ = result;\n            update(cur);\n            result = cur;\n        }\n\
+    \        splay(u);\n        return result;\n    }\n    void make_root(int u) {\n\
+    \        assert(0 <= u && u < n_);\n        access(u);\n        reverse(u);\n\
+    \        push(u);\n    }\n    void link(int u, int p) {\n        assert(0 <= u\
+    \ && u < n_ && 0 <= p && p < n_);\n        make_root(u);\n        access(p);\n\
+    \        parent_[u] = p;\n        right_[p] = u;\n        update(p);\n    }\n\
+    \    void cut(int u) {\n        assert(0 <= u && u < n_);\n        access(u);\n\
+    \        auto p = left_[u];\n        left_[u] = -1;\n        update(u);\n    \
+    \    parent_[p] = -1;\n    }\n    void cut(int u, int v) {\n        assert(0 <=\
+    \ u && u < n_ && 0 <= v && v < n_);\n        make_root(u);\n        cut(v);\n\
+    \    }\n    int lca(int u, int v) {\n        assert(0 <= u && u < n_ && 0 <= v\
+    \ && v < n_);\n        access(u);\n        return access(v);\n    }\n    void\
+    \ set(int u, S x) {\n        assert(0 <= u && u < n_);\n        access(u);\n \
+    \       data_[u] = x;\n        update(u);\n    }\n    S get(int u) {\n       \
+    \ assert(0 <= u && u < n_);\n        access(u);\n        return data_[u];\n  \
+    \  }\n    S prod(int u, int v) {\n        assert(0 <= u && u < n_ && 0 <= v &&\
+    \ v < n_);\n        make_root(u);\n        access(v);\n        return sum_[v];\n\
+    \    }\n    bool connected(int u, int v) {\n        assert(0 <= u && u < n_ &&\
+    \ 0 <= v && v < n_);\n        access(u);\n        access(v);\n        return u\
+    \ == v || ~parent_[u];\n    }\n\nprivate:\n    bool is_root(int u) const {\n \
+    \       auto p = parent_[u];\n        return !~p || (left_[p] != u && right_[p]\
+    \ != u);\n    }\n    void update(int u) {\n        if (~u) {\n            sum_[u]\
+    \ = data_[u];\n            if (auto v = left_[u]; ~v) {\n                sum_[u]\
+    \ = op(sum_[v], sum_[u]);\n            }\n            if (auto v = right_[u];\
+    \ ~v) {\n                sum_[u] = op(sum_[u], sum_[v]);\n            }\n    \
+    \    }\n    }\n    void reverse(int u) {\n        if (~u) {\n            std::swap(left_[u],\
+    \ right_[u]);\n            reversed_[u] = !reversed_[u];\n            sum_[u]\
+    \ = toggle(sum_[u]);\n        }\n    }\n    void push(int u) {\n        if (~u)\
+    \ {\n            if (reversed_[u]) {\n                reverse(left_[u]);\n   \
+    \             reverse(right_[u]);\n                reversed_[u] = false;\n   \
+    \         }\n        }\n    }\n    void rotate_right(int u) {\n        auto p\
+    \ = parent_[u];\n        auto g = parent_[p];\n        if (left_[p] = right_[u];\
     \ ~left_[p]) {\n            parent_[right_[u]] = p;\n        }\n        right_[u]\
     \ = p;\n        parent_[p] = u;\n        update(p);\n        update(u);\n    \
     \    if (parent_[u] = g; ~parent_[u]) {\n            if (left_[g] == p) {\n  \
@@ -83,53 +80,46 @@ data:
     \                   rotate_right(u);\n                        rotate_left(u);\n\
     \                    }\n                }\n            }\n        }\n    }\n \
     \   int n_;\n    std::vector<int> left_, right_, parent_;\n    std::vector<S>\
-    \ data_, sum_;\n    std::vector<F> lazy_;\n    std::vector<char> reversed_;\n\
-    };\n\n\n"
+    \ data_, sum_;\n    std::vector<char> reversed_;\n};\n\n\n"
   code: "#ifndef LINK_CUT_TREE_HPP\n#define LINK_CUT_TREE_HPP\n\n#include <cassert>\n\
     #include <type_traits>\n#include <utility>\n#include <vector>\n\ntemplate <typename\
-    \ S, auto op, auto e, typename F, auto mapping, auto composition, auto id>\nstruct\
-    \ link_cut_tree {\n    link_cut_tree(int n)\n        : n_(n), left_(n, -1), right_(n,\
-    \ -1), parent_(n, -1), data_(n, e()), sum_(n, e()),\n          lazy_(n, id()),\
-    \ reversed_(n, false) {}\n    int access(int u) {\n        assert(0 <= u && u\
-    \ < n_);\n        auto result = -1;\n        for (auto cur = u; ~cur; cur = parent_[cur])\
-    \ {\n            splay(cur);\n            right_[cur] = result;\n            update(cur);\n\
-    \            result = cur;\n        }\n        splay(u);\n        return result;\n\
-    \    }\n    void make_root(int u) {\n        assert(0 <= u && u < n_);\n     \
-    \   access(u);\n        reverse(u);\n        push(u);\n    }\n    void link(int\
-    \ u, int p) {\n        assert(0 <= u && u < n_ && 0 <= p && p < n_);\n       \
-    \ make_root(u);\n        access(p);\n        parent_[u] = p;\n        right_[p]\
-    \ = u;\n        update(p);\n    }\n    void cut(int u) {\n        assert(0 <=\
-    \ u && u < n_);\n        access(u);\n        auto p = left_[u];\n        left_[u]\
-    \ = -1;\n        update(u);\n        parent_[p] = -1;\n    }\n    void cut(int\
-    \ u, int v) {\n        assert(0 <= u && u < n_ && 0 <= v && v < n_);\n       \
-    \ make_root(u);\n        cut(v);\n    }\n    int lca(int u, int v) {\n       \
-    \ assert(0 <= u && u < n_ && 0 <= v && v < n_);\n        access(u);\n        return\
-    \ access(v);\n    }\n    void set(int u, S x) {\n        assert(0 <= u && u <\
-    \ n_);\n        access(u);\n        data_[u] = x;\n        update(u);\n    }\n\
-    \    S get(int u) {\n        assert(0 <= u && u < n_);\n        access(u);\n \
-    \       return data_[u];\n    }\n    void apply(int u, int v, F f) {\n       \
-    \ assert(0 <= u && u < n_ && 0 <= v && v < n_);\n        make_root(u);\n     \
-    \   access(v);\n        all_apply(v, f);\n        push(v);\n    }\n    S prod(int\
-    \ u, int v) {\n        assert(0 <= u && u < n_ && 0 <= v && v < n_);\n       \
-    \ make_root(u);\n        access(v);\n        return sum_[v];\n    }\n    bool\
-    \ connected(int u, int v) {\n        assert(0 <= u && u < n_ && 0 <= v && v <\
-    \ n_);\n        access(u);\n        access(v);\n        return u == v || ~parent_[u];\n\
-    \    }\n\nprivate:\n    bool is_root(int u) const {\n        auto p = parent_[u];\n\
-    \        return !~p || (left_[p] != u && right_[p] != u);\n    }\n    void update(int\
-    \ u) {\n        if (~u) {\n            sum_[u] = data_[u];\n            if (auto\
-    \ v = left_[u]; ~v) {\n                sum_[u] = op(sum_[v], sum_[u]);\n     \
-    \       }\n            if (auto v = right_[u]; ~v) {\n                sum_[u]\
-    \ = op(sum_[u], sum_[v]);\n            }\n        }\n    }\n    void all_apply(int\
-    \ u, F f) {\n        if (~u) {\n            data_[u] = mapping(f, data_[u]);\n\
-    \            sum_[u] = mapping(f, sum_[u]);\n            lazy_[u] = composition(f,\
-    \ lazy_[u]);\n        }\n    }\n    void reverse(int u) {\n        if (~u) {\n\
-    \            std::swap(left_[u], right_[u]);\n            reversed_[u] = !reversed_[u];\n\
-    \        }\n    }\n    void push(int u) {\n        if (~u) {\n            all_apply(left_[u],\
-    \ lazy_[u]);\n            all_apply(right_[u], lazy_[u]);\n            lazy_[u]\
-    \ = id();\n            if (reversed_[u]) {\n                reverse(left_[u]);\n\
-    \                reverse(right_[u]);\n                reversed_[u] = false;\n\
-    \            }\n        }\n    }\n    void rotate_right(int u) {\n        auto\
-    \ p = parent_[u];\n        auto g = parent_[p];\n        if (left_[p] = right_[u];\
+    \ S, auto op, auto e, auto toggle> struct link_cut_tree {\n    link_cut_tree(int\
+    \ n)\n        : n_(n), left_(n, -1), right_(n, -1), parent_(n, -1), data_(n, e()),\
+    \ sum_(n, e()),\n          reversed_(n, false) {}\n    int access(int u) {\n \
+    \       assert(0 <= u && u < n_);\n        auto result = -1;\n        for (auto\
+    \ cur = u; ~cur; cur = parent_[cur]) {\n            splay(cur);\n            right_[cur]\
+    \ = result;\n            update(cur);\n            result = cur;\n        }\n\
+    \        splay(u);\n        return result;\n    }\n    void make_root(int u) {\n\
+    \        assert(0 <= u && u < n_);\n        access(u);\n        reverse(u);\n\
+    \        push(u);\n    }\n    void link(int u, int p) {\n        assert(0 <= u\
+    \ && u < n_ && 0 <= p && p < n_);\n        make_root(u);\n        access(p);\n\
+    \        parent_[u] = p;\n        right_[p] = u;\n        update(p);\n    }\n\
+    \    void cut(int u) {\n        assert(0 <= u && u < n_);\n        access(u);\n\
+    \        auto p = left_[u];\n        left_[u] = -1;\n        update(u);\n    \
+    \    parent_[p] = -1;\n    }\n    void cut(int u, int v) {\n        assert(0 <=\
+    \ u && u < n_ && 0 <= v && v < n_);\n        make_root(u);\n        cut(v);\n\
+    \    }\n    int lca(int u, int v) {\n        assert(0 <= u && u < n_ && 0 <= v\
+    \ && v < n_);\n        access(u);\n        return access(v);\n    }\n    void\
+    \ set(int u, S x) {\n        assert(0 <= u && u < n_);\n        access(u);\n \
+    \       data_[u] = x;\n        update(u);\n    }\n    S get(int u) {\n       \
+    \ assert(0 <= u && u < n_);\n        access(u);\n        return data_[u];\n  \
+    \  }\n    S prod(int u, int v) {\n        assert(0 <= u && u < n_ && 0 <= v &&\
+    \ v < n_);\n        make_root(u);\n        access(v);\n        return sum_[v];\n\
+    \    }\n    bool connected(int u, int v) {\n        assert(0 <= u && u < n_ &&\
+    \ 0 <= v && v < n_);\n        access(u);\n        access(v);\n        return u\
+    \ == v || ~parent_[u];\n    }\n\nprivate:\n    bool is_root(int u) const {\n \
+    \       auto p = parent_[u];\n        return !~p || (left_[p] != u && right_[p]\
+    \ != u);\n    }\n    void update(int u) {\n        if (~u) {\n            sum_[u]\
+    \ = data_[u];\n            if (auto v = left_[u]; ~v) {\n                sum_[u]\
+    \ = op(sum_[v], sum_[u]);\n            }\n            if (auto v = right_[u];\
+    \ ~v) {\n                sum_[u] = op(sum_[u], sum_[v]);\n            }\n    \
+    \    }\n    }\n    void reverse(int u) {\n        if (~u) {\n            std::swap(left_[u],\
+    \ right_[u]);\n            reversed_[u] = !reversed_[u];\n            sum_[u]\
+    \ = toggle(sum_[u]);\n        }\n    }\n    void push(int u) {\n        if (~u)\
+    \ {\n            if (reversed_[u]) {\n                reverse(left_[u]);\n   \
+    \             reverse(right_[u]);\n                reversed_[u] = false;\n   \
+    \         }\n        }\n    }\n    void rotate_right(int u) {\n        auto p\
+    \ = parent_[u];\n        auto g = parent_[p];\n        if (left_[p] = right_[u];\
     \ ~left_[p]) {\n            parent_[right_[u]] = p;\n        }\n        right_[u]\
     \ = p;\n        parent_[p] = u;\n        update(p);\n        update(u);\n    \
     \    if (parent_[u] = g; ~parent_[u]) {\n            if (left_[g] == p) {\n  \
@@ -157,16 +147,16 @@ data:
     \                   rotate_right(u);\n                        rotate_left(u);\n\
     \                    }\n                }\n            }\n        }\n    }\n \
     \   int n_;\n    std::vector<int> left_, right_, parent_;\n    std::vector<S>\
-    \ data_, sum_;\n    std::vector<F> lazy_;\n    std::vector<char> reversed_;\n\
-    };\n\n#endif // LINK_CUT_TREE_HPP"
+    \ data_, sum_;\n    std::vector<char> reversed_;\n};\n\n#endif // LINK_CUT_TREE_HPP"
   dependsOn: []
   isVerificationFile: false
   path: link_cut_tree/link_cut_tree.hpp
   requiredBy: []
-  timestamp: '2026-01-04 01:20:52+09:00'
+  timestamp: '2026-01-04 02:17:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/link_cut_tree/link_cut_tree.test.cpp
+  - test/link_cut_tree/dynamic_tree_vertex_set_path_composite.test.cpp
 documentation_of: link_cut_tree/link_cut_tree.hpp
 layout: document
 redirect_from:

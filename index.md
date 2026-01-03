@@ -10,7 +10,7 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: dp/rerooting.hpp
-      title: dp/rerooting.hpp
+      title: Rerooting
   - name: graph
     pages:
     - icon: ':heavy_check_mark:'
@@ -49,6 +49,9 @@ data:
   - name: link_cut_tree
     pages:
     - icon: ':heavy_check_mark:'
+      path: link_cut_tree/lazy_link_cut_tree.hpp
+      title: link_cut_tree/lazy_link_cut_tree.hpp
+    - icon: ':heavy_check_mark:'
       path: link_cut_tree/link_cut_tree.hpp
       title: link_cut_tree/link_cut_tree.hpp
   - name: matching
@@ -81,6 +84,14 @@ data:
     - icon: ':heavy_check_mark:'
       path: mo/hilbert_mo.hpp
       title: mo/hilbert_mo.hpp
+  - name: monoids
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: monoids/affine_monoid.hpp
+      title: monoids/affine_monoid.hpp
+    - icon: ':heavy_check_mark:'
+      path: monoids/reversible_monoid.hpp
+      title: monoids/reversible_monoid.hpp
   - name: random
     pages:
     - icon: ':heavy_check_mark:'
@@ -172,6 +183,12 @@ data:
       title: test/lca/tarjan_offline_lca.test.cpp
   - name: test/link_cut_tree
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/link_cut_tree/dynamic_tree_vertex_set_path_composite.test.cpp
+      title: test/link_cut_tree/dynamic_tree_vertex_set_path_composite.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/link_cut_tree/lazy_link_cut_tree.test.cpp
+      title: test/link_cut_tree/lazy_link_cut_tree.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/link_cut_tree/link_cut_tree.test.cpp
       title: test/link_cut_tree/link_cut_tree.test.cpp
