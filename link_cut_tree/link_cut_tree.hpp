@@ -6,14 +6,11 @@
 #include <utility>
 #include <vector>
 
-template <typename S, typename Op, typename E, typename F, typename Mapping,
-          typename Composition, typename Id>
+template <typename S, auto op, auto e, typename F, auto mapping, auto composition, auto id>
 struct link_cut_tree {
-    link_cut_tree(int n, Op op, E e, Mapping mapping, Composition composition,
-                  Id id)
-        : op_(op), e_(e), mapping_(mapping), composition_(composition), id_(id),
-          n_(n), left_(n, -1), right_(n, -1), parent_(n, -1), data_(n, e_()),
-          sum_(n, e_()), lazy_(n, id_()), reversed_(n, false) {}
+    link_cut_tree(int n)
+        : n_(n), left_(n, -1), right_(n, -1), parent_(n, -1), data_(n, e()), sum_(n, e()),
+          lazy_(n, id()), reversed_(n, false) {}
     int access(int u) {
         assert(0 <= u && u < n_);
         auto result = -1;
@@ -98,18 +95,18 @@ private:
         if (~u) {
             sum_[u] = data_[u];
             if (auto v = left_[u]; ~v) {
-                sum_[u] = op_(sum_[v], sum_[u]);
+                sum_[u] = op(sum_[v], sum_[u]);
             }
             if (auto v = right_[u]; ~v) {
-                sum_[u] = op_(sum_[u], sum_[v]);
+                sum_[u] = op(sum_[u], sum_[v]);
             }
         }
     }
     void all_apply(int u, F f) {
         if (~u) {
-            data_[u] = mapping_(f, data_[u]);
-            sum_[u] = mapping_(f, sum_[u]);
-            lazy_[u] = composition_(f, lazy_[u]);
+            data_[u] = mapping(f, data_[u]);
+            sum_[u] = mapping(f, sum_[u]);
+            lazy_[u] = composition(f, lazy_[u]);
         }
     }
     void reverse(int u) {
@@ -122,7 +119,7 @@ private:
         if (~u) {
             all_apply(left_[u], lazy_[u]);
             all_apply(right_[u], lazy_[u]);
-            lazy_[u] = id_();
+            lazy_[u] = id();
             if (reversed_[u]) {
                 reverse(left_[u]);
                 reverse(right_[u]);
@@ -207,23 +204,11 @@ private:
             }
         }
     }
-    Op op_;
-    E e_;
-    Mapping mapping_;
-    Composition composition_;
-    Id id_;
     int n_;
     std::vector<int> left_, right_, parent_;
     std::vector<S> data_, sum_;
     std::vector<F> lazy_;
     std::vector<char> reversed_;
 };
-
-template <typename Op, typename E, typename Mapping, typename Composition,
-          typename Id>
-link_cut_tree(int n, Op op, E e, Mapping mapping, Composition composition,
-              Id id)
-    -> link_cut_tree<std::invoke_result_t<E>, Op, E, std::invoke_result_t<Id>,
-                     Mapping, Composition, Id>;
 
 #endif // LINK_CUT_TREE_HPP
