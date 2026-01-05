@@ -103,6 +103,9 @@ data:
   - name: segment_tree
     pages:
     - icon: ':heavy_check_mark:'
+      path: segment_tree/segtree_2d.hpp
+      title: segment_tree/segtree_2d.hpp
+    - icon: ':heavy_check_mark:'
       path: segment_tree/segtree_beats.hpp
       title: Segtree Beats
   - name: sparse_table
@@ -215,6 +218,9 @@ data:
       title: test/mo/hilbert_mo_static_range_inversions_query.test.cpp
   - name: test/segment_tree
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/segment_tree/segtree_2d.test.cpp
+      title: test/segment_tree/segtree_2d.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/segment_tree/segtree_beats.test.cpp
       title: test/segment_tree/segtree_beats.test.cpp
