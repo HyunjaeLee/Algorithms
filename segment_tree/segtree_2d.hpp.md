@@ -107,8 +107,8 @@ data:
   - test/segment_tree/segtree_2d.test.cpp
 documentation_of: segment_tree/segtree_2d.hpp
 layout: document
-redirect_from:
-- /library/segment_tree/segtree_2d.hpp
-- /library/segment_tree/segtree_2d.hpp.html
-title: segment_tree/segtree_2d.hpp
+title: 2D Segment Tree
 ---
+
+### Source
++ https://github.com/Aeren1564/CP/blob/master/Library/Data_Structure/Segment_Tree/segment_tree_2d.sublime-snippet

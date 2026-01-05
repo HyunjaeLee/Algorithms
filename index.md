@@ -104,7 +104,7 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: segment_tree/segtree_2d.hpp
-      title: segment_tree/segtree_2d.hpp
+      title: 2D Segment Tree
     - icon: ':heavy_check_mark:'
       path: segment_tree/segtree_beats.hpp
       title: Segtree Beats

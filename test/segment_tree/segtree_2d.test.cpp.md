@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: segment_tree/segtree_2d.hpp
-    title: segment_tree/segtree_2d.hpp
+    title: 2D Segment Tree
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
