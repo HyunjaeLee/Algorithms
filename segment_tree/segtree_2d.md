@@ -1,6 +1,6 @@
 ---
-title: Segtree Beats
-documentation_of: ./segtree_beats.hpp
+title: 2D Segment Tree
+documentation_of: ./segtree_2d.hpp
 ---
 
 ### Source
