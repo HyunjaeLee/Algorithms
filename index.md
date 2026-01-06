@@ -14,6 +14,12 @@ data:
   - name: graph
     pages:
     - icon: ':heavy_check_mark:'
+      path: graph/articulation_points.hpp
+      title: Articulation Points
+    - icon: ':heavy_check_mark:'
+      path: graph/bridges.hpp
+      title: Bridges
+    - icon: ':heavy_check_mark:'
       path: graph/csr_graph.hpp
       title: graph/csr_graph.hpp
     - icon: ':heavy_check_mark:'
@@ -142,6 +148,12 @@ data:
       title: test/dp/rerooting.test.cpp
   - name: test/graph
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/graph/articulation_points.test.cpp
+      title: test/graph/articulation_points.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/graph/bridges.test.cpp
+      title: test/graph/bridges.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/graph/directed_mst.test.cpp
       title: test/graph/directed_mst.test.cpp
