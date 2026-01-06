@@ -1,5 +1,7 @@
 {
 "test/dp/rerooting.test.cpp": "2026-01-04 01:29:13 +0900",
+"test/graph/articulation_points.test.cpp": "2026-01-06 20:06:27 +0900",
+"test/graph/bridges.test.cpp": "2026-01-06 20:06:27 +0900",
 "test/graph/directed_mst.test.cpp": "2025-09-16 22:59:29 +0900",
 "test/graph/directed_mst_minimum_cost_arborescence.test.cpp": "2025-09-16 22:59:29 +0900",
 "test/graph/dominator_tree.test.cpp": "2025-09-16 22:59:29 +0900",
