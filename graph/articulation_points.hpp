@@ -32,7 +32,7 @@ std::vector<int> find_cutpoints(const auto &g) {
             cutpoints.push_back(u);
         }
     };
-    for (int i = 0; i < n; ++i) {
+    for (auto i = 0; i < n; ++i) {
         if (!visited[i]) {
             dfs(dfs, i, -1);
         }

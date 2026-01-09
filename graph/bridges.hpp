@@ -14,7 +14,7 @@ std::vector<std::pair<int, int>> find_bridges(const auto &g) {
         visited[u] = true;
         tin[u] = low[u] = timer++;
         bool parent_skipped = false;
-        for (int v : g[u]) {
+        for (auto v : g[u]) {
             if (v == p && !parent_skipped) {
                 parent_skipped = true;
                 continue;
@@ -30,7 +30,7 @@ std::vector<std::pair<int, int>> find_bridges(const auto &g) {
             }
         }
     };
-    for (int i = 0; i < n; ++i) {
+    for (auto i = 0; i < n; ++i) {
         if (!visited[i]) {
             dfs(dfs, i, -1);
         }
