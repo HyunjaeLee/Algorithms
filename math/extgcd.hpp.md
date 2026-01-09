@@ -34,8 +34,8 @@ title: Extended Euclidean Algorithm
 
 Computes $g = \gcd(a,b)$ and find integers $x$ and $y$ such that $ax+by=g$.
 + $g$ may be negative.
-+ $|x| \le \left| \frac{b}{g} \right|$
-+ $|y| \le \left| \frac{a}{g} \right|$
++ $|x| \le \left\lvert \frac{b}{g} \right\rvert$
++ $|y| \le \left\lvert \frac{a}{g} \right\rvert$
 
 > **Bézout's identity**—Let $a$ and $b$ be integers with greatest common divisor $g$. Then there exist integers $x$ and $y$ such that $ax + by = g$. Moreover, the integers of the form $az + bt$ are exactly the multiples of $g$.
 
