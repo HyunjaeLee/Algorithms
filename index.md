@@ -74,6 +74,9 @@ data:
       path: math/dirichlet_series.hpp
       title: math/dirichlet_series.hpp
     - icon: ':heavy_check_mark:'
+      path: math/extgcd.hpp
+      title: Extended Euclidean Algorithm
+    - icon: ':heavy_check_mark:'
       path: math/factor.hpp
       title: Factor
     - icon: ':warning:'
@@ -214,6 +217,9 @@ data:
       title: test/matching/stable_matching.stress.test.cpp
   - name: test/math
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/math/extgcd.test.cpp
+      title: test/math/extgcd.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/math/factor.test.cpp
       title: test/math/factor.test.cpp
