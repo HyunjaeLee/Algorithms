@@ -88,6 +88,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/power_tower.hpp
       title: Power tower
+    - icon: ':warning:'
+      path: math/saturating.hpp
+      title: Saturating
   - name: mo
     pages:
     - icon: ':heavy_check_mark:'
@@ -157,6 +160,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/graph/bridges.test.cpp
       title: test/graph/bridges.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/graph/dijkstra.test.cpp
+      title: test/graph/dijkstra.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/graph/directed_mst.test.cpp
       title: test/graph/directed_mst.test.cpp
