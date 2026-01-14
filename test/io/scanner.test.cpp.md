@@ -28,16 +28,15 @@ data:
     )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: ../io/scanner.hpp:\
     \ line -1: no such header\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/many_aplusb\"\n\n#include\
-    \ \"../io/scanner.hpp\"\n#include <iostream>\n\nscanner scan;\n\nint main() {\n\
-    \    std::cin.tie(0)->sync_with_stdio(0);\n    int T;\n    scan(T);\n    while\
-    \ (T--) {\n        long long A, B;\n        scan(A, B);\n        std::cout <<\
-    \ A + B << '\\n';\n    }\n}\n"
+    \ \"../io/scanner.hpp\"\n#include <bits/stdc++.h>\n\nscanner scan;\n\nint main()\
+    \ {\n    int T;\n    scan(T);\n    while (T--) {\n        long long A, B;\n  \
+    \      scan(A, B);\n        std::cout << A + B << '\\n';\n    }\n}\n"
   dependsOn:
   - io/scanner.hpp
   isVerificationFile: true
   path: test/io/scanner.test.cpp
   requiredBy: []
-  timestamp: '2025-09-16 22:59:29+09:00'
+  timestamp: '2026-01-15 02:23:00+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/io/scanner.test.cpp

@@ -52,6 +52,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: lca/tarjan_offline_lca.hpp
       title: lca/tarjan_offline_lca.hpp
+  - name: linear_algebra
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: linear_algebra/gf2_matrix.hpp
+      title: GF(2) Matrix
   - name: link_cut_tree
     pages:
     - icon: ':heavy_check_mark:'
@@ -205,6 +210,17 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/lca/tarjan_offline_lca.test.cpp
       title: test/lca/tarjan_offline_lca.test.cpp
+  - name: test/linear_algebra
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/linear_algebra/matrix_det_mod_2.test.cpp
+      title: test/linear_algebra/matrix_det_mod_2.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/linear_algebra/matrix_rank_mod_2.test.cpp
+      title: test/linear_algebra/matrix_rank_mod_2.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/linear_algebra/system_of_linear_equations_mod_2.test.cpp
+      title: test/linear_algebra/system_of_linear_equations_mod_2.test.cpp
   - name: test/link_cut_tree
     pages:
     - icon: ':heavy_check_mark:'
