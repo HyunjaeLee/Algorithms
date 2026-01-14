@@ -2,22 +2,29 @@
 #define SCANNER_HPP
 
 #include <charconv>
+#include <iostream>
 #include <string_view>
 #include <sys/mman.h>
 #include <sys/stat.h>
 #include <type_traits>
+#include <unistd.h>
 
 struct scanner {
     scanner() {
         struct stat st;
         fstat(0, &st);
-        data_ = p_ = static_cast<char *>(
-            mmap(nullptr, st.st_size, PROT_READ, MAP_PRIVATE, 0, 0));
-        size_ = st.st_size;
+        if (S_ISREG(st.st_mode)) {
+            data_ = p_ = (char *)mmap(nullptr, st.st_size + 65536, PROT_READ,
+                                      MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
+            if (st.st_size) {
+                mmap(data_, st.st_size, PROT_READ, MAP_PRIVATE | MAP_FIXED, 0, 0);
+            }
+        } else {
+            auto *s = new std::string(std::istreambuf_iterator<char>(std::cin), {});
+            data_ = p_ = s->data();
+        }
     }
-    template <typename... Args> void operator()(Args &...args) {
-        (read(args), ...);
-    }
+    template <typename... Args> void operator()(Args &...args) { (scan(args), ...); }
     std::string_view getline() {
         skip();
         auto first = p_;
@@ -28,8 +35,7 @@ struct scanner {
     }
 
 private:
-    template <typename T>
-    std::enable_if_t<std::is_integral_v<T>, void> read(T &x) {
+    void scan(std::integral auto &x) {
         skip();
         x = 0;
         auto is_negative = false;
@@ -38,14 +44,13 @@ private:
             is_negative = true;
         }
         for (; *p_ > ' '; ++p_) {
-            x = (x << 1) + (x << 3) + (*p_ & 15);
+            x = x * 10 + (*p_ & 15);
         }
         if (is_negative) {
             x = -x;
         }
     }
-    template <typename T>
-    std::enable_if_t<std::is_floating_point_v<T>, void> read(T &x) {
+    void scan(std::floating_point auto &x) {
         skip();
         auto first = p_;
         while (*p_ > ' ') {
@@ -53,7 +58,7 @@ private:
         }
         std::from_chars(first, p_, x);
     }
-    void read(char &x) {
+    void scan(char &x) {
         skip();
         x = *p_++;
     }
@@ -64,7 +69,6 @@ private:
     }
     char *data_;
     char *p_;
-    size_t size_;
 };
 
 #endif // SCANNER_HPP

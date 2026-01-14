@@ -1,12 +1,11 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/many_aplusb"
 
 #include "../io/scanner.hpp"
-#include <iostream>
+#include <bits/stdc++.h>
 
 scanner scan;
 
 int main() {
-    std::cin.tie(0)->sync_with_stdio(0);
     int T;
     scan(T);
     while (T--) {
