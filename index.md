@@ -1,6 +1,11 @@
 ---
 data:
   libraryCategories:
+  - name: data_structure
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: data_structure/ordered_set.hpp
+      title: data_structure/ordered_set.hpp
   - name: disjoint_set
     pages:
     - icon: ':heavy_check_mark:'
@@ -152,6 +157,11 @@ data:
       path: wavelet/wavelet_matrix.hpp
       title: wavelet/wavelet_matrix.hpp
   verificationCategories:
+  - name: test/data_structure
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/data_structure/ordered_set.test.cpp
+      title: test/data_structure/ordered_set.test.cpp
   - name: test/dp
     pages:
     - icon: ':heavy_check_mark:'
