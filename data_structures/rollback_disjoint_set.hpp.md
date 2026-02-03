@@ -20,7 +20,7 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"disjoint_set/rollback_disjoint_set.hpp\"\n\n\n\n#include\
+  bundledCode: "#line 1 \"data_structures/rollback_disjoint_set.hpp\"\n\n\n\n#include\
     \ <cassert>\n#include <stack>\n#include <utility>\n#include <vector>\n\nstruct\
     \ rollback_disjoint_set {\n    explicit rollback_disjoint_set(int n) : n_(n),\
     \ parent_or_size_(n, -1) {}\n    int find(int u) const {\n        return parent_or_size_[u]\
@@ -62,19 +62,19 @@ data:
     \    std::stack<std::pair<int, int>> history_;\n};\n\n#endif // ROLLBACK_DISJOINT_SET_HPP"
   dependsOn: []
   isVerificationFile: false
-  path: disjoint_set/rollback_disjoint_set.hpp
+  path: data_structures/rollback_disjoint_set.hpp
   requiredBy:
   - graph/directed_mst.hpp
-  timestamp: '2022-09-30 17:14:09+00:00'
+  timestamp: '2026-02-03 20:57:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/graph/offline_dynamic_connectivity.test.cpp
   - test/graph/directed_mst.test.cpp
   - test/graph/directed_mst_minimum_cost_arborescence.test.cpp
-documentation_of: disjoint_set/rollback_disjoint_set.hpp
+documentation_of: data_structures/rollback_disjoint_set.hpp
 layout: document
 redirect_from:
-- /library/disjoint_set/rollback_disjoint_set.hpp
-- /library/disjoint_set/rollback_disjoint_set.hpp.html
-title: disjoint_set/rollback_disjoint_set.hpp
+- /library/data_structures/rollback_disjoint_set.hpp
+- /library/data_structures/rollback_disjoint_set.hpp.html
+title: data_structures/rollback_disjoint_set.hpp
 ---

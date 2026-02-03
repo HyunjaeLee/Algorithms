@@ -1,16 +1,17 @@
 ---
 data:
   libraryCategories:
-  - name: data_structure
+  - name: data_structures
     pages:
     - icon: ':heavy_check_mark:'
-      path: data_structure/ordered_set.hpp
-      title: data_structure/ordered_set.hpp
-  - name: disjoint_set
-    pages:
+      path: data_structures/ordered_set.hpp
+      title: data_structures/ordered_set.hpp
     - icon: ':heavy_check_mark:'
-      path: disjoint_set/rollback_disjoint_set.hpp
-      title: disjoint_set/rollback_disjoint_set.hpp
+      path: data_structures/potentialized_rollback_dsu.hpp
+      title: data_structures/potentialized_rollback_dsu.hpp
+    - icon: ':heavy_check_mark:'
+      path: data_structures/rollback_disjoint_set.hpp
+      title: data_structures/rollback_disjoint_set.hpp
   - name: dp
     pages:
     - icon: ':heavy_check_mark:'
@@ -39,6 +40,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/offline_dynamic_connectivity.hpp
       title: graph/offline_dynamic_connectivity.hpp
+    - icon: ':heavy_check_mark:'
+      path: graph/potentialized_offline_dynamic_connectivity.hpp
+      title: graph/potentialized_offline_dynamic_connectivity.hpp
   - name: heavy_light_decomposition
     pages:
     - icon: ':heavy_check_mark:'
@@ -114,6 +118,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: monoids/reversible_monoid.hpp
       title: monoids/reversible_monoid.hpp
+    - icon: ':heavy_check_mark:'
+      path: monoids/sum.hpp
+      title: monoids/sum.hpp
+    - icon: ':heavy_check_mark:'
+      path: monoids/xor.hpp
+      title: monoids/xor.hpp
   - name: random
     pages:
     - icon: ':heavy_check_mark:'
@@ -190,6 +200,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/graph/dynamic_connectivity.test.cpp
       title: test/graph/dynamic_connectivity.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/graph/jag_regional_2022_i.test.cpp
+      title: test/graph/jag_regional_2022_i.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/graph/odd_trip_plans.test.cpp
+      title: test/graph/odd_trip_plans.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/graph/offline_dynamic_connectivity.test.cpp
       title: test/graph/offline_dynamic_connectivity.test.cpp

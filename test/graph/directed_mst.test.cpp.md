@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: disjoint_set/rollback_disjoint_set.hpp
-    title: disjoint_set/rollback_disjoint_set.hpp
+    path: data_structures/rollback_disjoint_set.hpp
+    title: data_structures/rollback_disjoint_set.hpp
   - icon: ':heavy_check_mark:'
     path: graph/directed_mst.hpp
     title: graph/directed_mst.hpp
@@ -18,7 +18,7 @@ data:
     links:
     - https://judge.yosupo.jp/problem/directedmst
   bundledCode: "#line 1 \"test/graph/directed_mst.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/directedmst\"\
-    \n\n#line 1 \"graph/directed_mst.hpp\"\n\n\n\n#line 1 \"disjoint_set/rollback_disjoint_set.hpp\"\
+    \n\n#line 1 \"graph/directed_mst.hpp\"\n\n\n\n#line 1 \"data_structures/rollback_disjoint_set.hpp\"\
     \n\n\n\n#include <cassert>\n#include <stack>\n#include <utility>\n#include <vector>\n\
     \nstruct rollback_disjoint_set {\n    explicit rollback_disjoint_set(int n) :\
     \ n_(n), parent_or_size_(n, -1) {}\n    int find(int u) const {\n        return\
@@ -61,24 +61,24 @@ data:
     \                    } while (dsu.merge(u, w));\n                    u = dsu.find(u);\n\
     \                    heap_[u] = cycle;\n                    seen[u] = -1;\n  \
     \                  cycles.emplace_back(u,\n                                  \
-    \      std::vector<int>(queue.begin() + pos,\n                               \
-    \                          queue.begin() + end));\n                }\n       \
-    \     }\n            for (auto i = 0; i < pos; ++i) {\n                in[dsu.find(to_[queue[i]])]\
-    \ = queue[i];\n            }\n        }\n        for (auto it = cycles.rbegin();\
-    \ it != cycles.rend(); ++it) {\n            auto &[u, comp] = *it;\n         \
-    \   auto count = static_cast<int>(comp.size()) - 1;\n            dsu.rollback(count);\n\
-    \            auto in_edge = in[u];\n            for (auto e : comp) {\n      \
-    \          in[dsu.find(to_[e])] = e;\n            }\n            in[dsu.find(to_[in_edge])]\
-    \ = in_edge;\n        }\n        std::vector<int> parent;\n        parent.reserve(n_);\n\
-    \        for (auto i : in) {\n            parent.push_back(~i ? from_[i] : -1);\n\
-    \        }\n        return {result, parent};\n    }\n\nprivate:\n    void push(int\
-    \ u) {\n        cost_[u] += lazy_[u];\n        if (auto l = left_[u]; ~l) {\n\
-    \            lazy_[l] += lazy_[u];\n        }\n        if (auto r = right_[u];\
-    \ ~r) {\n            lazy_[r] += lazy_[u];\n        }\n        lazy_[u] = 0;\n\
-    \    }\n    int merge(int u, int v) {\n        if (!~u || !~v) {\n           \
-    \ return ~u ? u : v;\n        }\n        push(u);\n        push(v);\n        if\
-    \ (cost_[u] > cost_[v]) {\n            std::swap(u, v);\n        }\n        right_[u]\
-    \ = merge(v, right_[u]);\n        std::swap(left_[u], right_[u]);\n        return\
+    \      std::vector<int>(queue.begin() + pos, queue.begin() + end));\n        \
+    \        }\n            }\n            for (auto i = 0; i < pos; ++i) {\n    \
+    \            in[dsu.find(to_[queue[i]])] = queue[i];\n            }\n        }\n\
+    \        for (auto it = cycles.rbegin(); it != cycles.rend(); ++it) {\n      \
+    \      auto &[u, comp] = *it;\n            auto count = static_cast<int>(comp.size())\
+    \ - 1;\n            dsu.rollback(count);\n            auto in_edge = in[u];\n\
+    \            for (auto e : comp) {\n                in[dsu.find(to_[e])] = e;\n\
+    \            }\n            in[dsu.find(to_[in_edge])] = in_edge;\n        }\n\
+    \        std::vector<int> parent;\n        parent.reserve(n_);\n        for (auto\
+    \ i : in) {\n            parent.push_back(~i ? from_[i] : -1);\n        }\n  \
+    \      return {result, parent};\n    }\n\nprivate:\n    void push(int u) {\n \
+    \       cost_[u] += lazy_[u];\n        if (auto l = left_[u]; ~l) {\n        \
+    \    lazy_[l] += lazy_[u];\n        }\n        if (auto r = right_[u]; ~r) {\n\
+    \            lazy_[r] += lazy_[u];\n        }\n        lazy_[u] = 0;\n    }\n\
+    \    int merge(int u, int v) {\n        if (!~u || !~v) {\n            return\
+    \ ~u ? u : v;\n        }\n        push(u);\n        push(v);\n        if (cost_[u]\
+    \ > cost_[v]) {\n            std::swap(u, v);\n        }\n        right_[u] =\
+    \ merge(v, right_[u]);\n        std::swap(left_[u], right_[u]);\n        return\
     \ u;\n    }\n    int pop(int u) {\n        push(u);\n        return merge(left_[u],\
     \ right_[u]);\n    }\n    const int n_;\n    std::vector<int> from_, to_, left_,\
     \ right_, heap_;\n    std::vector<Cost> cost_, lazy_;\n};\n\n\n#line 4 \"test/graph/directed_mst.test.cpp\"\
@@ -97,11 +97,11 @@ data:
     \ p : parent) {\n        std::cout << p << ' ';\n    }\n}\n"
   dependsOn:
   - graph/directed_mst.hpp
-  - disjoint_set/rollback_disjoint_set.hpp
+  - data_structures/rollback_disjoint_set.hpp
   isVerificationFile: true
   path: test/graph/directed_mst.test.cpp
   requiredBy: []
-  timestamp: '2025-09-16 22:59:29+09:00'
+  timestamp: '2026-02-03 20:57:06+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/graph/directed_mst.test.cpp
