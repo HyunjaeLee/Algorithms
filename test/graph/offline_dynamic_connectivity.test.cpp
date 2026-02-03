@@ -1,8 +1,7 @@
-#include <clocale>
 #define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2235"
 
-#include "../disjoint_set/rollback_disjoint_set.hpp"
-#include "../graph/offline_dynamic_connectivity.hpp"
+#include "data_structures/rollback_disjoint_set.hpp"
+#include "graph/offline_dynamic_connectivity.hpp"
 #include <bits/stdc++.h>
 
 int main() {

@@ -1,7 +1,7 @@
 #ifndef DIRECTED_MST_HPP
 #define DIRECTED_MST_HPP
 
-#include "disjoint_set/rollback_disjoint_set.hpp"
+#include "data_structures/rollback_disjoint_set.hpp"
 #include <cassert>
 #include <utility>
 #include <vector>
@@ -53,8 +53,7 @@ template <typename Cost> struct directed_mst {
                     heap_[u] = cycle;
                     seen[u] = -1;
                     cycles.emplace_back(u,
-                                        std::vector<int>(queue.begin() + pos,
-                                                         queue.begin() + end));
+                                        std::vector<int>(queue.begin() + pos, queue.begin() + end));
                 }
             }
             for (auto i = 0; i < pos; ++i) {

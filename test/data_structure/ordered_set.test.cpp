@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/ordered_set"
 
-#include "data_structure/ordered_set.hpp"
+#include "data_structures/ordered_set.hpp"
 #include <bits/stdc++.h>
 
 int main() {
