@@ -84,6 +84,9 @@ data:
     - icon: ':warning:'
       path: math/ceil_div.hpp
       title: math/ceil_div.hpp
+    - icon: ':heavy_check_mark:'
+      path: math/combinatorics.hpp
+      title: math/combinatorics.hpp
     - icon: ':warning:'
       path: math/dirichlet_series.hpp
       title: math/dirichlet_series.hpp
@@ -265,6 +268,9 @@ data:
       title: test/matching/stable_matching.stress.test.cpp
   - name: test/math
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/math/binomial_coefficient_prime_mod.test.cpp
+      title: test/math/binomial_coefficient_prime_mod.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/math/extgcd.test.cpp
       title: test/math/extgcd.test.cpp
