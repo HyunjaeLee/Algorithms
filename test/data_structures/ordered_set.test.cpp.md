@@ -14,12 +14,12 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/ordered_set
     links:
     - https://judge.yosupo.jp/problem/ordered_set
-  bundledCode: "#line 1 \"test/data_structure/ordered_set.test.cpp\"\n#define PROBLEM\
+  bundledCode: "#line 1 \"test/data_structures/ordered_set.test.cpp\"\n#define PROBLEM\
     \ \"https://judge.yosupo.jp/problem/ordered_set\"\n\n#line 1 \"data_structures/ordered_set.hpp\"\
     \n\n\n\n#include <ext/pb_ds/assoc_container.hpp>\n#include <ext/pb_ds/tree_policy.hpp>\n\
     #include <functional>\n\ntemplate <typename T>\nusing ordered_set =\n    __gnu_pbds::tree<T,\
     \ __gnu_pbds::null_type, std::less<T>, __gnu_pbds::rb_tree_tag,\n            \
-    \         __gnu_pbds::tree_order_statistics_node_update>;\n\n\n#line 4 \"test/data_structure/ordered_set.test.cpp\"\
+    \         __gnu_pbds::tree_order_statistics_node_update>;\n\n\n#line 4 \"test/data_structures/ordered_set.test.cpp\"\
     \n#include <bits/stdc++.h>\n\nint main() {\n    std::cin.tie(0)->sync_with_stdio(0);\n\
     \    int N, Q;\n    std::cin >> N >> Q;\n    ordered_set<int> s;\n    for (auto\
     \ i = 0; i < N; ++i) {\n        int a;\n        std::cin >> a;\n        s.insert(a);\n\
@@ -51,15 +51,15 @@ data:
   dependsOn:
   - data_structures/ordered_set.hpp
   isVerificationFile: true
-  path: test/data_structure/ordered_set.test.cpp
+  path: test/data_structures/ordered_set.test.cpp
   requiredBy: []
-  timestamp: '2026-02-03 20:57:06+09:00'
+  timestamp: '2026-02-06 17:15:57+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/data_structure/ordered_set.test.cpp
+documentation_of: test/data_structures/ordered_set.test.cpp
 layout: document
 redirect_from:
-- /verify/test/data_structure/ordered_set.test.cpp
-- /verify/test/data_structure/ordered_set.test.cpp.html
-title: test/data_structure/ordered_set.test.cpp
+- /verify/test/data_structures/ordered_set.test.cpp
+- /verify/test/data_structures/ordered_set.test.cpp.html
+title: test/data_structures/ordered_set.test.cpp
 ---

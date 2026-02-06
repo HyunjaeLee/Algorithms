@@ -7,6 +7,9 @@ data:
     title: graph/potentialized_offline_dynamic_connectivity.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/data_structures/consistent_trading.test.cpp
+    title: test/data_structures/consistent_trading.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/graph/jag_regional_2022_i.test.cpp
     title: test/graph/jag_regional_2022_i.test.cpp
   - icon: ':heavy_check_mark:'
@@ -93,6 +96,7 @@ data:
   timestamp: '2026-02-03 20:57:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/data_structures/consistent_trading.test.cpp
   - test/graph/odd_trip_plans.test.cpp
   - test/graph/jag_regional_2022_i.test.cpp
 documentation_of: data_structures/potentialized_rollback_dsu.hpp

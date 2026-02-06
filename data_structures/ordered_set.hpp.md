@@ -4,8 +4,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/data_structure/ordered_set.test.cpp
-    title: test/data_structure/ordered_set.test.cpp
+    path: test/data_structures/ordered_set.test.cpp
+    title: test/data_structures/ordered_set.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -28,7 +28,7 @@ data:
   timestamp: '2026-02-03 20:57:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/data_structure/ordered_set.test.cpp
+  - test/data_structures/ordered_set.test.cpp
 documentation_of: data_structures/ordered_set.hpp
 layout: document
 redirect_from:

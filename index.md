@@ -170,11 +170,14 @@ data:
       path: wavelet/wavelet_matrix.hpp
       title: wavelet/wavelet_matrix.hpp
   verificationCategories:
-  - name: test/data_structure
+  - name: test/data_structures
     pages:
     - icon: ':heavy_check_mark:'
-      path: test/data_structure/ordered_set.test.cpp
-      title: test/data_structure/ordered_set.test.cpp
+      path: test/data_structures/consistent_trading.test.cpp
+      title: test/data_structures/consistent_trading.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/data_structures/ordered_set.test.cpp
+      title: test/data_structures/ordered_set.test.cpp
   - name: test/dp
     pages:
     - icon: ':heavy_check_mark:'
