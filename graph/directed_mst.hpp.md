@@ -134,8 +134,8 @@ data:
   timestamp: '2026-02-03 20:57:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/graph/directed_mst.test.cpp
   - test/graph/directed_mst_minimum_cost_arborescence.test.cpp
+  - test/graph/directed_mst.test.cpp
 documentation_of: graph/directed_mst.hpp
 layout: document
 redirect_from:

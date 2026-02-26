@@ -113,6 +113,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: mo/hilbert_mo.hpp
       title: mo/hilbert_mo.hpp
+    - icon: ':heavy_check_mark:'
+      path: mo/sqrt_freq_table.hpp
+      title: mo/sqrt_freq_table.hpp
   - name: monoids
     pages:
     - icon: ':heavy_check_mark:'
@@ -288,6 +291,15 @@ data:
       title: test/math/tetration_mod.test.cpp
   - name: test/mo
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/mo/hilbert_mo_range_kth_smallest.test.cpp
+      title: test/mo/hilbert_mo_range_kth_smallest.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/mo/hilbert_mo_static_range_count_distinct.test.cpp
+      title: test/mo/hilbert_mo_static_range_count_distinct.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/mo/hilbert_mo_static_range_frequency.test.cpp
+      title: test/mo/hilbert_mo_static_range_frequency.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/mo/hilbert_mo_static_range_inversions_query.test.cpp
       title: test/mo/hilbert_mo_static_range_inversions_query.test.cpp

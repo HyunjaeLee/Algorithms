@@ -121,8 +121,8 @@ data:
   timestamp: '2022-09-30 17:14:09+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/heavy_light_decomposition/lca.test.cpp
   - test/heavy_light_decomposition/vertex_add_path_sum.test.cpp
+  - test/heavy_light_decomposition/lca.test.cpp
   - test/heavy_light_decomposition/vertex_add_subtree_sum.test.cpp
 documentation_of: heavy_light_decomposition/heavy_light_decomposition.hpp
 layout: document

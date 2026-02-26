@@ -96,9 +96,9 @@ data:
   timestamp: '2026-02-03 20:57:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/data_structures/consistent_trading.test.cpp
   - test/graph/odd_trip_plans.test.cpp
   - test/graph/jag_regional_2022_i.test.cpp
+  - test/data_structures/consistent_trading.test.cpp
 documentation_of: data_structures/potentialized_rollback_dsu.hpp
 layout: document
 redirect_from:
