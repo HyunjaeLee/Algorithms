@@ -1,8 +1,17 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: mo/mo_tree.hpp
+    title: mo/mo_tree.hpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/mo/aoj0489.test.cpp
+    title: test/mo/aoj0489.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/mo/aoj2270.test.cpp
+    title: test/mo/aoj2270.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/mo/hilbert_mo_range_kth_smallest.test.cpp
     title: test/mo/hilbert_mo_range_kth_smallest.test.cpp
@@ -70,14 +79,17 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: mo/hilbert_mo.hpp
-  requiredBy: []
+  requiredBy:
+  - mo/mo_tree.hpp
   timestamp: '2026-02-26 17:06:24+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/mo/hilbert_mo_range_kth_smallest.test.cpp
   - test/mo/hilbert_mo_static_range_count_distinct.test.cpp
+  - test/mo/aoj0489.test.cpp
   - test/mo/hilbert_mo_static_range_frequency.test.cpp
   - test/mo/hilbert_mo_static_range_inversions_query.test.cpp
+  - test/mo/aoj2270.test.cpp
 documentation_of: mo/hilbert_mo.hpp
 layout: document
 redirect_from:

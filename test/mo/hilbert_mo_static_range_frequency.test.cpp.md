@@ -74,12 +74,12 @@ data:
     \    }\n    std::vector<int> X(Q);\n    HilbertMo mo(N);\n    for (auto &x : X)\
     \ {\n        int l, r;\n        std::cin >> l >> r >> x;\n        auto it = std::ranges::lower_bound(C,\
     \ x);\n        x = (it != C.end() && *it == x) ? int(it - C.begin()) : -1;\n \
-    \       mo.add(l, r);\n    }\n    SqrtFreqTable table(int(C.size()));\n    std::vector<int>\
-    \ ans(Q);\n    auto add = [&](int i) { table.insert(A[i]); };\n    auto remove\
-    \ = [&](int i) { table.erase(A[i]); };\n    auto eval = [&](int i) { ans[i] =\
-    \ (X[i] == -1) ? 0 : table.count(X[i]); };\n    mo.solve(add, remove, eval);\n\
-    \    std::ranges::copy(ans, std::ostream_iterator<int>(std::cout, \"\\n\"));\n\
-    }\n"
+    \       mo.add(l, r);\n    }\n    SqrtFreqTable table(int(C.size()) - 1);\n  \
+    \  std::vector<int> ans(Q);\n    auto add = [&](int i) { table.insert(A[i]); };\n\
+    \    auto remove = [&](int i) { table.erase(A[i]); };\n    auto eval = [&](int\
+    \ i) { ans[i] = (X[i] == -1) ? 0 : table.count(X[i]); };\n    mo.solve(add, remove,\
+    \ eval);\n    std::ranges::copy(ans, std::ostream_iterator<int>(std::cout, \"\\\
+    n\"));\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_frequency\"\
     \n\n#include \"mo/hilbert_mo.hpp\"\n#include \"mo/sqrt_freq_table.hpp\"\n#include\
     \ <bits/stdc++.h>\n\nint main() {\n    std::cin.tie(0)->sync_with_stdio(0);\n\
@@ -90,19 +90,19 @@ data:
     \    }\n    std::vector<int> X(Q);\n    HilbertMo mo(N);\n    for (auto &x : X)\
     \ {\n        int l, r;\n        std::cin >> l >> r >> x;\n        auto it = std::ranges::lower_bound(C,\
     \ x);\n        x = (it != C.end() && *it == x) ? int(it - C.begin()) : -1;\n \
-    \       mo.add(l, r);\n    }\n    SqrtFreqTable table(int(C.size()));\n    std::vector<int>\
-    \ ans(Q);\n    auto add = [&](int i) { table.insert(A[i]); };\n    auto remove\
-    \ = [&](int i) { table.erase(A[i]); };\n    auto eval = [&](int i) { ans[i] =\
-    \ (X[i] == -1) ? 0 : table.count(X[i]); };\n    mo.solve(add, remove, eval);\n\
-    \    std::ranges::copy(ans, std::ostream_iterator<int>(std::cout, \"\\n\"));\n\
-    }\n"
+    \       mo.add(l, r);\n    }\n    SqrtFreqTable table(int(C.size()) - 1);\n  \
+    \  std::vector<int> ans(Q);\n    auto add = [&](int i) { table.insert(A[i]); };\n\
+    \    auto remove = [&](int i) { table.erase(A[i]); };\n    auto eval = [&](int\
+    \ i) { ans[i] = (X[i] == -1) ? 0 : table.count(X[i]); };\n    mo.solve(add, remove,\
+    \ eval);\n    std::ranges::copy(ans, std::ostream_iterator<int>(std::cout, \"\\\
+    n\"));\n}\n"
   dependsOn:
   - mo/hilbert_mo.hpp
   - mo/sqrt_freq_table.hpp
   isVerificationFile: true
   path: test/mo/hilbert_mo_static_range_frequency.test.cpp
   requiredBy: []
-  timestamp: '2026-02-26 17:06:24+09:00'
+  timestamp: '2026-02-26 17:56:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/mo/hilbert_mo_static_range_frequency.test.cpp

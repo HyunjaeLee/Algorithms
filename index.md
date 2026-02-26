@@ -114,6 +114,9 @@ data:
       path: mo/hilbert_mo.hpp
       title: mo/hilbert_mo.hpp
     - icon: ':heavy_check_mark:'
+      path: mo/mo_tree.hpp
+      title: mo/mo_tree.hpp
+    - icon: ':heavy_check_mark:'
       path: mo/sqrt_freq_table.hpp
       title: mo/sqrt_freq_table.hpp
   - name: monoids
@@ -291,6 +294,12 @@ data:
       title: test/math/tetration_mod.test.cpp
   - name: test/mo
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/mo/aoj0489.test.cpp
+      title: test/mo/aoj0489.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/mo/aoj2270.test.cpp
+      title: test/mo/aoj2270.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/mo/hilbert_mo_range_kth_smallest.test.cpp
       title: test/mo/hilbert_mo_range_kth_smallest.test.cpp

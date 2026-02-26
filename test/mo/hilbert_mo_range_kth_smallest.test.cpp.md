@@ -72,7 +72,7 @@ data:
     \        auto it = std::ranges::lower_bound(C, a);\n        a = int(it - C.begin());\n\
     \    }\n    std::vector<int> K(Q);\n    HilbertMo mo(N);\n    for (auto &k : K)\
     \ {\n        int l, r;\n        std::cin >> l >> r >> k;\n        mo.add(l, r);\n\
-    \    }\n    SqrtFreqTable table(int(C.size()));\n    std::vector<int> ans(Q);\n\
+    \    }\n    SqrtFreqTable table(int(C.size()) - 1);\n    std::vector<int> ans(Q);\n\
     \    auto add = [&](int i) { table.insert(A[i]); };\n    auto remove = [&](int\
     \ i) { table.erase(A[i]); };\n    auto eval = [&](int i) { ans[i] = C[table.kth(K[i])];\
     \ };\n    mo.solve(add, remove, eval);\n    std::ranges::copy(ans, std::ostream_iterator<int>(std::cout,\
@@ -86,7 +86,7 @@ data:
     \        auto it = std::ranges::lower_bound(C, a);\n        a = int(it - C.begin());\n\
     \    }\n    std::vector<int> K(Q);\n    HilbertMo mo(N);\n    for (auto &k : K)\
     \ {\n        int l, r;\n        std::cin >> l >> r >> k;\n        mo.add(l, r);\n\
-    \    }\n    SqrtFreqTable table(int(C.size()));\n    std::vector<int> ans(Q);\n\
+    \    }\n    SqrtFreqTable table(int(C.size()) - 1);\n    std::vector<int> ans(Q);\n\
     \    auto add = [&](int i) { table.insert(A[i]); };\n    auto remove = [&](int\
     \ i) { table.erase(A[i]); };\n    auto eval = [&](int i) { ans[i] = C[table.kth(K[i])];\
     \ };\n    mo.solve(add, remove, eval);\n    std::ranges::copy(ans, std::ostream_iterator<int>(std::cout,\
@@ -97,7 +97,7 @@ data:
   isVerificationFile: true
   path: test/mo/hilbert_mo_range_kth_smallest.test.cpp
   requiredBy: []
-  timestamp: '2026-02-26 17:06:24+09:00'
+  timestamp: '2026-02-26 17:56:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/mo/hilbert_mo_range_kth_smallest.test.cpp
