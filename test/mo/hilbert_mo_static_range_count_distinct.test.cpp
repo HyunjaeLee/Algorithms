@@ -25,7 +25,7 @@ int main() {
         std::cin >> l >> r;
         mo.add(l, r);
     }
-    SqrtFreqTable table(int(C.size()));
+    SqrtFreqTable table(int(C.size()) - 1);
     std::vector<int> ans(Q);
     auto add = [&](int i) { table.insert(A[i]); };
     auto remove = [&](int i) { table.erase(A[i]); };
