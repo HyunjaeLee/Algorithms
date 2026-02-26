@@ -2,12 +2,13 @@
 #define SCANNER_HPP
 
 #include <charconv>
+#include <concepts>
 #include <iostream>
+#include <iterator>
+#include <string>
 #include <string_view>
 #include <sys/mman.h>
 #include <sys/stat.h>
-#include <type_traits>
-#include <unistd.h>
 
 struct scanner {
     scanner() {
@@ -32,6 +33,10 @@ struct scanner {
             ++p_;
         }
         return std::string_view(first, p_ - first);
+    }
+    auto &operator>>(auto &x) {
+        scan(x);
+        return *this;
     }
 
 private:
