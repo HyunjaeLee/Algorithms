@@ -19,7 +19,7 @@ int main() {
         auto it = std::lower_bound(c.begin(), c.end(), x);
         x = static_cast<int>(it - c.begin());
     }
-    hilbert_mo mo(N);
+    HilbertMo mo(N);
     for (auto i = 0; i < Q; ++i) {
         int l, r;
         std::cin >> l >> r;
@@ -46,7 +46,7 @@ int main() {
     };
     std::vector<long long> ans(Q);
     auto eval = [&](auto i) { ans[i] = s; };
-    mo.run(add_left, add_right, remove_left, remove_right, eval);
+    mo.solve(add_left, add_right, remove_left, remove_right, eval);
     for (auto x : ans) {
         std::cout << x << '\n';
     }

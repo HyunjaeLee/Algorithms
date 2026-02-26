@@ -6,22 +6,16 @@
 #include <cassert>
 #include <vector>
 
-struct hilbert_mo {
-    hilbert_mo(int n) : n_(n), log_(std::__lg(std::max(1, n_)) + 1) {}
+struct HilbertMo {
+    HilbertMo(int n) : n_(n), log_(std::bit_width(unsigned(n))) {}
     void add(int l, int r) {
         assert(0 <= l && l <= r && r <= n_);
-        auto index = static_cast<int>(queries_.size());
-        auto order = hilbert_order(l, r, log_, 0);
+        auto index = int(queries_.size());
+        auto order = hilbert_order(l, r);
         queries_.push_back({l, r, index, order});
     }
-    template <typename Add, typename Remove, typename Eval>
-    void run(Add add, Remove remove, Eval eval) {
-        run(add, add, remove, remove, eval);
-    }
-    template <typename AddLeft, typename AddRight, typename RemoveLeft,
-              typename RemoveRight, typename Eval>
-    void run(AddLeft add_left, AddRight add_right, RemoveLeft remove_left,
-             RemoveRight remove_right, Eval eval) {
+    void solve(auto add, auto remove, auto eval) { solve(add, add, remove, remove, eval); }
+    void solve(auto add_left, auto add_right, auto remove_left, auto remove_right, auto eval) {
         sort(queries_.begin(), queries_.end());
         auto l = 0, r = 0;
         for (auto [left, right, index, order] : queries_) {
@@ -47,21 +41,20 @@ private:
         long long order;
         bool operator<(const query &other) const { return order < other.order; }
     };
-    long long hilbert_order(int x, int y, int pow, int rotate) const {
-        if (pow == 0) {
-            return 0;
+    long long hilbert_order(int x, int y) const {
+        long long d = 0;
+        for (int s = 1 << log_; s > 0; s >>= 1) {
+            bool rx = x & s, ry = y & s;
+            d = (d << 2) | ((rx * 3) ^ ry);
+            if (!ry) {
+                if (rx) {
+                    x = ~x;
+                    y = ~y;
+                }
+                std::swap(x, y);
+            }
         }
-        auto hpow = 1 << (pow - 1);
-        auto seg = (x < hpow) ? ((y < hpow) ? 0 : 3) : ((y < hpow) ? 1 : 2);
-        seg = (seg + rotate) & 3;
-        const std::array<int, 4> rotate_delta{3, 0, 0, 1};
-        auto nx = x & (x ^ hpow), ny = y & (y ^ hpow);
-        auto nrot = (rotate + rotate_delta[seg]) & 3;
-        auto subsquare_size = static_cast<long long>(1) << (2 * pow - 2);
-        auto ans = seg * subsquare_size;
-        auto add = hilbert_order(nx, ny, pow - 1, nrot);
-        ans += (seg == 1 || seg == 2) ? add : (subsquare_size - add - 1);
-        return ans;
+        return d;
     }
     std::vector<query> queries_;
     const int n_, log_;
