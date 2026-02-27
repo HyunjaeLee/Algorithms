@@ -42,8 +42,8 @@ private:
         bool operator<(const query &other) const { return order < other.order; }
     };
     long long hilbert_order(int x, int y) const {
-        long long d = 0;
-        for (int s = 1 << log_; s > 0; s >>= 1) {
+        auto d = 0LL;
+        for (auto s = 1 << log_; s > 0; s >>= 1) {
             bool rx = x & s, ry = y & s;
             d = (d << 2) | ((rx * 3) ^ ry);
             if (!ry) {
