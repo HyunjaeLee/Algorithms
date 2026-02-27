@@ -47,7 +47,9 @@ struct SqrtFreqTable {
         return -1;
     };
     int rank(int x) const { // O(sqrt(M)), count y s.t. y < x
-        assert(0 <= x);
+        if (x < 0) {
+            return 0;
+        }
         if (m_ < x) {
             return total_;
         }
