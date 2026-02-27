@@ -60,12 +60,13 @@ data:
     \         auto x = i * b_sz_;\n            while ((cnt += freq_[x]) <= k) {\n\
     \                ++x;\n            }\n            return x;\n        }\n     \
     \   return -1;\n    };\n    int rank(int x) const { // O(sqrt(M)), count y s.t.\
-    \ y < x\n        assert(0 <= x);\n        if (m_ < x) {\n            return total_;\n\
-    \        }\n        auto cnt = 0;\n        for (auto i = 0; i < x / b_sz_; ++i)\
-    \ {\n            cnt += bucket_[i];\n        }\n        for (auto i = x / b_sz_\
-    \ * b_sz_; i < x; ++i) {\n            cnt += freq_[i];\n        }\n        return\
-    \ cnt;\n    }\n\nprivate:\n    const int m_, b_sz_;\n    std::vector<int> freq_,\
-    \ bucket_;\n    int total_ = 0, distinct_ = 0;\n};\n\n\n#line 5 \"test/mo/hilbert_mo_static_range_count_distinct.test.cpp\"\
+    \ y < x\n        if (x < 0) {\n            return 0;\n        }\n        if (m_\
+    \ < x) {\n            return total_;\n        }\n        auto cnt = 0;\n     \
+    \   for (auto i = 0; i < x / b_sz_; ++i) {\n            cnt += bucket_[i];\n \
+    \       }\n        for (auto i = x / b_sz_ * b_sz_; i < x; ++i) {\n          \
+    \  cnt += freq_[i];\n        }\n        return cnt;\n    }\n\nprivate:\n    const\
+    \ int m_, b_sz_;\n    std::vector<int> freq_, bucket_;\n    int total_ = 0, distinct_\
+    \ = 0;\n};\n\n\n#line 5 \"test/mo/hilbert_mo_static_range_count_distinct.test.cpp\"\
     \n#include <bits/stdc++.h>\n\nint main() {\n    std::cin.tie(0)->sync_with_stdio(0);\n\
     \    int N, Q;\n    std::cin >> N >> Q;\n    std::vector<int> A(N);\n    for (auto\
     \ &a : A) {\n        std::cin >> a;\n    }\n    auto C = A;\n    std::ranges::sort(C);\n\
@@ -98,7 +99,7 @@ data:
   isVerificationFile: true
   path: test/mo/hilbert_mo_static_range_count_distinct.test.cpp
   requiredBy: []
-  timestamp: '2026-02-27 15:20:30+09:00'
+  timestamp: '2026-02-28 01:07:59+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/mo/hilbert_mo_static_range_count_distinct.test.cpp

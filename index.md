@@ -117,6 +117,9 @@ data:
       path: mo/mo_tree.hpp
       title: mo/mo_tree.hpp
     - icon: ':heavy_check_mark:'
+      path: mo/rollback_mo.hpp
+      title: Rollback Mo
+    - icon: ':heavy_check_mark:'
       path: mo/sqrt_freq_table.hpp
       title: mo/sqrt_freq_table.hpp
   - name: monoids
@@ -315,6 +318,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/mo/hilbert_mo_static_range_inversions_query.test.cpp
       title: test/mo/hilbert_mo_static_range_inversions_query.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/mo/rollback_mo_static_range_mode_query.test.cpp
+      title: test/mo/rollback_mo_static_range_mode_query.test.cpp
   - name: test/segment_tree
     pages:
     - icon: ':heavy_check_mark:'

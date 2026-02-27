@@ -41,12 +41,13 @@ data:
     \         auto x = i * b_sz_;\n            while ((cnt += freq_[x]) <= k) {\n\
     \                ++x;\n            }\n            return x;\n        }\n     \
     \   return -1;\n    };\n    int rank(int x) const { // O(sqrt(M)), count y s.t.\
-    \ y < x\n        assert(0 <= x);\n        if (m_ < x) {\n            return total_;\n\
-    \        }\n        auto cnt = 0;\n        for (auto i = 0; i < x / b_sz_; ++i)\
-    \ {\n            cnt += bucket_[i];\n        }\n        for (auto i = x / b_sz_\
-    \ * b_sz_; i < x; ++i) {\n            cnt += freq_[i];\n        }\n        return\
-    \ cnt;\n    }\n\nprivate:\n    const int m_, b_sz_;\n    std::vector<int> freq_,\
-    \ bucket_;\n    int total_ = 0, distinct_ = 0;\n};\n\n\n"
+    \ y < x\n        if (x < 0) {\n            return 0;\n        }\n        if (m_\
+    \ < x) {\n            return total_;\n        }\n        auto cnt = 0;\n     \
+    \   for (auto i = 0; i < x / b_sz_; ++i) {\n            cnt += bucket_[i];\n \
+    \       }\n        for (auto i = x / b_sz_ * b_sz_; i < x; ++i) {\n          \
+    \  cnt += freq_[i];\n        }\n        return cnt;\n    }\n\nprivate:\n    const\
+    \ int m_, b_sz_;\n    std::vector<int> freq_, bucket_;\n    int total_ = 0, distinct_\
+    \ = 0;\n};\n\n\n"
   code: "#ifndef SQRT_FREQ_TABLE_HPP\n#define SQRT_FREQ_TABLE_HPP\n\n#include <algorithm>\n\
     #include <cassert>\n#include <cmath>\n#include <vector>\n\nstruct SqrtFreqTable\
     \ {\n    explicit SqrtFreqTable(int max_val)\n        : m_(std::max(1, max_val)),\
@@ -65,17 +66,18 @@ data:
     \            auto x = i * b_sz_;\n            while ((cnt += freq_[x]) <= k) {\n\
     \                ++x;\n            }\n            return x;\n        }\n     \
     \   return -1;\n    };\n    int rank(int x) const { // O(sqrt(M)), count y s.t.\
-    \ y < x\n        assert(0 <= x);\n        if (m_ < x) {\n            return total_;\n\
-    \        }\n        auto cnt = 0;\n        for (auto i = 0; i < x / b_sz_; ++i)\
-    \ {\n            cnt += bucket_[i];\n        }\n        for (auto i = x / b_sz_\
-    \ * b_sz_; i < x; ++i) {\n            cnt += freq_[i];\n        }\n        return\
-    \ cnt;\n    }\n\nprivate:\n    const int m_, b_sz_;\n    std::vector<int> freq_,\
-    \ bucket_;\n    int total_ = 0, distinct_ = 0;\n};\n\n#endif // SQRT_FREQ_TABLE_HPP"
+    \ y < x\n        if (x < 0) {\n            return 0;\n        }\n        if (m_\
+    \ < x) {\n            return total_;\n        }\n        auto cnt = 0;\n     \
+    \   for (auto i = 0; i < x / b_sz_; ++i) {\n            cnt += bucket_[i];\n \
+    \       }\n        for (auto i = x / b_sz_ * b_sz_; i < x; ++i) {\n          \
+    \  cnt += freq_[i];\n        }\n        return cnt;\n    }\n\nprivate:\n    const\
+    \ int m_, b_sz_;\n    std::vector<int> freq_, bucket_;\n    int total_ = 0, distinct_\
+    \ = 0;\n};\n\n#endif // SQRT_FREQ_TABLE_HPP"
   dependsOn: []
   isVerificationFile: false
   path: mo/sqrt_freq_table.hpp
   requiredBy: []
-  timestamp: '2026-02-26 17:06:24+09:00'
+  timestamp: '2026-02-28 01:07:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/mo/hilbert_mo_range_kth_smallest.test.cpp
