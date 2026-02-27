@@ -35,12 +35,12 @@ data:
     \            }\n            eval(index);\n        }\n    }\n\nprivate:\n    struct\
     \ query {\n        int left, right, index;\n        long long order;\n       \
     \ bool operator<(const query &other) const { return order < other.order; }\n \
-    \   };\n    long long hilbert_order(int x, int y) const {\n        long long d\
-    \ = 0;\n        for (int s = 1 << log_; s > 0; s >>= 1) {\n            bool rx\
-    \ = x & s, ry = y & s;\n            d = (d << 2) | ((rx * 3) ^ ry);\n        \
-    \    if (!ry) {\n                if (rx) {\n                    x = ~x;\n    \
-    \                y = ~y;\n                }\n                std::swap(x, y);\n\
-    \            }\n        }\n        return d;\n    }\n    std::vector<query> queries_;\n\
+    \   };\n    long long hilbert_order(int x, int y) const {\n        auto d = 0LL;\n\
+    \        for (auto s = 1 << log_; s > 0; s >>= 1) {\n            bool rx = x &\
+    \ s, ry = y & s;\n            d = (d << 2) | ((rx * 3) ^ ry);\n            if\
+    \ (!ry) {\n                if (rx) {\n                    x = ~x;\n          \
+    \          y = ~y;\n                }\n                std::swap(x, y);\n    \
+    \        }\n        }\n        return d;\n    }\n    std::vector<query> queries_;\n\
     \    const int n_, log_;\n};\n\n\n#line 1 \"mo/sqrt_freq_table.hpp\"\n\n\n\n#line\
     \ 6 \"mo/sqrt_freq_table.hpp\"\n#include <cmath>\n#line 8 \"mo/sqrt_freq_table.hpp\"\
     \n\nstruct SqrtFreqTable {\n    explicit SqrtFreqTable(int max_val)\n        :\
@@ -97,7 +97,7 @@ data:
   isVerificationFile: true
   path: test/mo/hilbert_mo_range_kth_smallest.test.cpp
   requiredBy: []
-  timestamp: '2026-02-26 17:56:11+09:00'
+  timestamp: '2026-02-27 15:20:30+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/mo/hilbert_mo_range_kth_smallest.test.cpp

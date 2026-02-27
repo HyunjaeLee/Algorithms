@@ -149,6 +149,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: segment_tree/segtree_beats.hpp
       title: Segtree Beats
+    - icon: ':heavy_check_mark:'
+      path: segment_tree/simd_segtree.hpp
+      title: segment_tree/simd_segtree.hpp
   - name: sparse_table
     pages:
     - icon: ':heavy_check_mark:'

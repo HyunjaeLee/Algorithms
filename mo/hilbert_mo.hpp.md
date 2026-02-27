@@ -46,11 +46,11 @@ data:
     \        }\n    }\n\nprivate:\n    struct query {\n        int left, right, index;\n\
     \        long long order;\n        bool operator<(const query &other) const {\
     \ return order < other.order; }\n    };\n    long long hilbert_order(int x, int\
-    \ y) const {\n        long long d = 0;\n        for (int s = 1 << log_; s > 0;\
-    \ s >>= 1) {\n            bool rx = x & s, ry = y & s;\n            d = (d <<\
-    \ 2) | ((rx * 3) ^ ry);\n            if (!ry) {\n                if (rx) {\n \
-    \                   x = ~x;\n                    y = ~y;\n                }\n\
-    \                std::swap(x, y);\n            }\n        }\n        return d;\n\
+    \ y) const {\n        auto d = 0LL;\n        for (auto s = 1 << log_; s > 0; s\
+    \ >>= 1) {\n            bool rx = x & s, ry = y & s;\n            d = (d << 2)\
+    \ | ((rx * 3) ^ ry);\n            if (!ry) {\n                if (rx) {\n    \
+    \                x = ~x;\n                    y = ~y;\n                }\n   \
+    \             std::swap(x, y);\n            }\n        }\n        return d;\n\
     \    }\n    std::vector<query> queries_;\n    const int n_, log_;\n};\n\n\n"
   code: "#ifndef HILBERT_MO_HPP\n#define HILBERT_MO_HPP\n\n#include <algorithm>\n\
     #include <array>\n#include <cassert>\n#include <vector>\n\nstruct HilbertMo {\n\
@@ -69,19 +69,19 @@ data:
     \            }\n            eval(index);\n        }\n    }\n\nprivate:\n    struct\
     \ query {\n        int left, right, index;\n        long long order;\n       \
     \ bool operator<(const query &other) const { return order < other.order; }\n \
-    \   };\n    long long hilbert_order(int x, int y) const {\n        long long d\
-    \ = 0;\n        for (int s = 1 << log_; s > 0; s >>= 1) {\n            bool rx\
-    \ = x & s, ry = y & s;\n            d = (d << 2) | ((rx * 3) ^ ry);\n        \
-    \    if (!ry) {\n                if (rx) {\n                    x = ~x;\n    \
-    \                y = ~y;\n                }\n                std::swap(x, y);\n\
-    \            }\n        }\n        return d;\n    }\n    std::vector<query> queries_;\n\
+    \   };\n    long long hilbert_order(int x, int y) const {\n        auto d = 0LL;\n\
+    \        for (auto s = 1 << log_; s > 0; s >>= 1) {\n            bool rx = x &\
+    \ s, ry = y & s;\n            d = (d << 2) | ((rx * 3) ^ ry);\n            if\
+    \ (!ry) {\n                if (rx) {\n                    x = ~x;\n          \
+    \          y = ~y;\n                }\n                std::swap(x, y);\n    \
+    \        }\n        }\n        return d;\n    }\n    std::vector<query> queries_;\n\
     \    const int n_, log_;\n};\n\n#endif // HILBERT_MO_HPP"
   dependsOn: []
   isVerificationFile: false
   path: mo/hilbert_mo.hpp
   requiredBy:
   - mo/mo_tree.hpp
-  timestamp: '2026-02-26 17:06:24+09:00'
+  timestamp: '2026-02-27 15:20:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/mo/hilbert_mo_range_kth_smallest.test.cpp
