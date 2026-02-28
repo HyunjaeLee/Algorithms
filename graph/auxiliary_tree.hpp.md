@@ -77,13 +77,13 @@ data:
     \        std::vector<int> st;\n        std::vector<std::pair<int, int>> dfs_order(n);\n\
     \        st.push_back(x[0]);\n        dfs_order[0] = {x[0], -1};\n        for\
     \ (auto i = 1; i < n; ++i) {\n            auto v = x[i];\n            while (!st.empty())\
-    \ {\n                auto u = st.back();\n                if (hld_.in(u) <= hld_.in(v)\
-    \ && hld_.in(v) < hld_.out(u)) {\n                    break;\n               \
-    \ } else {\n                    st.pop_back();\n                }\n          \
-    \  }\n            auto parent = st.back();\n            dfs_order[i] = {v, parent};\n\
-    \            st.push_back(v);\n        }\n        return dfs_order;\n    }\n \
-    \   const heavy_light_decomposition &hld() const { return hld_; }\n\nprivate:\n\
-    \    const heavy_light_decomposition hld_;\n};\n\n\n"
+    \ {\n                auto u = st.back();\n                if (hld_.in(v) < hld_.out(u))\
+    \ {\n                    break;\n                } else {\n                  \
+    \  st.pop_back();\n                }\n            }\n            auto parent =\
+    \ st.back();\n            dfs_order[i] = {v, parent};\n            st.push_back(v);\n\
+    \        }\n        return dfs_order;\n    }\n    const heavy_light_decomposition\
+    \ &hld() const { return hld_; }\n\nprivate:\n    const heavy_light_decomposition\
+    \ hld_;\n};\n\n\n"
   code: "#ifndef AUXILIARY_TREE_HPP\n#define AUXILIARY_TREE_HPP\n\n#include \"heavy_light_decomposition/heavy_light_decomposition.hpp\"\
     \n#include <algorithm>\n#include <utility>\n#include <vector>\n\nstruct AuxiliaryTree\
     \ {\n    AuxiliaryTree(const std::vector<std::vector<int>> &graph, int root) :\
@@ -97,19 +97,19 @@ data:
     \        std::vector<int> st;\n        std::vector<std::pair<int, int>> dfs_order(n);\n\
     \        st.push_back(x[0]);\n        dfs_order[0] = {x[0], -1};\n        for\
     \ (auto i = 1; i < n; ++i) {\n            auto v = x[i];\n            while (!st.empty())\
-    \ {\n                auto u = st.back();\n                if (hld_.in(u) <= hld_.in(v)\
-    \ && hld_.in(v) < hld_.out(u)) {\n                    break;\n               \
-    \ } else {\n                    st.pop_back();\n                }\n          \
-    \  }\n            auto parent = st.back();\n            dfs_order[i] = {v, parent};\n\
-    \            st.push_back(v);\n        }\n        return dfs_order;\n    }\n \
-    \   const heavy_light_decomposition &hld() const { return hld_; }\n\nprivate:\n\
-    \    const heavy_light_decomposition hld_;\n};\n\n#endif // AUXILIARY_TREE_HPP"
+    \ {\n                auto u = st.back();\n                if (hld_.in(v) < hld_.out(u))\
+    \ {\n                    break;\n                } else {\n                  \
+    \  st.pop_back();\n                }\n            }\n            auto parent =\
+    \ st.back();\n            dfs_order[i] = {v, parent};\n            st.push_back(v);\n\
+    \        }\n        return dfs_order;\n    }\n    const heavy_light_decomposition\
+    \ &hld() const { return hld_; }\n\nprivate:\n    const heavy_light_decomposition\
+    \ hld_;\n};\n\n#endif // AUXILIARY_TREE_HPP"
   dependsOn:
   - heavy_light_decomposition/heavy_light_decomposition.hpp
   isVerificationFile: false
   path: graph/auxiliary_tree.hpp
   requiredBy: []
-  timestamp: '2026-02-28 16:36:07+09:00'
+  timestamp: '2026-02-28 18:51:51+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/graph/yuki901.test.cpp

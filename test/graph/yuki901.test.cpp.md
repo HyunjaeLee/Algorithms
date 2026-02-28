@@ -81,14 +81,14 @@ data:
     \        std::vector<int> st;\n        std::vector<std::pair<int, int>> dfs_order(n);\n\
     \        st.push_back(x[0]);\n        dfs_order[0] = {x[0], -1};\n        for\
     \ (auto i = 1; i < n; ++i) {\n            auto v = x[i];\n            while (!st.empty())\
-    \ {\n                auto u = st.back();\n                if (hld_.in(u) <= hld_.in(v)\
-    \ && hld_.in(v) < hld_.out(u)) {\n                    break;\n               \
-    \ } else {\n                    st.pop_back();\n                }\n          \
-    \  }\n            auto parent = st.back();\n            dfs_order[i] = {v, parent};\n\
-    \            st.push_back(v);\n        }\n        return dfs_order;\n    }\n \
-    \   const heavy_light_decomposition &hld() const { return hld_; }\n\nprivate:\n\
-    \    const heavy_light_decomposition hld_;\n};\n\n\n#line 4 \"test/graph/yuki901.test.cpp\"\
-    \n#include <bits/stdc++.h>\nusing i64 = long long;\n\nint main() {\n    std::cin.tie(0)->sync_with_stdio(0);\n\
+    \ {\n                auto u = st.back();\n                if (hld_.in(v) < hld_.out(u))\
+    \ {\n                    break;\n                } else {\n                  \
+    \  st.pop_back();\n                }\n            }\n            auto parent =\
+    \ st.back();\n            dfs_order[i] = {v, parent};\n            st.push_back(v);\n\
+    \        }\n        return dfs_order;\n    }\n    const heavy_light_decomposition\
+    \ &hld() const { return hld_; }\n\nprivate:\n    const heavy_light_decomposition\
+    \ hld_;\n};\n\n\n#line 4 \"test/graph/yuki901.test.cpp\"\n#include <bits/stdc++.h>\n\
+    using i64 = long long;\n\nint main() {\n    std::cin.tie(0)->sync_with_stdio(0);\n\
     \    int N;\n    std::cin >> N;\n    std::vector<std::vector<std::pair<int, i64>>>\
     \ adj(N);\n    std::vector<std::vector<int>> g(N);\n    for (auto i = 0; i < N\
     \ - 1; ++i) {\n        int u, v, w;\n        std::cin >> u >> v >> w;\n      \
@@ -125,7 +125,7 @@ data:
   isVerificationFile: true
   path: test/graph/yuki901.test.cpp
   requiredBy: []
-  timestamp: '2026-02-28 16:36:07+09:00'
+  timestamp: '2026-02-28 18:51:51+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/graph/yuki901.test.cpp
