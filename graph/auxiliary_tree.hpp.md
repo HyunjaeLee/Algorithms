@@ -5,17 +5,16 @@ data:
     path: heavy_light_decomposition/heavy_light_decomposition.hpp
     title: Heavy-Light Decomposition
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/graph/yuki901.test.cpp
+    title: test/graph/yuki901.test.cpp
   _isVerificationFailed: false
-  _pathExtension: cpp
+  _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/lca
-    links:
-    - https://judge.yosupo.jp/problem/lca
-  bundledCode: "#line 1 \"test/heavy_light_decomposition/lca.test.cpp\"\n#define PROBLEM\
-    \ \"https://judge.yosupo.jp/problem/lca\"\n\n#line 1 \"heavy_light_decomposition/heavy_light_decomposition.hpp\"\
+    links: []
+  bundledCode: "#line 1 \"graph/auxiliary_tree.hpp\"\n\n\n\n#line 1 \"heavy_light_decomposition/heavy_light_decomposition.hpp\"\
     \n\n\n\n#include <algorithm>\n#include <cassert>\n#include <type_traits>\n#include\
     \ <vector>\n\nstruct heavy_light_decomposition {\n    heavy_light_decomposition(const\
     \ std::vector<std::vector<int>> &graph, int root)\n        : n_(int(graph.size())),\
@@ -65,32 +64,59 @@ data:
     \            top_[v] = (v == graph_[u][0] ? top_[u] : v);\n                dfs_hld(v);\n\
     \            }\n        }\n        out_[u] = timer_;\n    }\n    const int n_;\n\
     \    int timer_;\n    std::vector<std::vector<int>> graph_;\n    std::vector<int>\
-    \ size_, depth_, parent_, top_, in_, out_;\n};\n\n\n#line 4 \"test/heavy_light_decomposition/lca.test.cpp\"\
-    \n#include <bits/stdc++.h>\n\nint main() {\n    std::cin.tie(0)->sync_with_stdio(0);\n\
-    \    int N, Q;\n    std::cin >> N >> Q;\n    std::vector<std::vector<int>> adj(N);\n\
-    \    for (auto i = 1; i < N; ++i) {\n        int p;\n        std::cin >> p;\n\
-    \        adj[p].push_back(i);\n    }\n    heavy_light_decomposition hld(adj, 0);\n\
-    \    while (Q--) {\n        int u, v;\n        std::cin >> u >> v;\n        std::cout\
-    \ << hld.lca(u, v) << '\\n';\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n\n#include \"heavy_light_decomposition/heavy_light_decomposition.hpp\"\
-    \n#include <bits/stdc++.h>\n\nint main() {\n    std::cin.tie(0)->sync_with_stdio(0);\n\
-    \    int N, Q;\n    std::cin >> N >> Q;\n    std::vector<std::vector<int>> adj(N);\n\
-    \    for (auto i = 1; i < N; ++i) {\n        int p;\n        std::cin >> p;\n\
-    \        adj[p].push_back(i);\n    }\n    heavy_light_decomposition hld(adj, 0);\n\
-    \    while (Q--) {\n        int u, v;\n        std::cin >> u >> v;\n        std::cout\
-    \ << hld.lca(u, v) << '\\n';\n    }\n}\n"
+    \ size_, depth_, parent_, top_, in_, out_;\n};\n\n\n#line 6 \"graph/auxiliary_tree.hpp\"\
+    \n#include <utility>\n#line 8 \"graph/auxiliary_tree.hpp\"\n\nstruct AuxiliaryTree\
+    \ {\n    AuxiliaryTree(const std::vector<std::vector<int>> &graph, int root) :\
+    \ hld_(graph, root) {}\n    std::vector<std::pair<int, int>> get(std::vector<int>\
+    \ x) const {\n        if (x.empty()) {\n            return {};\n        }\n  \
+    \      std::ranges::sort(x, {}, [&](int u) { return hld_.in(u); });\n        const\
+    \ auto m = int(x.size());\n        for (auto i = 1; i < m; i++) {\n          \
+    \  x.push_back(hld_.lca(x[i - 1], x[i]));\n        }\n        std::ranges::sort(x,\
+    \ {}, [&](int u) { return hld_.in(u); });\n        auto r = std::ranges::unique(x);\n\
+    \        x.erase(r.begin(), r.end());\n        const auto n = int(x.size());\n\
+    \        std::vector<int> st;\n        std::vector<std::pair<int, int>> dfs_order(n);\n\
+    \        st.push_back(x[0]);\n        dfs_order[0] = {x[0], -1};\n        for\
+    \ (auto i = 1; i < n; ++i) {\n            auto v = x[i];\n            while (!st.empty())\
+    \ {\n                auto u = st.back();\n                if (hld_.in(u) <= hld_.in(v)\
+    \ && hld_.in(v) < hld_.out(u)) {\n                    break;\n               \
+    \ } else {\n                    st.pop_back();\n                }\n          \
+    \  }\n            auto parent = st.back();\n            dfs_order[i] = {v, parent};\n\
+    \            st.push_back(v);\n        }\n        return dfs_order;\n    }\n \
+    \   const heavy_light_decomposition &hld() const { return hld_; }\n\nprivate:\n\
+    \    const heavy_light_decomposition hld_;\n};\n\n\n"
+  code: "#ifndef AUXILIARY_TREE_HPP\n#define AUXILIARY_TREE_HPP\n\n#include \"heavy_light_decomposition/heavy_light_decomposition.hpp\"\
+    \n#include <algorithm>\n#include <utility>\n#include <vector>\n\nstruct AuxiliaryTree\
+    \ {\n    AuxiliaryTree(const std::vector<std::vector<int>> &graph, int root) :\
+    \ hld_(graph, root) {}\n    std::vector<std::pair<int, int>> get(std::vector<int>\
+    \ x) const {\n        if (x.empty()) {\n            return {};\n        }\n  \
+    \      std::ranges::sort(x, {}, [&](int u) { return hld_.in(u); });\n        const\
+    \ auto m = int(x.size());\n        for (auto i = 1; i < m; i++) {\n          \
+    \  x.push_back(hld_.lca(x[i - 1], x[i]));\n        }\n        std::ranges::sort(x,\
+    \ {}, [&](int u) { return hld_.in(u); });\n        auto r = std::ranges::unique(x);\n\
+    \        x.erase(r.begin(), r.end());\n        const auto n = int(x.size());\n\
+    \        std::vector<int> st;\n        std::vector<std::pair<int, int>> dfs_order(n);\n\
+    \        st.push_back(x[0]);\n        dfs_order[0] = {x[0], -1};\n        for\
+    \ (auto i = 1; i < n; ++i) {\n            auto v = x[i];\n            while (!st.empty())\
+    \ {\n                auto u = st.back();\n                if (hld_.in(u) <= hld_.in(v)\
+    \ && hld_.in(v) < hld_.out(u)) {\n                    break;\n               \
+    \ } else {\n                    st.pop_back();\n                }\n          \
+    \  }\n            auto parent = st.back();\n            dfs_order[i] = {v, parent};\n\
+    \            st.push_back(v);\n        }\n        return dfs_order;\n    }\n \
+    \   const heavy_light_decomposition &hld() const { return hld_; }\n\nprivate:\n\
+    \    const heavy_light_decomposition hld_;\n};\n\n#endif // AUXILIARY_TREE_HPP"
   dependsOn:
   - heavy_light_decomposition/heavy_light_decomposition.hpp
-  isVerificationFile: true
-  path: test/heavy_light_decomposition/lca.test.cpp
+  isVerificationFile: false
+  path: graph/auxiliary_tree.hpp
   requiredBy: []
   timestamp: '2026-02-28 16:36:07+09:00'
-  verificationStatus: TEST_ACCEPTED
-  verifiedWith: []
-documentation_of: test/heavy_light_decomposition/lca.test.cpp
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/graph/yuki901.test.cpp
+documentation_of: graph/auxiliary_tree.hpp
 layout: document
 redirect_from:
-- /verify/test/heavy_light_decomposition/lca.test.cpp
-- /verify/test/heavy_light_decomposition/lca.test.cpp.html
-title: test/heavy_light_decomposition/lca.test.cpp
+- /library/graph/auxiliary_tree.hpp
+- /library/graph/auxiliary_tree.hpp.html
+title: graph/auxiliary_tree.hpp
 ---

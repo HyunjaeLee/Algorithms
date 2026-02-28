@@ -23,6 +23,9 @@ data:
       path: graph/articulation_points.hpp
       title: Articulation Points
     - icon: ':heavy_check_mark:'
+      path: graph/auxiliary_tree.hpp
+      title: graph/auxiliary_tree.hpp
+    - icon: ':heavy_check_mark:'
       path: graph/bridges.hpp
       title: Bridges
     - icon: ':heavy_check_mark:'
@@ -227,6 +230,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/graph/offline_dynamic_connectivity.test.cpp
       title: test/graph/offline_dynamic_connectivity.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/graph/yuki901.test.cpp
+      title: test/graph/yuki901.test.cpp
   - name: test/heavy_light_decomposition
     pages:
     - icon: ':heavy_check_mark:'
