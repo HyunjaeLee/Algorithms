@@ -29,7 +29,7 @@ struct AuxiliaryTree {
             auto v = x[i];
             while (!st.empty()) {
                 auto u = st.back();
-                if (hld_.in(u) <= hld_.in(v) && hld_.in(v) < hld_.out(u)) {
+                if (hld_.in(v) < hld_.out(u)) {
                     break;
                 } else {
                     st.pop_back();
