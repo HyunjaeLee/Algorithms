@@ -21,9 +21,8 @@ int main() {
         g.add_edge(u, v, {b, c});
     }
     g.build_undirected();
-    using State = std::pair<Z, int>;
-    using Subtree = State;
-    using Child = State;
+    using Subtree = std::pair<Z, int>;
+    using Child = std::pair<Z, int>;
     auto rake = [&](Child l, Child r) -> Child { return {l.first + r.first, l.second + r.second}; };
     auto add_edge = [&](Subtree d, EdgeWeight w) -> Child {
         return {w.first * d.first + Z::raw(w.second) * d.second, d.second};

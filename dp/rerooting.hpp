@@ -15,14 +15,14 @@
 */
 
 auto rerooting(const auto &g, auto rake, auto add_edge, auto add_vertex, auto e) {
-    int n = g.size();
+    auto n = int(g.size());
     using Child = decltype(e());
     using Subtree = decltype(add_vertex(e(), 0));
     std::vector<Subtree> dp(n), dp_parent(n);
     std::vector<int> bfs_order, parent(n, -1);
     std::vector<Child> pref(n + 1);
     bfs_order.reserve(n);
-    for (int root = 0; root < n; ++root) {
+    for (auto root = 0; root < n; ++root) {
         if (~parent[root]) {
             continue;
         }
@@ -31,7 +31,7 @@ auto rerooting(const auto &g, auto rake, auto add_edge, auto add_vertex, auto e)
         bfs_order.push_back(root);
         auto q = bfs_order.cbegin();
         while (q != bfs_order.cend()) {
-            int u = *q++;
+            auto u = *q++;
             for (auto [v, w] : g[u]) {
                 if (v != parent[u]) {
                     parent[v] = u;
