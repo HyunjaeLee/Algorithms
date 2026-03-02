@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: dp/rerooting.hpp
     title: Rerooting
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/csr_graph.hpp
     title: graph/csr_graph.hpp
   _extendedRequiredBy: []
@@ -19,38 +19,39 @@ data:
     - https://judge.yosupo.jp/problem/tree_path_composite_sum
   bundledCode: "#line 1 \"test/dp/rerooting.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/tree_path_composite_sum\"\
     \n\n#line 1 \"dp/rerooting.hpp\"\n\n\n\n#include <ranges>\n#include <vector>\n\
-    \nauto rerooting(const auto &g,   // Graph\n               auto op,         //\
-    \ (PathState, PathState) -> PathState\n               auto to_path,    // (TreeState,\
-    \ EdgeWeight) -> PathState\n               auto to_subtree, // (PathState, NodeWeight)\
-    \ -> TreeState\n               auto e           // PathState (Identity)\n) {\n\
-    \    int n = g.size();\n    using PathState = decltype(e);\n    using TreeState\
-    \ = decltype(to_subtree(e, g.node_weight(0)));\n    std::vector<TreeState> dp(n),\
-    \ dp_parent(n);\n    std::vector<int> q, parent(n, -1);\n    std::vector<PathState>\
-    \ pref(n + 1);\n    q.reserve(n);\n    for (int root = 0; root < n; ++root) {\n\
+    \n/*\n    vector<vector<pair<int, EdgeWeight>>> g;\n    struct Subtree {};\n \
+    \   struct Child {};\n    auto rake = [&](Child l, Child r) -> Child {};\n   \
+    \ auto add_edge = [&](Subtree d, EdgeWeight w) -> Child {};\n    auto add_vertex\
+    \ = [&](Child d, int i) -> Subtree {};\n    auto e = []() -> Child {};\n*/\n\n\
+    auto rerooting(const auto &g, auto rake, auto add_edge, auto add_vertex, auto\
+    \ e) {\n    int n = g.size();\n    using Child = decltype(e());\n    using Subtree\
+    \ = decltype(add_vertex(e(), 0));\n    std::vector<Subtree> dp(n), dp_parent(n);\n\
+    \    std::vector<int> bfs_order, parent(n, -1);\n    std::vector<Child> pref(n\
+    \ + 1);\n    bfs_order.reserve(n);\n    for (int root = 0; root < n; ++root) {\n\
     \        if (~parent[root]) {\n            continue;\n        }\n        parent[root]\
-    \ = root;\n        q.clear();\n        q.push_back(root);\n        auto it = q.cbegin();\n\
-    \        while (it != q.cend()) {\n            int u = *it++;\n            for\
-    \ (auto [v, w] : g[u]) {\n                if (v != parent[u]) {\n            \
-    \        parent[v] = u;\n                    q.push_back(v);\n               \
-    \ }\n            }\n        }\n        for (auto u : q | std::views::reverse)\
-    \ {\n            PathState merged = e;\n            for (auto [v, w] : g[u]) {\n\
-    \                if (v != parent[u]) {\n                    merged = op(merged,\
-    \ to_path(dp[v], w));\n                }\n            }\n            dp[u] = to_subtree(merged,\
-    \ g.node_weight(u));\n        }\n        for (auto u : q) {\n            int i\
-    \ = 0;\n            pref[0] = e;\n            for (auto [v, w] : g[u]) {\n   \
-    \             auto state = v == parent[u] ? dp_parent[u] : dp[v];\n          \
-    \      pref[i + 1] = op(pref[i], to_path(state, w));\n                ++i;\n \
-    \           }\n            auto suff = e;\n            for (auto [v, w] : g[u]\
-    \ | std::views::reverse) {\n                if (v != parent[u]) {\n          \
-    \          PathState except_child = op(pref[i - 1], suff);\n                 \
-    \   dp_parent[v] = to_subtree(except_child, g.node_weight(u));\n             \
-    \   }\n                auto state = v == parent[u] ? dp_parent[u] : dp[v];\n \
-    \               suff = op(to_path(state, w), suff);\n                --i;\n  \
-    \          }\n            dp[u] = to_subtree(suff, g.node_weight(u));\n      \
+    \ = root;\n        bfs_order.clear();\n        bfs_order.push_back(root);\n  \
+    \      auto q = bfs_order.cbegin();\n        while (q != bfs_order.cend()) {\n\
+    \            int u = *q++;\n            for (auto [v, w] : g[u]) {\n         \
+    \       if (v != parent[u]) {\n                    parent[v] = u;\n          \
+    \          bfs_order.push_back(v);\n                }\n            }\n       \
+    \ }\n        for (auto u : bfs_order | std::views::reverse) {\n            Child\
+    \ sum = e();\n            for (auto [v, w] : g[u]) {\n                if (v !=\
+    \ parent[u]) {\n                    sum = rake(sum, add_edge(dp[v], w));\n   \
+    \             }\n            }\n            dp[u] = add_vertex(sum, u);\n    \
+    \    }\n        for (auto u : bfs_order) {\n            auto i = 0;\n        \
+    \    pref[0] = e();\n            for (auto [v, w] : g[u]) {\n                auto\
+    \ state = (v == parent[u]) ? dp_parent[u] : dp[v];\n                pref[i + 1]\
+    \ = rake(pref[i], add_edge(state, w));\n                ++i;\n            }\n\
+    \            auto suff = e();\n            for (auto [v, w] : g[u] | std::views::reverse)\
+    \ {\n                if (v != parent[u]) {\n                    Child except_child\
+    \ = rake(pref[i - 1], suff);\n                    dp_parent[v] = add_vertex(except_child,\
+    \ u);\n                }\n                auto state = (v == parent[u]) ? dp_parent[u]\
+    \ : dp[v];\n                suff = rake(add_edge(state, w), suff);\n         \
+    \       --i;\n            }\n            dp[u] = add_vertex(suff, u);\n      \
     \  }\n    }\n    return dp;\n}\n\n\n#line 1 \"graph/csr_graph.hpp\"\n\n\n\n#include\
     \ <cassert>\n#line 6 \"graph/csr_graph.hpp\"\n#include <type_traits>\n#include\
     \ <utility>\n#include <variant>\n#line 10 \"graph/csr_graph.hpp\"\n\ntemplate\
-    \ <typename NodeWeight = std::monostate, typename EdgeWeight = std::monostate>\n\
+    \ <typename EdgeWeight = std::monostate, typename NodeWeight = std::monostate>\n\
     struct CSRGraph {\n    static constexpr bool HasNodeWeight = !std::is_same_v<NodeWeight,\
     \ std::monostate>;\n    CSRGraph(int n) : n_(n), start_(n + 1) {\n        if constexpr\
     \ (HasNodeWeight) {\n            nodes_.resize(n_);\n        }\n    }\n    void\
@@ -84,42 +85,44 @@ data:
     \ n_;\n    bool built_ = false;\n    std::vector<Edge> edges_;\n    std::vector<int>\
     \ start_;\n    std::vector<RawEdge> raw_edges_;\n    std::vector<NodeWeight> nodes_;\n\
     };\n\n\n#line 5 \"test/dp/rerooting.test.cpp\"\n#include <atcoder/modint>\n#include\
-    \ <bits/stdc++.h>\n\nusing mint = atcoder::modint998244353;\n\nint main() {\n\
-    \    std::cin.tie(0)->sync_with_stdio(0);\n    int N;\n    std::cin >> N;\n  \
-    \  CSRGraph<int, std::pair<int, int>> g(N);\n    for (auto i = 0; i < N; ++i)\
-    \ {\n        int a;\n        std::cin >> a;\n        g.set_node(i, a);\n    }\n\
+    \ <bits/stdc++.h>\n\nusing Z = atcoder::modint998244353;\n\nint main() {\n   \
+    \ std::cin.tie(0)->sync_with_stdio(0);\n    int N;\n    std::cin >> N;\n    using\
+    \ EdgeWeight = std::pair<int, int>;\n    CSRGraph<EdgeWeight> g(N);\n    std::vector<int>\
+    \ a(N);\n    std::copy_n(std::istream_iterator<int>(std::cin), N, a.begin());\n\
     \    for (auto i = 0; i < N - 1; ++i) {\n        int u, v, b, c;\n        std::cin\
     \ >> u >> v >> b >> c;\n        g.add_edge(u, v, {b, c});\n    }\n    g.build_undirected();\n\
-    \    using State = std::pair<mint, int>;\n    auto op = [](State a, State b) ->\
-    \ State { return {a.first + b.first, a.second + b.second}; };\n    auto to_path\
-    \ = [](State x, auto e) -> State {\n        return {e.first * x.first + mint::raw(e.second)\
-    \ * x.second, x.second};\n    };\n    auto to_subtree = [](State x, int v) ->\
-    \ State { return {x.first + v, x.second + 1}; };\n    State e{0, 0};\n    auto\
-    \ dp = rerooting(g, op, to_path, to_subtree, e);\n    for (auto [sum, cnt] : dp)\
-    \ {\n        std::cout << sum.val() << ' ';\n    }\n}\n"
+    \    using State = std::pair<Z, int>;\n    using Subtree = State;\n    using Child\
+    \ = State;\n    auto rake = [&](Child l, Child r) -> Child { return {l.first +\
+    \ r.first, l.second + r.second}; };\n    auto add_edge = [&](Subtree d, EdgeWeight\
+    \ w) -> Child {\n        return {w.first * d.first + Z::raw(w.second) * d.second,\
+    \ d.second};\n    };\n    auto add_vertex = [&](Child d, int i) -> Subtree { return\
+    \ {d.first + a[i], d.second + 1}; };\n    auto e = []() -> Child { return {0,\
+    \ 0}; };\n    auto dp = rerooting(g, rake, add_edge, add_vertex, e);\n    for\
+    \ (auto [sum, cnt] : dp) {\n        std::cout << sum.val() << ' ';\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/tree_path_composite_sum\"\
     \n\n#include \"dp/rerooting.hpp\"\n#include \"graph/csr_graph.hpp\"\n#include\
-    \ <atcoder/modint>\n#include <bits/stdc++.h>\n\nusing mint = atcoder::modint998244353;\n\
+    \ <atcoder/modint>\n#include <bits/stdc++.h>\n\nusing Z = atcoder::modint998244353;\n\
     \nint main() {\n    std::cin.tie(0)->sync_with_stdio(0);\n    int N;\n    std::cin\
-    \ >> N;\n    CSRGraph<int, std::pair<int, int>> g(N);\n    for (auto i = 0; i\
-    \ < N; ++i) {\n        int a;\n        std::cin >> a;\n        g.set_node(i, a);\n\
-    \    }\n    for (auto i = 0; i < N - 1; ++i) {\n        int u, v, b, c;\n    \
-    \    std::cin >> u >> v >> b >> c;\n        g.add_edge(u, v, {b, c});\n    }\n\
-    \    g.build_undirected();\n    using State = std::pair<mint, int>;\n    auto\
-    \ op = [](State a, State b) -> State { return {a.first + b.first, a.second + b.second};\
-    \ };\n    auto to_path = [](State x, auto e) -> State {\n        return {e.first\
-    \ * x.first + mint::raw(e.second) * x.second, x.second};\n    };\n    auto to_subtree\
-    \ = [](State x, int v) -> State { return {x.first + v, x.second + 1}; };\n   \
-    \ State e{0, 0};\n    auto dp = rerooting(g, op, to_path, to_subtree, e);\n  \
-    \  for (auto [sum, cnt] : dp) {\n        std::cout << sum.val() << ' ';\n    }\n\
-    }\n"
+    \ >> N;\n    using EdgeWeight = std::pair<int, int>;\n    CSRGraph<EdgeWeight>\
+    \ g(N);\n    std::vector<int> a(N);\n    std::copy_n(std::istream_iterator<int>(std::cin),\
+    \ N, a.begin());\n    for (auto i = 0; i < N - 1; ++i) {\n        int u, v, b,\
+    \ c;\n        std::cin >> u >> v >> b >> c;\n        g.add_edge(u, v, {b, c});\n\
+    \    }\n    g.build_undirected();\n    using State = std::pair<Z, int>;\n    using\
+    \ Subtree = State;\n    using Child = State;\n    auto rake = [&](Child l, Child\
+    \ r) -> Child { return {l.first + r.first, l.second + r.second}; };\n    auto\
+    \ add_edge = [&](Subtree d, EdgeWeight w) -> Child {\n        return {w.first\
+    \ * d.first + Z::raw(w.second) * d.second, d.second};\n    };\n    auto add_vertex\
+    \ = [&](Child d, int i) -> Subtree { return {d.first + a[i], d.second + 1}; };\n\
+    \    auto e = []() -> Child { return {0, 0}; };\n    auto dp = rerooting(g, rake,\
+    \ add_edge, add_vertex, e);\n    for (auto [sum, cnt] : dp) {\n        std::cout\
+    \ << sum.val() << ' ';\n    }\n}\n"
   dependsOn:
   - dp/rerooting.hpp
   - graph/csr_graph.hpp
   isVerificationFile: true
   path: test/dp/rerooting.test.cpp
   requiredBy: []
-  timestamp: '2026-01-04 01:29:13+09:00'
+  timestamp: '2026-03-02 14:25:31+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/dp/rerooting.test.cpp

@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/csr_graph.hpp
     title: graph/csr_graph.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/shortest_path
@@ -17,7 +17,7 @@ data:
   bundledCode: "#line 1 \"test/graph/dijkstra.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/shortest_path\"\
     \n\n#line 1 \"graph/csr_graph.hpp\"\n\n\n\n#include <cassert>\n#include <ranges>\n\
     #include <type_traits>\n#include <utility>\n#include <variant>\n#include <vector>\n\
-    \ntemplate <typename NodeWeight = std::monostate, typename EdgeWeight = std::monostate>\n\
+    \ntemplate <typename EdgeWeight = std::monostate, typename NodeWeight = std::monostate>\n\
     struct CSRGraph {\n    static constexpr bool HasNodeWeight = !std::is_same_v<NodeWeight,\
     \ std::monostate>;\n    CSRGraph(int n) : n_(n), start_(n + 1) {\n        if constexpr\
     \ (HasNodeWeight) {\n            nodes_.resize(n_);\n        }\n    }\n    void\
@@ -95,8 +95,8 @@ data:
   isVerificationFile: true
   path: test/graph/dijkstra.test.cpp
   requiredBy: []
-  timestamp: '2026-01-12 02:39:07+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-03-02 14:25:31+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/graph/dijkstra.test.cpp
 layout: document

@@ -28,7 +28,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/bridges.hpp
       title: Bridges
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: graph/csr_graph.hpp
       title: graph/csr_graph.hpp
     - icon: ':heavy_check_mark:'
@@ -206,7 +206,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/graph/bridges.test.cpp
       title: test/graph/bridges.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/graph/dijkstra.test.cpp
       title: test/graph/dijkstra.test.cpp
     - icon: ':heavy_check_mark:'

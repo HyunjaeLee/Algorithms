@@ -6,17 +6,17 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/dp/rerooting.test.cpp
     title: test/dp/rerooting.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/graph/dijkstra.test.cpp
     title: test/graph/dijkstra.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"graph/csr_graph.hpp\"\n\n\n\n#include <cassert>\n#include\
     \ <ranges>\n#include <type_traits>\n#include <utility>\n#include <variant>\n#include\
-    \ <vector>\n\ntemplate <typename NodeWeight = std::monostate, typename EdgeWeight\
+    \ <vector>\n\ntemplate <typename EdgeWeight = std::monostate, typename NodeWeight\
     \ = std::monostate>\nstruct CSRGraph {\n    static constexpr bool HasNodeWeight\
     \ = !std::is_same_v<NodeWeight, std::monostate>;\n    CSRGraph(int n) : n_(n),\
     \ start_(n + 1) {\n        if constexpr (HasNodeWeight) {\n            nodes_.resize(n_);\n\
@@ -52,7 +52,7 @@ data:
     };\n\n\n"
   code: "#ifndef CSR_GRAPH_HPP\n#define CSR_GRAPH_HPP\n\n#include <cassert>\n#include\
     \ <ranges>\n#include <type_traits>\n#include <utility>\n#include <variant>\n#include\
-    \ <vector>\n\ntemplate <typename NodeWeight = std::monostate, typename EdgeWeight\
+    \ <vector>\n\ntemplate <typename EdgeWeight = std::monostate, typename NodeWeight\
     \ = std::monostate>\nstruct CSRGraph {\n    static constexpr bool HasNodeWeight\
     \ = !std::is_same_v<NodeWeight, std::monostate>;\n    CSRGraph(int n) : n_(n),\
     \ start_(n + 1) {\n        if constexpr (HasNodeWeight) {\n            nodes_.resize(n_);\n\
@@ -90,8 +90,8 @@ data:
   isVerificationFile: false
   path: graph/csr_graph.hpp
   requiredBy: []
-  timestamp: '2026-01-04 01:20:52+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-03-02 14:25:31+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/graph/dijkstra.test.cpp
   - test/dp/rerooting.test.cpp
