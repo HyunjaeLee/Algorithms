@@ -8,7 +8,7 @@
 #include <variant>
 #include <vector>
 
-template <typename NodeWeight = std::monostate, typename EdgeWeight = std::monostate>
+template <typename EdgeWeight = std::monostate, typename NodeWeight = std::monostate>
 struct CSRGraph {
     static constexpr bool HasNodeWeight = !std::is_same_v<NodeWeight, std::monostate>;
     CSRGraph(int n) : n_(n), start_(n + 1) {
