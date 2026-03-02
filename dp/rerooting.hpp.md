@@ -17,17 +17,17 @@ data:
     \ auto add_edge = [&](Subtree d, EdgeWeight w) -> Child {};\n    auto add_vertex\
     \ = [&](Child d, int i) -> Subtree {};\n    auto e = []() -> Child {};\n*/\n\n\
     auto rerooting(const auto &g, auto rake, auto add_edge, auto add_vertex, auto\
-    \ e) {\n    int n = g.size();\n    using Child = decltype(e());\n    using Subtree\
-    \ = decltype(add_vertex(e(), 0));\n    std::vector<Subtree> dp(n), dp_parent(n);\n\
+    \ e) {\n    auto n = int(g.size());\n    using Child = decltype(e());\n    using\
+    \ Subtree = decltype(add_vertex(e(), 0));\n    std::vector<Subtree> dp(n), dp_parent(n);\n\
     \    std::vector<int> bfs_order, parent(n, -1);\n    std::vector<Child> pref(n\
-    \ + 1);\n    bfs_order.reserve(n);\n    for (int root = 0; root < n; ++root) {\n\
-    \        if (~parent[root]) {\n            continue;\n        }\n        parent[root]\
+    \ + 1);\n    bfs_order.reserve(n);\n    for (auto root = 0; root < n; ++root)\
+    \ {\n        if (~parent[root]) {\n            continue;\n        }\n        parent[root]\
     \ = root;\n        bfs_order.clear();\n        bfs_order.push_back(root);\n  \
     \      auto q = bfs_order.cbegin();\n        while (q != bfs_order.cend()) {\n\
-    \            int u = *q++;\n            for (auto [v, w] : g[u]) {\n         \
-    \       if (v != parent[u]) {\n                    parent[v] = u;\n          \
-    \          bfs_order.push_back(v);\n                }\n            }\n       \
-    \ }\n        for (auto u : bfs_order | std::views::reverse) {\n            Child\
+    \            auto u = *q++;\n            for (auto [v, w] : g[u]) {\n        \
+    \        if (v != parent[u]) {\n                    parent[v] = u;\n         \
+    \           bfs_order.push_back(v);\n                }\n            }\n      \
+    \  }\n        for (auto u : bfs_order | std::views::reverse) {\n            Child\
     \ sum = e();\n            for (auto [v, w] : g[u]) {\n                if (v !=\
     \ parent[u]) {\n                    sum = rake(sum, add_edge(dp[v], w));\n   \
     \             }\n            }\n            dp[u] = add_vertex(sum, u);\n    \
@@ -48,17 +48,17 @@ data:
     \    auto add_edge = [&](Subtree d, EdgeWeight w) -> Child {};\n    auto add_vertex\
     \ = [&](Child d, int i) -> Subtree {};\n    auto e = []() -> Child {};\n*/\n\n\
     auto rerooting(const auto &g, auto rake, auto add_edge, auto add_vertex, auto\
-    \ e) {\n    int n = g.size();\n    using Child = decltype(e());\n    using Subtree\
-    \ = decltype(add_vertex(e(), 0));\n    std::vector<Subtree> dp(n), dp_parent(n);\n\
+    \ e) {\n    auto n = int(g.size());\n    using Child = decltype(e());\n    using\
+    \ Subtree = decltype(add_vertex(e(), 0));\n    std::vector<Subtree> dp(n), dp_parent(n);\n\
     \    std::vector<int> bfs_order, parent(n, -1);\n    std::vector<Child> pref(n\
-    \ + 1);\n    bfs_order.reserve(n);\n    for (int root = 0; root < n; ++root) {\n\
-    \        if (~parent[root]) {\n            continue;\n        }\n        parent[root]\
+    \ + 1);\n    bfs_order.reserve(n);\n    for (auto root = 0; root < n; ++root)\
+    \ {\n        if (~parent[root]) {\n            continue;\n        }\n        parent[root]\
     \ = root;\n        bfs_order.clear();\n        bfs_order.push_back(root);\n  \
     \      auto q = bfs_order.cbegin();\n        while (q != bfs_order.cend()) {\n\
-    \            int u = *q++;\n            for (auto [v, w] : g[u]) {\n         \
-    \       if (v != parent[u]) {\n                    parent[v] = u;\n          \
-    \          bfs_order.push_back(v);\n                }\n            }\n       \
-    \ }\n        for (auto u : bfs_order | std::views::reverse) {\n            Child\
+    \            auto u = *q++;\n            for (auto [v, w] : g[u]) {\n        \
+    \        if (v != parent[u]) {\n                    parent[v] = u;\n         \
+    \           bfs_order.push_back(v);\n                }\n            }\n      \
+    \  }\n        for (auto u : bfs_order | std::views::reverse) {\n            Child\
     \ sum = e();\n            for (auto [v, w] : g[u]) {\n                if (v !=\
     \ parent[u]) {\n                    sum = rake(sum, add_edge(dp[v], w));\n   \
     \             }\n            }\n            dp[u] = add_vertex(sum, u);\n    \
@@ -77,7 +77,7 @@ data:
   isVerificationFile: false
   path: dp/rerooting.hpp
   requiredBy: []
-  timestamp: '2026-03-02 14:25:31+09:00'
+  timestamp: '2026-03-02 16:53:49+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/dp/rerooting.test.cpp

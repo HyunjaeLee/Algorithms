@@ -24,17 +24,17 @@ data:
     \ auto add_edge = [&](Subtree d, EdgeWeight w) -> Child {};\n    auto add_vertex\
     \ = [&](Child d, int i) -> Subtree {};\n    auto e = []() -> Child {};\n*/\n\n\
     auto rerooting(const auto &g, auto rake, auto add_edge, auto add_vertex, auto\
-    \ e) {\n    int n = g.size();\n    using Child = decltype(e());\n    using Subtree\
-    \ = decltype(add_vertex(e(), 0));\n    std::vector<Subtree> dp(n), dp_parent(n);\n\
+    \ e) {\n    auto n = int(g.size());\n    using Child = decltype(e());\n    using\
+    \ Subtree = decltype(add_vertex(e(), 0));\n    std::vector<Subtree> dp(n), dp_parent(n);\n\
     \    std::vector<int> bfs_order, parent(n, -1);\n    std::vector<Child> pref(n\
-    \ + 1);\n    bfs_order.reserve(n);\n    for (int root = 0; root < n; ++root) {\n\
-    \        if (~parent[root]) {\n            continue;\n        }\n        parent[root]\
+    \ + 1);\n    bfs_order.reserve(n);\n    for (auto root = 0; root < n; ++root)\
+    \ {\n        if (~parent[root]) {\n            continue;\n        }\n        parent[root]\
     \ = root;\n        bfs_order.clear();\n        bfs_order.push_back(root);\n  \
     \      auto q = bfs_order.cbegin();\n        while (q != bfs_order.cend()) {\n\
-    \            int u = *q++;\n            for (auto [v, w] : g[u]) {\n         \
-    \       if (v != parent[u]) {\n                    parent[v] = u;\n          \
-    \          bfs_order.push_back(v);\n                }\n            }\n       \
-    \ }\n        for (auto u : bfs_order | std::views::reverse) {\n            Child\
+    \            auto u = *q++;\n            for (auto [v, w] : g[u]) {\n        \
+    \        if (v != parent[u]) {\n                    parent[v] = u;\n         \
+    \           bfs_order.push_back(v);\n                }\n            }\n      \
+    \  }\n        for (auto u : bfs_order | std::views::reverse) {\n            Child\
     \ sum = e();\n            for (auto [v, w] : g[u]) {\n                if (v !=\
     \ parent[u]) {\n                    sum = rake(sum, add_edge(dp[v], w));\n   \
     \             }\n            }\n            dp[u] = add_vertex(sum, u);\n    \
@@ -91,14 +91,14 @@ data:
     \ a(N);\n    std::copy_n(std::istream_iterator<int>(std::cin), N, a.begin());\n\
     \    for (auto i = 0; i < N - 1; ++i) {\n        int u, v, b, c;\n        std::cin\
     \ >> u >> v >> b >> c;\n        g.add_edge(u, v, {b, c});\n    }\n    g.build_undirected();\n\
-    \    using State = std::pair<Z, int>;\n    using Subtree = State;\n    using Child\
-    \ = State;\n    auto rake = [&](Child l, Child r) -> Child { return {l.first +\
-    \ r.first, l.second + r.second}; };\n    auto add_edge = [&](Subtree d, EdgeWeight\
-    \ w) -> Child {\n        return {w.first * d.first + Z::raw(w.second) * d.second,\
-    \ d.second};\n    };\n    auto add_vertex = [&](Child d, int i) -> Subtree { return\
-    \ {d.first + a[i], d.second + 1}; };\n    auto e = []() -> Child { return {0,\
-    \ 0}; };\n    auto dp = rerooting(g, rake, add_edge, add_vertex, e);\n    for\
-    \ (auto [sum, cnt] : dp) {\n        std::cout << sum.val() << ' ';\n    }\n}\n"
+    \    using Subtree = std::pair<Z, int>;\n    using Child = std::pair<Z, int>;\n\
+    \    auto rake = [&](Child l, Child r) -> Child { return {l.first + r.first, l.second\
+    \ + r.second}; };\n    auto add_edge = [&](Subtree d, EdgeWeight w) -> Child {\n\
+    \        return {w.first * d.first + Z::raw(w.second) * d.second, d.second};\n\
+    \    };\n    auto add_vertex = [&](Child d, int i) -> Subtree { return {d.first\
+    \ + a[i], d.second + 1}; };\n    auto e = []() -> Child { return {0, 0}; };\n\
+    \    auto dp = rerooting(g, rake, add_edge, add_vertex, e);\n    for (auto [sum,\
+    \ cnt] : dp) {\n        std::cout << sum.val() << ' ';\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/tree_path_composite_sum\"\
     \n\n#include \"dp/rerooting.hpp\"\n#include \"graph/csr_graph.hpp\"\n#include\
     \ <atcoder/modint>\n#include <bits/stdc++.h>\n\nusing Z = atcoder::modint998244353;\n\
@@ -107,22 +107,22 @@ data:
     \ g(N);\n    std::vector<int> a(N);\n    std::copy_n(std::istream_iterator<int>(std::cin),\
     \ N, a.begin());\n    for (auto i = 0; i < N - 1; ++i) {\n        int u, v, b,\
     \ c;\n        std::cin >> u >> v >> b >> c;\n        g.add_edge(u, v, {b, c});\n\
-    \    }\n    g.build_undirected();\n    using State = std::pair<Z, int>;\n    using\
-    \ Subtree = State;\n    using Child = State;\n    auto rake = [&](Child l, Child\
-    \ r) -> Child { return {l.first + r.first, l.second + r.second}; };\n    auto\
-    \ add_edge = [&](Subtree d, EdgeWeight w) -> Child {\n        return {w.first\
-    \ * d.first + Z::raw(w.second) * d.second, d.second};\n    };\n    auto add_vertex\
-    \ = [&](Child d, int i) -> Subtree { return {d.first + a[i], d.second + 1}; };\n\
-    \    auto e = []() -> Child { return {0, 0}; };\n    auto dp = rerooting(g, rake,\
-    \ add_edge, add_vertex, e);\n    for (auto [sum, cnt] : dp) {\n        std::cout\
-    \ << sum.val() << ' ';\n    }\n}\n"
+    \    }\n    g.build_undirected();\n    using Subtree = std::pair<Z, int>;\n  \
+    \  using Child = std::pair<Z, int>;\n    auto rake = [&](Child l, Child r) ->\
+    \ Child { return {l.first + r.first, l.second + r.second}; };\n    auto add_edge\
+    \ = [&](Subtree d, EdgeWeight w) -> Child {\n        return {w.first * d.first\
+    \ + Z::raw(w.second) * d.second, d.second};\n    };\n    auto add_vertex = [&](Child\
+    \ d, int i) -> Subtree { return {d.first + a[i], d.second + 1}; };\n    auto e\
+    \ = []() -> Child { return {0, 0}; };\n    auto dp = rerooting(g, rake, add_edge,\
+    \ add_vertex, e);\n    for (auto [sum, cnt] : dp) {\n        std::cout << sum.val()\
+    \ << ' ';\n    }\n}\n"
   dependsOn:
   - dp/rerooting.hpp
   - graph/csr_graph.hpp
   isVerificationFile: true
   path: test/dp/rerooting.test.cpp
   requiredBy: []
-  timestamp: '2026-03-02 14:25:31+09:00'
+  timestamp: '2026-03-02 16:53:49+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/dp/rerooting.test.cpp
