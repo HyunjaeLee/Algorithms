@@ -28,7 +28,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/bridges.hpp
       title: Bridges
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: graph/csr_graph.hpp
       title: graph/csr_graph.hpp
     - icon: ':heavy_check_mark:'
@@ -179,6 +179,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: treap/treap_set.hpp
       title: treap/treap_set.hpp
+  - name: tree
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: tree/cartesian_tree.hpp
+      title: Cartesian Tree
   - name: wavelet
     pages:
     - icon: ':heavy_check_mark:'
@@ -206,7 +211,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/graph/bridges.test.cpp
       title: test/graph/bridges.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/graph/dijkstra.test.cpp
       title: test/graph/dijkstra.test.cpp
     - icon: ':heavy_check_mark:'
@@ -348,6 +353,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/treap/treap_set.test.cpp
       title: test/treap/treap_set.test.cpp
+  - name: test/tree
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/tree/cartesian_tree.test.cpp
+      title: test/tree/cartesian_tree.test.cpp
   - name: test/wavelet
     pages:
     - icon: ':heavy_check_mark:'
