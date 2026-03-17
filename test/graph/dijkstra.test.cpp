@@ -7,7 +7,7 @@ int main() {
     std::cin.tie(0)->sync_with_stdio(0);
     int n, m, s, t;
     std::cin >> n >> m >> s >> t;
-    CSRGraph<std::monostate, long long> g(n);
+    CSRGraph<long long> g(n);
     for (auto i = 0; i < m; ++i) {
         int u, v, w;
         std::cin >> u >> v >> w;
