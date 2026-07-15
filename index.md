@@ -1,6 +1,14 @@
 ---
 data:
   libraryCategories:
+  - name: convolution
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: convolution/and.hpp
+      title: convolution/and.hpp
+    - icon: ':warning:'
+      path: convolution/or.hpp
+      title: convolution/or.hpp
   - name: data_structures
     pages:
     - icon: ':heavy_check_mark:'
@@ -171,6 +179,20 @@ data:
     - icon: ':warning:'
       path: splay/splay_set.hpp
       title: splay/splay_set.hpp
+  - name: transform
+    pages:
+    - icon: ':warning:'
+      path: transform/subset_mobius.hpp
+      title: transform/subset_mobius.hpp
+    - icon: ':warning:'
+      path: transform/subset_zeta.hpp
+      title: transform/subset_zeta.hpp
+    - icon: ':heavy_check_mark:'
+      path: transform/superset_mobius.hpp
+      title: transform/superset_mobius.hpp
+    - icon: ':heavy_check_mark:'
+      path: transform/superset_zeta.hpp
+      title: transform/superset_zeta.hpp
   - name: treap
     pages:
     - icon: ':warning:'
@@ -193,6 +215,11 @@ data:
       path: wavelet/wavelet_matrix.hpp
       title: wavelet/wavelet_matrix.hpp
   verificationCategories:
+  - name: test/convolution
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/convolution/bitwise_and_convolution.test.cpp
+      title: test/convolution/bitwise_and_convolution.test.cpp
   - name: test/data_structures
     pages:
     - icon: ':heavy_check_mark:'
