@@ -4,6 +4,9 @@ data:
   - name: data_structures
     pages:
     - icon: ':heavy_check_mark:'
+      path: data_structures/interval_heap.hpp
+      title: data_structures/interval_heap.hpp
+    - icon: ':heavy_check_mark:'
       path: data_structures/ordered_set.hpp
       title: data_structures/ordered_set.hpp
     - icon: ':heavy_check_mark:'
@@ -195,6 +198,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/data_structures/consistent_trading.test.cpp
       title: test/data_structures/consistent_trading.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/data_structures/interval_heap.test.cpp
+      title: test/data_structures/interval_heap.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/data_structures/ordered_set.test.cpp
       title: test/data_structures/ordered_set.test.cpp

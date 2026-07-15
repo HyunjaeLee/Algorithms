@@ -84,12 +84,12 @@ data:
   timestamp: '2026-02-27 15:20:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/mo/hilbert_mo_static_range_frequency.test.cpp
+  - test/mo/hilbert_mo_static_range_inversions_query.test.cpp
   - test/mo/aoj0489.test.cpp
   - test/mo/hilbert_mo_range_kth_smallest.test.cpp
-  - test/mo/hilbert_mo_static_range_frequency.test.cpp
-  - test/mo/aoj2270.test.cpp
   - test/mo/hilbert_mo_static_range_count_distinct.test.cpp
-  - test/mo/hilbert_mo_static_range_inversions_query.test.cpp
+  - test/mo/aoj2270.test.cpp
 documentation_of: mo/hilbert_mo.hpp
 layout: document
 redirect_from:
