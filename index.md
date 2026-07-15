@@ -384,6 +384,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/sparse_table/static_rmq.test.cpp
       title: test/sparse_table/static_rmq.test.cpp
+  - name: test/transform
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/transform/chayas.test.cpp
+      title: test/transform/chayas.test.cpp
   - name: test/treap
     pages:
     - icon: ':heavy_check_mark:'

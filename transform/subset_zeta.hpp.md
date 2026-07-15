@@ -9,6 +9,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/convolution/bitwise_or_convolution.test.cpp
     title: test/convolution/bitwise_or_convolution.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/transform/chayas.test.cpp
+    title: test/transform/chayas.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -35,6 +38,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/convolution/bitwise_or_convolution.test.cpp
+  - test/transform/chayas.test.cpp
 documentation_of: transform/subset_zeta.hpp
 layout: document
 redirect_from:
