@@ -20,7 +20,7 @@ template <typename T> struct interval_heap {
         } else {
             std::swap(data_[1], data_.back());
             data_.pop_back();
-            int k = down(1);
+            auto k = down(1);
             up(k);
         }
     }
@@ -31,7 +31,7 @@ template <typename T> struct interval_heap {
         } else {
             std::swap(data_[0], data_.back());
             data_.pop_back();
-            int k = down(0);
+            auto k = down(0);
             up(k);
         }
     }
