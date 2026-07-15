@@ -1,17 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: transform/subset_mobius.hpp
     title: transform/subset_mobius.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: transform/subset_zeta.hpp
     title: transform/subset_zeta.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/convolution/bitwise_or_convolution.test.cpp
+    title: test/convolution/bitwise_or_convolution.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"convolution/or.hpp\"\n\n\n\n#line 1 \"transform/subset_mobius.hpp\"\
@@ -45,8 +48,9 @@ data:
   path: convolution/or.hpp
   requiredBy: []
   timestamp: '2026-07-15 17:03:35+00:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/convolution/bitwise_or_convolution.test.cpp
 documentation_of: convolution/or.hpp
 layout: document
 redirect_from:

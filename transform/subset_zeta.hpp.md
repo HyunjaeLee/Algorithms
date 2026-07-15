@@ -2,13 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: convolution/or.hpp
     title: convolution/or.hpp
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/convolution/bitwise_or_convolution.test.cpp
+    title: test/convolution/bitwise_or_convolution.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"transform/subset_zeta.hpp\"\n\n\n\n#include <bit>\n#include\
@@ -29,8 +32,9 @@ data:
   requiredBy:
   - convolution/or.hpp
   timestamp: '2026-07-15 17:03:35+00:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/convolution/bitwise_or_convolution.test.cpp
 documentation_of: transform/subset_zeta.hpp
 layout: document
 redirect_from:
