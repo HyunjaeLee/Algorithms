@@ -169,8 +169,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/linear_algebra/matrix_det_mod_2.test.cpp
-  - test/linear_algebra/matrix_rank_mod_2.test.cpp
   - test/linear_algebra/system_of_linear_equations_mod_2.test.cpp
+  - test/linear_algebra/matrix_rank_mod_2.test.cpp
 documentation_of: linear_algebra/gf2_matrix.hpp
 layout: document
 title: GF(2) Matrix
