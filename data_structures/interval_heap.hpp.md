@@ -19,10 +19,10 @@ data:
     \        up(k);\n    }\n    void pop_min() {\n        assert(!data_.empty());\n\
     \        if (int(data_.size()) < 3) {\n            data_.pop_back();\n       \
     \ } else {\n            std::swap(data_[1], data_.back());\n            data_.pop_back();\n\
-    \            int k = down(1);\n            up(k);\n        }\n    }\n    void\
+    \            auto k = down(1);\n            up(k);\n        }\n    }\n    void\
     \ pop_max() {\n        assert(!data_.empty());\n        if (int(data_.size())\
     \ < 2) {\n            data_.pop_back();\n        } else {\n            std::swap(data_[0],\
-    \ data_.back());\n            data_.pop_back();\n            int k = down(0);\n\
+    \ data_.back());\n            data_.pop_back();\n            auto k = down(0);\n\
     \            up(k);\n        }\n    }\n    const T &min() const {\n        assert(!data_.empty());\n\
     \        return int(data_.size()) < 2 ? data_[0] : data_[1];\n    }\n    const\
     \ T &max() const {\n        assert(!data_.empty());\n        return data_[0];\n\
@@ -56,10 +56,10 @@ data:
     \        up(k);\n    }\n    void pop_min() {\n        assert(!data_.empty());\n\
     \        if (int(data_.size()) < 3) {\n            data_.pop_back();\n       \
     \ } else {\n            std::swap(data_[1], data_.back());\n            data_.pop_back();\n\
-    \            int k = down(1);\n            up(k);\n        }\n    }\n    void\
+    \            auto k = down(1);\n            up(k);\n        }\n    }\n    void\
     \ pop_max() {\n        assert(!data_.empty());\n        if (int(data_.size())\
     \ < 2) {\n            data_.pop_back();\n        } else {\n            std::swap(data_[0],\
-    \ data_.back());\n            data_.pop_back();\n            int k = down(0);\n\
+    \ data_.back());\n            data_.pop_back();\n            auto k = down(0);\n\
     \            up(k);\n        }\n    }\n    const T &min() const {\n        assert(!data_.empty());\n\
     \        return int(data_.size()) < 2 ? data_[0] : data_[1];\n    }\n    const\
     \ T &max() const {\n        assert(!data_.empty());\n        return data_[0];\n\
@@ -90,7 +90,7 @@ data:
   isVerificationFile: false
   path: data_structures/interval_heap.hpp
   requiredBy: []
-  timestamp: '2026-07-15 08:33:55+00:00'
+  timestamp: '2026-07-15 08:38:39+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structures/interval_heap.test.cpp
