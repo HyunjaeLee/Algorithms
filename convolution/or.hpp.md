@@ -21,13 +21,13 @@ data:
     \n\n\n\n#include <bit>\n#include <cassert>\n#include <vector>\n\ntemplate <typename\
     \ T> void subset_mobius_transform(std::vector<T> &g) {\n    assert(std::has_single_bit(g.size()));\n\
     \    auto n = int(std::countr_zero(g.size()));\n    for (auto i = 0; i < n; ++i)\
-    \ {\n        for (auto t = 0; t < (1 << n); ++t) {\n            if (t & (1 <<\
-    \ i)) {\n                g[t] -= g[t ^ (1 << i)];\n            }\n        }\n\
+    \ {\n        for (auto s = 0; s < (1 << n); ++s) {\n            if (s & (1 <<\
+    \ i)) {\n                g[s] -= g[s ^ (1 << i)];\n            }\n        }\n\
     \    }\n}\n\n\n#line 1 \"transform/subset_zeta.hpp\"\n\n\n\n#line 7 \"transform/subset_zeta.hpp\"\
     \n\ntemplate <typename T> void subset_zeta_transform(std::vector<T> &f) {\n  \
     \  assert(std::has_single_bit(f.size()));\n    auto n = int(std::countr_zero(f.size()));\n\
-    \    for (auto i = 0; i < n; ++i) {\n        for (auto t = 0; t < (1 << n); ++t)\
-    \ {\n            if (t & (1 << i)) {\n                f[t] += f[t ^ (1 << i)];\n\
+    \    for (auto i = 0; i < n; ++i) {\n        for (auto s = 0; s < (1 << n); ++s)\
+    \ {\n            if (s & (1 << i)) {\n                f[s] += f[s ^ (1 << i)];\n\
     \            }\n        }\n    }\n}\n\n\n#line 8 \"convolution/or.hpp\"\n\ntemplate\
     \ <typename T> std::vector<T> or_convolution(std::vector<T> a, std::vector<T>\
     \ b) {\n    assert(a.size() == b.size());\n    subset_zeta_transform(a);\n   \
@@ -47,7 +47,7 @@ data:
   isVerificationFile: false
   path: convolution/or.hpp
   requiredBy: []
-  timestamp: '2026-07-15 17:03:35+00:00'
+  timestamp: '2026-07-15 17:18:58+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/convolution/bitwise_or_convolution.test.cpp
