@@ -40,6 +40,9 @@ data:
       path: graph/bellman_ford.hpp
       title: graph/bellman_ford.hpp
     - icon: ':heavy_check_mark:'
+      path: graph/bipartite_coloring.hpp
+      title: graph/bipartite_coloring.hpp
+    - icon: ':heavy_check_mark:'
       path: graph/bridges.hpp
       title: Bridges
     - icon: ':heavy_check_mark:'
@@ -244,6 +247,9 @@ data:
       title: test/dp/rerooting.test.cpp
   - name: test/graph
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/graph/aoj1404.test.cpp
+      title: test/graph/aoj1404.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/graph/articulation_points.test.cpp
       title: test/graph/articulation_points.test.cpp
