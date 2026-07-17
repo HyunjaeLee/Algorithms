@@ -37,6 +37,9 @@ data:
       path: graph/auxiliary_tree.hpp
       title: graph/auxiliary_tree.hpp
     - icon: ':heavy_check_mark:'
+      path: graph/bellman_ford.hpp
+      title: graph/bellman_ford.hpp
+    - icon: ':heavy_check_mark:'
       path: graph/bridges.hpp
       title: Bridges
     - icon: ':heavy_check_mark:'
@@ -244,6 +247,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/graph/articulation_points.test.cpp
       title: test/graph/articulation_points.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/graph/bellman_ford.test.cpp
+      title: test/graph/bellman_ford.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/graph/bridges.test.cpp
       title: test/graph/bridges.test.cpp

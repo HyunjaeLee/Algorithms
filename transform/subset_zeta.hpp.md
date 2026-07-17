@@ -37,8 +37,8 @@ data:
   timestamp: '2026-07-15 17:18:58+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/convolution/bitwise_or_convolution.test.cpp
   - test/transform/chayas.test.cpp
+  - test/convolution/bitwise_or_convolution.test.cpp
 documentation_of: transform/subset_zeta.hpp
 layout: document
 redirect_from:
