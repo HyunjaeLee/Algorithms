@@ -155,8 +155,8 @@ data:
   timestamp: '2026-01-04 02:17:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/link_cut_tree/link_cut_tree.test.cpp
   - test/link_cut_tree/dynamic_tree_vertex_set_path_composite.test.cpp
+  - test/link_cut_tree/link_cut_tree.test.cpp
 documentation_of: link_cut_tree/link_cut_tree.hpp
 layout: document
 redirect_from:

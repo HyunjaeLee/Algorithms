@@ -119,6 +119,9 @@ data:
     - icon: ':warning:'
       path: math/floor_div.hpp
       title: math/floor_div.hpp
+    - icon: ':heavy_check_mark:'
+      path: math/linear_sieve.hpp
+      title: math/linear_sieve.hpp
     - icon: ':warning:'
       path: math/mobius.hpp
       title: "M\xF6bius function"
@@ -343,6 +346,12 @@ data:
   - name: test/math
     pages:
     - icon: ':heavy_check_mark:'
+      path: test/math/aizu0009.test.cpp
+      title: test/math/aizu0009.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/math/aizu2870.test.cpp
+      title: test/math/aizu2870.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/math/binomial_coefficient_prime_mod.test.cpp
       title: test/math/binomial_coefficient_prime_mod.test.cpp
     - icon: ':heavy_check_mark:'
@@ -357,6 +366,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/math/tetration_mod.test.cpp
       title: test/math/tetration_mod.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/math/yuki106.test.cpp
+      title: test/math/yuki106.test.cpp
   - name: test/mo
     pages:
     - icon: ':heavy_check_mark:'

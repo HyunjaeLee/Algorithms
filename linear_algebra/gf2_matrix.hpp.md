@@ -168,9 +168,9 @@ data:
   timestamp: '2026-01-15 02:23:00+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/linear_algebra/system_of_linear_equations_mod_2.test.cpp
-  - test/linear_algebra/matrix_rank_mod_2.test.cpp
   - test/linear_algebra/matrix_det_mod_2.test.cpp
+  - test/linear_algebra/matrix_rank_mod_2.test.cpp
+  - test/linear_algebra/system_of_linear_equations_mod_2.test.cpp
 documentation_of: linear_algebra/gf2_matrix.hpp
 layout: document
 title: GF(2) Matrix
