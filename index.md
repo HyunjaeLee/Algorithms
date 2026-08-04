@@ -178,6 +178,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: segment_tree/simd_segtree.hpp
       title: segment_tree/simd_segtree.hpp
+    - icon: ':heavy_check_mark:'
+      path: segment_tree/sparse_segtree_2d.hpp
+      title: segment_tree/sparse_segtree_2d.hpp
   - name: sparse_table
     pages:
     - icon: ':heavy_check_mark:'
@@ -395,11 +398,17 @@ data:
   - name: test/segment_tree
     pages:
     - icon: ':heavy_check_mark:'
+      path: test/segment_tree/aizu1625.test.cpp
+      title: test/segment_tree/aizu1625.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/segment_tree/segtree_2d.test.cpp
       title: test/segment_tree/segtree_2d.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/segment_tree/segtree_beats.test.cpp
       title: test/segment_tree/segtree_beats.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/segment_tree/sparse_segtree_2d.test.cpp
+      title: test/segment_tree/sparse_segtree_2d.test.cpp
   - name: test/sparse_table
     pages:
     - icon: ':heavy_check_mark:'
