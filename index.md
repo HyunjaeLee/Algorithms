@@ -442,3 +442,6 @@ data:
       title: test/wavelet/wavelet_matrix_static_range_frequency.test.cpp
 layout: toppage
 ---
+## Links
+
+- [Math Notes](./notes/math.html)
