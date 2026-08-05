@@ -4,5 +4,5 @@ exclude:
 plugins:
 - jemoji
 - jekyll-redirect-from
-theme: minima
+theme: jekyll-theme-hacker
 title: Algorithms
