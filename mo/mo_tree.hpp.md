@@ -109,8 +109,8 @@ data:
   timestamp: '2026-02-27 15:20:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/mo/aoj0489.test.cpp
   - test/mo/aoj2270.test.cpp
+  - test/mo/aoj0489.test.cpp
 documentation_of: mo/mo_tree.hpp
 layout: document
 redirect_from:

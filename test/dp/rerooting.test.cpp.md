@@ -4,9 +4,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: dp/rerooting.hpp
     title: Rerooting
-  - icon: ':heavy_check_mark:'
-    path: graph/csr_graph.hpp
-    title: graph/csr_graph.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -48,81 +45,45 @@ data:
     \ u);\n                }\n                auto state = (v == parent[u]) ? dp_parent[u]\
     \ : dp[v];\n                suff = rake(add_edge(state, w), suff);\n         \
     \       --i;\n            }\n            dp[u] = add_vertex(suff, u);\n      \
-    \  }\n    }\n    return dp;\n}\n\n\n#line 1 \"graph/csr_graph.hpp\"\n\n\n\n#include\
-    \ <cassert>\n#line 6 \"graph/csr_graph.hpp\"\n#include <type_traits>\n#include\
-    \ <utility>\n#include <variant>\n#line 10 \"graph/csr_graph.hpp\"\n\ntemplate\
-    \ <typename EdgeWeight = std::monostate, typename NodeWeight = std::monostate>\n\
-    struct CSRGraph {\n    static constexpr bool HasNodeWeight = !std::is_same_v<NodeWeight,\
-    \ std::monostate>;\n    CSRGraph(int n) : n_(n), start_(n + 1) {\n        if constexpr\
-    \ (HasNodeWeight) {\n            nodes_.resize(n_);\n        }\n    }\n    void\
-    \ set_node(int u, NodeWeight w) {\n        assert(0 <= u && u < n_);\n       \
-    \ if constexpr (HasNodeWeight) {\n            nodes_[u] = w;\n        }\n    }\n\
-    \    NodeWeight node_weight(int u) const {\n        assert(0 <= u && u < n_);\n\
-    \        if constexpr (HasNodeWeight) {\n            return nodes_[u];\n     \
-    \   } else {\n            return {};\n        }\n    }\n    void add_edge(int\
-    \ u, int v, EdgeWeight w = {}) {\n        assert(0 <= u && u < n_ && 0 <= v &&\
-    \ v < n_);\n        raw_edges_.push_back({u, v, w});\n    }\n    void build_undirected()\
-    \ {\n        assert(!built_);\n        edges_.resize(2 * raw_edges_.size());\n\
-    \        for (const auto &e : raw_edges_) {\n            ++start_[e.u + 1];\n\
-    \            ++start_[e.v + 1];\n        }\n        for (int i = 0; i < n_; ++i)\
-    \ {\n            start_[i + 1] += start_[i];\n        }\n        auto counter\
-    \ = start_;\n        for (const auto &e : raw_edges_) {\n            edges_[counter[e.u]++]\
-    \ = {e.v, e.w};\n            edges_[counter[e.v]++] = {e.u, e.w};\n        }\n\
-    \        std::vector<RawEdge>().swap(raw_edges_);\n        built_ = true;\n  \
-    \  }\n    void build_directed() {\n        assert(!built_);\n        edges_.resize(raw_edges_.size());\n\
-    \        for (const auto &e : raw_edges_) {\n            ++start_[e.u + 1];\n\
-    \        }\n        for (int i = 0; i < n_; ++i) {\n            start_[i + 1]\
-    \ += start_[i];\n        }\n        auto counter = start_;\n        for (const\
-    \ auto &e : raw_edges_) {\n            edges_[counter[e.u]++] = {e.v, e.w};\n\
-    \        }\n        std::vector<RawEdge>().swap(raw_edges_);\n        built_ =\
-    \ true;\n    }\n    auto operator[](int u) const {\n        assert(built_);\n\
-    \        assert(0 <= u && u < n_);\n        constexpr auto f = [](Edge e) { return\
-    \ std::pair(e.to, e.w); };\n        return std::ranges::subrange(edges_.begin()\
-    \ + start_[u], edges_.begin() + start_[u + 1]) |\n               std::views::transform(f);\n\
-    \    }\n    int size() const { return n_; }\n    struct Edge {\n        int to;\n\
-    \        [[no_unique_address]] EdgeWeight w;\n    };\n    struct RawEdge {\n \
-    \       int u, v;\n        [[no_unique_address]] EdgeWeight w;\n    };\n    int\
-    \ n_;\n    bool built_ = false;\n    std::vector<Edge> edges_;\n    std::vector<int>\
-    \ start_;\n    std::vector<RawEdge> raw_edges_;\n    std::vector<NodeWeight> nodes_;\n\
-    };\n\n\n#line 5 \"test/dp/rerooting.test.cpp\"\n#include <atcoder/modint>\n#include\
-    \ <bits/stdc++.h>\n\nusing Z = atcoder::modint998244353;\n\nint main() {\n   \
-    \ std::cin.tie(0)->sync_with_stdio(0);\n    int N;\n    std::cin >> N;\n    using\
-    \ EdgeWeight = std::pair<int, int>;\n    CSRGraph<EdgeWeight> g(N);\n    std::vector<int>\
-    \ a(N);\n    std::copy_n(std::istream_iterator<int>(std::cin), N, a.begin());\n\
-    \    for (auto i = 0; i < N - 1; ++i) {\n        int u, v, b, c;\n        std::cin\
-    \ >> u >> v >> b >> c;\n        g.add_edge(u, v, {b, c});\n    }\n    g.build_undirected();\n\
-    \    using Subtree = std::pair<Z, int>;\n    using Child = std::pair<Z, int>;\n\
-    \    auto rake = [&](Child l, Child r) -> Child { return {l.first + r.first, l.second\
-    \ + r.second}; };\n    auto add_edge = [&](Subtree d, EdgeWeight w) -> Child {\n\
-    \        return {w.first * d.first + Z::raw(w.second) * d.second, d.second};\n\
-    \    };\n    auto add_vertex = [&](Child d, int i) -> Subtree { return {d.first\
-    \ + a[i], d.second + 1}; };\n    auto e = []() -> Child { return {0, 0}; };\n\
-    \    auto dp = rerooting(g, rake, add_edge, add_vertex, e);\n    for (auto [sum,\
-    \ cnt] : dp) {\n        std::cout << sum.val() << ' ';\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/tree_path_composite_sum\"\
-    \n\n#include \"dp/rerooting.hpp\"\n#include \"graph/csr_graph.hpp\"\n#include\
+    \  }\n    }\n    return dp;\n}\n\n\n#line 4 \"test/dp/rerooting.test.cpp\"\n#include\
     \ <atcoder/modint>\n#include <bits/stdc++.h>\n\nusing Z = atcoder::modint998244353;\n\
     \nint main() {\n    std::cin.tie(0)->sync_with_stdio(0);\n    int N;\n    std::cin\
-    \ >> N;\n    using EdgeWeight = std::pair<int, int>;\n    CSRGraph<EdgeWeight>\
-    \ g(N);\n    std::vector<int> a(N);\n    std::copy_n(std::istream_iterator<int>(std::cin),\
+    \ >> N;\n    using EdgeWeight = std::pair<int, int>;\n    std::vector<std::vector<std::pair<int,\
+    \ EdgeWeight>>> g(N);\n    std::vector<int> a(N);\n    std::copy_n(std::istream_iterator<int>(std::cin),\
     \ N, a.begin());\n    for (auto i = 0; i < N - 1; ++i) {\n        int u, v, b,\
-    \ c;\n        std::cin >> u >> v >> b >> c;\n        g.add_edge(u, v, {b, c});\n\
-    \    }\n    g.build_undirected();\n    using Subtree = std::pair<Z, int>;\n  \
-    \  using Child = std::pair<Z, int>;\n    auto rake = [&](Child l, Child r) ->\
-    \ Child { return {l.first + r.first, l.second + r.second}; };\n    auto add_edge\
-    \ = [&](Subtree d, EdgeWeight w) -> Child {\n        return {w.first * d.first\
-    \ + Z::raw(w.second) * d.second, d.second};\n    };\n    auto add_vertex = [&](Child\
-    \ d, int i) -> Subtree { return {d.first + a[i], d.second + 1}; };\n    auto e\
-    \ = []() -> Child { return {0, 0}; };\n    auto dp = rerooting(g, rake, add_edge,\
-    \ add_vertex, e);\n    for (auto [sum, cnt] : dp) {\n        std::cout << sum.val()\
-    \ << ' ';\n    }\n}\n"
+    \ c;\n        std::cin >> u >> v >> b >> c;\n        g[u].emplace_back(v, std::pair{b,\
+    \ c});\n        g[v].emplace_back(u, std::pair{b, c});\n    }\n    using Subtree\
+    \ = std::pair<Z, int>;\n    using Child = std::pair<Z, int>;\n    auto rake =\
+    \ [&](Child l, Child r) -> Child { return {l.first + r.first, l.second + r.second};\
+    \ };\n    auto add_edge = [&](Subtree d, EdgeWeight w) -> Child {\n        return\
+    \ {w.first * d.first + Z::raw(w.second) * d.second, d.second};\n    };\n    auto\
+    \ add_vertex = [&](Child d, int i) -> Subtree { return {d.first + a[i], d.second\
+    \ + 1}; };\n    auto e = []() -> Child { return {0, 0}; };\n    auto dp = rerooting(g,\
+    \ rake, add_edge, add_vertex, e);\n    for (auto [sum, cnt] : dp) {\n        std::cout\
+    \ << sum.val() << ' ';\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/tree_path_composite_sum\"\
+    \n\n#include \"dp/rerooting.hpp\"\n#include <atcoder/modint>\n#include <bits/stdc++.h>\n\
+    \nusing Z = atcoder::modint998244353;\n\nint main() {\n    std::cin.tie(0)->sync_with_stdio(0);\n\
+    \    int N;\n    std::cin >> N;\n    using EdgeWeight = std::pair<int, int>;\n\
+    \    std::vector<std::vector<std::pair<int, EdgeWeight>>> g(N);\n    std::vector<int>\
+    \ a(N);\n    std::copy_n(std::istream_iterator<int>(std::cin), N, a.begin());\n\
+    \    for (auto i = 0; i < N - 1; ++i) {\n        int u, v, b, c;\n        std::cin\
+    \ >> u >> v >> b >> c;\n        g[u].emplace_back(v, std::pair{b, c});\n     \
+    \   g[v].emplace_back(u, std::pair{b, c});\n    }\n    using Subtree = std::pair<Z,\
+    \ int>;\n    using Child = std::pair<Z, int>;\n    auto rake = [&](Child l, Child\
+    \ r) -> Child { return {l.first + r.first, l.second + r.second}; };\n    auto\
+    \ add_edge = [&](Subtree d, EdgeWeight w) -> Child {\n        return {w.first\
+    \ * d.first + Z::raw(w.second) * d.second, d.second};\n    };\n    auto add_vertex\
+    \ = [&](Child d, int i) -> Subtree { return {d.first + a[i], d.second + 1}; };\n\
+    \    auto e = []() -> Child { return {0, 0}; };\n    auto dp = rerooting(g, rake,\
+    \ add_edge, add_vertex, e);\n    for (auto [sum, cnt] : dp) {\n        std::cout\
+    \ << sum.val() << ' ';\n    }\n}\n"
   dependsOn:
   - dp/rerooting.hpp
-  - graph/csr_graph.hpp
   isVerificationFile: true
   path: test/dp/rerooting.test.cpp
   requiredBy: []
-  timestamp: '2026-03-02 16:53:49+09:00'
+  timestamp: '2026-08-12 07:38:15+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/dp/rerooting.test.cpp

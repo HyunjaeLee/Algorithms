@@ -61,8 +61,8 @@ data:
   timestamp: '2025-09-16 22:59:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/sparse_table/static_rmq.test.cpp
   - test/sparse_table/static_range_sum.test.cpp
+  - test/sparse_table/static_rmq.test.cpp
 documentation_of: sparse_table/sparse_table.hpp
 layout: document
 title: Sparse Table
