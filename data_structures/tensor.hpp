@@ -8,6 +8,7 @@
 #include <type_traits>
 #include <utility>
 
+// https://github.com/ecnerwala/cp-book/blob/master/src/tensor.hpp
 template <typename T, int NDIMS> struct tensor_view {
     static_assert(0 < NDIMS);
 
