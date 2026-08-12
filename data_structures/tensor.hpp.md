@@ -7,28 +7,29 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    links: []
+    links:
+    - https://github.com/ecnerwala/cp-book/blob/master/src/tensor.hpp
   bundledCode: "#line 1 \"data_structures/tensor.hpp\"\n\n\n\n#include <algorithm>\n\
     #include <array>\n#include <cassert>\n#include <concepts>\n#include <type_traits>\n\
-    #include <utility>\n\ntemplate <typename T, int NDIMS> struct tensor_view {\n\
-    \    static_assert(0 < NDIMS);\n\n    tensor_view() : shape_{}, strides_{}, data_(nullptr)\
-    \ {}\n\n    T &operator[](std::array<int, NDIMS> idx) const {\n#ifdef _GLIBCXX_DEBUG\n\
-    \        return data_[flatten_index_checked(idx)];\n#else\n        return data_[flatten_index(idx)];\n\
-    #endif\n    }\n#ifdef __cpp_multidimensional_subscript\n    template <typename...\
-    \ I>\n        requires(1 < NDIMS && sizeof...(I) == NDIMS && (std::integral<std::remove_cvref_t<I>>\
-    \ && ...))\n    T &operator[](I... idx) const {\n        return (*this)[std::array<int,\
-    \ NDIMS>{static_cast<int>(idx)...}];\n    }\n#endif\n    decltype(auto) operator[](int\
-    \ idx) const {\n#ifdef _GLIBCXX_DEBUG\n        assert(0 <= idx && idx < shape_[0]);\n\
-    #endif\n        if constexpr (NDIMS == 1) {\n            return (data_[strides_[0]\
-    \ * idx]);\n        } else {\n            std::array<int, NDIMS - 1> nshape;\n\
-    \            std::copy(shape_.begin() + 1, shape_.end(), nshape.begin());\n  \
-    \          std::array<int, NDIMS - 1> nstrides;\n            std::copy(strides_.begin()\
-    \ + 1, strides_.end(), nstrides.begin());\n            T *ndata = data_ + (strides_[0]\
-    \ * idx);\n            return tensor_view<T, NDIMS - 1>(nshape, nstrides, ndata);\n\
-    \        }\n    }\n\n    T &at(std::array<int, NDIMS> idx) const { return data_[flatten_index_checked(idx)];\
-    \ }\n    template <typename... I>\n        requires(1 < NDIMS && sizeof...(I)\
-    \ == NDIMS && (std::integral<std::remove_cvref_t<I>> && ...))\n    T &at(I...\
-    \ idx) const {\n        return at(std::array<int, NDIMS>{static_cast<int>(idx)...});\n\
+    #include <utility>\n\n// https://github.com/ecnerwala/cp-book/blob/master/src/tensor.hpp\n\
+    template <typename T, int NDIMS> struct tensor_view {\n    static_assert(0 < NDIMS);\n\
+    \n    tensor_view() : shape_{}, strides_{}, data_(nullptr) {}\n\n    T &operator[](std::array<int,\
+    \ NDIMS> idx) const {\n#ifdef _GLIBCXX_DEBUG\n        return data_[flatten_index_checked(idx)];\n\
+    #else\n        return data_[flatten_index(idx)];\n#endif\n    }\n#ifdef __cpp_multidimensional_subscript\n\
+    \    template <typename... I>\n        requires(1 < NDIMS && sizeof...(I) == NDIMS\
+    \ && (std::integral<std::remove_cvref_t<I>> && ...))\n    T &operator[](I... idx)\
+    \ const {\n        return (*this)[std::array<int, NDIMS>{static_cast<int>(idx)...}];\n\
+    \    }\n#endif\n    decltype(auto) operator[](int idx) const {\n#ifdef _GLIBCXX_DEBUG\n\
+    \        assert(0 <= idx && idx < shape_[0]);\n#endif\n        if constexpr (NDIMS\
+    \ == 1) {\n            return (data_[strides_[0] * idx]);\n        } else {\n\
+    \            std::array<int, NDIMS - 1> nshape;\n            std::copy(shape_.begin()\
+    \ + 1, shape_.end(), nshape.begin());\n            std::array<int, NDIMS - 1>\
+    \ nstrides;\n            std::copy(strides_.begin() + 1, strides_.end(), nstrides.begin());\n\
+    \            T *ndata = data_ + (strides_[0] * idx);\n            return tensor_view<T,\
+    \ NDIMS - 1>(nshape, nstrides, ndata);\n        }\n    }\n\n    T &at(std::array<int,\
+    \ NDIMS> idx) const { return data_[flatten_index_checked(idx)]; }\n    template\
+    \ <typename... I>\n        requires(1 < NDIMS && sizeof...(I) == NDIMS && (std::integral<std::remove_cvref_t<I>>\
+    \ && ...))\n    T &at(I... idx) const {\n        return at(std::array<int, NDIMS>{static_cast<int>(idx)...});\n\
     \    }\n    decltype(auto) at(int idx) const {\n        assert(0 <= idx && idx\
     \ < shape_[0]);\n        return operator[](idx);\n    }\n\nprivate:\n    tensor_view(std::array<int,\
     \ NDIMS> shape, std::array<int, NDIMS> strides, T *data)\n        : shape_(shape),\
@@ -85,25 +86,25 @@ data:
     };\n\n\n"
   code: "#ifndef TENSOR_HPP\n#define TENSOR_HPP\n\n#include <algorithm>\n#include\
     \ <array>\n#include <cassert>\n#include <concepts>\n#include <type_traits>\n#include\
-    \ <utility>\n\ntemplate <typename T, int NDIMS> struct tensor_view {\n    static_assert(0\
-    \ < NDIMS);\n\n    tensor_view() : shape_{}, strides_{}, data_(nullptr) {}\n\n\
-    \    T &operator[](std::array<int, NDIMS> idx) const {\n#ifdef _GLIBCXX_DEBUG\n\
-    \        return data_[flatten_index_checked(idx)];\n#else\n        return data_[flatten_index(idx)];\n\
-    #endif\n    }\n#ifdef __cpp_multidimensional_subscript\n    template <typename...\
-    \ I>\n        requires(1 < NDIMS && sizeof...(I) == NDIMS && (std::integral<std::remove_cvref_t<I>>\
-    \ && ...))\n    T &operator[](I... idx) const {\n        return (*this)[std::array<int,\
-    \ NDIMS>{static_cast<int>(idx)...}];\n    }\n#endif\n    decltype(auto) operator[](int\
-    \ idx) const {\n#ifdef _GLIBCXX_DEBUG\n        assert(0 <= idx && idx < shape_[0]);\n\
-    #endif\n        if constexpr (NDIMS == 1) {\n            return (data_[strides_[0]\
-    \ * idx]);\n        } else {\n            std::array<int, NDIMS - 1> nshape;\n\
-    \            std::copy(shape_.begin() + 1, shape_.end(), nshape.begin());\n  \
-    \          std::array<int, NDIMS - 1> nstrides;\n            std::copy(strides_.begin()\
-    \ + 1, strides_.end(), nstrides.begin());\n            T *ndata = data_ + (strides_[0]\
-    \ * idx);\n            return tensor_view<T, NDIMS - 1>(nshape, nstrides, ndata);\n\
-    \        }\n    }\n\n    T &at(std::array<int, NDIMS> idx) const { return data_[flatten_index_checked(idx)];\
-    \ }\n    template <typename... I>\n        requires(1 < NDIMS && sizeof...(I)\
-    \ == NDIMS && (std::integral<std::remove_cvref_t<I>> && ...))\n    T &at(I...\
-    \ idx) const {\n        return at(std::array<int, NDIMS>{static_cast<int>(idx)...});\n\
+    \ <utility>\n\n// https://github.com/ecnerwala/cp-book/blob/master/src/tensor.hpp\n\
+    template <typename T, int NDIMS> struct tensor_view {\n    static_assert(0 < NDIMS);\n\
+    \n    tensor_view() : shape_{}, strides_{}, data_(nullptr) {}\n\n    T &operator[](std::array<int,\
+    \ NDIMS> idx) const {\n#ifdef _GLIBCXX_DEBUG\n        return data_[flatten_index_checked(idx)];\n\
+    #else\n        return data_[flatten_index(idx)];\n#endif\n    }\n#ifdef __cpp_multidimensional_subscript\n\
+    \    template <typename... I>\n        requires(1 < NDIMS && sizeof...(I) == NDIMS\
+    \ && (std::integral<std::remove_cvref_t<I>> && ...))\n    T &operator[](I... idx)\
+    \ const {\n        return (*this)[std::array<int, NDIMS>{static_cast<int>(idx)...}];\n\
+    \    }\n#endif\n    decltype(auto) operator[](int idx) const {\n#ifdef _GLIBCXX_DEBUG\n\
+    \        assert(0 <= idx && idx < shape_[0]);\n#endif\n        if constexpr (NDIMS\
+    \ == 1) {\n            return (data_[strides_[0] * idx]);\n        } else {\n\
+    \            std::array<int, NDIMS - 1> nshape;\n            std::copy(shape_.begin()\
+    \ + 1, shape_.end(), nshape.begin());\n            std::array<int, NDIMS - 1>\
+    \ nstrides;\n            std::copy(strides_.begin() + 1, strides_.end(), nstrides.begin());\n\
+    \            T *ndata = data_ + (strides_[0] * idx);\n            return tensor_view<T,\
+    \ NDIMS - 1>(nshape, nstrides, ndata);\n        }\n    }\n\n    T &at(std::array<int,\
+    \ NDIMS> idx) const { return data_[flatten_index_checked(idx)]; }\n    template\
+    \ <typename... I>\n        requires(1 < NDIMS && sizeof...(I) == NDIMS && (std::integral<std::remove_cvref_t<I>>\
+    \ && ...))\n    T &at(I... idx) const {\n        return at(std::array<int, NDIMS>{static_cast<int>(idx)...});\n\
     \    }\n    decltype(auto) at(int idx) const {\n        assert(0 <= idx && idx\
     \ < shape_[0]);\n        return operator[](idx);\n    }\n\nprivate:\n    tensor_view(std::array<int,\
     \ NDIMS> shape, std::array<int, NDIMS> strides, T *data)\n        : shape_(shape),\
@@ -162,7 +163,7 @@ data:
   isVerificationFile: false
   path: data_structures/tensor.hpp
   requiredBy: []
-  timestamp: '2026-08-12 07:43:22+00:00'
+  timestamp: '2026-08-12 17:21:46+00:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: data_structures/tensor.hpp
