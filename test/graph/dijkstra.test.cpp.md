@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/csr_graph.hpp
     title: graph/csr_graph.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/shortest_path
@@ -48,12 +48,12 @@ data:
     \ long>::max());\n    std::priority_queue<S, std::vector<S>, std::greater<>> pq;\n\
     \    dist[s] = 0;\n    pq.emplace(dist[s], s);\n    while (!pq.empty()) {\n  \
     \      auto [d, u] = pq.top();\n        pq.pop();\n        if (d != dist[u]) {\n\
-    \            continue;\n        }\n        for (auto [v, w] : g[u]) {\n      \
-    \      if (d + w < dist[v]) {\n                parent[v] = u;\n              \
-    \  dist[v] = d + w;\n                pq.emplace(dist[v], v);\n            }\n\
-    \        }\n    }\n    if (dist[t] == std::numeric_limits<long long>::max()) {\n\
-    \        std::cout << -1;\n    } else {\n        std::vector<int> ans;\n     \
-    \   for (auto u = t; u != s; u = parent[u]) {\n            ans.push_back(u);\n\
+    \            continue;\n        }\n        for (const auto &e : g[u]) {\n    \
+    \        if (d + e.w < dist[e.v]) {\n                parent[e.v] = u;\n      \
+    \          dist[e.v] = d + e.w;\n                pq.emplace(dist[e.v], e.v);\n\
+    \            }\n        }\n    }\n    if (dist[t] == std::numeric_limits<long\
+    \ long>::max()) {\n        std::cout << -1;\n    } else {\n        std::vector<int>\
+    \ ans;\n        for (auto u = t; u != s; u = parent[u]) {\n            ans.push_back(u);\n\
     \        }\n        auto X = dist[t];\n        auto Y = (int)ans.size();\n   \
     \     ans.push_back(s);\n        std::cout << X << \" \" << Y << \"\\n\";\n  \
     \      for (auto i = Y; 0 < i; --i) {\n            std::cout << ans[i] << \" \"\
@@ -68,23 +68,23 @@ data:
     \    std::priority_queue<S, std::vector<S>, std::greater<>> pq;\n    dist[s] =\
     \ 0;\n    pq.emplace(dist[s], s);\n    while (!pq.empty()) {\n        auto [d,\
     \ u] = pq.top();\n        pq.pop();\n        if (d != dist[u]) {\n           \
-    \ continue;\n        }\n        for (auto [v, w] : g[u]) {\n            if (d\
-    \ + w < dist[v]) {\n                parent[v] = u;\n                dist[v] =\
-    \ d + w;\n                pq.emplace(dist[v], v);\n            }\n        }\n\
-    \    }\n    if (dist[t] == std::numeric_limits<long long>::max()) {\n        std::cout\
-    \ << -1;\n    } else {\n        std::vector<int> ans;\n        for (auto u = t;\
-    \ u != s; u = parent[u]) {\n            ans.push_back(u);\n        }\n       \
-    \ auto X = dist[t];\n        auto Y = (int)ans.size();\n        ans.push_back(s);\n\
-    \        std::cout << X << \" \" << Y << \"\\n\";\n        for (auto i = Y; 0\
-    \ < i; --i) {\n            std::cout << ans[i] << \" \" << ans[i - 1] << \"\\\
-    n\";\n        }\n    }\n}\n"
+    \ continue;\n        }\n        for (const auto &e : g[u]) {\n            if (d\
+    \ + e.w < dist[e.v]) {\n                parent[e.v] = u;\n                dist[e.v]\
+    \ = d + e.w;\n                pq.emplace(dist[e.v], e.v);\n            }\n   \
+    \     }\n    }\n    if (dist[t] == std::numeric_limits<long long>::max()) {\n\
+    \        std::cout << -1;\n    } else {\n        std::vector<int> ans;\n     \
+    \   for (auto u = t; u != s; u = parent[u]) {\n            ans.push_back(u);\n\
+    \        }\n        auto X = dist[t];\n        auto Y = (int)ans.size();\n   \
+    \     ans.push_back(s);\n        std::cout << X << \" \" << Y << \"\\n\";\n  \
+    \      for (auto i = Y; 0 < i; --i) {\n            std::cout << ans[i] << \" \"\
+    \ << ans[i - 1] << \"\\n\";\n        }\n    }\n}\n"
   dependsOn:
   - graph/csr_graph.hpp
   isVerificationFile: true
   path: test/graph/dijkstra.test.cpp
   requiredBy: []
-  timestamp: '2026-08-12 07:38:15+00:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2026-08-12 07:43:22+00:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/graph/dijkstra.test.cpp
 layout: document

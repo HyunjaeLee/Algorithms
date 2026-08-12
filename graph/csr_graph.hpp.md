@@ -6,15 +6,15 @@ data:
     path: tree/tree_diameter.hpp
     title: tree/tree_diameter.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/graph/dijkstra.test.cpp
     title: test/graph/dijkstra.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/tree_diameter.test.cpp
     title: test/tree/tree_diameter.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"graph/csr_graph.hpp\"\n\n\n\n#include <cassert>\n#include\
@@ -71,7 +71,7 @@ data:
   requiredBy:
   - tree/tree_diameter.hpp
   timestamp: '2026-08-12 07:38:15+00:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/graph/dijkstra.test.cpp
   - test/tree/tree_diameter.test.cpp

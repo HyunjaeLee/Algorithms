@@ -23,6 +23,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structures/rollback_disjoint_set.hpp
       title: data_structures/rollback_disjoint_set.hpp
+    - icon: ':warning:'
+      path: data_structures/tensor.hpp
+      title: data_structures/tensor.hpp
   - name: dp
     pages:
     - icon: ':heavy_check_mark:'
@@ -45,7 +48,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/bridges.hpp
       title: Bridges
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: graph/csr_graph.hpp
       title: graph/csr_graph.hpp
     - icon: ':heavy_check_mark:'
@@ -268,7 +271,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/graph/bridges.test.cpp
       title: test/graph/bridges.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/graph/dijkstra.test.cpp
       title: test/graph/dijkstra.test.cpp
     - icon: ':heavy_check_mark:'

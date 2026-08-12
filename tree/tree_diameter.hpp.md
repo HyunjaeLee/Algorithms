@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/csr_graph.hpp
     title: graph/csr_graph.hpp
   _extendedRequiredBy: []
