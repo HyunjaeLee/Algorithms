@@ -5,7 +5,7 @@ template <typename Z> struct AffineMonoid {
     static AffineMonoid op(AffineMonoid f, AffineMonoid g) {
         auto [a, b] = f;
         auto [c, d] = g;
-        return {a * c, b * c + d};
+        return {c * a, c * b + d};
     }
     static AffineMonoid e() { return {1, 0}; }
     Z a, b;
