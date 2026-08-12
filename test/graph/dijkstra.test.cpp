@@ -26,11 +26,11 @@ int main() {
         if (d != dist[u]) {
             continue;
         }
-        for (auto [v, w] : g[u]) {
-            if (d + w < dist[v]) {
-                parent[v] = u;
-                dist[v] = d + w;
-                pq.emplace(dist[v], v);
+        for (const auto &e : g[u]) {
+            if (d + e.w < dist[e.v]) {
+                parent[e.v] = u;
+                dist[e.v] = d + e.w;
+                pq.emplace(dist[e.v], e.v);
             }
         }
     }
