@@ -1,7 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/tree_path_composite_sum"
 
 #include "dp/rerooting.hpp"
-#include "graph/csr_graph.hpp"
 #include <atcoder/modint>
 #include <bits/stdc++.h>
 
@@ -12,15 +11,15 @@ int main() {
     int N;
     std::cin >> N;
     using EdgeWeight = std::pair<int, int>;
-    CSRGraph<EdgeWeight> g(N);
+    std::vector<std::vector<std::pair<int, EdgeWeight>>> g(N);
     std::vector<int> a(N);
     std::copy_n(std::istream_iterator<int>(std::cin), N, a.begin());
     for (auto i = 0; i < N - 1; ++i) {
         int u, v, b, c;
         std::cin >> u >> v >> b >> c;
-        g.add_edge(u, v, {b, c});
+        g[u].emplace_back(v, std::pair{b, c});
+        g[v].emplace_back(u, std::pair{b, c});
     }
-    g.build_undirected();
     using Subtree = std::pair<Z, int>;
     using Child = std::pair<Z, int>;
     auto rake = [&](Child l, Child r) -> Child { return {l.first + r.first, l.second + r.second}; };
