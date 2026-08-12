@@ -91,7 +91,7 @@ data:
     \ data_, sum_;\n    std::vector<char> reversed_;\n};\n\n\n#line 1 \"monoids/affine_monoid.hpp\"\
     \n\n\n\ntemplate <typename Z> struct AffineMonoid {\n    static AffineMonoid op(AffineMonoid\
     \ f, AffineMonoid g) {\n        auto [a, b] = f;\n        auto [c, d] = g;\n \
-    \       return {a * c, b * c + d};\n    }\n    static AffineMonoid e() { return\
+    \       return {c * a, c * b + d};\n    }\n    static AffineMonoid e() { return\
     \ {1, 0}; }\n    Z a, b;\n};\n\n\n#line 1 \"monoids/reversible_monoid.hpp\"\n\n\
     \n\ntemplate <typename M> struct ReversibleMonoid {\n    ReversibleMonoid(M x)\
     \ : val(x), rev(x) {}\n    ReversibleMonoid(M x, M y) : val(x), rev(y) {}\n  \
@@ -137,7 +137,7 @@ data:
   isVerificationFile: true
   path: test/link_cut_tree/dynamic_tree_vertex_set_path_composite.test.cpp
   requiredBy: []
-  timestamp: '2026-01-04 02:17:36+09:00'
+  timestamp: '2026-08-12 17:52:00+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/link_cut_tree/dynamic_tree_vertex_set_path_composite.test.cpp

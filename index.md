@@ -185,6 +185,9 @@ data:
       path: segment_tree/sparse_lazy_segtree.hpp
       title: segment_tree/sparse_lazy_segtree.hpp
     - icon: ':heavy_check_mark:'
+      path: segment_tree/sparse_segtree.hpp
+      title: segment_tree/sparse_segtree.hpp
+    - icon: ':heavy_check_mark:'
       path: segment_tree/sparse_segtree_2d.hpp
       title: segment_tree/sparse_segtree_2d.hpp
   - name: sparse_table
@@ -418,6 +421,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/segment_tree/sparse_lazy_segtree.test.cpp
       title: test/segment_tree/sparse_lazy_segtree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/segment_tree/sparse_segtree.test.cpp
+      title: test/segment_tree/sparse_segtree.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/segment_tree/sparse_segtree_2d.test.cpp
       title: test/segment_tree/sparse_segtree_2d.test.cpp
