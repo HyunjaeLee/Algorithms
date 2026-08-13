@@ -37,3 +37,7 @@ $$
 
 $1$ 이상 $\frac{(N+1)N}{2}$ 이하의 모든 정수 $x$를 $1,2,\dots,N$의 합으로 표현할 수 있다.\
 $x$가 음수가 되지 않도록 $N$부터 $1$까지 차례대로 빼는 것으로 실제 해를 구성할 수 있다.
+
+## $\lfloor\frac{n}{2}\rfloor\lceil\frac{n}{2}\rceil=\lfloor\frac{n^2}{4}\rfloor$
+정수 $a,b,n$에 대해 $a,b \geq 0$ 이고 $a+b=n$이면 $ab\le\lfloor\frac{n^2}{4}\rfloor$이다.\
+등호 성립 조건은 $\{a,b\}=\{\lfloor\frac{n}{2}\rfloor,\lceil\frac{n}{2}\rceil\}$ 이다.
