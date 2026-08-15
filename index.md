@@ -162,6 +162,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: monoids/xor.hpp
       title: monoids/xor.hpp
+  - name: optimization
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: optimization/canonical_coin_system.hpp
+      title: A Polynomial-time Algorithm for the Change-Making Problem
   - name: random
     pages:
     - icon: ':heavy_check_mark:'
@@ -407,6 +412,14 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/mo/rollback_mo_static_range_mode_query.test.cpp
       title: test/mo/rollback_mo_static_range_mode_query.test.cpp
+  - name: test/optimization
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/optimization/aizu2069.test.cpp
+      title: test/optimization/aizu2069.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/optimization/aizu2963.test.cpp
+      title: test/optimization/aizu2963.test.cpp
   - name: test/segment_tree
     pages:
     - icon: ':heavy_check_mark:'

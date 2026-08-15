@@ -31,8 +31,8 @@ data:
   timestamp: '2026-08-12 17:52:00+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/link_cut_tree/dynamic_tree_vertex_set_path_composite.test.cpp
   - test/segment_tree/sparse_segtree.test.cpp
+  - test/link_cut_tree/dynamic_tree_vertex_set_path_composite.test.cpp
 documentation_of: monoids/affine_monoid.hpp
 layout: document
 redirect_from:
