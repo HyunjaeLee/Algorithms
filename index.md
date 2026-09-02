@@ -114,6 +114,9 @@ data:
       path: math/dirichlet_series.hpp
       title: math/dirichlet_series.hpp
     - icon: ':heavy_check_mark:'
+      path: math/euler_phi.hpp
+      title: Euler's totient function
+    - icon: ':heavy_check_mark:'
       path: math/extgcd.hpp
       title: Extended Euclidean Algorithm
     - icon: ':heavy_check_mark:'
@@ -374,6 +377,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/math/binomial_coefficient_prime_mod.test.cpp
       title: test/math/binomial_coefficient_prime_mod.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/math/euler_phi.test.cpp
+      title: test/math/euler_phi.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/math/extgcd.test.cpp
       title: test/math/extgcd.test.cpp
