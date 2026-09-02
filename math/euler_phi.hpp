@@ -1,19 +1,19 @@
-#ifndef MOBIUS_HPP
-#define MOBIUS_HPP
+#ifndef EULER_PHI_HPP
+#define EULER_PHI_HPP
 
-#include <cassert>
 #include <vector>
+#include <cassert>
 
-std::vector<int> mobius(int n) {
+std::vector<int> euler_phi(int n) {
     assert(0 < n);
-    std::vector<int> prime, mu(n + 1);
+    std::vector<int> prime, phi(n + 1);
     std::vector<char> is_prime(n + 1, true);
     is_prime[0] = is_prime[1] = false;
-    mu[1] = 1;
+    phi[1] = 1;
     for (auto i = 2; i <= n; ++i) {
         if (is_prime[i]) {
             prime.push_back(i);
-            mu[i] = -1;
+            phi[i] = i - 1;
         }
         for (auto p : prime) {
             if (i * p > n) {
@@ -21,14 +21,14 @@ std::vector<int> mobius(int n) {
             }
             is_prime[i * p] = false;
             if (i % p == 0) {
-                mu[i * p] = 0;
+                phi[i * p] = phi[i] * p;
                 break;
             } else {
-                mu[i * p] = -mu[i];
+                phi[i * p] = phi[i] * phi[p];
             }
         }
     }
-    return mu;
+    return phi;
 }
 
-#endif // MOBIUS_HPP
+#endif // EULER_PHI_HPP
