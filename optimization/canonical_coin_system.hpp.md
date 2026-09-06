@@ -67,8 +67,8 @@ data:
   timestamp: '2026-08-15 04:52:31+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/optimization/aizu2069.test.cpp
   - test/optimization/aizu2963.test.cpp
+  - test/optimization/aizu2069.test.cpp
 documentation_of: optimization/canonical_coin_system.hpp
 layout: document
 title: A Polynomial-time Algorithm for the Change-Making Problem

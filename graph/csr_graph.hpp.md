@@ -73,8 +73,8 @@ data:
   timestamp: '2026-08-12 07:38:15+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/graph/dijkstra.test.cpp
   - test/tree/tree_diameter.test.cpp
+  - test/graph/dijkstra.test.cpp
 documentation_of: graph/csr_graph.hpp
 layout: document
 redirect_from:

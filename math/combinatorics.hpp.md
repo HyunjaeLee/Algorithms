@@ -4,6 +4,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/math/aizu3614.test.cpp
+    title: test/math/aizu3614.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/math/binomial_coefficient_prime_mod.test.cpp
     title: test/math/binomial_coefficient_prime_mod.test.cpp
   _isVerificationFailed: false
@@ -59,6 +62,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/binomial_coefficient_prime_mod.test.cpp
+  - test/math/aizu3614.test.cpp
 documentation_of: math/combinatorics.hpp
 layout: document
 redirect_from:

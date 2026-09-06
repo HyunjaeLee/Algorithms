@@ -50,9 +50,9 @@ data:
   timestamp: '2026-07-22 17:15:56+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/math/aizu0009.test.cpp
   - test/math/aizu2870.test.cpp
   - test/math/yuki106.test.cpp
+  - test/math/aizu0009.test.cpp
 documentation_of: math/linear_sieve.hpp
 layout: document
 redirect_from:

@@ -132,6 +132,9 @@ data:
       path: math/mobius.hpp
       title: "M\xF6bius function"
     - icon: ':heavy_check_mark:'
+      path: math/p_recursive.hpp
+      title: math/p_recursive.hpp
+    - icon: ':heavy_check_mark:'
       path: math/power_tower.hpp
       title: Power tower
     - icon: ':warning:'
@@ -374,6 +377,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/math/aizu2870.test.cpp
       title: test/math/aizu2870.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/math/aizu3614.test.cpp
+      title: test/math/aizu3614.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/math/binomial_coefficient_prime_mod.test.cpp
       title: test/math/binomial_coefficient_prime_mod.test.cpp
