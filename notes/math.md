@@ -41,3 +41,11 @@ $x$가 음수가 되지 않도록 $N$부터 $1$까지 차례대로 빼는 것으
 ## $\lfloor\frac{n}{2}\rfloor\lceil\frac{n}{2}\rceil=\lfloor\frac{n^2}{4}\rfloor$
 정수 $a,b,n$에 대해 $a,b \geq 0$ 이고 $a+b=n$이면 $ab\le\lfloor\frac{n^2}{4}\rfloor$이다.\
 등호 성립 조건은 $\{a,b\}=\{\lfloor\frac{n}{2}\rfloor,\lceil\frac{n}{2}\rceil\}$ 이다.
+
+## 코시-슈바르츠 부등식
+
+$$
+(a_1^2 + a_2^2 + \cdots + a_n^2)(b_1^2 + b_2^2 + \cdots + b_n^2) \ge (a_1 b_1 + a_2 b_2 + \cdots + a_n b _n)^2
+$$
+
+등호 성립 조건은 $\frac{a_1}{b_1} = \frac{a_2}{b_2} = \cdots = \frac{a_n}{b_n}$ 이다.
