@@ -55,3 +55,11 @@ $$
 + $ab \equiv ac \pmod{m}$이고, $d = \gcd(a, m)$이면, $b \equiv c \pmod{\frac{m}{d}}$이다.
 + $a \equiv b \pmod{m}$이고, $n$이 $m$의 약수이면, $a \equiv b \pmod{n}$이다.
 + $a \equiv b \pmod{m}$이고, $d \gt 0$이 $a, b, m$의 공약수이면, $\frac{a}{d} \equiv \frac{b}{d} \pmod{\frac{m}{d}}$이다.
+
+## 픽의 정리
+
+좌표평면에서, 격자점을 꼭짓점으로 하는 다각형의 넓이를 $A$, 다각형 내부의 격자점의 개수를 $I$, 다각형의 둘레에 있는 격자점의 개수를 $B$라고 하면 다음 등식이 성립한다.
+
+$$
+A = I + \frac{B}{2} - 1
+$$
