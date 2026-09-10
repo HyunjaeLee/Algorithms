@@ -49,3 +49,9 @@ $$
 $$
 
 등호 성립 조건은 $\frac{a_1}{b_1} = \frac{a_2}{b_2} = \cdots = \frac{a_n}{b_n}$ 이다.
+
+## 합동식
+
++ $ab \equiv ac \pmod{m}$이고, $d = \gcd(a, m)$이면, $b \equiv c \pmod{\frac{m}{d}}$이다.
++ $a \equiv b \pmod{m}$이고, $n$이 $m$의 약수이면, $a \equiv b \pmod{n}$이다.
++ $a \equiv b \pmod{m}$이고, $d \gt 0$이 $a, b, m$의 공약수이면, $\frac{a}{d} \equiv \frac{b}{d} \pmod{\frac{m}{d}}$이다.
