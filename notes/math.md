@@ -63,3 +63,23 @@ $$
 $$
 A = I + \frac{B}{2} - 1
 $$
+
+## Manhattan distance ↔ Chebyshev distance
+
+$$
+D_{\text{Manhattan}} = \lvert\Delta x\rvert + \lvert\Delta y\rvert \\
+D_{\text{Chebyshev}} = \max\left(\lvert\Delta x\rvert, \lvert\Delta y\rvert\right) \\
+\lvert\Delta x\rvert + \lvert\Delta y\rvert = \max\left(\lvert\Delta x + \Delta y\rvert, \lvert\Delta x - \Delta y\rvert\right) \\
+u = x + y, v = x - y
+$$
+
+### Manhattan → Chebyshev
+
+$$
+\lvert\Delta x\rvert + \lvert\Delta y\rvert = \max\left(\lvert\Delta u\rvert, \lvert\Delta v\rvert\right)
+$$
+
+### Chebyshev → Manhattan
+$$
+\max\left(\lvert\Delta x\rvert, \lvert\Delta y\rvert\right) = \frac{1}{2} \left(\lvert\Delta u\rvert + \lvert\Delta v\rvert\right)
+$$
