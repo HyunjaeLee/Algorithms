@@ -80,6 +80,7 @@ $$
 $$
 
 ### Chebyshev → Manhattan
+
 $$
 \max\left(\lvert\Delta x\rvert, \lvert\Delta y\rvert\right) = \frac{1}{2} \left(\lvert\Delta u\rvert + \lvert\Delta v\rvert\right)
 $$
