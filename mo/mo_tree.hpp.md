@@ -55,12 +55,12 @@ data:
     \ {\n                    top_[v] = (v == heavy[u]) ? top_[u] : v;\n          \
     \          self(self, v);\n                }\n            }\n            tour_[timer++]\
     \ = u;\n        };\n        dfs(dfs, 0);\n        hld(hld, 0);\n    }\n    int\
-    \ lca(int u, int v) const {\n        assert(0 <= u && u < n_ && 0 <= v && v <=\
+    \ lca(int u, int v) const {\n        assert(0 <= u && u < n_ && 0 <= v && v <\
     \ n_);\n        while (top_[u] != top_[v]) {\n            if (in_[top_[u]] < in_[top_[v]])\
     \ {\n                std::swap(u, v);\n            }\n            u = parent_[top_[u]];\n\
     \        }\n        return (in_[u] < in_[v]) ? u : v;\n    }\n    void add(int\
-    \ u, int v) {\n        assert(0 <= u && u < n_ && 0 <= v && v <= n_);\n      \
-    \  lca_.push_back(lca(u, v));\n        auto [l, r] = std::minmax(in_[u], in_[v]);\n\
+    \ u, int v) {\n        assert(0 <= u && u < n_ && 0 <= v && v < n_);\n       \
+    \ lca_.push_back(lca(u, v));\n        auto [l, r] = std::minmax(in_[u], in_[v]);\n\
     \        mo_.add(l + 1, r + 1);\n    }\n    void solve(auto add, auto remove,\
     \ auto eval) {\n        std::vector<bool> contains(n_);\n        auto toggle =\
     \ [&](int i) {\n            auto u = tour_[i];\n            if (contains[u]) {\n\
@@ -86,12 +86,12 @@ data:
     \ {\n                    top_[v] = (v == heavy[u]) ? top_[u] : v;\n          \
     \          self(self, v);\n                }\n            }\n            tour_[timer++]\
     \ = u;\n        };\n        dfs(dfs, 0);\n        hld(hld, 0);\n    }\n    int\
-    \ lca(int u, int v) const {\n        assert(0 <= u && u < n_ && 0 <= v && v <=\
+    \ lca(int u, int v) const {\n        assert(0 <= u && u < n_ && 0 <= v && v <\
     \ n_);\n        while (top_[u] != top_[v]) {\n            if (in_[top_[u]] < in_[top_[v]])\
     \ {\n                std::swap(u, v);\n            }\n            u = parent_[top_[u]];\n\
     \        }\n        return (in_[u] < in_[v]) ? u : v;\n    }\n    void add(int\
-    \ u, int v) {\n        assert(0 <= u && u < n_ && 0 <= v && v <= n_);\n      \
-    \  lca_.push_back(lca(u, v));\n        auto [l, r] = std::minmax(in_[u], in_[v]);\n\
+    \ u, int v) {\n        assert(0 <= u && u < n_ && 0 <= v && v < n_);\n       \
+    \ lca_.push_back(lca(u, v));\n        auto [l, r] = std::minmax(in_[u], in_[v]);\n\
     \        mo_.add(l + 1, r + 1);\n    }\n    void solve(auto add, auto remove,\
     \ auto eval) {\n        std::vector<bool> contains(n_);\n        auto toggle =\
     \ [&](int i) {\n            auto u = tour_[i];\n            if (contains[u]) {\n\
@@ -106,7 +106,7 @@ data:
   isVerificationFile: false
   path: mo/mo_tree.hpp
   requiredBy: []
-  timestamp: '2026-02-27 15:20:30+09:00'
+  timestamp: '2026-09-27 08:18:09+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/mo/aoj0489.test.cpp

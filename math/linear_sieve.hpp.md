@@ -51,8 +51,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/aizu2870.test.cpp
-  - test/math/yuki106.test.cpp
   - test/math/aizu0009.test.cpp
+  - test/math/yuki106.test.cpp
 documentation_of: math/linear_sieve.hpp
 layout: document
 redirect_from:
