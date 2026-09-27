@@ -39,7 +39,7 @@ struct MoTree {
         hld(hld, 0);
     }
     int lca(int u, int v) const {
-        assert(0 <= u && u < n_ && 0 <= v && v <= n_);
+        assert(0 <= u && u < n_ && 0 <= v && v < n_);
         while (top_[u] != top_[v]) {
             if (in_[top_[u]] < in_[top_[v]]) {
                 std::swap(u, v);
@@ -49,7 +49,7 @@ struct MoTree {
         return (in_[u] < in_[v]) ? u : v;
     }
     void add(int u, int v) {
-        assert(0 <= u && u < n_ && 0 <= v && v <= n_);
+        assert(0 <= u && u < n_ && 0 <= v && v < n_);
         lca_.push_back(lca(u, v));
         auto [l, r] = std::minmax(in_[u], in_[v]);
         mo_.add(l + 1, r + 1);
