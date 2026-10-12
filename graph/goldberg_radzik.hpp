@@ -13,7 +13,7 @@ std::tuple<bool, std::vector<T>, std::vector<int>> goldberg_radzik(const auto &g
     std::vector<T> dist(n, inf);
     dist[src] = 0;
     std::vector<int> cur{src}, nxt, order, parent(n, -1);
-    std::vector<int> state(n); // -t: in stack/labeled, t: complete
+    std::vector<int> state(n); // -t: in stack/labeled, t: visited
     for (auto t = 1; !cur.empty(); ++t) {
         order.clear();
         auto dfs = [&](auto &&self, int u) {
