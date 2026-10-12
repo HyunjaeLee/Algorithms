@@ -61,6 +61,9 @@ data:
       path: graph/dynamic_connectivity.hpp
       title: graph/dynamic_connectivity.hpp
     - icon: ':heavy_check_mark:'
+      path: graph/goldberg_radzik.hpp
+      title: graph/goldberg_radzik.hpp
+    - icon: ':heavy_check_mark:'
       path: graph/offline_dynamic_connectivity.hpp
       title: graph/offline_dynamic_connectivity.hpp
     - icon: ':heavy_check_mark:'
@@ -303,6 +306,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/graph/dynamic_connectivity.test.cpp
       title: test/graph/dynamic_connectivity.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/graph/goldberg_radzik.test.cpp
+      title: test/graph/goldberg_radzik.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/graph/jag_regional_2022_i.test.cpp
       title: test/graph/jag_regional_2022_i.test.cpp
