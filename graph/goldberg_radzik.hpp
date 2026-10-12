@@ -17,24 +17,28 @@ std::tuple<bool, std::vector<T>, std::vector<int>> goldberg_radzik(const auto &g
     for (auto t = 1; !cur.empty(); ++t) {
         order.clear();
         auto dfs = [&](auto &&self, int u) {
-            if (state[u] == t || state[u] == -t)
+            if (state[u] == t || state[u] == -t) {
                 return state[u] == t;
+            }
             state[u] = -t;
             for (auto [v, w] : g[u]) {
-                if (dist[v] <= dist[u] + w)
+                if (dist[v] <= dist[u] + w) {
                     continue;
+                }
                 dist[v] = dist[u] + w;
                 parent[v] = u;
-                if (!self(self, v))
+                if (!self(self, v)) {
                     return false;
+                }
             }
             state[u] = t;
             order.push_back(u);
             return true;
         };
         for (auto u : cur) {
-            if (state[u] == t)
+            if (state[u] == t) {
                 continue;
+            }
             auto can_relax = false;
             for (auto [v, w] : g[u]) {
                 if (dist[u] + w < dist[v]) {
@@ -49,8 +53,9 @@ std::tuple<bool, std::vector<T>, std::vector<int>> goldberg_radzik(const auto &g
         nxt.clear();
         for (auto u : order | std::views::reverse) {
             for (auto [v, w] : g[u]) {
-                if (dist[v] <= dist[u] + w)
+                if (dist[v] <= dist[u] + w) {
                     continue;
+                }
                 dist[v] = dist[u] + w;
                 parent[v] = u;
                 if (state[v] != -t) {
