@@ -6,6 +6,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/graph/goldberg_radzik.test.cpp
     title: test/graph/goldberg_radzik.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/graph/sssp.test.cpp
+    title: test/graph/sssp.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -17,7 +20,7 @@ data:
     \ std::vector<int>> goldberg_radzik(const auto &g, int src) {\n    auto n = int(g.size());\n\
     \    std::vector<T> dist(n, inf);\n    dist[src] = 0;\n    std::vector<int> cur{src},\
     \ nxt, order, parent(n, -1);\n    std::vector<int> state(n); // -t: in stack/labeled,\
-    \ t: complete\n    for (auto t = 1; !cur.empty(); ++t) {\n        order.clear();\n\
+    \ t: visited\n    for (auto t = 1; !cur.empty(); ++t) {\n        order.clear();\n\
     \        auto dfs = [&](auto &&self, int u) {\n            if (state[u] == t ||\
     \ state[u] == -t)\n                return state[u] == t;\n            state[u]\
     \ = -t;\n            for (auto [v, w] : g[u]) {\n                if (dist[v] <=\
@@ -43,7 +46,7 @@ data:
     \ std::vector<T>, std::vector<int>> goldberg_radzik(const auto &g, int src) {\n\
     \    auto n = int(g.size());\n    std::vector<T> dist(n, inf);\n    dist[src]\
     \ = 0;\n    std::vector<int> cur{src}, nxt, order, parent(n, -1);\n    std::vector<int>\
-    \ state(n); // -t: in stack/labeled, t: complete\n    for (auto t = 1; !cur.empty();\
+    \ state(n); // -t: in stack/labeled, t: visited\n    for (auto t = 1; !cur.empty();\
     \ ++t) {\n        order.clear();\n        auto dfs = [&](auto &&self, int u) {\n\
     \            if (state[u] == t || state[u] == -t)\n                return state[u]\
     \ == t;\n            state[u] = -t;\n            for (auto [v, w] : g[u]) {\n\
@@ -68,9 +71,10 @@ data:
   isVerificationFile: false
   path: graph/goldberg_radzik.hpp
   requiredBy: []
-  timestamp: '2026-10-12 17:31:27+00:00'
+  timestamp: '2026-10-12 17:50:32+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/graph/sssp.test.cpp
   - test/graph/goldberg_radzik.test.cpp
 documentation_of: graph/goldberg_radzik.hpp
 layout: document

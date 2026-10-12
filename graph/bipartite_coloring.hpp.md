@@ -4,8 +4,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/graph/aoj1404.test.cpp
-    title: test/graph/aoj1404.test.cpp
+    path: test/graph/aizu1404.test.cpp
+    title: test/graph/aizu1404.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -40,7 +40,7 @@ data:
   timestamp: '2026-07-17 16:10:27+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/graph/aoj1404.test.cpp
+  - test/graph/aizu1404.test.cpp
 documentation_of: graph/bipartite_coloring.hpp
 layout: document
 redirect_from:

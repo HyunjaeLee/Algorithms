@@ -24,8 +24,8 @@ data:
     \ / 2>\nstd::tuple<bool, std::vector<T>, std::vector<int>> goldberg_radzik(const\
     \ auto &g, int src) {\n    auto n = int(g.size());\n    std::vector<T> dist(n,\
     \ inf);\n    dist[src] = 0;\n    std::vector<int> cur{src}, nxt, order, parent(n,\
-    \ -1);\n    std::vector<int> state(n); // -t: in stack/labeled, t: complete\n\
-    \    for (auto t = 1; !cur.empty(); ++t) {\n        order.clear();\n        auto\
+    \ -1);\n    std::vector<int> state(n); // -t: in stack/labeled, t: visited\n \
+    \   for (auto t = 1; !cur.empty(); ++t) {\n        order.clear();\n        auto\
     \ dfs = [&](auto &&self, int u) {\n            if (state[u] == t || state[u] ==\
     \ -t)\n                return state[u] == t;\n            state[u] = -t;\n   \
     \         for (auto [v, w] : g[u]) {\n                if (dist[v] <= dist[u] +\
@@ -91,7 +91,7 @@ data:
   isVerificationFile: true
   path: test/graph/goldberg_radzik.test.cpp
   requiredBy: []
-  timestamp: '2026-10-12 17:31:27+00:00'
+  timestamp: '2026-10-12 17:50:32+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/graph/goldberg_radzik.test.cpp

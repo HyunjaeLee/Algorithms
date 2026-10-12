@@ -280,8 +280,8 @@ data:
   - name: test/graph
     pages:
     - icon: ':heavy_check_mark:'
-      path: test/graph/aoj1404.test.cpp
-      title: test/graph/aoj1404.test.cpp
+      path: test/graph/aizu1404.test.cpp
+      title: test/graph/aizu1404.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/graph/articulation_points.test.cpp
       title: test/graph/articulation_points.test.cpp
@@ -318,6 +318,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/graph/offline_dynamic_connectivity.test.cpp
       title: test/graph/offline_dynamic_connectivity.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/graph/sssp.test.cpp
+      title: test/graph/sssp.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/graph/yuki901.test.cpp
       title: test/graph/yuki901.test.cpp
