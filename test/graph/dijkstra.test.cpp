@@ -7,16 +7,17 @@ int main() {
     std::cin.tie(0)->sync_with_stdio(0);
     int n, m, s, t;
     std::cin >> n >> m >> s >> t;
-    CSRGraph<long long> g(n);
+    csr_graph<long long> g(n);
     for (auto i = 0; i < m; ++i) {
         int u, v, w;
         std::cin >> u >> v >> w;
         g.add_edge(u, v, w);
     }
-    g.build_directed();
+    g.build();
+    constexpr auto inf = std::numeric_limits<long long>::max();
     using S = std::pair<long long, int>;
     std::vector<int> parent(n, -1);
-    std::vector<long long> dist(n, std::numeric_limits<long long>::max());
+    std::vector<long long> dist(n, inf);
     std::priority_queue<S, std::vector<S>, std::greater<>> pq;
     dist[s] = 0;
     pq.emplace(dist[s], s);
@@ -26,15 +27,15 @@ int main() {
         if (d != dist[u]) {
             continue;
         }
-        for (const auto &e : g[u]) {
-            if (d + e.w < dist[e.v]) {
-                parent[e.v] = u;
-                dist[e.v] = d + e.w;
-                pq.emplace(dist[e.v], e.v);
+        for (auto [v, w] : g[u]) {
+            if (d + w < dist[v]) {
+                parent[v] = u;
+                dist[v] = d + w;
+                pq.emplace(dist[v], v);
             }
         }
     }
-    if (dist[t] == std::numeric_limits<long long>::max()) {
+    if (dist[t] == inf) {
         std::cout << -1;
     } else {
         std::vector<int> ans;

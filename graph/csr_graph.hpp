@@ -5,51 +5,26 @@
 #include <ranges>
 #include <vector>
 
-template <typename EdgeWeight = int> struct CSRGraph {
-    struct Edge {
-        int u;
-        int v;
-        EdgeWeight w;
-        int i;
-    };
-    CSRGraph(int n) : n_(n) {}
-    void add_edge(int u, int v, EdgeWeight w = 1) {
+template <typename T> struct csr_graph {
+    csr_graph(int n) : n_(n) {}
+    void add_edge(int u, int v, T w) {
         assert(!built_);
         assert(0 <= u && u < n_ && 0 <= v && v < n_);
-        auto i = int(edges_.size());
-        edges_.push_back({u, v, w, i});
+        edges_.push_back({u, v, w});
     }
-    void build_undirected() {
-        assert(!built_);
-        start_.assign(n_ + 1, 0);
-        csr_.resize(2 * edges_.size());
-        for (const auto &e : edges_) {
-            ++start_[e.u + 1];
-            ++start_[e.v + 1];
-        }
-        for (int i = 0; i < n_; ++i) {
-            start_[i + 1] += start_[i];
-        }
-        auto pos = start_;
-        for (const auto &e : edges_) {
-            csr_[pos[e.u]++] = {e.u, e.v, e.w, e.i};
-            csr_[pos[e.v]++] = {e.v, e.u, e.w, e.i};
-        }
-        built_ = true;
-    }
-    void build_directed() {
+    void build() {
         assert(!built_);
         start_.assign(n_ + 1, 0);
         csr_.resize(edges_.size());
-        for (const auto &e : edges_) {
-            ++start_[e.u + 1];
+        for (auto [u, v, w] : edges_) {
+            ++start_[u + 1];
         }
         for (int i = 0; i < n_; ++i) {
             start_[i + 1] += start_[i];
         }
         auto pos = start_;
-        for (const auto &e : edges_) {
-            csr_[pos[e.u]++] = e;
+        for (auto [u, v, w] : edges_) {
+            csr_[pos[u]++] = {v, w};
         }
         built_ = true;
     }
@@ -63,8 +38,8 @@ template <typename EdgeWeight = int> struct CSRGraph {
 private:
     int n_;
     bool built_ = false;
-    std::vector<Edge> edges_;
-    std::vector<Edge> csr_;
+    std::vector<std::tuple<int, int, T>> edges_;
+    std::vector<std::pair<int, T>> csr_;
     std::vector<int> start_;
 };
 
