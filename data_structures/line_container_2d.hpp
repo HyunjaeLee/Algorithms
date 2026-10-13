@@ -22,6 +22,8 @@ template <typename T> struct line_container_2d {
         return a * x + b * y;
     }
     T min(T x, T y) const { return -max(-x, -y); }
+
+private:
     static constexpr auto inf = std::numeric_limits<T>::max();
     T min_a = inf, max_a = -inf;
     line_container<T, false> min_lc;
