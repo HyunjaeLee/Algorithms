@@ -15,6 +15,12 @@ data:
       path: data_structures/interval_heap.hpp
       title: data_structures/interval_heap.hpp
     - icon: ':heavy_check_mark:'
+      path: data_structures/line_container.hpp
+      title: data_structures/line_container.hpp
+    - icon: ':heavy_check_mark:'
+      path: data_structures/line_container_2d.hpp
+      title: data_structures/line_container_2d.hpp
+    - icon: ':heavy_check_mark:'
       path: data_structures/ordered_set.hpp
       title: data_structures/ordered_set.hpp
     - icon: ':heavy_check_mark:'
@@ -107,7 +113,7 @@ data:
       title: Stable matching
   - name: math
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: math/ceil_div.hpp
       title: math/ceil_div.hpp
     - icon: ':heavy_check_mark:'
@@ -125,7 +131,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/factor.hpp
       title: Factor
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: math/floor_div.hpp
       title: math/floor_div.hpp
     - icon: ':heavy_check_mark:'
@@ -140,6 +146,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/power_tower.hpp
       title: Power tower
+    - icon: ':heavy_check_mark:'
+      path: math/rational.hpp
+      title: math/rational.hpp
     - icon: ':warning:'
       path: math/saturating.hpp
       title: Saturating
@@ -270,8 +279,14 @@ data:
       path: test/data_structures/interval_heap.test.cpp
       title: test/data_structures/interval_heap.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/data_structures/line_container.test.cpp
+      title: test/data_structures/line_container.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/data_structures/ordered_set.test.cpp
       title: test/data_structures/ordered_set.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/data_structures/yuki2012.test.cpp
+      title: test/data_structures/yuki2012.test.cpp
   - name: test/dp
     pages:
     - icon: ':heavy_check_mark:'

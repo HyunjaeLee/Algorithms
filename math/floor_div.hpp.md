@@ -1,11 +1,26 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: data_structures/line_container.hpp
+    title: data_structures/line_container.hpp
+  - icon: ':heavy_check_mark:'
+    path: data_structures/line_container_2d.hpp
+    title: data_structures/line_container_2d.hpp
+  - icon: ':heavy_check_mark:'
+    path: math/rational.hpp
+    title: math/rational.hpp
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/data_structures/line_container.test.cpp
+    title: test/data_structures/line_container.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/data_structures/yuki2012.test.cpp
+    title: test/data_structures/yuki2012.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"math/floor_div.hpp\"\n\n\n\ntemplate <typename T> T floor_div(T\
@@ -17,10 +32,15 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: math/floor_div.hpp
-  requiredBy: []
+  requiredBy:
+  - data_structures/line_container.hpp
+  - data_structures/line_container_2d.hpp
+  - math/rational.hpp
   timestamp: '2022-10-01 07:25:57+00:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/data_structures/yuki2012.test.cpp
+  - test/data_structures/line_container.test.cpp
 documentation_of: math/floor_div.hpp
 layout: document
 redirect_from:
