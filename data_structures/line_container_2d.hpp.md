@@ -103,8 +103,8 @@ data:
     \ {\n            return x < 0 ? x * min_a : x * max_a;\n        }\n        rational<T>\
     \ r(x, y);\n        auto [a, b] = (y < 0 ? min_lc.query_line(r) : max_lc.query_line(r));\n\
     \        return a * x + b * y;\n    }\n    T min(T x, T y) const { return -max(-x,\
-    \ -y); }\n    static constexpr auto inf = std::numeric_limits<T>::max();\n   \
-    \ T min_a = inf, max_a = -inf;\n    line_container<T, false> min_lc;\n    line_container<T>\
+    \ -y); }\n\nprivate:\n    static constexpr auto inf = std::numeric_limits<T>::max();\n\
+    \    T min_a = inf, max_a = -inf;\n    line_container<T, false> min_lc;\n    line_container<T>\
     \ max_lc;\n};\n\n\n"
   code: "#ifndef LINE_CONTAINER_2D_HPP\n#define LINE_CONTAINER_2D_HPP\n\n#include\
     \ \"data_structures/line_container.hpp\"\n#include \"math/rational.hpp\"\n#include\
@@ -115,8 +115,8 @@ data:
     \ x < 0 ? x * min_a : x * max_a;\n        }\n        rational<T> r(x, y);\n  \
     \      auto [a, b] = (y < 0 ? min_lc.query_line(r) : max_lc.query_line(r));\n\
     \        return a * x + b * y;\n    }\n    T min(T x, T y) const { return -max(-x,\
-    \ -y); }\n    static constexpr auto inf = std::numeric_limits<T>::max();\n   \
-    \ T min_a = inf, max_a = -inf;\n    line_container<T, false> min_lc;\n    line_container<T>\
+    \ -y); }\n\nprivate:\n    static constexpr auto inf = std::numeric_limits<T>::max();\n\
+    \    T min_a = inf, max_a = -inf;\n    line_container<T, false> min_lc;\n    line_container<T>\
     \ max_lc;\n};\n\n#endif // LINE_CONTAINER_2D_HPP"
   dependsOn:
   - data_structures/line_container.hpp
@@ -126,7 +126,7 @@ data:
   isVerificationFile: false
   path: data_structures/line_container_2d.hpp
   requiredBy: []
-  timestamp: '2026-10-13 08:10:16+00:00'
+  timestamp: '2026-10-13 08:16:35+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structures/yuki2012.test.cpp
