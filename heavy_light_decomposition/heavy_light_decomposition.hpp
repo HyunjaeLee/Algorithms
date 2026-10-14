@@ -6,10 +6,10 @@
 #include <type_traits>
 #include <vector>
 
-struct heavy_light_decomposition {
-    heavy_light_decomposition(const std::vector<std::vector<int>> &graph, int root)
-        : n_(int(graph.size())), timer_(0), graph_(graph), size_(n_, 1), depth_(n_), parent_(n_, -1), top_(n_), in_(n_),
-          out_(n_) {
+template <typename G> struct heavy_light_decomposition {
+    heavy_light_decomposition(const G &graph, int root)
+        : n_(int(graph.size())), timer_(0), graph_(graph), size_(n_, 1), depth_(n_),
+          parent_(n_, -1), top_(n_), in_(n_), out_(n_) {
         assert(0 <= root && root < n_);
         top_[root] = root;
         dfs_size(root);
@@ -92,9 +92,17 @@ struct heavy_light_decomposition {
         assert(0 <= u && u < n_);
         return out_[u];
     }
+    int size(int u) const {
+        assert(0 <= u && u < n_);
+        return size_[u];
+    };
     int depth(int u) const {
         assert(0 <= u && u < n_);
         return depth_[u];
+    };
+    int parent(int u) const {
+        assert(0 <= u && u < n_);
+        return parent_[u];
     };
 
 private:
@@ -123,7 +131,7 @@ private:
     }
     const int n_;
     int timer_;
-    std::vector<std::vector<int>> graph_;
+    G graph_;
     std::vector<int> size_, depth_, parent_, top_, in_, out_;
 };
 

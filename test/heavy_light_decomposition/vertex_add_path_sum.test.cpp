@@ -31,8 +31,7 @@ int main() {
             hld.access_node(a, [&](auto x) { ft.add(x, b); });
         } else {
             auto sum = 0LL;
-            hld.access_path(a, b, true,
-                            [&](auto l, auto r) { sum += ft.sum(l, r); });
+            hld.access_path(a, b, true, [&](auto l, auto r) { sum += ft.sum(l, r); });
             std::cout << sum << '\n';
         }
     }
