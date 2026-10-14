@@ -6,8 +6,9 @@
 #include <utility>
 #include <vector>
 
+template<typename G>
 struct AuxiliaryTree {
-    AuxiliaryTree(const std::vector<std::vector<int>> &graph, int root) : hld_(graph, root) {}
+    AuxiliaryTree(const G &graph, int root) : hld_(graph, root) {}
     std::vector<std::pair<int, int>> get(std::vector<int> x) const {
         if (x.empty()) {
             return {};
@@ -41,10 +42,9 @@ struct AuxiliaryTree {
         }
         return dfs_order;
     }
-    const heavy_light_decomposition &hld() const { return hld_; }
 
 private:
-    const heavy_light_decomposition hld_;
+    const heavy_light_decomposition<G> hld_;
 };
 
 #endif // AUXILIARY_TREE_HPP

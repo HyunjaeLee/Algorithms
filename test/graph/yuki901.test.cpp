@@ -37,7 +37,7 @@ int main() {
         std::vector<int> x(k);
         std::copy_n(std::istream_iterator<int>(std::cin), k, x.begin());
         i64 ans = 0;
-        for (auto [u, p] : aux.get(move(x)) | std::views::drop(1)) {
+        for (auto [u, p] : aux.get(std::move(x)) | std::views::drop(1)) {
             ans += dist[u] - dist[p];
         }
         std::cout << ans << '\n';
