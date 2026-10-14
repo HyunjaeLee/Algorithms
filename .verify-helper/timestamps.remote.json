@@ -23,6 +23,7 @@
 "test/graph/odd_trip_plans.test.cpp": "2026-02-03 20:57:06 +0900",
 "test/graph/offline_dynamic_connectivity.test.cpp": "2026-02-03 20:57:06 +0900",
 "test/graph/sssp.test.cpp": "2026-10-12 17:57:57 +0000",
+"test/graph/yuki901.test.cpp": "2026-10-14 18:20:28 +0000",
 "test/heavy_light_decomposition/lca.test.cpp": "2026-10-14 18:10:34 +0000",
 "test/heavy_light_decomposition/vertex_add_path_sum.test.cpp": "2026-10-14 18:10:34 +0000",
 "test/heavy_light_decomposition/vertex_add_subtree_sum.test.cpp": "2026-10-14 18:10:34 +0000",
