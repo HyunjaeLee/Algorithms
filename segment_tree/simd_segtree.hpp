@@ -1,10 +1,10 @@
 #ifndef SIMD_SEGTREE_HPP
 #define SIMD_SEGTREE_HPP
 
-#include <array>
-#include <utility>
-#include <cstddef>
 #include <algorithm>
+#include <array>
+#include <cstddef>
+#include <utility>
 
 #pragma GCC optimize("O3,unroll-loops")
 #ifdef __x86_64__
@@ -56,7 +56,7 @@ template <typename T, int N> struct simd_segtree {
             k >>= branching_bits;
         }
     }
-    T sum(int i) {
+    T sum(int i) { // [0, i)
         T s = 0;
         for (int h = 0; h != H; ++h) {
             s += values[offset[h] + i];
@@ -64,7 +64,7 @@ template <typename T, int N> struct simd_segtree {
         }
         return s;
     }
-    T sum(int i, int j) {
+    T sum(int i, int j) { // [i, j)
         T s = 0;
         for (int h = 0; h != H; ++h) {
             s -= values[offset[h] + i];
