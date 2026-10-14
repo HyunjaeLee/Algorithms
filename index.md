@@ -12,6 +12,9 @@ data:
   - name: data_structures
     pages:
     - icon: ':heavy_check_mark:'
+      path: data_structures/csr.hpp
+      title: data_structures/csr.hpp
+    - icon: ':heavy_check_mark:'
       path: data_structures/interval_heap.hpp
       title: data_structures/interval_heap.hpp
     - icon: ':heavy_check_mark:'
@@ -29,6 +32,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structures/rollback_disjoint_set.hpp
       title: data_structures/rollback_disjoint_set.hpp
+    - icon: ':heavy_check_mark:'
+      path: data_structures/static_range_frequency.hpp
+      title: data_structures/static_range_frequency.hpp
     - icon: ':warning:'
       path: data_structures/tensor.hpp
       title: data_structures/tensor.hpp
@@ -284,6 +290,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/data_structures/ordered_set.test.cpp
       title: test/data_structures/ordered_set.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/data_structures/static_range_frequency.test.cpp
+      title: test/data_structures/static_range_frequency.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/data_structures/yuki2012.test.cpp
       title: test/data_structures/yuki2012.test.cpp

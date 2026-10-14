@@ -11,8 +11,8 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"segment_tree/simd_segtree.hpp\"\n\n\n\n#include <array>\n\
-    #include <utility>\n#include <cstddef>\n#include <algorithm>\n\n#pragma GCC optimize(\"\
+  bundledCode: "#line 1 \"segment_tree/simd_segtree.hpp\"\n\n\n\n#include <algorithm>\n\
+    #include <array>\n#include <cstddef>\n#include <utility>\n\n#pragma GCC optimize(\"\
     O3,unroll-loops\")\n#ifdef __x86_64__\n#pragma GCC target(\"avx2,bmi,bmi2,popcnt,lzcnt\"\
     )\n#endif\n\ntemplate <typename T, int N> struct simd_segtree {\n    static constexpr\
     \ int cache_size = 64;\n    static constexpr int reg_size = 32;\n    static constexpr\
@@ -37,14 +37,15 @@ data:
     \ + round(k)];\n            const auto m = (const vec *)&precalc.mask[k % branching];\n\
     \            for (int i = 0; i != reg_count; ++i)\n                a[i] += v &\
     \ m[i];\n            k >>= branching_bits;\n        }\n    }\n    T sum(int i)\
-    \ {\n        T s = 0;\n        for (int h = 0; h != H; ++h) {\n            s +=\
-    \ values[offset[h] + i];\n            i >>= branching_bits;\n        }\n     \
-    \   return s;\n    }\n    T sum(int i, int j) {\n        T s = 0;\n        for\
-    \ (int h = 0; h != H; ++h) {\n            s -= values[offset[h] + i];\n      \
-    \      s += values[offset[h] + j];\n            i >>= branching_bits;\n      \
-    \      j >>= branching_bits;\n        }\n        return s;\n    }\n};\n\n\n"
-  code: "#ifndef SIMD_SEGTREE_HPP\n#define SIMD_SEGTREE_HPP\n\n#include <array>\n\
-    #include <utility>\n#include <cstddef>\n#include <algorithm>\n\n#pragma GCC optimize(\"\
+    \ { // [0, i)\n        T s = 0;\n        for (int h = 0; h != H; ++h) {\n    \
+    \        s += values[offset[h] + i];\n            i >>= branching_bits;\n    \
+    \    }\n        return s;\n    }\n    T sum(int i, int j) { // [i, j)\n      \
+    \  T s = 0;\n        for (int h = 0; h != H; ++h) {\n            s -= values[offset[h]\
+    \ + i];\n            s += values[offset[h] + j];\n            i >>= branching_bits;\n\
+    \            j >>= branching_bits;\n        }\n        return s;\n    }\n};\n\n\
+    \n"
+  code: "#ifndef SIMD_SEGTREE_HPP\n#define SIMD_SEGTREE_HPP\n\n#include <algorithm>\n\
+    #include <array>\n#include <cstddef>\n#include <utility>\n\n#pragma GCC optimize(\"\
     O3,unroll-loops\")\n#ifdef __x86_64__\n#pragma GCC target(\"avx2,bmi,bmi2,popcnt,lzcnt\"\
     )\n#endif\n\ntemplate <typename T, int N> struct simd_segtree {\n    static constexpr\
     \ int cache_size = 64;\n    static constexpr int reg_size = 32;\n    static constexpr\
@@ -69,18 +70,18 @@ data:
     \ + round(k)];\n            const auto m = (const vec *)&precalc.mask[k % branching];\n\
     \            for (int i = 0; i != reg_count; ++i)\n                a[i] += v &\
     \ m[i];\n            k >>= branching_bits;\n        }\n    }\n    T sum(int i)\
-    \ {\n        T s = 0;\n        for (int h = 0; h != H; ++h) {\n            s +=\
-    \ values[offset[h] + i];\n            i >>= branching_bits;\n        }\n     \
-    \   return s;\n    }\n    T sum(int i, int j) {\n        T s = 0;\n        for\
-    \ (int h = 0; h != H; ++h) {\n            s -= values[offset[h] + i];\n      \
-    \      s += values[offset[h] + j];\n            i >>= branching_bits;\n      \
-    \      j >>= branching_bits;\n        }\n        return s;\n    }\n};\n\n#endif\
-    \ // SIMD_SEGTREE_HPP"
+    \ { // [0, i)\n        T s = 0;\n        for (int h = 0; h != H; ++h) {\n    \
+    \        s += values[offset[h] + i];\n            i >>= branching_bits;\n    \
+    \    }\n        return s;\n    }\n    T sum(int i, int j) { // [i, j)\n      \
+    \  T s = 0;\n        for (int h = 0; h != H; ++h) {\n            s -= values[offset[h]\
+    \ + i];\n            s += values[offset[h] + j];\n            i >>= branching_bits;\n\
+    \            j >>= branching_bits;\n        }\n        return s;\n    }\n};\n\n\
+    #endif // SIMD_SEGTREE_HPP"
   dependsOn: []
   isVerificationFile: false
   path: segment_tree/simd_segtree.hpp
   requiredBy: []
-  timestamp: '2026-02-27 15:20:30+09:00'
+  timestamp: '2026-10-14 13:04:34+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/mo/hilbert_mo_static_range_inversions_query.test.cpp
