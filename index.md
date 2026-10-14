@@ -48,7 +48,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/articulation_points.hpp
       title: Articulation Points
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: graph/auxiliary_tree.hpp
       title: graph/auxiliary_tree.hpp
     - icon: ':heavy_check_mark:'
@@ -73,6 +73,9 @@ data:
       path: graph/dynamic_connectivity.hpp
       title: graph/dynamic_connectivity.hpp
     - icon: ':heavy_check_mark:'
+      path: graph/enumerate_triangles.hpp
+      title: graph/enumerate_triangles.hpp
+    - icon: ':heavy_check_mark:'
       path: graph/goldberg_radzik.hpp
       title: graph/goldberg_radzik.hpp
     - icon: ':heavy_check_mark:'
@@ -83,7 +86,7 @@ data:
       title: graph/potentialized_offline_dynamic_connectivity.hpp
   - name: heavy_light_decomposition
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: heavy_light_decomposition/heavy_light_decomposition.hpp
       title: Heavy-Light Decomposition
   - name: io
@@ -331,6 +334,9 @@ data:
       path: test/graph/dynamic_connectivity.test.cpp
       title: test/graph/dynamic_connectivity.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/graph/enumerate_triangles.test.cpp
+      title: test/graph/enumerate_triangles.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/graph/goldberg_radzik.test.cpp
       title: test/graph/goldberg_radzik.test.cpp
     - icon: ':heavy_check_mark:'
@@ -345,7 +351,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/graph/sssp.test.cpp
       title: test/graph/sssp.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/graph/yuki901.test.cpp
       title: test/graph/yuki901.test.cpp
   - name: test/heavy_light_decomposition

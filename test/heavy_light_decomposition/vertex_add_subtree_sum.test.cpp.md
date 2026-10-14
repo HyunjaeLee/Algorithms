@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: heavy_light_decomposition/heavy_light_decomposition.hpp
     title: Heavy-Light Decomposition
   _extendedRequiredBy: []
@@ -18,9 +18,9 @@ data:
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_add_subtree_sum\"\n\
     \n#line 1 \"heavy_light_decomposition/heavy_light_decomposition.hpp\"\n\n\n\n\
     #include <algorithm>\n#include <cassert>\n#include <type_traits>\n#include <vector>\n\
-    \nstruct heavy_light_decomposition {\n    heavy_light_decomposition(const std::vector<std::vector<int>>\
-    \ &graph, int root)\n        : n_(int(graph.size())), timer_(0), graph_(graph),\
-    \ size_(n_, 1), depth_(n_), parent_(n_, -1), top_(n_), in_(n_),\n          out_(n_)\
+    \ntemplate <typename G> struct heavy_light_decomposition {\n    heavy_light_decomposition(const\
+    \ G &graph, int root)\n        : n_(int(graph.size())), timer_(0), graph_(graph),\
+    \ size_(n_, 1), depth_(n_),\n          parent_(n_, -1), top_(n_), in_(n_), out_(n_)\
     \ {\n        assert(0 <= root && root < n_);\n        top_[root] = root;\n   \
     \     dfs_size(root);\n        dfs_hld(root);\n    }\n    template <typename Function>\
     \ void access_node(int u, Function f) const {\n        assert(0 <= u && u < n_);\n\
@@ -53,33 +53,35 @@ data:
     \ {\n            std::swap(u, v);\n        }\n        return u;\n    }\n    int\
     \ in(int u) const {\n        assert(0 <= u && u < n_);\n        return in_[u];\n\
     \    }\n    int out(int u) const {\n        assert(0 <= u && u < n_);\n      \
-    \  return out_[u];\n    }\n    int depth(int u) const {\n        assert(0 <= u\
-    \ && u < n_);\n        return depth_[u];\n    };\n\nprivate:\n    void dfs_size(int\
-    \ u) {\n        for (auto &v : graph_[u]) {\n            if (v != parent_[u])\
-    \ {\n                depth_[v] = depth_[u] + 1;\n                parent_[v] =\
-    \ u;\n                dfs_size(v);\n                size_[u] += size_[v];\n  \
-    \              if (size_[graph_[u][0]] < size_[v] || graph_[u][0] == parent_[u])\
-    \ {\n                    std::swap(graph_[u][0], v);\n                }\n    \
-    \        }\n        }\n    }\n    void dfs_hld(int u) {\n        in_[u] = timer_++;\n\
-    \        for (auto v : graph_[u]) {\n            if (v != parent_[u]) {\n    \
-    \            top_[v] = (v == graph_[u][0] ? top_[u] : v);\n                dfs_hld(v);\n\
-    \            }\n        }\n        out_[u] = timer_;\n    }\n    const int n_;\n\
-    \    int timer_;\n    std::vector<std::vector<int>> graph_;\n    std::vector<int>\
-    \ size_, depth_, parent_, top_, in_, out_;\n};\n\n\n#line 4 \"test/heavy_light_decomposition/vertex_add_subtree_sum.test.cpp\"\
-    \n#include <atcoder/fenwicktree>\n#include <bits/stdc++.h>\n\nint main() {\n \
-    \   std::cin.tie(0)->sync_with_stdio(0);\n    int N, Q;\n    std::cin >> N >>\
-    \ Q;\n    std::vector<int> a(N);\n    for (auto &x : a) {\n        std::cin >>\
-    \ x;\n    }\n    std::vector<std::vector<int>> adj(N);\n    for (auto i = 1; i\
-    \ < N; ++i) {\n        int p;\n        std::cin >> p;\n        adj[p].push_back(i);\n\
-    \    }\n    heavy_light_decomposition hld(adj, 0);\n    atcoder::fenwick_tree<long\
-    \ long> ft(N);\n    for (auto i = 0; i < N; ++i) {\n        hld.access_node(i,\
-    \ [&](auto x) { ft.add(x, a[i]); });\n    }\n    for (auto i = 0; i < Q; ++i)\
-    \ {\n        int t, u;\n        std::cin >> t >> u;\n        if (t == 0) {\n \
-    \           long long val;\n            std::cin >> val;\n            hld.access_node(u,\
-    \ [&](auto x) { ft.add(x, val); });\n        } else {\n            auto ans =\
-    \ 0LL;\n            hld.access_subtree(u, true,\n                            \
-    \   [&](auto l, auto r) { ans = ft.sum(l, r); });\n            std::cout << ans\
-    \ << '\\n';\n        }\n    }\n}\n"
+    \  return out_[u];\n    }\n    int size(int u) const {\n        assert(0 <= u\
+    \ && u < n_);\n        return size_[u];\n    };\n    int depth(int u) const {\n\
+    \        assert(0 <= u && u < n_);\n        return depth_[u];\n    };\n    int\
+    \ parent(int u) const {\n        assert(0 <= u && u < n_);\n        return parent_[u];\n\
+    \    };\n\nprivate:\n    void dfs_size(int u) {\n        for (auto &v : graph_[u])\
+    \ {\n            if (v != parent_[u]) {\n                depth_[v] = depth_[u]\
+    \ + 1;\n                parent_[v] = u;\n                dfs_size(v);\n      \
+    \          size_[u] += size_[v];\n                if (size_[graph_[u][0]] < size_[v]\
+    \ || graph_[u][0] == parent_[u]) {\n                    std::swap(graph_[u][0],\
+    \ v);\n                }\n            }\n        }\n    }\n    void dfs_hld(int\
+    \ u) {\n        in_[u] = timer_++;\n        for (auto v : graph_[u]) {\n     \
+    \       if (v != parent_[u]) {\n                top_[v] = (v == graph_[u][0] ?\
+    \ top_[u] : v);\n                dfs_hld(v);\n            }\n        }\n     \
+    \   out_[u] = timer_;\n    }\n    const int n_;\n    int timer_;\n    G graph_;\n\
+    \    std::vector<int> size_, depth_, parent_, top_, in_, out_;\n};\n\n\n#line\
+    \ 4 \"test/heavy_light_decomposition/vertex_add_subtree_sum.test.cpp\"\n#include\
+    \ <atcoder/fenwicktree>\n#include <bits/stdc++.h>\n\nint main() {\n    std::cin.tie(0)->sync_with_stdio(0);\n\
+    \    int N, Q;\n    std::cin >> N >> Q;\n    std::vector<int> a(N);\n    for (auto\
+    \ &x : a) {\n        std::cin >> x;\n    }\n    std::vector<std::vector<int>>\
+    \ adj(N);\n    for (auto i = 1; i < N; ++i) {\n        int p;\n        std::cin\
+    \ >> p;\n        adj[p].push_back(i);\n    }\n    heavy_light_decomposition hld(adj,\
+    \ 0);\n    atcoder::fenwick_tree<long long> ft(N);\n    for (auto i = 0; i < N;\
+    \ ++i) {\n        hld.access_node(i, [&](auto x) { ft.add(x, a[i]); });\n    }\n\
+    \    for (auto i = 0; i < Q; ++i) {\n        int t, u;\n        std::cin >> t\
+    \ >> u;\n        if (t == 0) {\n            long long val;\n            std::cin\
+    \ >> val;\n            hld.access_node(u, [&](auto x) { ft.add(x, val); });\n\
+    \        } else {\n            auto ans = 0LL;\n            hld.access_subtree(u,\
+    \ true,\n                               [&](auto l, auto r) { ans = ft.sum(l,\
+    \ r); });\n            std::cout << ans << '\\n';\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_add_subtree_sum\"\
     \n\n#include \"heavy_light_decomposition/heavy_light_decomposition.hpp\"\n#include\
     \ <atcoder/fenwicktree>\n#include <bits/stdc++.h>\n\nint main() {\n    std::cin.tie(0)->sync_with_stdio(0);\n\
@@ -100,7 +102,7 @@ data:
   isVerificationFile: true
   path: test/heavy_light_decomposition/vertex_add_subtree_sum.test.cpp
   requiredBy: []
-  timestamp: '2026-02-28 16:36:07+09:00'
+  timestamp: '2026-10-14 18:10:34+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/heavy_light_decomposition/vertex_add_subtree_sum.test.cpp
