@@ -48,7 +48,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/articulation_points.hpp
       title: Articulation Points
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/auxiliary_tree.hpp
       title: graph/auxiliary_tree.hpp
     - icon: ':heavy_check_mark:'
@@ -86,7 +86,7 @@ data:
       title: graph/potentialized_offline_dynamic_connectivity.hpp
   - name: heavy_light_decomposition
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: heavy_light_decomposition/heavy_light_decomposition.hpp
       title: Heavy-Light Decomposition
   - name: io
@@ -351,7 +351,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/graph/sssp.test.cpp
       title: test/graph/sssp.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/graph/yuki901.test.cpp
       title: test/graph/yuki901.test.cpp
   - name: test/heavy_light_decomposition

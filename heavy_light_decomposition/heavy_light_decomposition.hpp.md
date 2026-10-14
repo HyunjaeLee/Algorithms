@@ -2,11 +2,11 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: graph/auxiliary_tree.hpp
     title: graph/auxiliary_tree.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/graph/yuki901.test.cpp
     title: test/graph/yuki901.test.cpp
   - icon: ':heavy_check_mark:'
@@ -18,9 +18,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/heavy_light_decomposition/vertex_add_subtree_sum.test.cpp
     title: test/heavy_light_decomposition/vertex_add_subtree_sum.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"heavy_light_decomposition/heavy_light_decomposition.hpp\"\
@@ -134,7 +134,7 @@ data:
   requiredBy:
   - graph/auxiliary_tree.hpp
   timestamp: '2026-10-14 18:10:34+00:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/graph/yuki901.test.cpp
   - test/heavy_light_decomposition/vertex_add_subtree_sum.test.cpp

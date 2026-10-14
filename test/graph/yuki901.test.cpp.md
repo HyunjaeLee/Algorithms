@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: graph/auxiliary_tree.hpp
     title: graph/auxiliary_tree.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: heavy_light_decomposition/heavy_light_decomposition.hpp
     title: Heavy-Light Decomposition
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://yukicoder.me/problems/no/901
@@ -71,25 +71,24 @@ data:
     \   out_[u] = timer_;\n    }\n    const int n_;\n    int timer_;\n    G graph_;\n\
     \    std::vector<int> size_, depth_, parent_, top_, in_, out_;\n};\n\n\n#line\
     \ 6 \"graph/auxiliary_tree.hpp\"\n#include <utility>\n#line 8 \"graph/auxiliary_tree.hpp\"\
-    \n\nstruct AuxiliaryTree {\n    AuxiliaryTree(const std::vector<std::vector<int>>\
-    \ &graph, int root) : hld_(graph, root) {}\n    std::vector<std::pair<int, int>>\
-    \ get(std::vector<int> x) const {\n        if (x.empty()) {\n            return\
-    \ {};\n        }\n        std::ranges::sort(x, {}, [&](int u) { return hld_.in(u);\
-    \ });\n        const auto m = int(x.size());\n        for (auto i = 1; i < m;\
-    \ i++) {\n            x.push_back(hld_.lca(x[i - 1], x[i]));\n        }\n    \
-    \    std::ranges::sort(x, {}, [&](int u) { return hld_.in(u); });\n        auto\
-    \ r = std::ranges::unique(x);\n        x.erase(r.begin(), r.end());\n        const\
-    \ auto n = int(x.size());\n        std::vector<int> st;\n        std::vector<std::pair<int,\
-    \ int>> dfs_order(n);\n        st.push_back(x[0]);\n        dfs_order[0] = {x[0],\
-    \ -1};\n        for (auto i = 1; i < n; ++i) {\n            auto v = x[i];\n \
-    \           while (!st.empty()) {\n                auto u = st.back();\n     \
-    \           if (hld_.in(v) < hld_.out(u)) {\n                    break;\n    \
-    \            } else {\n                    st.pop_back();\n                }\n\
-    \            }\n            auto parent = st.back();\n            dfs_order[i]\
-    \ = {v, parent};\n            st.push_back(v);\n        }\n        return dfs_order;\n\
-    \    }\n    const heavy_light_decomposition &hld() const { return hld_; }\n\n\
-    private:\n    const heavy_light_decomposition hld_;\n};\n\n\n#line 4 \"test/graph/yuki901.test.cpp\"\
-    \n#include <bits/stdc++.h>\nusing i64 = long long;\n\nint main() {\n    std::cin.tie(0)->sync_with_stdio(0);\n\
+    \n\ntemplate<typename G>\nstruct AuxiliaryTree {\n    AuxiliaryTree(const G &graph,\
+    \ int root) : hld_(graph, root) {}\n    std::vector<std::pair<int, int>> get(std::vector<int>\
+    \ x) const {\n        if (x.empty()) {\n            return {};\n        }\n  \
+    \      std::ranges::sort(x, {}, [&](int u) { return hld_.in(u); });\n        const\
+    \ auto m = int(x.size());\n        for (auto i = 1; i < m; i++) {\n          \
+    \  x.push_back(hld_.lca(x[i - 1], x[i]));\n        }\n        std::ranges::sort(x,\
+    \ {}, [&](int u) { return hld_.in(u); });\n        auto r = std::ranges::unique(x);\n\
+    \        x.erase(r.begin(), r.end());\n        const auto n = int(x.size());\n\
+    \        std::vector<int> st;\n        std::vector<std::pair<int, int>> dfs_order(n);\n\
+    \        st.push_back(x[0]);\n        dfs_order[0] = {x[0], -1};\n        for\
+    \ (auto i = 1; i < n; ++i) {\n            auto v = x[i];\n            while (!st.empty())\
+    \ {\n                auto u = st.back();\n                if (hld_.in(v) < hld_.out(u))\
+    \ {\n                    break;\n                } else {\n                  \
+    \  st.pop_back();\n                }\n            }\n            auto parent =\
+    \ st.back();\n            dfs_order[i] = {v, parent};\n            st.push_back(v);\n\
+    \        }\n        return dfs_order;\n    }\n\nprivate:\n    const heavy_light_decomposition<G>\
+    \ hld_;\n};\n\n\n#line 4 \"test/graph/yuki901.test.cpp\"\n#include <bits/stdc++.h>\n\
+    using i64 = long long;\n\nint main() {\n    std::cin.tie(0)->sync_with_stdio(0);\n\
     \    int N;\n    std::cin >> N;\n    std::vector<std::vector<std::pair<int, i64>>>\
     \ adj(N);\n    std::vector<std::vector<int>> g(N);\n    for (auto i = 0; i < N\
     \ - 1; ++i) {\n        int u, v, w;\n        std::cin >> u >> v >> w;\n      \
@@ -101,7 +100,7 @@ data:
     \ 0, 0);\n    AuxiliaryTree aux(g, 0);\n    int Q;\n    std::cin >> Q;\n    while\
     \ (Q--) {\n        int k;\n        std::cin >> k;\n        std::vector<int> x(k);\n\
     \        std::copy_n(std::istream_iterator<int>(std::cin), k, x.begin());\n  \
-    \      i64 ans = 0;\n        for (auto [u, p] : aux.get(move(x)) | std::views::drop(1))\
+    \      i64 ans = 0;\n        for (auto [u, p] : aux.get(std::move(x)) | std::views::drop(1))\
     \ {\n            ans += dist[u] - dist[p];\n        }\n        std::cout << ans\
     \ << '\\n';\n    }\n}\n"
   code: "#define PROBLEM \"https://yukicoder.me/problems/no/901\"\n\n#include \"graph/auxiliary_tree.hpp\"\
@@ -117,7 +116,7 @@ data:
     \ 0, 0);\n    AuxiliaryTree aux(g, 0);\n    int Q;\n    std::cin >> Q;\n    while\
     \ (Q--) {\n        int k;\n        std::cin >> k;\n        std::vector<int> x(k);\n\
     \        std::copy_n(std::istream_iterator<int>(std::cin), k, x.begin());\n  \
-    \      i64 ans = 0;\n        for (auto [u, p] : aux.get(move(x)) | std::views::drop(1))\
+    \      i64 ans = 0;\n        for (auto [u, p] : aux.get(std::move(x)) | std::views::drop(1))\
     \ {\n            ans += dist[u] - dist[p];\n        }\n        std::cout << ans\
     \ << '\\n';\n    }\n}\n"
   dependsOn:
@@ -126,8 +125,8 @@ data:
   isVerificationFile: true
   path: test/graph/yuki901.test.cpp
   requiredBy: []
-  timestamp: '2026-10-14 18:10:34+00:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2026-10-14 18:20:28+00:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/graph/yuki901.test.cpp
 layout: document
