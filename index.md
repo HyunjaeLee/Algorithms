@@ -15,6 +15,9 @@ data:
       path: data_structures/csr.hpp
       title: data_structures/csr.hpp
     - icon: ':heavy_check_mark:'
+      path: data_structures/hash_map.hpp
+      title: data_structures/hash_map.hpp
+    - icon: ':heavy_check_mark:'
       path: data_structures/interval_heap.hpp
       title: data_structures/interval_heap.hpp
     - icon: ':heavy_check_mark:'
@@ -281,6 +284,9 @@ data:
       title: test/convolution/bitwise_or_convolution.test.cpp
   - name: test/data_structures
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/data_structures/associative_array.test.cpp
+      title: test/data_structures/associative_array.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/data_structures/consistent_trading.test.cpp
       title: test/data_structures/consistent_trading.test.cpp
