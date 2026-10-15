@@ -84,3 +84,27 @@ $$
 $$
 \max\left(\lvert\Delta x\rvert, \lvert\Delta y\rvert\right) = \frac{1}{2} \left(\lvert\Delta u\rvert + \lvert\Delta v\rvert\right)
 $$
+
+## $\sum \min{(a_u, a_v)}$의 상한
+
+길이가 $n$인 수열 $a(a_i \ge 0)$와 $m$개의 **서로 다른** 순서쌍 $(u_j, v_j)(1 \le u_j, v_j \le n)$에 대해 다음 부등식이 성립한다.
+
+$$
+\sum_{j=1}^{m}{\min{(a_{u_j}, a_{v_j})}} \le \sqrt{m}\sum_{i=1}^{n}{a_i}
+$$
+
+### 증명
+
+$$
+\sum_{j=1}^{m}{\min{(a_{u_j}, a_{v_j})}}
+\le \sum_{j=1}^{m}{\sqrt{a_{u_j}a_{v_j}}}
+\le \sqrt{m\sum_{j=1}^{m}{a_{u_j}a_{v_j}}}
+\le \sqrt{m}\sum_{i=1}^{n}{a_i}
+$$
+
+### 관련 문제
+
++ [CF2155F - Juan's Colorful Tree](https://codeforces.com/contest/2155/problem/F)
++ [Library Checker - Enumerate Triangles](https://judge.yosupo.jp/problem/enumerate_triangles)
++ [CCO 2021 - Swap Swap Sort](https://qoj.ac/contest/745/problem/2706)
++ [IOI 2009 - Regions](https://qoj.ac/contest/2268/problem/12791)
