@@ -44,6 +44,9 @@ data:
   - name: dp
     pages:
     - icon: ':heavy_check_mark:'
+      path: dp/reroot_dfs.hpp
+      title: dp/reroot_dfs.hpp
+    - icon: ':heavy_check_mark:'
       path: dp/rerooting.hpp
       title: Rerooting
   - name: graph
@@ -307,6 +310,9 @@ data:
       title: test/data_structures/yuki2012.test.cpp
   - name: test/dp
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/dp/reroot_dfs.test.cpp
+      title: test/dp/reroot_dfs.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/dp/rerooting.test.cpp
       title: test/dp/rerooting.test.cpp
