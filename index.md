@@ -311,6 +311,12 @@ data:
   - name: test/dp
     pages:
     - icon: ':heavy_check_mark:'
+      path: test/dp/diameter_bfs.test.cpp
+      title: test/dp/diameter_bfs.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/dp/diameter_dfs.test.cpp
+      title: test/dp/diameter_dfs.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/dp/reroot_dfs.test.cpp
       title: test/dp/reroot_dfs.test.cpp
     - icon: ':heavy_check_mark:'

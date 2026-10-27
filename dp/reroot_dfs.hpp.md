@@ -4,6 +4,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/dp/diameter_dfs.test.cpp
+    title: test/dp/diameter_dfs.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/dp/reroot_dfs.test.cpp
     title: test/dp/reroot_dfs.test.cpp
   _isVerificationFailed: false
@@ -60,6 +63,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/dp/reroot_dfs.test.cpp
+  - test/dp/diameter_dfs.test.cpp
 documentation_of: dp/reroot_dfs.hpp
 layout: document
 redirect_from:

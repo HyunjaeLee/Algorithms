@@ -17,21 +17,21 @@ data:
   bundledCode: "#line 1 \"test/dp/rerooting.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/tree_path_composite_sum\"\
     \n\n#line 1 \"dp/rerooting.hpp\"\n\n\n\n#include <ranges>\n#include <vector>\n\
     \n/*\n    vector<vector<pair<int, EdgeWeight>>> g;\n    struct Subtree {};\n \
-    \   struct Child {};\n    auto rake = [&](Child l, Child r) -> Child {};\n   \
-    \ auto add_edge = [&](Subtree d, EdgeWeight w) -> Child {};\n    auto add_vertex\
-    \ = [&](Child d, int i) -> Subtree {};\n    auto e = []() -> Child {};\n*/\n\n\
-    auto rerooting(const auto &g, auto rake, auto add_edge, auto add_vertex, auto\
-    \ e) {\n    auto n = int(g.size());\n    using Child = decltype(e());\n    using\
-    \ Subtree = decltype(add_vertex(e(), 0));\n    std::vector<Subtree> dp(n), dp_parent(n);\n\
-    \    std::vector<int> bfs_order, parent(n, -1);\n    std::vector<Child> pref(n\
-    \ + 1);\n    bfs_order.reserve(n);\n    for (auto root = 0; root < n; ++root)\
+    \   struct Children {};\n    auto rake = [&](Children l, Children r) -> Children\
+    \ {};\n    auto add_edge = [&](Subtree d, EdgeWeight w) -> Children {};\n    auto\
+    \ add_vertex = [&](Children d, int i) -> Subtree {};\n    auto e = []() -> Children\
+    \ {};\n*/\n\nauto rerooting(const auto &g, auto rake, auto add_edge, auto add_vertex,\
+    \ auto e) {\n    auto n = int(g.size());\n    using Children = decltype(e());\n\
+    \    using Subtree = decltype(add_vertex(e(), 0));\n    std::vector<Subtree> dp(n),\
+    \ dp_parent(n);\n    std::vector<int> bfs_order, parent(n, -1);\n    std::vector<Children>\
+    \ pref(n + 1);\n    bfs_order.reserve(n);\n    for (auto root = 0; root < n; ++root)\
     \ {\n        if (~parent[root]) {\n            continue;\n        }\n        parent[root]\
     \ = root;\n        bfs_order.clear();\n        bfs_order.push_back(root);\n  \
     \      auto q = bfs_order.cbegin();\n        while (q != bfs_order.cend()) {\n\
     \            auto u = *q++;\n            for (auto [v, w] : g[u]) {\n        \
     \        if (v != parent[u]) {\n                    parent[v] = u;\n         \
     \           bfs_order.push_back(v);\n                }\n            }\n      \
-    \  }\n        for (auto u : bfs_order | std::views::reverse) {\n            Child\
+    \  }\n        for (auto u : bfs_order | std::views::reverse) {\n            Children\
     \ sum = e();\n            for (auto [v, w] : g[u]) {\n                if (v !=\
     \ parent[u]) {\n                    sum = rake(sum, add_edge(dp[v], w));\n   \
     \             }\n            }\n            dp[u] = add_vertex(sum, u);\n    \
@@ -39,8 +39,8 @@ data:
     \    pref[0] = e();\n            for (auto [v, w] : g[u]) {\n                auto\
     \ state = (v == parent[u]) ? dp_parent[u] : dp[v];\n                pref[i + 1]\
     \ = rake(pref[i], add_edge(state, w));\n                ++i;\n            }\n\
-    \            auto suff = e();\n            for (auto [v, w] : g[u] | std::views::reverse)\
-    \ {\n                if (v != parent[u]) {\n                    Child except_child\
+    \            Children suff = e();\n            for (auto [v, w] : g[u] | std::views::reverse)\
+    \ {\n                if (v != parent[u]) {\n                    Children except_child\
     \ = rake(pref[i - 1], suff);\n                    dp_parent[v] = add_vertex(except_child,\
     \ u);\n                }\n                auto state = (v == parent[u]) ? dp_parent[u]\
     \ : dp[v];\n                suff = rake(add_edge(state, w), suff);\n         \
@@ -83,7 +83,7 @@ data:
   isVerificationFile: true
   path: test/dp/rerooting.test.cpp
   requiredBy: []
-  timestamp: '2026-08-12 07:38:15+00:00'
+  timestamp: '2026-10-27 11:04:08+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/dp/rerooting.test.cpp
