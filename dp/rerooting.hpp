@@ -7,20 +7,20 @@
 /*
     vector<vector<pair<int, EdgeWeight>>> g;
     struct Subtree {};
-    struct Child {};
-    auto rake = [&](Child l, Child r) -> Child {};
-    auto add_edge = [&](Subtree d, EdgeWeight w) -> Child {};
-    auto add_vertex = [&](Child d, int i) -> Subtree {};
-    auto e = []() -> Child {};
+    struct Children {};
+    auto rake = [&](Children l, Children r) -> Children {};
+    auto add_edge = [&](Subtree d, EdgeWeight w) -> Children {};
+    auto add_vertex = [&](Children d, int i) -> Subtree {};
+    auto e = []() -> Children {};
 */
 
 auto rerooting(const auto &g, auto rake, auto add_edge, auto add_vertex, auto e) {
     auto n = int(g.size());
-    using Child = decltype(e());
+    using Children = decltype(e());
     using Subtree = decltype(add_vertex(e(), 0));
     std::vector<Subtree> dp(n), dp_parent(n);
     std::vector<int> bfs_order, parent(n, -1);
-    std::vector<Child> pref(n + 1);
+    std::vector<Children> pref(n + 1);
     bfs_order.reserve(n);
     for (auto root = 0; root < n; ++root) {
         if (~parent[root]) {
@@ -40,7 +40,7 @@ auto rerooting(const auto &g, auto rake, auto add_edge, auto add_vertex, auto e)
             }
         }
         for (auto u : bfs_order | std::views::reverse) {
-            Child sum = e();
+            Children sum = e();
             for (auto [v, w] : g[u]) {
                 if (v != parent[u]) {
                     sum = rake(sum, add_edge(dp[v], w));
@@ -56,10 +56,10 @@ auto rerooting(const auto &g, auto rake, auto add_edge, auto add_vertex, auto e)
                 pref[i + 1] = rake(pref[i], add_edge(state, w));
                 ++i;
             }
-            auto suff = e();
+            Children suff = e();
             for (auto [v, w] : g[u] | std::views::reverse) {
                 if (v != parent[u]) {
-                    Child except_child = rake(pref[i - 1], suff);
+                    Children except_child = rake(pref[i - 1], suff);
                     dp_parent[v] = add_vertex(except_child, u);
                 }
                 auto state = (v == parent[u]) ? dp_parent[u] : dp[v];
