@@ -61,8 +61,8 @@ data:
   timestamp: '2026-02-06 02:13:39+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/math/aizu3614.test.cpp
   - test/math/binomial_coefficient_prime_mod.test.cpp
+  - test/math/aizu3614.test.cpp
 documentation_of: math/combinatorics.hpp
 layout: document
 redirect_from:

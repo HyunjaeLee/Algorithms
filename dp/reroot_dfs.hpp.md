@@ -62,8 +62,8 @@ data:
   timestamp: '2026-10-26 19:01:10+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/dp/reroot_dfs.test.cpp
   - test/dp/diameter_dfs.test.cpp
+  - test/dp/reroot_dfs.test.cpp
 documentation_of: dp/reroot_dfs.hpp
 layout: document
 redirect_from:

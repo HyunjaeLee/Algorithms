@@ -83,8 +83,8 @@ data:
   timestamp: '2026-10-27 11:04:08+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/dp/rerooting.test.cpp
   - test/dp/diameter_bfs.test.cpp
+  - test/dp/rerooting.test.cpp
 documentation_of: dp/rerooting.hpp
 layout: document
 title: Rerooting

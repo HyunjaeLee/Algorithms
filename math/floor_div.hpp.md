@@ -33,9 +33,9 @@ data:
   isVerificationFile: false
   path: math/floor_div.hpp
   requiredBy:
+  - math/rational.hpp
   - data_structures/line_container.hpp
   - data_structures/line_container_2d.hpp
-  - math/rational.hpp
   timestamp: '2022-10-01 07:25:57+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
