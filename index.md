@@ -214,6 +214,9 @@ data:
   - name: segment_tree
     pages:
     - icon: ':heavy_check_mark:'
+      path: segment_tree/commutative_dual_segtree.hpp
+      title: segment_tree/commutative_dual_segtree.hpp
+    - icon: ':heavy_check_mark:'
       path: segment_tree/segtree_2d.hpp
       title: 2D Segment Tree
     - icon: ':heavy_check_mark:'
@@ -500,6 +503,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/segment_tree/aizu1625.test.cpp
       title: test/segment_tree/aizu1625.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/segment_tree/commutative_dual_segtree.test.cpp
+      title: test/segment_tree/commutative_dual_segtree.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/segment_tree/segtree_2d.test.cpp
       title: test/segment_tree/segtree_2d.test.cpp
