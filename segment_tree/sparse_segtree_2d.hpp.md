@@ -4,11 +4,11 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/segment_tree/aizu1625.test.cpp
-    title: test/segment_tree/aizu1625.test.cpp
-  - icon: ':heavy_check_mark:'
     path: test/segment_tree/sparse_segtree_2d.test.cpp
     title: test/segment_tree/sparse_segtree_2d.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/segment_tree/yuki1625.test.cpp
+    title: test/segment_tree/yuki1625.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -239,8 +239,8 @@ data:
   timestamp: '2026-08-04 08:03:55+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/segment_tree/aizu1625.test.cpp
   - test/segment_tree/sparse_segtree_2d.test.cpp
+  - test/segment_tree/yuki1625.test.cpp
 documentation_of: segment_tree/sparse_segtree_2d.hpp
 layout: document
 redirect_from:

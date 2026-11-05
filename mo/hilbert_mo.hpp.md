@@ -7,11 +7,11 @@ data:
     title: mo/mo_tree.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/mo/aoj0489.test.cpp
-    title: test/mo/aoj0489.test.cpp
+    path: test/mo/aizu0489.test.cpp
+    title: test/mo/aizu0489.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/mo/aoj2270.test.cpp
-    title: test/mo/aoj2270.test.cpp
+    path: test/mo/aizu2270.test.cpp
+    title: test/mo/aizu2270.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/mo/hilbert_mo_range_kth_smallest.test.cpp
     title: test/mo/hilbert_mo_range_kth_smallest.test.cpp
@@ -86,8 +86,8 @@ data:
   verifiedWith:
   - test/mo/hilbert_mo_static_range_frequency.test.cpp
   - test/mo/hilbert_mo_range_kth_smallest.test.cpp
-  - test/mo/aoj2270.test.cpp
-  - test/mo/aoj0489.test.cpp
+  - test/mo/aizu2270.test.cpp
+  - test/mo/aizu0489.test.cpp
   - test/mo/hilbert_mo_static_range_inversions_query.test.cpp
   - test/mo/hilbert_mo_static_range_count_distinct.test.cpp
 documentation_of: mo/hilbert_mo.hpp

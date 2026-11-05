@@ -49,6 +49,20 @@ data:
     - icon: ':heavy_check_mark:'
       path: dp/rerooting.hpp
       title: Rerooting
+  - name: game
+    pages:
+    - icon: ':warning:'
+      path: game/mex.hpp
+      title: game/mex.hpp
+    - icon: ':warning:'
+      path: game/numnim.hpp
+      title: game/numnim.hpp
+    - icon: ':heavy_check_mark:'
+      path: game/ordinal_sum.hpp
+      title: game/ordinal_sum.hpp
+    - icon: ':heavy_check_mark:'
+      path: game/surreal.hpp
+      title: game/surreal.hpp
   - name: graph
     pages:
     - icon: ':heavy_check_mark:'
@@ -328,6 +342,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/dp/rerooting.test.cpp
       title: test/dp/rerooting.test.cpp
+  - name: test/game
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/game/2016_tsukuba_k.test.cpp
+      title: test/game/2016_tsukuba_k.test.cpp
   - name: test/graph
     pages:
     - icon: ':heavy_check_mark:'
@@ -470,11 +489,11 @@ data:
   - name: test/mo
     pages:
     - icon: ':heavy_check_mark:'
-      path: test/mo/aoj0489.test.cpp
-      title: test/mo/aoj0489.test.cpp
+      path: test/mo/aizu0489.test.cpp
+      title: test/mo/aizu0489.test.cpp
     - icon: ':heavy_check_mark:'
-      path: test/mo/aoj2270.test.cpp
-      title: test/mo/aoj2270.test.cpp
+      path: test/mo/aizu2270.test.cpp
+      title: test/mo/aizu2270.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/mo/hilbert_mo_range_kth_smallest.test.cpp
       title: test/mo/hilbert_mo_range_kth_smallest.test.cpp
@@ -501,9 +520,6 @@ data:
   - name: test/segment_tree
     pages:
     - icon: ':heavy_check_mark:'
-      path: test/segment_tree/aizu1625.test.cpp
-      title: test/segment_tree/aizu1625.test.cpp
-    - icon: ':heavy_check_mark:'
       path: test/segment_tree/commutative_dual_segtree.test.cpp
       title: test/segment_tree/commutative_dual_segtree.test.cpp
     - icon: ':heavy_check_mark:'
@@ -521,6 +537,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/segment_tree/sparse_segtree_2d.test.cpp
       title: test/segment_tree/sparse_segtree_2d.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/segment_tree/yuki1625.test.cpp
+      title: test/segment_tree/yuki1625.test.cpp
   - name: test/sparse_table
     pages:
     - icon: ':heavy_check_mark:'

@@ -7,11 +7,11 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/mo/aoj0489.test.cpp
-    title: test/mo/aoj0489.test.cpp
+    path: test/mo/aizu0489.test.cpp
+    title: test/mo/aizu0489.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/mo/aoj2270.test.cpp
-    title: test/mo/aoj2270.test.cpp
+    path: test/mo/aizu2270.test.cpp
+    title: test/mo/aizu2270.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -109,8 +109,8 @@ data:
   timestamp: '2026-09-27 08:18:09+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/mo/aoj2270.test.cpp
-  - test/mo/aoj0489.test.cpp
+  - test/mo/aizu2270.test.cpp
+  - test/mo/aizu0489.test.cpp
 documentation_of: mo/mo_tree.hpp
 layout: document
 redirect_from:
