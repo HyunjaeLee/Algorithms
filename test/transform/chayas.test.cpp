@@ -1,9 +1,10 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/problems/1448"
 
+#include "math/modint.hpp"
 #include "transform/subset_zeta.hpp"
-#include <atcoder/modint>
 #include <bits/stdc++.h>
-using Z = atcoder::modint998244353;
+
+using Z = modint998244353;
 
 int main() {
     std::cin.tie(0)->sync_with_stdio(0);

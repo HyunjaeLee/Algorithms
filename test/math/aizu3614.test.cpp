@@ -1,10 +1,11 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/challenges/sources/JAG/Summer/3614"
 
 #include "math/combinatorics.hpp"
+#include "math/modint.hpp"
 #include "math/p_recursive.hpp"
-#include <atcoder/modint>
 #include <bits/stdc++.h>
-using Z = atcoder::modint998244353;
+
+using Z = modint998244353;
 
 Z small(int n, int m) {
     Combinatorics<Z> C;

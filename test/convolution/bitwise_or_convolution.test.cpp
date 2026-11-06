@@ -1,9 +1,10 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/bitwise_and_convolution"
 
 #include "convolution/or.hpp"
-#include <atcoder/modint>
+#include "math/modint.hpp"
 #include <bits/stdc++.h>
-using Z = atcoder::modint998244353;
+
+using Z = modint998244353;
 
 int main() {
     std::cin.tie(0)->sync_with_stdio(0);

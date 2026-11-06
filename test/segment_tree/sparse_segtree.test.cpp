@@ -1,10 +1,11 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/point_set_range_composite_large_array"
 
 #include "segment_tree/sparse_segtree.hpp"
+#include "math/modint.hpp"
 #include "monoids/affine_monoid.hpp"
-#include <atcoder/modint>
 #include <bits/stdc++.h>
-using Z = atcoder::modint998244353;
+
+using Z = modint998244353;
 
 int main() {
     std::cin.tie(0)->sync_with_stdio(0);

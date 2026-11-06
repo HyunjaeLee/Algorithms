@@ -1,10 +1,10 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/tree_path_composite_sum"
 
 #include "dp/rerooting.hpp"
-#include <atcoder/modint>
+#include "math/modint.hpp"
 #include <bits/stdc++.h>
 
-using Z = atcoder::modint998244353;
+using Z = modint998244353;
 
 int main() {
     std::cin.tie(0)->sync_with_stdio(0);

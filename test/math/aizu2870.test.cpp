@@ -1,9 +1,10 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/problems/2870"
 
 #include "math/linear_sieve.hpp"
-#include <atcoder/modint>
+#include "math/modint.hpp"
 #include <bits/stdc++.h>
-using Z = atcoder::modint1000000007;
+
+using Z = modint1000000007;
 
 int main() {
     std::cin.tie(0)->sync_with_stdio(0);

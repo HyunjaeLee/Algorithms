@@ -1,9 +1,10 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/range_affine_range_sum_large_array"
 
 #include "segment_tree/sparse_lazy_segtree.hpp"
-#include <atcoder/modint>
+#include "math/modint.hpp"
 #include <bits/stdc++.h>
-using Z = atcoder::modint998244353;
+
+using Z = modint998244353;
 
 using S = Z;
 
