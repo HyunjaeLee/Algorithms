@@ -43,10 +43,10 @@ data:
       title: data_structures/tensor.hpp
   - name: dp
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: dp/reroot_dfs.hpp
       title: dp/reroot_dfs.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: dp/rerooting.hpp
       title: Rerooting
   - name: game
@@ -148,7 +148,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/ceil_div.hpp
       title: math/ceil_div.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/combinatorics.hpp
       title: math/combinatorics.hpp
     - icon: ':warning:'
@@ -172,7 +172,10 @@ data:
     - icon: ':warning:'
       path: math/mobius.hpp
       title: "M\xF6bius function"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
+      path: math/modint.hpp
+      title: math/modint.hpp
+    - icon: ':x:'
       path: math/p_recursive.hpp
       title: math/p_recursive.hpp
     - icon: ':heavy_check_mark:'
@@ -336,10 +339,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/dp/diameter_dfs.test.cpp
       title: test/dp/diameter_dfs.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/dp/reroot_dfs.test.cpp
       title: test/dp/reroot_dfs.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/dp/rerooting.test.cpp
       title: test/dp/rerooting.test.cpp
   - name: test/game
@@ -462,7 +465,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/math/aizu2870.test.cpp
       title: test/math/aizu2870.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/math/aizu3614.test.cpp
       title: test/math/aizu3614.test.cpp
     - icon: ':heavy_check_mark:'

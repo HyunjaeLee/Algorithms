@@ -3,15 +3,15 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/aizu3614.test.cpp
     title: test/math/aizu3614.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/math/binomial_coefficient_prime_mod.test.cpp
     title: test/math/binomial_coefficient_prime_mod.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"math/combinatorics.hpp\"\n\n\n\n#include <algorithm>\n#include\
@@ -59,7 +59,7 @@ data:
   path: math/combinatorics.hpp
   requiredBy: []
   timestamp: '2026-02-06 02:13:39+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/math/binomial_coefficient_prime_mod.test.cpp
   - test/math/aizu3614.test.cpp

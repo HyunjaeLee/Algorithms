@@ -1,6 +1,9 @@
 ---
 data:
   _extendedDependsOn:
+  - icon: ':question:'
+    path: math/modint.hpp
+    title: math/modint.hpp
   - icon: ':heavy_check_mark:'
     path: segment_tree/sparse_lazy_segtree.hpp
     title: segment_tree/sparse_lazy_segtree.hpp
@@ -86,13 +89,43 @@ data:
     \     return;\n        if (ql <= tl and tr <= qr)\n            return apply_all(node,\
     \ f, tl, tr);\n        const index_type tm = tl + (tr - tl) / 2;\n        push(node,\
     \ tl, tr);\n        apply(pool[node].ch[0], f, ql, qr, tl, tm), apply(pool[node].ch[1],\
-    \ f, ql, qr, tm, tr);\n        update(node);\n    }\n};\n\n\n#line 4 \"test/segment_tree/sparse_lazy_segtree.test.cpp\"\
-    \n#include <atcoder/modint>\n#include <bits/stdc++.h>\nusing Z = atcoder::modint998244353;\n\
-    \nusing S = Z;\n\nS op(S a, S b) { return a + b; }\n\nS e() { return 0; }\n\n\
-    using F = std::pair<Z, Z>;\n\nS mapping(F f, S x, int l, int r) {\n    auto [a,\
-    \ b] = f;\n    return a * x + b * (r - l);\n}\n\nF composition(F f, F g) {\n \
-    \   auto [a, b] = f;\n    auto [c, d] = g;\n    return {a * c, a * d + b};\n}\n\
-    \nF id() { return {1, 0}; }\n\nint main() {\n    std::cin.tie(0)->sync_with_stdio(0);\n\
+    \ f, ql, qr, tm, tr);\n        update(node);\n    }\n};\n\n\n#line 1 \"math/modint.hpp\"\
+    \n\n\n\n#line 5 \"math/modint.hpp\"\n#include <concepts>\n#include <iostream>\n\
+    #include <limits>\n#include <type_traits>\n#include <utility>\n\ntemplate <std::signed_integral\
+    \ auto mod> struct modint {\n    using T = decltype(mod);\n    static_assert(0\
+    \ < mod && mod <= std::numeric_limits<T>::max() / 2 + 1);\n    constexpr modint()\
+    \ : v(0) {}\n    constexpr modint(std::integral auto x) : v(T((x % mod + mod)\
+    \ % mod)) {}\n    constexpr modint &operator+=(modint o) {\n        v = (v + o.v)\
+    \ % mod;\n        return *this;\n    }\n    constexpr modint &operator-=(modint\
+    \ o) {\n        v = (v - o.v + mod) % mod;\n        return *this;\n    }\n   \
+    \ constexpr modint &operator*=(modint o) {\n        static_assert(sizeof(T) <=\
+    \ sizeof(long long));\n        using U = std::conditional_t<sizeof(T) <= sizeof(int),\
+    \ long long, __int128>;\n        v = T(U(v) * o.v % mod);\n        return *this;\n\
+    \    }\n    constexpr modint &operator/=(modint o) { return *this *= o.inv();\
+    \ }\n    constexpr modint operator-() const { return -v; }\n    constexpr modint\
+    \ operator+() const { return *this; }\n    friend constexpr modint operator+(modint\
+    \ l, modint r) { return l += r; }\n    friend constexpr modint operator-(modint\
+    \ l, modint r) { return l -= r; }\n    friend constexpr modint operator*(modint\
+    \ l, modint r) { return l *= r; }\n    friend constexpr modint operator/(modint\
+    \ l, modint r) { return l /= r; }\n    friend bool operator==(modint, modint)\
+    \ = default;\n    constexpr modint pow(std::integral auto n) const {\n       \
+    \ assert(0 <= n);\n        modint x = *this, r = 1;\n        for (; n; x *= x,\
+    \ n /= 2) {\n            if (n & 1) {\n                r *= x;\n            }\n\
+    \        }\n        return r;\n    }\n    constexpr modint inv() const {\n   \
+    \     T a = v, b = mod, s = 1, t = 0;\n        while (b) {\n            T q =\
+    \ a / b;\n            std::swap(a -= b * q, b);\n            std::swap(s -= t\
+    \ * q, t);\n        }\n        assert(a == 1);\n        return s;\n    }\n   \
+    \ constexpr T val() const { return v; }\n    friend std::ostream &operator<<(std::ostream\
+    \ &os, modint a) { return os << a.v; }\n    friend std::istream &operator>>(std::istream\
+    \ &is, modint &a) {\n        long long x;\n        is >> x;\n        a = x;\n\
+    \        return is;\n    }\n\nprivate:\n    T v;\n};\n\nusing modint998244353\
+    \ = modint<998244353>;\nusing modint1000000007 = modint<1000000007>;\n\n\n#line\
+    \ 5 \"test/segment_tree/sparse_lazy_segtree.test.cpp\"\n#include <bits/stdc++.h>\n\
+    \nusing Z = modint998244353;\n\nusing S = Z;\n\nS op(S a, S b) { return a + b;\
+    \ }\n\nS e() { return 0; }\n\nusing F = std::pair<Z, Z>;\n\nS mapping(F f, S x,\
+    \ int l, int r) {\n    auto [a, b] = f;\n    return a * x + b * (r - l);\n}\n\n\
+    F composition(F f, F g) {\n    auto [a, b] = f;\n    auto [c, d] = g;\n    return\
+    \ {a * c, a * d + b};\n}\n\nF id() { return {1, 0}; }\n\nint main() {\n    std::cin.tie(0)->sync_with_stdio(0);\n\
     \    int N, Q;\n    std::cin >> N >> Q;\n    sparse_lazy_segtree<int, S, op, e,\
     \ F, mapping, composition, id> seg(N);\n    while (Q--) {\n        int t, l, r;\n\
     \        std::cin >> t >> l >> r;\n        if (t == 0) {\n            int b, c;\n\
@@ -100,9 +133,9 @@ data:
     \   } else {\n            auto ans = seg.prod(l, r);\n            std::cout <<\
     \ ans.val() << \"\\n\";\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_affine_range_sum_large_array\"\
-    \n\n#include \"segment_tree/sparse_lazy_segtree.hpp\"\n#include <atcoder/modint>\n\
-    #include <bits/stdc++.h>\nusing Z = atcoder::modint998244353;\n\nusing S = Z;\n\
-    \nS op(S a, S b) { return a + b; }\n\nS e() { return 0; }\n\nusing F = std::pair<Z,\
+    \n\n#include \"segment_tree/sparse_lazy_segtree.hpp\"\n#include \"math/modint.hpp\"\
+    \n#include <bits/stdc++.h>\n\nusing Z = modint998244353;\n\nusing S = Z;\n\nS\
+    \ op(S a, S b) { return a + b; }\n\nS e() { return 0; }\n\nusing F = std::pair<Z,\
     \ Z>;\n\nS mapping(F f, S x, int l, int r) {\n    auto [a, b] = f;\n    return\
     \ a * x + b * (r - l);\n}\n\nF composition(F f, F g) {\n    auto [a, b] = f;\n\
     \    auto [c, d] = g;\n    return {a * c, a * d + b};\n}\n\nF id() { return {1,\
@@ -115,10 +148,11 @@ data:
     ;\n        }\n    }\n}\n"
   dependsOn:
   - segment_tree/sparse_lazy_segtree.hpp
+  - math/modint.hpp
   isVerificationFile: true
   path: test/segment_tree/sparse_lazy_segtree.test.cpp
   requiredBy: []
-  timestamp: '2026-08-12 17:21:46+00:00'
+  timestamp: '2026-11-06 14:29:39+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/segment_tree/sparse_lazy_segtree.test.cpp

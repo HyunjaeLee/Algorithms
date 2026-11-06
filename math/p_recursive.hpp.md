@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/aizu3614.test.cpp
     title: test/math/aizu3614.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://min-25.hatenablog.com/entry/2018/05/10/212805
@@ -142,7 +142,7 @@ data:
   path: math/p_recursive.hpp
   requiredBy: []
   timestamp: '2026-09-06 18:51:02+00:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/math/aizu3614.test.cpp
 documentation_of: math/p_recursive.hpp

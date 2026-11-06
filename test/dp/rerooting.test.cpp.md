@@ -1,14 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: dp/rerooting.hpp
     title: Rerooting
+  - icon: ':question:'
+    path: math/modint.hpp
+    title: math/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/tree_path_composite_sum
@@ -45,8 +48,38 @@ data:
     \ u);\n                }\n                auto state = (v == parent[u]) ? dp_parent[u]\
     \ : dp[v];\n                suff = rake(add_edge(state, w), suff);\n         \
     \       --i;\n            }\n            dp[u] = add_vertex(suff, u);\n      \
-    \  }\n    }\n    return dp;\n}\n\n\n#line 4 \"test/dp/rerooting.test.cpp\"\n#include\
-    \ <atcoder/modint>\n#include <bits/stdc++.h>\n\nusing Z = atcoder::modint998244353;\n\
+    \  }\n    }\n    return dp;\n}\n\n\n#line 1 \"math/modint.hpp\"\n\n\n\n#include\
+    \ <cassert>\n#include <concepts>\n#include <iostream>\n#include <limits>\n#include\
+    \ <type_traits>\n#include <utility>\n\ntemplate <std::signed_integral auto mod>\
+    \ struct modint {\n    using T = decltype(mod);\n    static_assert(0 < mod &&\
+    \ mod <= std::numeric_limits<T>::max() / 2 + 1);\n    constexpr modint() : v(0)\
+    \ {}\n    constexpr modint(std::integral auto x) : v(T((x % mod + mod) % mod))\
+    \ {}\n    constexpr modint &operator+=(modint o) {\n        v = (v + o.v) % mod;\n\
+    \        return *this;\n    }\n    constexpr modint &operator-=(modint o) {\n\
+    \        v = (v - o.v + mod) % mod;\n        return *this;\n    }\n    constexpr\
+    \ modint &operator*=(modint o) {\n        static_assert(sizeof(T) <= sizeof(long\
+    \ long));\n        using U = std::conditional_t<sizeof(T) <= sizeof(int), long\
+    \ long, __int128>;\n        v = T(U(v) * o.v % mod);\n        return *this;\n\
+    \    }\n    constexpr modint &operator/=(modint o) { return *this *= o.inv();\
+    \ }\n    constexpr modint operator-() const { return -v; }\n    constexpr modint\
+    \ operator+() const { return *this; }\n    friend constexpr modint operator+(modint\
+    \ l, modint r) { return l += r; }\n    friend constexpr modint operator-(modint\
+    \ l, modint r) { return l -= r; }\n    friend constexpr modint operator*(modint\
+    \ l, modint r) { return l *= r; }\n    friend constexpr modint operator/(modint\
+    \ l, modint r) { return l /= r; }\n    friend bool operator==(modint, modint)\
+    \ = default;\n    constexpr modint pow(std::integral auto n) const {\n       \
+    \ assert(0 <= n);\n        modint x = *this, r = 1;\n        for (; n; x *= x,\
+    \ n /= 2) {\n            if (n & 1) {\n                r *= x;\n            }\n\
+    \        }\n        return r;\n    }\n    constexpr modint inv() const {\n   \
+    \     T a = v, b = mod, s = 1, t = 0;\n        while (b) {\n            T q =\
+    \ a / b;\n            std::swap(a -= b * q, b);\n            std::swap(s -= t\
+    \ * q, t);\n        }\n        assert(a == 1);\n        return s;\n    }\n   \
+    \ constexpr T val() const { return v; }\n    friend std::ostream &operator<<(std::ostream\
+    \ &os, modint a) { return os << a.v; }\n    friend std::istream &operator>>(std::istream\
+    \ &is, modint &a) {\n        long long x;\n        is >> x;\n        a = x;\n\
+    \        return is;\n    }\n\nprivate:\n    T v;\n};\n\nusing modint998244353\
+    \ = modint<998244353>;\nusing modint1000000007 = modint<1000000007>;\n\n\n#line\
+    \ 5 \"test/dp/rerooting.test.cpp\"\n#include <bits/stdc++.h>\n\nusing Z = modint998244353;\n\
     \nint main() {\n    std::cin.tie(0)->sync_with_stdio(0);\n    int N;\n    std::cin\
     \ >> N;\n    using EdgeWeight = std::pair<int, int>;\n    std::vector<std::vector<std::pair<int,\
     \ EdgeWeight>>> g(N);\n    std::vector<int> a(N);\n    std::copy_n(std::istream_iterator<int>(std::cin),\
@@ -62,8 +95,8 @@ data:
     \ rake, add_edge, add_vertex, e);\n    for (auto [sum, cnt] : dp) {\n        std::cout\
     \ << sum.val() << ' ';\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/tree_path_composite_sum\"\
-    \n\n#include \"dp/rerooting.hpp\"\n#include <atcoder/modint>\n#include <bits/stdc++.h>\n\
-    \nusing Z = atcoder::modint998244353;\n\nint main() {\n    std::cin.tie(0)->sync_with_stdio(0);\n\
+    \n\n#include \"dp/rerooting.hpp\"\n#include \"math/modint.hpp\"\n#include <bits/stdc++.h>\n\
+    \nusing Z = modint998244353;\n\nint main() {\n    std::cin.tie(0)->sync_with_stdio(0);\n\
     \    int N;\n    std::cin >> N;\n    using EdgeWeight = std::pair<int, int>;\n\
     \    std::vector<std::vector<std::pair<int, EdgeWeight>>> g(N);\n    std::vector<int>\
     \ a(N);\n    std::copy_n(std::istream_iterator<int>(std::cin), N, a.begin());\n\
@@ -80,11 +113,12 @@ data:
     \ << sum.val() << ' ';\n    }\n}\n"
   dependsOn:
   - dp/rerooting.hpp
+  - math/modint.hpp
   isVerificationFile: true
   path: test/dp/rerooting.test.cpp
   requiredBy: []
-  timestamp: '2026-10-27 11:04:08+00:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-11-06 14:29:39+00:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/dp/rerooting.test.cpp
 layout: document
